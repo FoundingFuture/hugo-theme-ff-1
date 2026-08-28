@@ -92,8 +92,12 @@ def paragraphs(rng, count):
     return out
 
 
-def fill(path, rng, tags):
+def fill(path, rng, tags, intro=False):
     """Undraft the page Hugo wrote, tag it, and give it a body.
+
+    A section gets an introduction rather than an article. What sits
+    under a topic is listed after the topic's own words, so a section
+    that reads like a piece pushes its own contents off the screen.
 
     Hugo's archetype marks a new page a draft. That is right for a
     person writing one. It is wrong for a page generated to be
@@ -114,10 +118,14 @@ def fill(path, rng, tags):
         listed = ", ".join("'%s'" % tag for tag in tags)
         text = text.replace("draft = false", "draft = false\ntags = [%s]" % listed, 1)
 
-    body = paragraphs(rng, rng.randint(4, 6))
+    body = paragraphs(rng, 1 if intro else rng.randint(4, 6))
     # A summary divider after the first paragraph. Without one a list
     # page repeats whatever ids the opening words carry. Two such pages
     # on one list are two elements sharing an id.
+    if intro:
+        text = text.rstrip() + "\n\n" + body[0] + "\n"
+        open(path, "w", encoding="utf-8").write(text)
+        return
     rest = body[1:]
     # Three headings or more is what the table of contents asks for, so
     # a page long enough to want one is written with them. A shorter
@@ -144,7 +152,7 @@ def build(node, prefix, rng):
 
         if spec.get("body", True):
             hugo_new("%s/_index.md" % here)
-            fill(os.path.join(SITE, "content", here, "_index.md"), rng, [])
+            fill(os.path.join(SITE, "content", here, "_index.md"), rng, [], intro=True)
         else:
             # A section Hugo knows about, with nothing of its own to say.
             folder = os.path.join(SITE, "content", here)

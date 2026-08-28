@@ -192,3 +192,18 @@
 .topics details.container>summary{font-size:.98rem}
 
 
+
+/* ---- the pieces in the topic being read ---- */
+/* Only the branch a reader is inside lists them. A menu holding every
+   page of the site is a menu nobody reads, and on a large site it is
+   the same list repeated into every page. */
+.rail ul.pieces{margin:.1rem 0 .35rem}
+.rail ul.pieces>li>a{
+  display:block;padding:.14rem 1rem .14rem 1.9rem;
+  color:var(--body);text-decoration:none;font-size:.86rem;line-height:1.45;
+}
+.rail ul.pieces>li>a:hover{color:var(--ink);background:var(--sunk)}
+.rail ul.pieces>li>a[aria-current="page"]{
+  color:var(--teal);font-weight:500;
+  box-shadow:inset 2px 0 0 var(--teal);
+}

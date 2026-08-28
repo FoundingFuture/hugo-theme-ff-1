@@ -4,6 +4,10 @@ For a given taxonomy, renders a list of terms assigned to the page.
 @context {page} page The current page.
 @context {string} taxonomy The taxonomy.
 
+The wrapper carries a data attribute rather than a class. Nothing
+inside main may carry a class no feature declared, and an attribute is
+not part of a page's shape.
+
 @example: {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
 */}}
 
@@ -12,8 +16,8 @@ For a given taxonomy, renders a list of terms assigned to the page.
 
 {{- with $page.GetTerms $taxonomy }}
   {{- $label := (index . 0).Parent.LinkTitle }}
-  <div>
-    <div>{{ $label }}:</div>
+  <div data-part="terms">
+    <div>{{ $label }}</div>
     <ul>
       {{- range . }}
         <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>

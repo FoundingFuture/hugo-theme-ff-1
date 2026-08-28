@@ -6,6 +6,12 @@
        values, because .IsMenuCurrent exists only on a real menu entry
        and a section has to work its state out for itself.
 
+       A section on the branch being read also lists its own pieces,
+       so a reader can see where they are and what sits beside them.
+       Only that branch: rendering every page of the site into every
+       page's menu is quadratic, and this theme is built for a site
+       with a lot in it.
+
        page      the page being rendered, so its branch opens
        kind      "menu" or "section", naming the source
        menuID    which menu, when the source is one
@@ -53,16 +59,34 @@
   {{- if and (eq $depth 0) (not $colour) }}
     {{- $colour = index $palette (mod $i (len $palette)) }}
   {{- end }}
-  {{- if $kids }}
+  {{- /* The pieces in this topic, listed while the reader is inside
+         it. .RegularPages is the section's own content files, so a
+         page kept out of listings with build.list stays out here. */ -}}
+  {{- $pieces := slice }}
+  {{- if and (ne $kind "menu") (or $active $ancestor) }}
+    {{- $pieces = $e.RegularPages }}
+  {{- end }}
+  {{- if or $kids $pieces }}
   <li><details{{ with $group }} name="{{ . }}"{{ end }}{{ if gt $depth 0 }} class="sub"{{ end }}{{ if or $active $ancestor }} open{{ end }}
     {{- if eq $depth 0 }} data-t="{{ $colour }}"{{ end }}>
-    <summary><span class="nm">{{ $name }}</span>{{ if $count }}<span class="n">{{ $count }}</span>{{ end }}<span class="chev" aria-hidden="true"></span></summary>
+    <summary{{ if $active }} aria-current="page"{{ else if $ancestor }} aria-current="true"{{ end }}><span class="nm">{{ $name }}</span>{{ if $count }}<span class="n">{{ $count }}</span>{{ end }}<span class="chev" aria-hidden="true"></span></summary>
+    {{- with $kids }}
     {{ partial "topictree.html" (dict "page" $page "kind" $kind "menuID" $menuID
-        "entries" $kids "parent" (cond (eq $kind "section") $e false)
+        "entries" . "parent" (cond (eq $kind "section") $e false)
         "depth" (add $depth 1) "group" $url "palette" $palette) }}
+    {{- end }}
+    {{- with $pieces }}
+    <ul class="pieces">
+      {{- range . }}
+      <li><a href="{{ .RelPermalink }}"{{ if eq $page . }} aria-current="page"{{ end }}>{{ .LinkTitle }}</a></li>
+      {{- end }}
+    </ul>
+    {{- end }}
   </details></li>
   {{- else }}
-  <li><a href="{{ $url }}"{{ if $active }} aria-current="page"{{ end }}>{{ $name }}{{ if $count }} <span class="n">{{ $count }}</span>{{ end }}</a></li>
+  <li><a href="{{ $url }}"
+    {{- if $active }} aria-current="page"{{ else if $ancestor }} aria-current="true"{{ end -}}
+  >{{ $name }}{{ if $count }} <span class="n">{{ $count }}</span>{{ end }}</a></li>
   {{- end }}
 {{- end }}
 </ul>

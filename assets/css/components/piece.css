@@ -48,3 +48,21 @@ main::after{
 [data-part="body"] blockquote{
   margin:1.1rem 0;padding-left:1rem;border-left:2px solid var(--line);color:var(--body);
 }
+
+/* ---- the terms a piece is filed under ---- */
+[data-part="terms"]{
+  display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap;
+  padding:.6rem var(--pad);background:var(--sunk);
+  border-top:1px solid var(--line);
+}
+[data-part="terms"]>div{
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);
+}
+[data-part="terms"] ul{display:flex;gap:.4rem;flex-wrap:wrap;margin:0;padding:0;list-style:none}
+[data-part="terms"] a{
+  display:inline-block;padding:.1rem .45rem;text-decoration:none;
+  border:1px solid var(--line);border-radius:2px;background:var(--surface);
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;color:var(--body);
+}
+[data-part="terms"] a:hover{border-color:var(--teal);color:var(--teal)}
