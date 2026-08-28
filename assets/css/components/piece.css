@@ -31,11 +31,6 @@ main::after{
   padding-left:1rem;border-left:2px solid var(--teal);
 }
 [data-part="deck"] b{color:var(--ink);font-weight:500}
-/* The scaffold's own date, set to match the dates in a row of pieces. */
-[data-part="head"]>time{
-  display:block;margin:.45rem 0 0;padding-left:1rem;
-  font-family:var(--mono);font-size:.7rem;color:var(--muted);
-}
 [data-part="body"]{padding:1.15rem var(--pad) 1.4rem;max-width:78ch}
 [data-part="body"] h2,[data-part="body"] h3{
   font-family:var(--display);color:var(--ink);letter-spacing:-.01em;

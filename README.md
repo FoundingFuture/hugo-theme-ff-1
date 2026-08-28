@@ -1,8 +1,24 @@
 # ff-1
 
-A Hugo theme. Hugo knows it as `ff-1`. It was generated from the
-scaffold of Hugo 0.165.0. The checks in this repository measure
-every change since against that scaffold.
+A dense publishing theme. Your folders become the menu, however deep
+they go, with nothing to configure. Each topic carries a colour that
+means the same thing on every page. Topics in small capitals have more
+inside them; plain ones are pages. Two small scripts run, both for
+finding things, and every page works without them.
+
+Hugo knows it as `ff-1`. It was generated from the scaffold of Hugo
+0.165.0, and the checks in this repository measure every change since
+against that scaffold.
+
+```toml
+theme = "ff-1"
+```
+
+The theme names none of your folders and requires no parameter, so a
+site you already have keeps the structure it has. Anything you do set
+is additive: `params.ff-1.tagline` puts a line across the top, and
+`params.ff-1.palette` gives the top-level topics their colours in
+order.
 
 ## First hour
 
@@ -108,7 +124,7 @@ There is no third answer. The gate cannot be told to ignore a page.
 ## Features
 
 A feature is an optional element a page can carry. The theme ships with
-fourteen, switched on or off in site configuration:
+twenty-two, switched on or off in site configuration:
 
 ```sh
 ./c feature list           # installed, with slot, default and level
@@ -148,9 +164,36 @@ adds. Run `./c check`. `static/i18n` fails while the word is still the
 feature's own name, and `output/conform` fails if the feature renders
 anything the manifest does not declare.
 
-Search and privacy-embeds are components rather than toggles. They bring
-their own layouts, scripts and shortcodes under `features/`. A site
-removes one by not mounting it. `features/<name>/README.md` says how.
+Every one of them is part of the theme. Nothing has to be mounted, and
+a site turns any of them off with one line.
+
+`search` gives a page `layout: search` in its front matter and makes it
+one. The index is the page: every piece is a row in the markup, so a
+reader with the script blocked gets a working index rather than an
+empty box, nothing is fetched, and no second copy of the site can fall
+out of step with it.
+
+`privacy-embeds` overrides Hugo's `youtube` and `vimeo` with a poster
+and a play button, both served from your own domain, and adds `embed`
+for SoundCloud. Nothing reaches another host until a reader presses
+play.
+
+## The shortcodes
+
+Five more, for a piece rather than a page:
+
+| Shortcode | What it puts on the page |
+|---|---|
+| `lead` | The opening statement, set large |
+| `pull` | A line lifted out of the text |
+| `columns` | Two columns of running text, with a rule between |
+| `items` | A dense list of named things, each with a tag and a line |
+| `gallery` | Thumbnails that open full size, with no script at all |
+
+`gallery` reads the page's own resources, so the pictures sit beside
+its `index.md`. A thumbnail is a link to a fragment and the full-size
+view is the target of it, so back closes the picture and a link to any
+one of them can be sent to somebody.
 
 ## Your own site
 

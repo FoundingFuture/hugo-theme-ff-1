@@ -20,6 +20,7 @@ comparing one build against another needs its input to hold still.
 
 import datetime
 import os
+import shutil
 import random
 import re
 import subprocess
@@ -160,6 +161,55 @@ def build(node, prefix, rng):
         build(spec.get("sections", {}), here, rng)
 
 
+# Pages that show one thing each, rather than filling the tree. Every
+# one is still written by hugo new content, and only its body is
+# appended here.
+EXTRAS = [
+    ("search.md",
+     "layout = 'search'\n",
+     "Type a word. The list below is the index, so it narrows as you\n"
+     "type and nothing is fetched.\n"),
+    ("a-video.md", "",
+     "A video, as a picture and a play button, both served from this\n"
+     "domain. The player arrives when you press it.\n\n"
+     '{{< embed at="youtube" id="aqz-KE-bpKQ" title="A video" >}}\n'),
+]
+
+# The gallery needs pictures of its own, and the fixture already holds
+# two that are nobody's photograph.
+PICTURES = "tools/conformance/content/kitchen-sink/bundle"
+
+
+def extras(rng):
+    for name, front, body in EXTRAS:
+        hugo_new(name)
+        path = os.path.join(SITE, "content", name)
+        text = open(path, encoding="utf-8").read()
+        text = re.sub(r"^draft = true$", "draft = false", text, flags=re.MULTILINE)
+        if front:
+            text = text.replace("draft = false", "draft = false\n" + front.rstrip("\n"), 1)
+        open(path, "w", encoding="utf-8").write(text.rstrip() + "\n\n" + body)
+
+    # A page bundle, so the gallery has resources to cut thumbnails from.
+    hugo_new("pictures/index.md")
+    folder = os.path.join(SITE, "content", "pictures")
+    for picture in ("a.png", "b.png"):
+        source = os.path.join(PICTURES, picture)
+        if os.path.exists(source):
+            shutil.copyfile(source, os.path.join(folder, picture))
+    path = os.path.join(folder, "index.md")
+    text = open(path, encoding="utf-8").read()
+    text = re.sub(r"^draft = true$", "draft = false", text, flags=re.MULTILINE)
+    open(path, "w", encoding="utf-8").write(
+        text.rstrip() + "\n\n"
+        "Thumbnails that open full size when clicked. No script: a\n"
+        "thumbnail is a link to a fragment, and back closes the picture.\n\n"
+        "{{< gallery >}}\n"
+        "a.png | A grey square\n"
+        "b.png | Another grey square\n"
+        "{{< /gallery >}}\n")
+
+
 def main():
     root = os.path.dirname(os.path.abspath(__file__))
     os.chdir(os.path.join(root, "..", ".."))
@@ -174,7 +224,9 @@ def main():
         print("example-content: the example site already has its sections")
         return 0
 
-    build(TREE, "", random.Random(20260828))
+    rng = random.Random(20260828)
+    build(TREE, "", rng)
+    extras(rng)
     made = sum(len(files) for _, _, files in os.walk(os.path.join(SITE, "content")))
     print("example-content: the example site holds %d content files" % made)
     return 0

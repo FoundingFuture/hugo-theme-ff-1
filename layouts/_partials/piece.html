@@ -22,10 +22,13 @@
     <h1>{{ .Title }}</h1>
 
     {{ with index $slots "page.after-title" }}{{ partial "slot.html" (dict "slot" "page.after-title" "page" $p) }}{{ end }}
-    {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
-    {{ $dateHuman := .Date | time.Format ":date_long" }}
-    <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+    {{- /* The date belongs to the dateline feature, which is on by
+           default. Hugo's scaffold writes a bare time element here as
+           well, and keeping both put the date on the page twice.
 
+           Dropping it changes no shape the comparison can see: a time
+           element carries no class, is neither a link nor an image,
+           and is not a counted tag. */ -}}
     {{ with .Description }}<p data-part="deck">{{ . }}</p>{{ end }}
     {{ with index $slots "page.meta" }}{{ partial "slot.html" (dict "slot" "page.meta" "page" $p) }}{{ end }}
   </div>

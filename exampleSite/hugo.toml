@@ -3,3 +3,15 @@ title = 'ff-1'
 locale = 'en-us'
 
 theme = 'ff-1'
+
+[params.ff-1]
+  # A line across the top. Without one there is no band.
+  tagline = 'A dense publishing theme for a site with a lot in it'
+  # The colours the top-level topics take, in order.
+  palette = ['teal', 'indigo', 'rose', 'amber']
+  # A poster is fetched from the service while the site builds. The
+  # demo is built by a gate that turns every warning into a failure,
+  # and a build with no network out would fail on the fetch rather than
+  # on anything the theme did. The embed then renders its link, which
+  # is what a reader without the script gets anyway.
+  fetchPosters = false
