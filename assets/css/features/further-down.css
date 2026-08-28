@@ -6,3 +6,8 @@
   font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;
   text-transform:uppercase;color:var(--ink);font-weight:400;
 }
+/* The count sits in the rule beside the label, as it does on every
+   other band. */
+.further-down{position:relative}
+.further-down>h2{display:flex;align-items:baseline;gap:.75rem}
+.further-down .c{font-family:var(--mono);font-size:.7rem;color:var(--muted);font-weight:400}

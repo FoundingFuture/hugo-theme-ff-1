@@ -18,3 +18,8 @@
   letter-spacing:.1em;color:var(--body);
 }
 .clear:hover{border-color:var(--teal);color:var(--teal)}
+/* The count sits in the rule beside the label, as it does on every
+   other band. */
+.narrowing{position:relative}
+.narrowing>h2{display:flex;align-items:baseline;gap:.75rem}
+.narrowing .c{font-family:var(--mono);font-size:.7rem;color:var(--muted);font-weight:400}

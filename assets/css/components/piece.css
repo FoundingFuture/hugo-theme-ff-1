@@ -66,3 +66,32 @@ main::after{
   font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;color:var(--body);
 }
 [data-part="terms"] a:hover{border-color:var(--teal);color:var(--teal)}
+
+/* ---- a picture inside a piece ---- */
+/* Take the measure the column gives and keep the source ratio. The
+   render hook writes width and height for a page resource. Height stays
+   auto so the attributes set the ratio without fixing the size. */
+[data-part="body"] img{display:block;max-width:100%;height:auto}
+
+/* Set a definition list from Markdown. The term leads, the definition
+   sits under it at the inset a nested row uses. */
+[data-part="body"] dl{margin:1.1rem 0}
+[data-part="body"] dt{margin-top:.75rem;font-weight:500;color:var(--ink)}
+[data-part="body"] dd{margin:.15rem 0 0 1.1rem;color:var(--body)}
+
+/* A figure Markdown wrote itself, rather than one the caption feature
+   made. Both want the same measure. */
+[data-part="body"] figure{margin:1.5rem 0}
+[data-part="body"] figure img{display:block;max-width:100%;height:auto}
+[data-part="body"] figcaption{
+  margin-top:.5rem;font-family:var(--mono);font-size:.72rem;
+  letter-spacing:.05em;color:var(--muted);
+}
+
+/* Mark a link that leaves the site. The render hook sets rel on one. */
+[data-part="body"] a[rel~="external"]::after{
+  content:"";display:inline-block;width:.42em;height:.42em;
+  margin-left:.28em;vertical-align:.06em;
+  border-top:1px solid currentColor;border-right:1px solid currentColor;
+  transform:rotate(45deg);opacity:.55;
+}

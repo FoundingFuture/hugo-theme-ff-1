@@ -11,6 +11,6 @@ i18n = ["subsections", "pieceCount"]
 [skeleton]
   # A heading and a link is allowed where its container was declared,
   # so the block itself is what the declaration names.
-  text = ["section.subsections"]
+  text = ["section.subsections", "span.c"]
   headings = ["section.subsections"]
   links = ["section.subsections"]

@@ -4,7 +4,7 @@
        sign that anything sits below it. */ -}}
 {{- with .Sections }}
 <section class="subsections">
-  <h2>{{ i18n "subsections" }}</h2>
+  <h2>{{ i18n "subsections" }}<span class="c">{{ len . }}</span></h2>
   <div data-part="cards">
   {{- range . }}
     <a href="{{ .RelPermalink }}"{{ with index .Params "ff-1" "colour" }} data-t="{{ . }}"{{ end }}>

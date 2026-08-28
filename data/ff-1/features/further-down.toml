@@ -9,6 +9,6 @@ css = "css/features/further-down.css"
 i18n = ["furtherDown"]
 
 [skeleton]
-  text = ["section.further-down"]
+  text = ["section.further-down", "span.c"]
   headings = ["section.further-down"]
   links = ["section.further-down"]

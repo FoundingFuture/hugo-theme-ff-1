@@ -13,7 +13,7 @@
 {{- $deeper := complement .RegularPages .RegularPagesRecursive }}
 {{- with $deeper }}
 <section class="further-down">
-  <h2>{{ i18n "furtherDown" }}</h2>
+  <h2>{{ i18n "furtherDown" }}<span class="c">{{ len . }}</span></h2>
   <div data-part="rows">
   {{- range . }}
     <article>

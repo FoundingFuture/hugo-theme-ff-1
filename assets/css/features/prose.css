@@ -18,6 +18,10 @@
 /* ---- two columns of running text, with a rule between ---- */
 .cols{columns:2;column-gap:2.2rem;column-rule:1px solid var(--line);margin:1.2rem 0}
 .cols p{margin:0 0 .85rem;break-inside:avoid}
+.cols h4{
+  margin:0 0 .3rem;font-family:var(--display);font-weight:600;
+  font-size:1rem;color:var(--ink);break-after:avoid;
+}
 
 /* ---- a dense list of named things ---- */
 .list{margin:1.2rem 0;border-top:1px solid var(--line)}
@@ -52,6 +56,8 @@ a.item:hover{background:var(--sunk)}
   font-family:var(--mono);font-size:.68rem;color:var(--muted);line-height:1.5;
 }
 .shot:hover span{color:var(--teal)}
+/* A thumbnail is reached by keyboard as well as by pointer. */
+.shot:focus-visible{outline:2px solid var(--teal);outline-offset:-2px}
 .lit{
   position:fixed;inset:0;z-index:60;display:none;
   align-items:center;justify-content:center;padding:2rem;
