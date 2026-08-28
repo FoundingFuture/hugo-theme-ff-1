@@ -42,8 +42,10 @@ WORDS = (
 # The tree. A section holding sections is a branch. One holding only
 # pages is a leaf. Both shapes matter to a menu, so both are here.
 #
-# A section with no body of its own is here too. A menu has to decide
-# whether such a section opens as a page or only groups.
+# Every section here has words of its own. A section without them is a
+# container: the theme draws it muted, because it groups rather than
+# says anything, and one sitting among topics that do speak reads as a
+# fault rather than a distinction.
 TREE = {
     "topic-one": {
         "pages": ["page-one", "page-two"],
@@ -58,9 +60,7 @@ TREE = {
         },
     },
     "topic-two": {"pages": ["page-one", "page-two", "page-three"]},
-    # No body. Only what is under it.
     "topic-three": {
-        "body": False,
         "sections": {"subtopic-one": {"pages": ["page-one"]}},
     },
 }
