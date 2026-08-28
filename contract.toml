@@ -2,11 +2,17 @@
 # A site's content tooling can read this file to learn what the
 # theme understands.
 
-front_matter = []
+front_matter = [
+  "colour",
+]
 params = [
+  "ff-1.domains",
   "ff-1.editBase",
+  "ff-1.established",
   "ff-1.features",
   "ff-1.featuresoff",
+  "ff-1.palette",
+  "ff-1.tagline",
 ]
 shortcodes = []
 i18n = [
@@ -17,6 +23,10 @@ i18n = [
   "copyright",
   "editThisPage",
   "lastModified",
+  "mainPage",
+  "menu",
+  "menuClose",
+  "menuOpen",
   "nextPage",
   "previousPage",
   "readingTime",

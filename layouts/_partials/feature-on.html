@@ -1,0 +1,33 @@
+{{- /*
+Report whether one feature is enabled for one page.
+
+@context {string} name The feature's name.
+@context {page} page The page being rendered.
+
+The order is the manifest's default, then the site, then the page. The
+conformance build sets featuresOff to compare a theme carrying no
+feature against the reference scaffold, and that outranks all three.
+
+slot.html held this inline, and a markup render hook cannot reach a
+slot. Two features render from a hook rather than a slot, so the answer
+is worked out in one place and asked for in three.
+
+@example: {{ if partial "feature-on.html" (dict "name" "toc" "page" .) }}
+*/ -}}
+{{- $name := .name }}
+{{- $page := .page }}
+{{- $on := false }}
+{{- if not (index site.Params "ff-1" "featuresoff") }}
+  {{- with index hugo.Data "ff-1" "features" $name }}
+    {{- $on = .default }}
+  {{- end }}
+  {{- with index site.Params "ff-1" "features" }}
+    {{- $found := index . $name }}
+    {{- if ne $found nil }}{{ $on = $found }}{{ end }}
+  {{- end }}
+  {{- with index $page.Params "ff-1" "features" }}
+    {{- $found := index . $name }}
+    {{- if ne $found nil }}{{ $on = $found }}{{ end }}
+  {{- end }}
+{{- end }}
+{{- return $on }}

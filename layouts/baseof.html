@@ -5,15 +5,47 @@
 {{ partial "slot.html" (dict "slot" "head" "page" .) }}
 </head>
 <body id="top">
-  <header>
+{{- /* body is the grid. Two columns on a wide screen, the navigation
+       and everything else. Below 60rem the two collapse into a masthead
+       and a stack, and below 34rem the masthead stacks as well.
+
+       Every wrapper standing before main is a chrome element. conform
+       records each classed element outside nav, header, footer and
+       aside, and a build with every feature off has to match Hugo's
+       scaffold exactly, so a wrapper div of the theme's own is a
+       difference no manifest may excuse.
+
+       Anything added here needs a grid-column in both narrow blocks.
+       .side is display:contents there, which removes its own box and
+       promotes every child to a grid item of body. A child without a
+       column of its own auto-places into the first, which is the narrow
+       one the wordmark sits in. It looks like a styling fault rather
+       than a placement one. */ -}}
+<aside class="side">
+  <header class="brandcell">
     {{ partial "header.html" . }}
   </header>
-  <main>
-    {{ block "main" . }}{{ end }}
-  </main>
-  <footer>
-    {{ partial "footer.html" . }}
-  </footer>
+
+  {{- /* Plumbing on a wide screen and a dropdown on a narrow one. Its
+         content is forced visible above 60rem, so being closed costs
+         nothing there. */ -}}
+  <details class="railwrap">
+    <summary class="menubtn"><span>{{ i18n "menu" }}</span><span class="what shut">{{ i18n "menuOpen" }}</span><span class="what open">{{ i18n "menuClose" }}</span><span class="chev" aria-hidden="true"></span></summary>
+    {{ partial "rail.html" . }}
+  </details>
+</aside>
+
+{{- with index site.Params "ff-1" "tagline" }}
+<header class="strip"><p>{{ . }}</p></header>
+{{- end }}
+
+<main>
+  {{ block "main" . }}{{ end }}
+</main>
+
+<footer class="foot">
+  {{ partial "footer.html" . }}
+</footer>
 {{ partial "slot.html" (dict "slot" "body.end" "page" .) }}
 </body>
 </html>

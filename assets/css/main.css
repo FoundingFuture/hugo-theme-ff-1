@@ -1,15 +1,14 @@
+/* The stylesheet, in the order the cascade wants it.
+ *
+ * Imports only, and they come first because CSS puts @import before
+ * every other rule. A base rule written here would then land after the
+ * components and quietly outrank them.
+ *
+ * Each enabled feature's stylesheet is appended to this bundle by
+ * layouts/_partials/head/css.html. A feature that is off adds nothing.
+ */
+@import url("base.css");
+@import url("components/frame.css");
 @import url("components/header.css");
+@import url("components/rail.css");
 @import url("components/footer.css");
-
-body {
-  color: #222;
-  font-family: sans-serif;
-  line-height: 1.5;
-  margin: 1rem;
-  max-width: 768px;
-}
-
-a {
-  color: #00e;
-  text-decoration: none;
-}

@@ -1,4 +1,27 @@
-header {
-  border-bottom: 1px solid #222;
-  margin-bottom: 1rem;
+/* The brand cell, and the band across the top. */
+
+/* ---- brand cell: the logo fills the rail column, no bar above it ---- */
+.brandcell{
+  border-right:1px solid var(--line);
+  background:var(--ink);
 }
+/* the wordmark is currentColor, so the block inverts by colour alone */
+.brand{display:block;padding:1.05rem 1rem .5rem;color:var(--surface);text-decoration:none}
+.brand svg{display:block;width:100%;height:auto}
+.est{
+  margin:0;padding:0 1rem .95rem;font-family:var(--mono);font-size:.68rem;
+  letter-spacing:.26em;text-transform:uppercase;text-align:center;text-indent:.13em;
+  color:color-mix(in oklab,var(--surface) 62%, var(--ink));
+}
+.strip{
+  display:flex;align-items:center;justify-content:center;
+  padding:.85rem var(--pad);min-width:0;background:var(--surface);
+  border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10;
+}
+.strip p{
+  margin:0;min-width:0;text-align:center;color:var(--body);
+  font-family:'Asimovian',var(--display),sans-serif;
+  font-size:1.2rem;letter-spacing:.03em;
+  text-wrap:balance;   /* even the two lines when it wraps */
+}
+

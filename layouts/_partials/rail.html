@@ -1,0 +1,40 @@
+{{- /* The navigation, from whichever source the site has given.
+
+       A site that defines menus.main means it. That menu is the menu,
+       walked to whatever depth its parent keys describe, and the
+       content tree is not shown beneath it.
+
+       A site that defines none gets its own folders, however deep they
+       go, with nothing to configure. Hugo's guidance to theme authors
+       is not to hardcode section names, so a folder added tomorrow
+       appears by itself. A section stays out of the list by saying so
+       in its front matter:
+
+         build:
+           list: never
+           render: always
+
+       which keeps its url and keeps its pages in search.
+
+       A theme cannot contribute menu entries. menus is a slice, and
+       Hugo merges maps from a theme but never slices, so the content
+       tree can never become real menu entries however it is built.
+
+       sectionPagesMenu = 'main' fills that menu with top-level
+       sections and nothing below them. A site setting it takes the
+       menu branch and loses every level under the first. The entries
+       are indistinguishable from hand-written ones, so no template can
+       tell. It is written down in hugo.toml and in the README. */ -}}
+{{- $menuID := "main" }}
+{{- $palette := default (slice "teal" "indigo" "rose" "amber") (index site.Params "ff-1" "palette") }}
+<nav class="rail">
+{{- with index site.Menus $menuID }}
+  {{ partial "topictree.html" (dict "page" $ "kind" "menu" "menuID" $menuID
+      "entries" . "parent" false "depth" 0 "group" "" "palette" $palette) }}
+{{- else }}
+  {{- with site.Home.Sections }}
+  {{ partial "topictree.html" (dict "page" $ "kind" "section" "menuID" $menuID
+      "entries" . "parent" false "depth" 0 "group" "" "palette" $palette) }}
+  {{- end }}
+{{- end }}
+</nav>

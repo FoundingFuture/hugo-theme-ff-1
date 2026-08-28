@@ -1,0 +1,39 @@
+/* The typefaces, the palette and the ground everything else sits on.
+   The licences ship beside the files in static/fonts/. */
+
+@font-face{font-family:'Bricolage';src:url('../fonts/bricolage-grotesque.woff2') format('woff2');font-weight:400 800;font-display:swap}
+@font-face{font-family:'Instrument Sans';src:url('../fonts/instrument-sans-latin.woff2') format('woff2');font-weight:400 500;font-display:swap}
+@font-face{font-family:'Asimovian';src:url('../fonts/asimovian-latin.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Plex Mono';src:url('../fonts/ibm-plex-mono-400.woff2') format('woff2');font-weight:400;font-display:swap}
+
+:root{
+  --paper:#EBEFF3;      /* cool pale slate, the ground */
+  --surface:#FFFFFF;
+  --sunk:#E1E7ED;       /* tinted band, groups without whitespace */
+  --ink:#0D1620;
+  --body:#44515E;
+  --muted:#78868F;
+  --line:#D3DBE3;
+  --teal:#00706B;
+  --amber:#B36A1E;
+  --indigo:#3A49A6;
+  --rose:#A93356;
+
+  --display:'Bricolage',ui-sans-serif,system-ui,sans-serif;
+  --text:'Instrument Sans',ui-sans-serif,system-ui,sans-serif;
+  --mono:'Plex Mono',ui-monospace,monospace;
+
+  --rail:16rem;
+  --pad:1.25rem;   /* content's inset from the edges of its column */
+}
+*,*::before,*::after{box-sizing:border-box}
+/* our own display would otherwise beat the UA sheet's rule for it */
+[hidden]{display:none !important}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--body);
+  font-family:var(--text);font-size:15.5px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--teal);outline-offset:2px}

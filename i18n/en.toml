@@ -42,3 +42,15 @@ other = "Back to top"
 
 [copy]
 other = "Copy"
+
+[menu]
+other = "Menu"
+
+[menuOpen]
+other = "open"
+
+[menuClose]
+other = "close"
+
+[mainPage]
+other = "Main page"

@@ -1,0 +1,68 @@
+{{- /* One list of navigation nodes, and itself again for anything below.
+
+       Two sources reach here and render the same way. A site's own
+       menu, walked with Hugo's semantics, or the content tree when the
+       site defines no menu. They normalise to the same handful of
+       values, because .IsMenuCurrent exists only on a real menu entry
+       and a section has to work its state out for itself.
+
+       page      the page being rendered, so its branch opens
+       kind      "menu" or "section", naming the source
+       menuID    which menu, when the source is one
+       entries   what to list here
+       parent    the section these belong to, or false
+       depth     0 at the top. Everything deeper is a row, not a pill
+       group     siblings sharing a name close one another. Empty at the
+                 top, so opening a topic never moves the one you clicked
+       palette   the colours, cycled across the top level */ -}}
+{{- $page := .page }}
+{{- $kind := .kind }}
+{{- $menuID := .menuID }}
+{{- $entries := .entries }}
+{{- $parent := .parent }}
+{{- $depth := .depth }}
+{{- $group := .group }}
+{{- $palette := .palette }}
+
+<ul{{ if eq $depth 0 }} class="topics"{{ end }}>
+{{- with $parent }}
+  {{- if .Content }}
+  <li class="all"><a href="{{ .RelPermalink }}"{{ if eq $page . }} aria-current="page"{{ end }}>{{ i18n "mainPage" }}</a></li>
+  {{- end }}
+{{- end }}
+{{- range $i, $e := $entries }}
+  {{- $name := "" }}{{ $url := "" }}{{ $kids := slice }}{{ $count := 0 }}
+  {{- $active := false }}{{ $ancestor := false }}{{ $colour := "" }}
+  {{- if eq $kind "menu" }}
+    {{- $name = $e.Name }}
+    {{- with $e.Identifier }}{{ with T . }}{{ $name = . }}{{ end }}{{ end }}
+    {{- $url = $e.URL }}
+    {{- $kids = $e.Children }}
+    {{- $active = $page.IsMenuCurrent $menuID $e }}
+    {{- $ancestor = $page.HasMenuCurrent $menuID $e }}
+    {{- with $e.Params.colour }}{{ $colour = . }}{{ end }}
+  {{- else }}
+    {{- $name = $e.Title }}
+    {{- $url = $e.RelPermalink }}
+    {{- $kids = $e.Sections }}
+    {{- $count = len $e.RegularPagesRecursive }}
+    {{- $active = eq $page $e }}
+    {{- $ancestor = $page.IsDescendant $e }}
+    {{- with $e.Params.colour }}{{ $colour = . }}{{ end }}
+  {{- end }}
+  {{- if and (eq $depth 0) (not $colour) }}
+    {{- $colour = index $palette (mod $i (len $palette)) }}
+  {{- end }}
+  {{- if $kids }}
+  <li><details{{ with $group }} name="{{ . }}"{{ end }}{{ if gt $depth 0 }} class="sub"{{ end }}{{ if or $active $ancestor }} open{{ end }}
+    {{- if eq $depth 0 }} data-t="{{ $colour }}"{{ end }}>
+    <summary><span class="nm">{{ $name }}</span>{{ if $count }}<span class="n">{{ $count }}</span>{{ end }}<span class="chev" aria-hidden="true"></span></summary>
+    {{ partial "topictree.html" (dict "page" $page "kind" $kind "menuID" $menuID
+        "entries" $kids "parent" (cond (eq $kind "section") $e false)
+        "depth" (add $depth 1) "group" $url "palette" $palette) }}
+  </details></li>
+  {{- else }}
+  <li><a href="{{ $url }}"{{ if $active }} aria-current="page"{{ end }}>{{ $name }}{{ if $count }} <span class="n">{{ $count }}</span>{{ end }}</a></li>
+  {{- end }}
+{{- end }}
+</ul>

@@ -16,7 +16,6 @@ ship README.md
 ship archetypes
 ship assets
 ship data
-ship exampleSite
 ship features
 ship go.mod
 ship hugo.toml
@@ -34,6 +33,10 @@ keep BOOTSTRAP
 keep c
 keep contract.toml
 keep dist
+# The demo. themes.gohugo.io reads it from the repository, and a
+# downloader unzipping into themes/<slug>/ has no use for a second
+# Hugo site nested inside the theme they installed.
+keep exampleSite
 keep docs
 keep package.txt
 keep tools

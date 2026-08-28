@@ -1,1 +1,13 @@
-<p>{{ i18n "copyright" (dict "Year" now.Year) }}</p>
+{{- /* One line, at the foot of the viewport. A short page still puts it
+       on the screen's last line.
+
+       A site replaces it by writing its own at
+       layouts/_partials/footer.html. Crediting Hugo and this theme is
+       one thing a site might put there. The theme does not ship that
+       line itself: attribution nobody can remove is not a courtesy,
+       and the licence does not ask for one. */ -}}
+<span class="who"><b>{{ site.Title }}</b>{{ with index site.Params "ff-1" "tagline" }}<i>{{ . }}</i>{{ end }}</span>
+{{- range $i, $d := (index site.Params "ff-1" "domains") }}
+<span{{ if eq $i 0 }} class="sp"{{ end }}>{{ $d }}</span>
+{{- end }}
+<span class="sp">{{ i18n "copyright" (dict "Year" now.Year) }}</span>

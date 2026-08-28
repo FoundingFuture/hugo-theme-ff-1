@@ -1,6 +1,15 @@
-{{ if .IsHome }}
-  <h1>{{ site.Title }}</h1>
-{{ else }}
-  <p class="site-title"><a href="{{ site.Home.RelPermalink }}">{{ site.Title }}</a></p>
-{{ end }}
-{{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+{{- /* The brand cell. It fills the rail's column, and the wordmark is
+       currentColor, so the block inverts by colour alone.
+
+       The home page's heading is here rather than in home.html, which
+       is where Hugo's scaffold puts it. Moving it would change what a
+       reader and a crawler find at the top of the site, and conform
+       compares the h1 of every page against the scaffold's. */ -}}
+<a class="brand" href="{{ site.Home.RelPermalink }}" aria-label="{{ site.Title }}">
+  {{- if .IsHome }}
+  <h1>{{ partial "wordmark.html" . }}</h1>
+  {{- else }}
+  <p class="site-title">{{ partial "wordmark.html" . }}</p>
+  {{- end }}
+</a>
+{{- with index site.Params "ff-1" "established" }}<p class="est">{{ . }}</p>{{ end }}

@@ -6,15 +6,21 @@ template does with an empty value.
 
 ## Page keys
 
-No page key is read by a template.
+| Key | Read as |
+|---|---|
+| `colour` | `.Params.colour` |
 
 ## Site parameters
 
 | Key | Read as |
 |---|---|
+| `ff-1.domains` | `site.Params.ff-1.domains` |
 | `ff-1.editBase` | `site.Params.ff-1.editBase` |
+| `ff-1.established` | `site.Params.ff-1.established` |
 | `ff-1.features` | `site.Params.ff-1.features` |
 | `ff-1.featuresoff` | `site.Params.ff-1.featuresoff` |
+| `ff-1.palette` | `site.Params.ff-1.palette` |
+| `ff-1.tagline` | `site.Params.ff-1.tagline` |
 
 ## Words
 
@@ -27,6 +33,10 @@ No page key is read by a template.
 | `copyright` |
 | `editThisPage` |
 | `lastModified` |
+| `mainPage` |
+| `menu` |
+| `menuClose` |
+| `menuOpen` |
 | `nextPage` |
 | `previousPage` |
 | `readingTime` |
