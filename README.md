@@ -1,259 +1,270 @@
-# hugo-theme-template
+# hugo-theme-ff-1
 
-A GitHub template that produces a Hugo theme project. The template holds
-no theme. The first command generates one from whichever Hugo version
-is installed that day. A project never starts from a scaffold frozen when
-the template was written.
+A Hugo theme. Hugo knows it as `hugo-theme-ff-1`. It was generated from the
+scaffold of Hugo 0.165.0. The checks in this repository measure
+every change since against that scaffold.
 
-What the template carries is the pipeline.
+## First hour
 
-## Starting a project
+Install [Hugo](https://gohugo.io/installation/), extended build, 0.158 or
+later. That is the only thing you have to install to build. The checks
+fetch [writing-lint](https://github.com/FoundingFuture/writing-lint) into
+`.tools/` themselves, at the version `tools/scripts/tools.sh` pins.
 
-Press "Use this template" on GitHub and name the repository. The name
-is the theme's name, in any form. Hugo gets a slug derived from it, so
-`My Theme` is `my-theme` in `theme.toml` and in the module path.
-
-The button copies the files and makes one commit. That commit is a push
-to `main`, which brings up `bootstrap.yml`, which runs `./c init` and
-commits the theme. A minute later the repository holds:
-
-- a theme generated from the newest Hugo release, in a second commit
-- `theme.toml` with the owner and repository filled in
-- a history of two commits, none of them the template's
-- Actions running `check.yml` on every push from now on
-
-Then, on your machine:
+Then, from the repository root:
 
 ```sh
-git clone git@github.com:<owner>/<repository>.git
-cd <repository>
-./c setup
-./c check
+./c check          # every gate. Green on a fresh repository.
+./c serve          # the example site, at http://localhost:1313/
 ```
 
-The last command passes on a fresh scaffold. From then on every change
-is measured against that baseline. `./c init` deletes the marker file
-and the workflow, so the workflow never runs again.
+Open the site. The theme is rendering a fixture, a small site under
+`tools/conformance/content/`. It has one page for every Hugo feature a theme
+has to handle. Posts. Nested sections. A page bundle with images. Tags and
+categories. Two languages. A long page. Pagination. Every Markdown
+construct. Every built-in shortcode. It is the site you develop against.
 
-## Cloning instead
+Now change something. Open `layouts/page.html`, the template for a single
+page, and change the title from `<h1>` to `<h2>`:
 
-A clone of the template can run `./c init` by hand. The theme comes out
-the same. Three things the button provides do not:
-
-- The history is the template's. Every commit in it is about the
-  pipeline, not the theme.
-- The remote is the template. A push goes to the wrong repository, or
-  is refused.
-- There is no repository on GitHub, so nothing runs `check.yml`.
-
-`./c init` sees the template in the remote and reads no owner from it.
-Given the project's owner and repository, it also cuts the clone loose:
-
-```sh
-git clone git@github.com:FoundingFuture/hugo-theme-template.git my-theme
-cd my-theme
-./c init name="My Theme" owner=<owner> repo=my-theme
-git add -A && git commit -m "Generate theme scaffold from Hugo $(cat .hugo-version)"
-gh repo create <owner>/my-theme --public --source=. --push
+```go-html-template
+<h2>{{ .Title }}</h2>
 ```
 
-After `init` the remote is gone and the branch has no commits. The
-commit that follows is the root of the project's history. The closing
-message prints these commands, a `git push` alternative for those
-without `gh`, and the two lines that undo the cut.
+Save. The browser reloads, with a smaller title.
 
-Without `owner=` and `repo=`, `init` leaves the history and the remote
-as they are, keeps the placeholder in `theme.toml`, and prints the
-three commands that do the same by hand.
+Run `./c check` again. It fails in `output/conform`, saying the theme
+renders a different page shape.
 
-## The command
+The words are the same, and the styling is yours to choose. The heading
+level belongs to the page rather than to the design. It is part of what
+a reader and a crawler find there, and the scaffold puts an `h1`.
 
-Every action goes through `./c`, locally and in CI, so a green run here
-predicts a green run there. Bare `./c` runs every gate and, on green,
-names the deliverable: `dist/<slug>-<version>.zip`, the theme called
-what the repository is called. Run `./c help` for the table.
+Put it back, or read the next section for what a conform failure asks
+you to decide. Then commit.
 
-```sh
-./c                  every gate, then the deliverable in dist/
-./c package          write dist/<slug>/ and the zip a downloader gets
-./c conform          build against the scaffold and against the theme, then diff
-./c check            every gate in order, stopping at the first failure
-./c check gate=static   one gate
-./c serve            the fixture site, reading the sources, with live reload
-```
+That is the loop: edit, look, check, commit.
 
-`./c` is the only thing at the root that is not the theme. Everything it
-runs lives under `tools/`. The gate scripts, the fixture site, the
-feature catalogue, and the configuration each linter reads. A project's
-root is its own theme and one command, so the theme reads as a theme.
+## Where things are
 
-## What conformance means
-
-A fixture site builds twice. Once against the scaffold of the installed
-Hugo, once against the theme under development. Both are read the same
-way, as a theme directory. The scaffold as `hugo new theme` wrote it,
-this theme as `./c package` wrote it. Two things are compared.
-
-The file list, so the theme publishes the same pages, feeds, aliases
-and sitemap entries. Then the skeleton of every page. That is the
-heading outline, the links and images inside the content, and the
-counts of the block elements. Every classed element is recorded with the
-text it carries.
-
-Markup and styling are free to differ. What a reader can find on the
-page has to match.
-
-The reference is regenerated before every run, so it always matches the
-Hugo doing the building.
-
-## What the gates need
-
-Only Hugo is needed to build. Each gate names its own tool, and a gate
-whose tool is absent prints `SKIP`. That is a warning on a workstation
-and a failure under CI, where every tool is present. The release path
-runs there, so nothing partly checked is ever published.
-
-Three things are yours to install: Git, Hugo extended and Python 3.
-On Windows that means Git for Windows, whose Git Bash runs `./c`.
-`./c setup` reports everything else, then fetches what it can:
-
-```sh
-./c setup            the report, then the light tier into the tree
-./c setup full       the browser tier too, Chromium included
-./c setup report     only look
-```
-
-A pinned ShellCheck, htmltest and the newest Hugo land in
-`tools/.deps/bin`. The npm tools land in `tools/node_modules`, and
-html5validator in the shared venv. Node, Go and a Java runtime come
-through the machine's package manager when one is present. That is
-brew, apt, dnf, pacman or winget. Where no manager or no mapping
-helps, setup prints the command or the link and leaves it to you.
-
-| Tool | Used by | How it arrives |
-|---|---|---|
-| [Hugo](https://gohugo.io/installation/), extended | everything | yours to install, and the only hard requirement |
-| [Python 3](https://www.python.org/downloads/) | most checks | yours to install, 3.9 or later |
-| [Git](https://git-scm.com/downloads) | everything, and Git Bash runs `./c` on Windows | yours to install |
-| [Node.js](https://nodejs.org/) | runs the five npm tools | the package manager, by `./c setup` |
-| [Go](https://go.dev/dl/) | `release/module` | the package manager, by `./c setup` |
-| [ShellCheck](https://www.shellcheck.net/) | `static/shellcheck` | pinned, fetched by `./c setup` |
-| [htmltest](https://github.com/wjdp/htmltest) | `output/validity`, `output/nojs` | pinned, fetched by `./c setup` |
-| newest Hugo, as `hugo-latest` | `build/versions` | fetched by `./c setup` |
-| [writing-lint](https://github.com/FoundingFuture/writing-lint) | `static/comments` | fetched by tag, on its first ask |
-| [Stylelint](https://stylelint.io/) | `static/css` | npm, by `./c setup` |
-| [ESLint](https://eslint.org/) | `static/js` | npm, by `./c setup` |
-| [html5validator](https://github.com/svenkreiss/html5validator) | `output/validity` | `./c setup full`, and it drives Java |
-| [pa11y-ci](https://pa11y.org/) | `output/a11y` | `./c setup full`, and it drives a browser |
-| [Lighthouse CI](https://github.com/GoogleChrome/lighthouse-ci) | `output/perf` | `./c setup full`, and it drives a browser |
-| [Playwright](https://playwright.dev/) | `output/visual` | `./c setup full`, Chromium included |
-
-Two of them drive a browser. Playwright installs one, and the perf gate
-finds it. A system Chrome or Chromium works as well.
-
-`./c help check` lists every gate and the script behind it.
-
-### Checking the template itself
-
-The template carries no theme, so most gates have nothing to read.
-`./c check` in it runs the `template` gate, the subset needing no theme:
-coverage, portability, ShellCheck and the comment rules.
-
-Without it the template's own README and changelog were read by nothing.
-Bootstrap replaces both, so no generated project ever sees them.
-
-## The gates
-
-| Gate | What it reads |
+| Path | What it is |
 |---|---|
-| static | the sources, with no build |
-| build | the artefact, a site that installed it, four builds and the scale fixture |
-| output | the built pages |
-| release | the tag, the changelog and the module path |
+| `layouts/baseof.html` | The page frame. `<head>`, header, footer, the `main` block |
+| `layouts/home.html` | The home page |
+| `layouts/page.html` | A single page |
+| `layouts/section.html` | A section list, such as `/posts/` |
+| `layouts/taxonomy.html`, `layouts/term.html` | The list of tags, and the pages under one tag |
+| `layouts/_partials/` | Pieces the templates share: `head.html`, `header.html`, `menu.html`, `footer.html` |
+| `layouts/_partials/slot.html` | Renders the features registered for one slot |
+| `layouts/_partials/features/` | One partial per feature |
+| `layouts/_markup/render-link.html` | The link render hook. It marks a link that leaves the site |
+| `assets/css/main.css` | The stylesheet. It imports `components/` and gets each enabled feature's CSS appended |
+| `assets/css/features/` | One file per feature |
+| `assets/css/chroma.css` | Code highlighting, generated, AA contrast |
+| `assets/css/a11y.css` | Underlined links, and targets big enough to hit |
+| `i18n/en.toml` | Every string the templates show |
+| `data/features/` | One manifest per feature: slot, weight, default, what it adds |
+| `features/` | Components: `search` and `privacy-embeds`, each with its own layouts and assets |
+| `c` | The one command. Every verb the theme has |
+| `tools/` | The machinery `./c` runs: the checks, the fixture site, the feature catalogue |
+| `theme.toml`, `hugo.toml` | Theme metadata, and the theme's own defaults |
+| `contract.toml`, `docs/` | Generated by `./c docs`. What the templates read |
+| `package.txt` | Every path at the root, in one of two lists. Edit it when a directory arrives |
 
-### What the scale gate is for
+What a site gets is the table under [What ships](#what-ships), and what
+never leaves this repository is the rest. Everything that checks the
+theme lives under `tools/`, reached through `./c`, so the root stays the
+theme and one command.
 
-A template running a site-wide query in a per-page loop is fast on
-twenty pages and slow on two thousand. The scale fixture builds two
-thousand posts, so the cost has somewhere to show.
+## The loop, and the one decision
 
-It found one on its first honest run, in this template's own pager
-feature. The partial filtered `site.RegularPages` on every page render.
-Hugo keeps the neighbours of a page in its section, so `PrevInSection`
-answers without a search.
+`./c serve` runs Hugo's server on the fixture with live reload. Edit a
+template or a stylesheet and the browser shows it within a second.
 
-| | before | after |
-|---|---|---|
-| template time | 75.7 s | 11.3 s |
-| scale build | 8 s | 2 s |
+`./c check` runs every gate in order and stops at the first failure. The
+cheap gates come first. Shell and CSS lint. i18n coverage. The build, with
+every Hugo warning turned into an error. Then the comparison. Then the
+validators. Run it before every commit. A gate whose tool is not installed
+prints `SKIP` and moves on. In CI every tool is present and a `SKIP` is a
+failure.
 
-The gate weighs cost against cache potential. It does not fail on
-potential alone.
+`output/conform` is the gate that defines this theme. The fixture is built
+twice, once against Hugo's own scaffold and once against this theme. The
+two outputs are compared on the list of files published and on the shape
+of every page. Shape means the headings, links, images and element counts
+inside `main`. Markup and styling may differ. The two builds carry the
+same headings, links and images.
 
-A partial reporting a reading time returns the same words whenever two
-pages read alike. Caching that by page would be a correctness bug
-wearing the clothes of an optimisation.
+When conform fails, you have changed what a page contains, and there are
+two answers:
+
+1. It was a mistake. Put the element back.
+2. It was on purpose. The theme now adds something, a reading time, a
+   table of contents, a share link. That is a feature, and a feature
+   declares what it adds in a manifest. See the next section.
+
+There is no third answer. The gate cannot be told to ignore a page.
 
 ## Features
 
-A feature is an optional element the theme renders, registered to a slot
-and switched by one line. `./c feature list` shows them.
-
-Fourteen ship installed: twelve toggles and two components. Nine are on
-and five are off, and one line in the config moves any of them. A
-feature is never edited out of a template.
+A feature is an optional element a page can carry. The theme ships with
+fourteen, switched on or off in site configuration:
 
 ```sh
-./c feature list          every feature, installed or available
-./c feature add name=x    install one the template ships
-./c feature new name=x    start one of your own
-./c feature off name=x    write the switch into the fixture config
+./c feature list           # installed, with slot, default and level
+./c feature available      # in the catalogue, not yet installed
+./c feature off name=share
+./c feature on name=share
 ```
 
-`./c feature add` is the path for anything beyond the starter set. The
-catalogue it copies from stays in `tools/templates/feature/`, so a feature removed from a
-project can be put back.
+A feature has four parts. A manifest in `data/features/<name>.toml` names
+its slot, its weight among the others in that slot, its default state,
+and what it adds to the page. A partial in
+`layouts/_partials/features/<name>.html` renders it. A stylesheet in
+`assets/css/features/<name>.css` is appended to the bundle when the
+feature is on. Its strings are keys in `i18n/en.toml`.
 
-### Two levels
+The templates call slots at fixed points: `page.before-title`,
+`page.after-title`, `page.meta`, `page.before-body`, `page.after-body`,
+`page.footer`, `list.item`, `list.after`, `head`, `body.end`. A feature
+picks one. `slot.html` renders every enabled feature for that slot in
+weight order. To change where reading time appears, change its manifest,
+not `page.html`.
 
-A **toggle** is a partial in the theme, wired to a slot and switched by
-one line. Most features are toggles.
+To add a feature of your own:
 
-A **component** is a directory under `features/` with its own layouts,
-assets and words, mounted beside the theme. Turning one off means not
-mounting it, which is what makes it a component rather than a toggle.
+```sh
+./c feature new name=byline
+```
 
-`privacy-embeds` overrides Hugo's `youtube` and `vimeo` with a poster
-and a link. A page then loads nothing from another host until the reader
-follows it. A site without the component gets Hugo's own renderings
-back, so the shortcode names in the content stay portable.
+writes the manifest, a placeholder partial, a stylesheet, an i18n key
+and a fixture page under `tools/conformance/content/kitchen-sink/features/`.
+Fill in the partial. Declare in the manifest's `[skeleton]` table what it
+adds. Run `./c check`. `static/i18n` fails while the word is still the
+feature's own name, and `output/conform` fails if the feature renders
+anything the manifest does not declare.
 
-`search` publishes a JSON index and a search page. The page lists every
-page in its own markup. A reader with the script blocked then has a
-working index rather than an empty box. The script filters that list and
-fetches nothing. The index is held under 1.5 MB by a gate.
+Search and privacy-embeds are components rather than toggles. They bring
+their own layouts, scripts and shortcodes under `features/`. A site
+removes one by not mounting it. `features/<name>/README.md` says how.
 
-Two components ship, and two is the point. `search` proves the level
-that mounts a directory, and `features/<name>/README.md` says how a
-second one is written. A component whose only real page lives in a
-site is better written there, against that page. A fixture page invented
-for it would be designing the thing twice. The mechanism is proven
-either way.
+## Your own site
 
-A manifest declares what the feature adds to the rendered page. The
-fixture builds three times. The reference scaffold, the theme with every
-feature off, and the theme with them at their defaults.
+The fixture is deliberately small. To see the theme on real content:
 
-With the features off the theme has to match the scaffold exactly. With
-them on, the only differences allowed are the ones the manifests
-declared.
+```sh
+./c site=../my-site
+```
 
-A manifest names the container its links and headings sit in. It names
-the classed elements it adds, and the elements it adds more of. A
-feature changing anything else fails the build.
+builds that site's `content/`, `assets/`, `static/` and `i18n/` against
+this theme, with the same strict flags, into `tools/conformance/public/site/`.
+Nothing in the site is changed. CI does the same on every push for each
+repository listed in `tools/conformance/sites.txt`.
 
-The h1 is nobody's to add. The reference and the theme are compared on
-the h1 of every page, by itself. The claim cannot go quiet.
+To use the theme in a site, set `theme = "hugo-theme-ff-1"` in the site's
+configuration and unzip a release into `themes/hugo-theme-ff-1`. A module
+import of `github.com/FoundingFuture/hugo-theme-ff-1` does the same without the
+download.
 
-Nothing is kept in an ignore list. That is the point. An ignore list
-goes stale, and a declaration stays true because the build reads it.
+## What ships
+
+| Path | Why |
+|---|---|
+| `layouts/`, `assets/`, `i18n/`, `data/`, `static/`, `archetypes/` | the theme |
+| `features/` | the components, each with its README |
+| `hugo.toml` | the theme's own defaults |
+| `theme.toml`, `images/` | what themes.gohugo.io reads |
+| `LICENSE`, `README.md`, `CHANGELOG.md` | what a downloader reads |
+
+`./c package` writes it to `dist/hugo-theme-ff-1/` and zips it, and `./c check`
+tests it. What goes in is named in `package.txt`, one path per line. A
+path in neither of its two lists fails `static/coverage`, the same rule
+that makes every check name what it reads.
+
+What stays behind: `tools/`, `c`, `docs/`, `contract.toml`, `.github/`
+and the version pin. Nothing under `dist/` is committed.
+
+Nothing in the zip is built. A theme is the source a site reads while
+that site is built. The site decides what gets minified, fingerprinted
+and switched on. One file in it is generated, `assets/css/chroma.css`,
+from a named Chroma style. The theme owns the code colours that way,
+rather than inheriting them as inline styles.
+
+## What tests it
+
+`build/package` looks in the box. One directory named for the theme,
+the files a theme must carry, and nothing a downloader should ever
+receive.
+
+`build/install` is the one that matters. It unzips the artefact into a
+site made with `hugo new site`, writes a config naming the theme and
+nothing else, and builds. Then once per component, configured out of
+the fenced toml block in that component's own README. The README is
+executed rather than paraphrased, so one that drifts fails the gate.
+
+The fixture builds on the same artefact, so `theme = "hugo-theme-ff-1"` is how
+both sides of the conformance comparison are read. `./c serve` is the
+one exception. It mounts the sources directly, because live reload
+cannot wait for a repack, and it says so when it starts.
+
+## Releasing
+
+1. Write the version's section in `CHANGELOG.md`: `## vX.Y.Z, YYYY-MM-DD`
+   followed by plain lines.
+2. Fill `theme.toml`: `description`, `tags`, `features`, `demosite`.
+3. Put `images/screenshot.png` at 1500x1000 and `images/tn.png` at 900x600.
+4. `./c check gate=release` lists what is still missing.
+5. `./c release v=X.Y.Z` runs every gate, refreshes
+   `tools/conformance/snapshots/`, tags, pushes, and publishes the release and
+   the demo site.
+
+## What runs on GitHub
+
+`check.yml` runs every gate on every push and pull request. Every tool is
+installed. It runs twice, on the Hugo version in `.hugo-version` and on
+the latest release. A pull request gets a report as a workflow artifact,
+and a comment linking to the run.
+
+The report holds the tally, the file and skeleton diffs, the Lighthouse
+scores, the build times and the third-party requests. Once a release is
+tagged it holds the screenshot diffs against it too.
+
+`hugo-watch.yml` builds the theme against the newest Hugo once a week and
+opens an issue when it breaks.
+
+`release.yml` runs on a tag and does what `./c release` does.
+
+## The gates, and their tools
+
+Only Hugo is needed to build. Each gate names its own tool.
+
+| Tool | Used by |
+|---|---|
+| [Hugo](https://gohugo.io/installation/), extended | everything |
+| [Python 3](https://www.python.org/downloads/) | most checks |
+| [Go](https://go.dev/dl/) | `release/module` |
+| [Node.js](https://nodejs.org/) | the five tools below |
+| [ShellCheck](https://www.shellcheck.net/) | `static/shellcheck` |
+| [Stylelint](https://stylelint.io/) | `static/css`, installed in the repository |
+| [ESLint](https://eslint.org/) | `static/js` |
+| [writing-lint](https://github.com/FoundingFuture/writing-lint) | `static/comments`, `output/content` |
+| [html5validator](https://github.com/svenkreiss/html5validator) | `output/validity`, and it needs Java |
+| [htmltest](https://github.com/wjdp/htmltest) | `output/validity`, `output/nojs` |
+| [pa11y-ci](https://pa11y.org/) | `output/a11y` |
+| [Lighthouse CI](https://github.com/GoogleChrome/lighthouse-ci) | `output/perf` |
+| [Playwright](https://playwright.dev/) | `output/visual`, with `pixelmatch` and `pngjs` |
+| [libxml2](https://gitlab.gnome.org/GNOME/libxml2), for `xmllint` | `output/feeds` |
+
+`./c help` lists every command. `./c help check` lists every gate and its
+script. Every check is one script under `tools/scripts/check/`, runnable alone.
+
+## Two rules the fixture taught
+
+Lists render each page's summary. A page whose first 70 words hold a
+heading puts that heading's id on every list page that shows it. Two such
+pages make a duplicate id. Put `<!--more-->` after the first
+paragraph, which is also where a summary should end.
+
+Links in running text are underlined. A theme that removes the underline
+has to distinguish links from text some other way than colour, or
+`output/perf` reports it.

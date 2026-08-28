@@ -1,0 +1,29 @@
+
+[module]
+  [module.hugoVersion]
+    extended = true
+    min = '0.165.0'
+
+[markup]
+  [markup.highlight]
+    noClasses = false
+    style = 'xcode'
+
+# Every feature this theme ships, with the default it ships with.
+# Uncomment a line to change it. A page may override any of them
+# in its own front matter.
+# [params.features]
+#   back-to-top = false
+#   breadcrumbs = true
+#   code-copy = false
+#   dateline = true
+#   edit-link = false
+#   last-modified = true
+#   pager = true
+#   privacy-embeds = true
+#   reading-time = true
+#   related = true
+#   search = true
+#   share = false
+#   toc = true
+#   word-count = false

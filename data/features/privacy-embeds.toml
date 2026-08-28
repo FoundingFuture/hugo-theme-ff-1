@@ -1,0 +1,20 @@
+name = "privacy-embeds"
+# A component renders through its shortcodes, not through a slot. It
+# has no partial, because a partial nothing calls is an unused template.
+slot = "none"
+weight = 90
+default = true
+level = "component"
+kinds = ["page"]
+css = "css/privacy-embeds.css"
+i18n = ["watchOnYouTube", "watchOnVimeo", "embedElsewhere"]
+
+[skeleton]
+  # The component overrides three shortcodes Hugo ships. What it adds is
+  # a figure holding a link, in place of an iframe from another host.
+  text = [
+    "figure.embed", "figure.embed-youtube", "figure.embed-vimeo",
+    "span.embed-title", "figcaption.embed-caption",
+  ]
+  links = ["figure.embed"]
+  counts = ["figure"]
