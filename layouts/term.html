@@ -1,8 +1,13 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
-  {{ .Content }}
-  {{ range .Pages }}
-    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+  {{- $slots := partialCached "slot-map.html" "features" }}
+  {{ with index $slots "page.before-title" }}{{ partial "slot.html" (dict "slot" "page.before-title" "page" $) }}{{ end }}
+  <div data-part="head">
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p data-part="deck">{{ . }}</p>{{ end }}
+  </div>
+  {{ with .Content }}<div data-part="body">{{ . }}</div>{{ end }}
+  {{ with .Pages }}
+    {{ partial "index-rows.html" (dict "pages" .) }}
   {{ end }}
-  {{ partial "slot.html" (dict "slot" "list.after" "page" .) }}
+  {{ with index $slots "list.after" }}{{ partial "slot.html" (dict "slot" "list.after" "page" $) }}{{ end }}
 {{ end }}

@@ -1,0 +1,55 @@
+/* A page: its head, its text, and the tail beneath them.
+ *
+ * The selectors reach for data attributes rather than classes. Nothing
+ * inside main may carry a class that no feature declared, so the
+ * theme's own bands are marked this way instead.
+ */
+main{
+  background:var(--surface);
+  display:flex;flex-direction:column;   /* so the tail below can be measured */
+  min-width:0;
+}
+/* Whatever is left between the last content and the footer, faded from the
+   page's white into the rule the footer sits under. It takes no height when
+   the content reaches the bottom on its own. */
+main::after{
+  content:"";flex:1 1 auto;
+  background:linear-gradient(to bottom,
+    var(--surface),
+    color-mix(in oklab,var(--muted) 45%, var(--line)));
+}
+[data-part="head"]{padding:1.3rem var(--pad) 1.15rem;border-bottom:1px solid var(--line)}
+[data-part="head"] h1{
+  margin:0 0 .6rem;color:var(--ink);max-width:22ch;
+  /* drawn small capitals, cut from the display face for this weight.
+     No font-variant-caps: the lowercase glyphs are the small capitals. */
+  font-family:'DisplayCaps',var(--display),sans-serif;font-weight:700;
+  font-size:clamp(1.85rem,4.3vw,2.8rem);line-height:1.06;letter-spacing:-.005em;
+}
+[data-part="deck"]{
+  margin:0;font-size:1rem;line-height:1.62;color:var(--body);max-width:70ch;
+  padding-left:1rem;border-left:2px solid var(--teal);
+}
+[data-part="deck"] b{color:var(--ink);font-weight:500}
+/* The scaffold's own date, set to match the dates in a row of pieces. */
+[data-part="head"]>time{
+  display:block;margin:.45rem 0 0;padding-left:1rem;
+  font-family:var(--mono);font-size:.7rem;color:var(--muted);
+}
+[data-part="body"]{padding:1.15rem var(--pad) 1.4rem;max-width:78ch}
+[data-part="body"] h2,[data-part="body"] h3{
+  font-family:var(--display);color:var(--ink);letter-spacing:-.01em;
+  margin:1.6rem 0 .5rem;line-height:1.2;
+}
+[data-part="body"] h2{font-size:1.45rem;font-weight:600}
+[data-part="body"] h3{font-size:1.15rem;font-weight:600}
+[data-part="body"] p{margin:0 0 .9rem}
+[data-part="body"] a{color:var(--teal)}
+[data-part="body"] code{font-family:var(--mono);font-size:.86em}
+[data-part="body"] pre{
+  padding:.85rem 1rem;overflow-x:auto;border:1px solid var(--line);
+  border-radius:3px;background:var(--paper);
+}
+[data-part="body"] blockquote{
+  margin:1.1rem 0;padding-left:1rem;border-left:2px solid var(--line);color:var(--body);
+}

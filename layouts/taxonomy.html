@@ -1,7 +1,12 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
-  {{ .Content }}
-  {{ range .Pages }}
-    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-  {{ end }}
+  <div data-part="head">
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p data-part="deck">{{ . }}</p>{{ end }}
+  </div>
+  {{ with .Content }}<div data-part="body">{{ . }}</div>{{ end }}
+  <div data-part="rows">
+  {{- range .Pages }}
+    <section><h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2></section>
+  {{- end }}
+  </div>
 {{ end }}

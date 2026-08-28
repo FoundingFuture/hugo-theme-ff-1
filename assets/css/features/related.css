@@ -1,3 +1,15 @@
-.related {
-  margin-block-start: 2em;
+/* What sits near this piece, by the tags it shares. */
+.related{border-top:1px solid var(--line);background:var(--surface)}
+.related h2{
+  margin:0;padding:.6rem var(--pad);background:var(--sunk);
+  border-bottom:1px solid var(--line);
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink);font-weight:400;
 }
+.related ul{margin:0;padding:0;list-style:none}
+.related li{border-bottom:1px solid var(--line)}
+.related a{
+  display:block;padding:.5rem var(--pad);text-decoration:none;
+  color:var(--ink);font-size:.95rem;
+}
+.related a:hover{background:var(--sunk);color:var(--teal)}

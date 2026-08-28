@@ -18,6 +18,7 @@ Deterministic: the same tree and the same words on every run. A gate
 comparing one build against another needs its input to hold still.
 """
 
+import datetime
 import os
 import random
 import re
@@ -68,8 +69,11 @@ TAGS = ["blue", "green", "red", "yellow"]
 
 def hugo_new(path):
     """Ask Hugo for a content file, through the site's archetype."""
+    # The site names the theme, and Hugo refuses to load a site whose
+    # theme it cannot find. At init there is no theme key yet and this
+    # is ignored. Later, run by hand, it finds the packaged artefact.
     result = subprocess.run(
-        ["hugo", "new", "content", path],
+        ["hugo", "new", "content", path, "--themesDir", "../dist"],
         cwd=SITE, capture_output=True, text=True)
     if result.returncode != 0:
         sys.stderr.write(result.stderr)
@@ -98,15 +102,36 @@ def fill(path, rng, tags):
         text = handle.read()
 
     text = re.sub(r"^draft = true$", "draft = false", text, flags=re.MULTILINE)
+    # Hugo stamps the day the file was written. A demo regenerated in a
+    # month would then carry a month's newer dates and read as a
+    # different site, so the day is pinned and only spread.
+    day = rng.randrange(0, 900)
+    stamp = (datetime.date(2024, 1, 1) + datetime.timedelta(days=day)).isoformat()
+    text = re.sub(r"^date = '[^']*'$", "date = '%sT09:00:00Z'" % stamp,
+                  text, flags=re.MULTILINE)
     if tags:
         listed = ", ".join("'%s'" % tag for tag in tags)
         text = text.replace("draft = false", "draft = false\ntags = [%s]" % listed, 1)
 
-    body = paragraphs(rng, rng.randint(2, 4))
+    body = paragraphs(rng, rng.randint(4, 6))
     # A summary divider after the first paragraph. Without one a list
     # page repeats whatever ids the opening words carry. Two such pages
     # on one list are two elements sharing an id.
-    text = text.rstrip() + "\n\n" + body[0] + "\n\n<!--more-->\n\n" + "\n\n".join(body[1:]) + "\n"
+    rest = body[1:]
+    # Three headings or more is what the table of contents asks for, so
+    # a page long enough to want one is written with them. A shorter
+    # page keeps its plain shape, which is the case worth showing too.
+    if len(rest) >= 2:
+        titled = []
+        for index, para in enumerate(rest):
+            titled.append("## " + " ".join(
+                rng.sample(WORDS, 2)).capitalize())
+            titled.append(para)
+        while len([line for line in titled if line.startswith("## ")]) < 3:
+            titled.append("## " + " ".join(rng.sample(WORDS, 2)).capitalize())
+            titled.append(" ".join(paragraphs(rng, 1)))
+        rest = titled
+    text = text.rstrip() + "\n\n" + body[0] + "\n\n<!--more-->\n\n" + "\n\n".join(rest) + "\n"
 
     with open(path, "w", encoding="utf-8") as handle:
         handle.write(text)

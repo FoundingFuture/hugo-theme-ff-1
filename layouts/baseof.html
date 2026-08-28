@@ -1,8 +1,9 @@
+{{- $slots := partialCached "slot-map.html" "features" }}
 <!DOCTYPE html>
 <html lang="{{ site.Language.Locale }}" dir="{{ or site.Language.Direction `ltr` }}">
 <head>
   {{ partial "head.html" . }}
-{{ partial "slot.html" (dict "slot" "head" "page" .) }}
+{{ with index $slots "head" }}{{ partial "slot.html" (dict "slot" "head" "page" $) }}{{ end }}
 </head>
 <body id="top">
 {{- /* body is the grid. Two columns on a wide screen, the navigation
@@ -46,6 +47,6 @@
 <footer class="foot">
   {{ partial "footer.html" . }}
 </footer>
-{{ partial "slot.html" (dict "slot" "body.end" "page" .) }}
+{{ with index $slots "body.end" }}{{ partial "slot.html" (dict "slot" "body.end" "page" $) }}{{ end }}
 </body>
 </html>

@@ -1,0 +1,27 @@
+{{- /* The densest thing on the site. Two columns of dated rows.
+
+       The title stays an h2, as Hugo's scaffold renders it. A list of
+       fifty pieces with no heading on any of them is a list a screen
+       reader cannot move through, and the rule costs nothing: the row
+       is laid out by the grid, not by the element.
+
+       The date is a bare time element. It carries no class, so it is
+       part of the theme's markup rather than something a feature
+       added, and the gate reads it as such. */ -}}
+{{- $slots := partialCached "slot-map.html" "features" }}
+{{- $pages := .pages }}
+{{- $showSection := .showSection }}
+<div data-part="rows">
+{{- range $pages }}
+  {{- $p := . }}
+  <section>
+    <time{{ if not .Date.IsZero }} datetime="{{ .Date.Format "2006-01-02" }}"{{ end }}>
+      {{- if not .Date.IsZero }}{{ .Date.Format "01.02" }}{{ end -}}
+    </time>
+    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}
+      {{- if $showSection }}{{ with .CurrentSection }}<em>{{ .LinkTitle }}</em>{{ end }}{{ end -}}
+    </a></h2>
+    {{ with index $slots "list.item" }}{{ partial "slot.html" (dict "slot" "list.item" "page" $p) }}{{ end }}
+  </section>
+{{- end }}
+</div>
