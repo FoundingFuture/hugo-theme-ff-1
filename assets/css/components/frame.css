@@ -28,8 +28,12 @@ body{
   display:flex;flex-direction:column;position:sticky;top:0;
   align-self:start;max-height:100vh;
 }
+/* Placed with the same weight the narrow blocks use. body>main reads
+   as one selector more specific than the main they say, so the wide
+   placement won at every width and the content sat in a column that
+   collapses to nothing below 60rem. */
 .strip{grid-column:2;grid-row:1}
-body>main{grid-column:2;grid-row:2;min-width:0}
+main{grid-column:2;grid-row:2;min-width:0}
 .foot{grid-column:2;grid-row:3}
 /* the wrapper is plumbing on a wide screen and a dropdown on a narrow one.
    Its content is forced visible here, so being closed costs nothing. */

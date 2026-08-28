@@ -1,0 +1,15 @@
+name = "rail-pages"
+# The rail is chrome, which the page-shape comparison excludes, so this
+# adds nothing a manifest has to declare. It is a feature because it is
+# the one thing in the menu whose cost grows with the site.
+slot = "none"
+weight = 10
+default = true
+level = "toggle"
+kinds = ["page", "section", "home", "term", "taxonomy"]
+css = "css/features/rail-pages.css"
+
+[skeleton]
+  # Nothing. Every row it adds sits inside the nav, and chrome is not
+  # part of a page's shape.
+  text = []

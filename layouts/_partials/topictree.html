@@ -6,16 +6,22 @@
        values, because .IsMenuCurrent exists only on a real menu entry
        and a section has to work its state out for itself.
 
-       A section on the branch being read also lists its own pieces,
-       so a reader can see where they are and what sits beside them.
-       Only that branch: rendering every page of the site into every
-       page's menu is quadratic, and this theme is built for a site
-       with a lot in it.
+       A topic's subtopics and its own pieces are siblings, so they go
+       in one list. Rendered as two, the pieces read as a level below
+       the subtopics rather than beside them.
+
+       A section lists its pieces so that every page of the site is
+       reachable from the menu, and a topic holding pages opens like
+       one holding topics. That puts every piece in every page's menu,
+       which costs about two hundred bytes a piece. A site with
+       thousands turns the rail-pages feature off and reaches them from
+       the topic's own page instead.
 
        page      the page being rendered, so its branch opens
        kind      "menu" or "section", naming the source
        menuID    which menu, when the source is one
-       entries   what to list here
+       entries   the sections to list here
+       pieces    the pages to list beside them
        parent    the section these belong to, or false
        depth     0 at the top. Everything deeper is a row, not a pill
        group     siblings sharing a name close one another. Empty at the
@@ -25,10 +31,12 @@
 {{- $kind := .kind }}
 {{- $menuID := .menuID }}
 {{- $entries := .entries }}
+{{- $pieces := .pieces }}
 {{- $parent := .parent }}
 {{- $depth := .depth }}
 {{- $group := .group }}
 {{- $palette := .palette }}
+{{- $railPages := partial "feature-on.html" (dict "name" "rail-pages" "page" $page) }}
 
 <ul{{ if eq $depth 0 }} class="topics"{{ end }}>
 {{- with $parent }}
@@ -48,50 +56,39 @@
     {{- $ancestor = $page.HasMenuCurrent $menuID $e }}
     {{- with $e.Params.colour }}{{ $colour = . }}{{ end }}
   {{- else }}
-    {{- $name = $e.Title }}
+    {{- $name = $e.LinkTitle }}
     {{- $url = $e.RelPermalink }}
     {{- $kids = $e.Sections }}
     {{- $count = len $e.RegularPagesRecursive }}
     {{- $active = eq $page $e }}
     {{- $ancestor = $page.IsDescendant $e }}
-    {{- with $e.Params.colour }}{{ $colour = . }}{{ end }}
+    {{- with index $e.Params "ff-1" "colour" }}{{ $colour = . }}{{ end }}
   {{- end }}
   {{- if and (eq $depth 0) (not $colour) }}
     {{- $colour = index $palette (mod $i (len $palette)) }}
   {{- end }}
-  {{- /* The pieces in this topic, listed while the reader is inside
-         it. .RegularPages is the section's own content files, so a
-         page kept out of listings with build.list stays out here. */ -}}
-  {{- $pieces := slice }}
-  {{- if and (ne $kind "menu") (or $active $ancestor) }}
-    {{- $pieces = $e.RegularPages }}
-  {{- end }}
+  {{- $own := slice }}
+  {{- if and (ne $kind "menu") $railPages }}{{ $own = $e.RegularPages }}{{ end }}
   {{- /* A topic with no words of its own only groups what is under it,
          so it is not drawn as a topic you can open and read. */ -}}
   {{- $class := slice }}
   {{- if gt $depth 0 }}{{ $class = $class | append "sub" }}{{ end }}
   {{- if and (ne $kind "menu") (not $e.Content) }}{{ $class = $class | append "container" }}{{ end }}
-  {{- if or $kids $pieces }}
+  {{- if or $kids $own }}
   <li><details{{ with $group }} name="{{ . }}"{{ end }}{{ with $class }} class="{{ delimit . " " }}"{{ end }}{{ if or $active $ancestor }} open{{ end }}
     {{- if eq $depth 0 }} data-t="{{ $colour }}"{{ end }}>
     <summary{{ if $active }} aria-current="page"{{ else if $ancestor }} aria-current="true"{{ end }}><span class="nm">{{ $name }}</span>{{ if $count }}<span class="n">{{ $count }}</span>{{ end }}<span class="chev" aria-hidden="true"></span></summary>
-    {{- with $kids }}
     {{ partial "topictree.html" (dict "page" $page "kind" $kind "menuID" $menuID
-        "entries" . "parent" (cond (eq $kind "section") $e false)
+        "entries" $kids "pieces" $own "parent" (cond (eq $kind "section") $e false)
         "depth" (add $depth 1) "group" $url "palette" $palette) }}
-    {{- end }}
-    {{- with $pieces }}
-    <ul class="pieces">
-      {{- range . }}
-      <li><a href="{{ .RelPermalink }}"{{ if eq $page . }} aria-current="page"{{ end }}>{{ .LinkTitle }}</a></li>
-      {{- end }}
-    </ul>
-    {{- end }}
   </details></li>
   {{- else }}
   <li><a href="{{ $url }}"
     {{- if $active }} aria-current="page"{{ else if $ancestor }} aria-current="true"{{ end -}}
   >{{ $name }}{{ if $count }} <span class="n">{{ $count }}</span>{{ end }}</a></li>
   {{- end }}
+{{- end }}
+{{- range $pieces }}
+  <li class="piece"><a href="{{ .RelPermalink }}"{{ if eq $page . }} aria-current="page"{{ end }}>{{ .LinkTitle }}</a></li>
 {{- end }}
 </ul>

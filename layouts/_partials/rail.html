@@ -30,11 +30,11 @@
 <nav class="rail">
 {{- with index site.Menus $menuID }}
   {{ partial "topictree.html" (dict "page" $ "kind" "menu" "menuID" $menuID
-      "entries" . "parent" false "depth" 0 "group" "" "palette" $palette) }}
+      "entries" . "pieces" slice "parent" false "depth" 0 "group" "" "palette" $palette) }}
 {{- else }}
   {{- with site.Home.Sections }}
   {{ partial "topictree.html" (dict "page" $ "kind" "section" "menuID" $menuID
-      "entries" . "parent" false "depth" 0 "group" "" "palette" $palette) }}
+      "entries" . "pieces" slice "parent" false "depth" 0 "group" "" "palette" $palette) }}
   {{- end }}
 {{- end }}
 </nav>

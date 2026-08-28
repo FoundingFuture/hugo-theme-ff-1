@@ -80,6 +80,7 @@ features = [
   "pager",
   "privacy-embeds",
   "prose",
+  "rail-pages",
   "reading-time",
   "related",
   "search",
