@@ -1,4 +1,7 @@
-.last-modified {
-  color: var(--muted, #666);
-  font-size: 0.9em;
+/* When it last changed. ff-1 shows the date a piece was written and
+   says nothing else before it is read, so this is off by default. A
+   site that revises its pages wants it on. */
+.last-modified{
+  display:inline-block;margin:.45rem .9rem 0 0;
+  font-family:var(--mono);font-size:.7rem;color:var(--muted);
 }

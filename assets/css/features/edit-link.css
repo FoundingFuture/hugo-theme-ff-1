@@ -1,3 +1,9 @@
-.edit-link {
-  font-size: 0.9em;
+/* A way back to the source, in the band at the foot of the piece. */
+.edit-link{
+  margin:0;padding:.7rem var(--pad);background:var(--sunk);
+  border-top:1px solid var(--line);
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;
+  text-transform:uppercase;
 }
+.edit-link a{color:var(--teal);text-decoration:none}
+.edit-link a:hover{border-bottom:1px solid currentColor}

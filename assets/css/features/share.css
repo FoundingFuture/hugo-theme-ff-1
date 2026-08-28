@@ -1,4 +1,9 @@
-.share {
-  margin-block-start: 1.5em;
-  font-size: 0.9em;
+/* Somewhere to send it, in the band at the foot of the piece. */
+.share{
+  margin:0;padding:.7rem var(--pad);background:var(--sunk);
+  border-top:1px solid var(--line);display:flex;gap:1rem;flex-wrap:wrap;
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);
 }
+.share a{color:var(--teal);text-decoration:none}
+.share a:hover{border-bottom:1px solid currentColor}

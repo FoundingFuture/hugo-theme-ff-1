@@ -1,5 +1,13 @@
-.code-copy {
-  position: absolute;
-  inset-block-start: 0.4em;
-  inset-inline-end: 0.4em;
+/* A button on each code block, added by the script. A reader without
+   the script sees the code and no button, which is the whole of what
+   the button was for. */
+[data-part="body"] pre{position:relative}
+.code-copy{
+  position:absolute;top:.4rem;right:.4rem;cursor:pointer;
+  padding:.15rem .45rem;border:1px solid var(--line);border-radius:3px;
+  background:var(--surface);color:var(--body);
+  font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;
+  text-transform:uppercase;opacity:0;transition:opacity .15s ease;
 }
+[data-part="body"] pre:hover .code-copy,.code-copy:focus{opacity:1}
+.code-copy:hover{border-color:var(--teal);color:var(--teal)}
