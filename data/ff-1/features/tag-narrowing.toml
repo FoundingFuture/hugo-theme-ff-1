@@ -1,0 +1,14 @@
+name = "tag-narrowing"
+slot = "list.after"
+weight = 10
+default = true
+level = "toggle"
+kinds = ["taxonomy"]
+partial = "features/tag-narrowing.html"
+css = "css/features/tag-narrowing.css"
+i18n = ["narrowing", "noMatch", "clear"]
+
+[skeleton]
+  text = ["section.narrowing", "article.row", "p.nomatch", "button.clear"]
+  headings = ["section.narrowing"]
+  links = ["article.row"]

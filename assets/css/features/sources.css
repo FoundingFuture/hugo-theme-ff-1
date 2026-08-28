@@ -1,0 +1,7 @@
+/* What a piece was built from, in the band the trail uses. */
+.sources{
+  margin:0;padding:.7rem var(--pad);background:var(--sunk);
+  border-top:1px solid var(--line);
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);line-height:1.7;
+}

@@ -1,0 +1,12 @@
+name = "kind-label"
+slot = "list.item"
+weight = 10
+default = true
+level = "toggle"
+kinds = ["page"]
+partial = "features/kind-label.html"
+css = "css/features/kind-label.css"
+
+[skeleton]
+  # Nothing at all unless the page says what kind of thing it is.
+  text = ["span.kind"]

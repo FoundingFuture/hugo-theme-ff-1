@@ -1,0 +1,29 @@
+{{- /* A Markdown image whose title becomes a caption.
+
+       Without the feature this renders exactly what Hugo's own image
+       hook renders: the destination resolved against the page's
+       resources, then the site's, and passed through untouched when it
+       is neither. conform compares the result against that rendering,
+       so anything else here would be a difference on every page
+       carrying a picture.
+
+       Resolution goes through PageInner, which is what Hugo's own hooks
+       use. The two differ when a hook fires while an included page is
+       being rendered: Page is the page included, PageInner the one
+       including it. PageInner falls back to Page and always answers. */ -}}
+{{- $captions := partial "feature-on.html" (dict "name" "figure-captions" "page" .Page) -}}
+{{- $u := urls.Parse .Destination -}}
+{{- $src := .Destination -}}
+{{- if not $u.IsAbs -}}
+  {{- with or (.PageInner.Resources.Get $u.Path) (resources.Get $u.Path) -}}
+    {{- $src = .RelPermalink -}}
+  {{- end -}}
+{{- end -}}
+{{- if and $captions .Title -}}
+<figure class="captioned">
+  <img src="{{ $src }}" alt="{{ .PlainText }}">
+  <figcaption>{{ .Title }}</figcaption>
+</figure>
+{{- else -}}
+<img src="{{ $src }}" alt="{{ .PlainText }}"{{ with .Title }} title="{{ . }}"{{ end }}>
+{{- end -}}

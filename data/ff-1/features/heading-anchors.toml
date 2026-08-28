@@ -1,0 +1,27 @@
+name = "heading-anchors"
+# A markup render hook rather than a slot. Nothing calls it through
+# slot.html, so it registers for none and has no partial.
+slot = "none"
+weight = 10
+default = true
+level = "toggle"
+kinds = ["page", "section", "home", "term", "taxonomy"]
+css = "css/features/heading-anchors.css"
+i18n = ["linkToSection"]
+
+[skeleton]
+  # The heading takes a class, and holds an empty anchor. The anchor
+  # carries no text, so the heading still says exactly what it said.
+  #
+  # A link is allowed where its container was declared, so the heading
+  # is what the declaration names. Declaring the anchor itself would
+  # not do: its container is the heading, and naming the content itself
+  # would allow every link on the page.
+  text = [
+    "h1.anchored", "h2.anchored", "h3.anchored",
+    "h4.anchored", "h5.anchored", "h6.anchored", "a.anchor",
+  ]
+  links = [
+    "h1.anchored", "h2.anchored", "h3.anchored",
+    "h4.anchored", "h5.anchored", "h6.anchored",
+  ]

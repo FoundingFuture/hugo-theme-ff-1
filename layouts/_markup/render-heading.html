@@ -1,0 +1,16 @@
+{{- /* Every heading is addressable, so a section of a long piece can be
+       linked to directly.
+
+       The marker carries no text. Its glyph is drawn by the stylesheet,
+       because text inside the heading would change what the heading
+       says, and conform compares that against Hugo's own rendering.
+       The label is what a screen reader announces.
+
+       The heading takes a class of its own when the feature is on. A
+       link is allowed where its container was declared, and without one
+       the marker would count as a link added to the content itself,
+       which is the whole set this gate exists to keep shut. */ -}}
+{{- $anchors := partial "feature-on.html" (dict "name" "heading-anchors" "page" .Page) -}}
+<h{{ .Level }} id="{{ .Anchor }}"{{ if $anchors }} class="anchored"{{ end }}>{{ .Text | safeHTML }}
+  {{- if $anchors }}<a class="anchor" href="#{{ .Anchor }}" aria-label="{{ i18n "linkToSection" }}"></a>{{ end -}}
+</h{{ .Level }}>

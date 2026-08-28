@@ -1,0 +1,12 @@
+name = "sources"
+slot = "page.footer"
+weight = 40
+default = true
+level = "toggle"
+kinds = ["page"]
+partial = "features/sources.html"
+css = "css/features/sources.css"
+
+[skeleton]
+  # Nothing at all unless the page names its sources.
+  text = ["p.sources"]

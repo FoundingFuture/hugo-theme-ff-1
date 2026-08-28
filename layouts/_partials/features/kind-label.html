@@ -1,0 +1,8 @@
+{{- /* What a piece is, where its title cannot say so.
+
+       A title usually explains itself. A product name does not, and on
+       a list of pieces it tells a reader nothing. The label sits under
+       params because kind on its own is a name Hugo reserves. */ -}}
+{{- with index .Params "ff-1" "kind" }}
+<span class="kind" data-t="{{ with index $.Params "ff-1" "colour" }}{{ . }}{{ else }}teal{{ end }}">{{ . }}</span>
+{{- end }}

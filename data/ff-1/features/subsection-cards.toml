@@ -1,0 +1,16 @@
+name = "subsection-cards"
+slot = "list.after"
+weight = 5
+default = true
+level = "toggle"
+kinds = ["section"]
+partial = "features/subsection-cards.html"
+css = "css/features/subsection-cards.css"
+i18n = ["subsections", "pieceCount"]
+
+[skeleton]
+  # A heading and a link is allowed where its container was declared,
+  # so the block itself is what the declaration names.
+  text = ["section.subsections"]
+  headings = ["section.subsections"]
+  links = ["section.subsections"]

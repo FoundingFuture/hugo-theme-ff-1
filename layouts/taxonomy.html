@@ -1,12 +1,17 @@
 {{ define "main" }}
+  {{- $slots := partialCached "slot-map.html" "features" }}
   <div data-part="head">
     <h1>{{ .Title }}</h1>
     {{ with .Description }}<p data-part="deck">{{ . }}</p>{{ end }}
   </div>
   {{ with .Content }}<div data-part="body">{{ . }}</div>{{ end }}
-  <div data-part="rows">
+  {{- /* The terms, and the handles the narrowing script reaches for.
+         An id and a data attribute are not part of a page's shape, so
+         they cost nothing when the feature that reads them is off. */ -}}
+  <div data-part="rows" id="facets">
   {{- range .Pages }}
-    <section><h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2></section>
+    <section><h2><a href="{{ .RelPermalink }}" data-tag="{{ .Title }}">{{ .LinkTitle }}</a></h2></section>
   {{- end }}
   </div>
+  {{ with index $slots "list.after" }}{{ partial "slot.html" (dict "slot" "list.after" "page" $) }}{{ end }}
 {{ end }}

@@ -1,0 +1,8 @@
+/* A heading you can link to. The marker appears on hover and on focus. */
+.anchored{position:relative}
+.anchor{
+  margin-left:.4rem;text-decoration:none;color:var(--muted);
+  opacity:0;transition:opacity .15s ease;
+}
+.anchor::after{content:"#"}
+.anchored:hover .anchor,.anchor:focus{opacity:1}

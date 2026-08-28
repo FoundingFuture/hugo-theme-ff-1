@@ -1,0 +1,30 @@
+{{- /* Everything under the subtopics as well.
+
+       Without it a topic three levels deep is a dead end: its cards
+       count pieces it never lists. Each row says which subtopic it
+       came from, because a reader on a topic page is seeing the whole
+       topic rather than its top layer.
+
+       A row is an article rather than a section. The skeleton pops its
+       stack of classed elements by tag name, so a bare section closing
+       inside section.further-down would close that one too, and every
+       row after it would count as content rather than as this
+       feature's. */ -}}
+{{- $deeper := complement .RegularPages .RegularPagesRecursive }}
+{{- with $deeper }}
+<section class="further-down">
+  <h2>{{ i18n "furtherDown" }}</h2>
+  <div data-part="rows">
+  {{- range . }}
+    <article>
+      <time{{ if not .Date.IsZero }} datetime="{{ .Date.Format "2006-01-02" }}"{{ end }}>
+        {{- if not .Date.IsZero }}{{ .Date.Format "01.02" }}{{ end -}}
+      </time>
+      <h3><a href="{{ .RelPermalink }}">{{ .LinkTitle }}
+        {{- with .CurrentSection }}<em>{{ .LinkTitle }}</em>{{ end -}}
+      </a></h3>
+    </article>
+  {{- end }}
+  </div>
+</section>
+{{- end }}

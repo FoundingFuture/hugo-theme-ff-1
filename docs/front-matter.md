@@ -9,6 +9,9 @@ template does with an empty value.
 | Key | Read as |
 |---|---|
 | `colour` | `.Params.colour` |
+| `ff-1.colour` | `.Params.ff-1.colour` |
+| `ff-1.kind` | `.Params.ff-1.kind` |
+| `ff-1.sources` | `.Params.ff-1.sources` |
 
 ## Site parameters
 
@@ -28,18 +31,25 @@ template does with an empty value.
 |---|
 | `backToTop` |
 | `breadcrumbs` |
+| `clear` |
 | `contents` |
 | `copy` |
 | `copyright` |
 | `editThisPage` |
+| `furtherDown` |
 | `lastModified` |
+| `linkToSection` |
 | `mainPage` |
 | `menu` |
 | `menuClose` |
 | `menuOpen` |
+| `narrowing` |
 | `nextPage` |
+| `noMatch` |
+| `pieceCount` |
 | `previousPage` |
 | `readingTime` |
 | `related` |
 | `share` |
+| `subsections` |
 | `wordCount` |

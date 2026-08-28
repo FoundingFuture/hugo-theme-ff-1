@@ -1,0 +1,16 @@
+name = "figure-captions"
+# A markup render hook rather than a slot.
+slot = "none"
+weight = 20
+default = true
+level = "toggle"
+kinds = ["page", "section", "home", "term", "taxonomy"]
+css = "css/features/figure-captions.css"
+
+[skeleton]
+  # Only a picture whose Markdown carries a title. The title becomes
+  # the caption a reader sees, rather than a tooltip they have to
+  # hover to find.
+  text = ["figure.captioned", "figcaption"]
+  counts = ["figure"]
+  images = ["figure.captioned"]

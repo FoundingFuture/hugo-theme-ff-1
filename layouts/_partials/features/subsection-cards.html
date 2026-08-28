@@ -1,0 +1,18 @@
+{{- /* The topics under this one, as cards carrying their colour.
+
+       A topic three levels deep is otherwise a list of pieces with no
+       sign that anything sits below it. */ -}}
+{{- with .Sections }}
+<section class="subsections">
+  <h2>{{ i18n "subsections" }}</h2>
+  <div data-part="cards">
+  {{- range . }}
+    <a href="{{ .RelPermalink }}"{{ with index .Params "ff-1" "colour" }} data-t="{{ . }}"{{ end }}>
+      <h3>{{ .LinkTitle }}</h3>
+      {{- with .Description }}<p>{{ . }}</p>{{ end }}
+      <span>{{ i18n "pieceCount" (len .RegularPagesRecursive) }}</span>
+    </a>
+  {{- end }}
+  </div>
+</section>
+{{- end }}

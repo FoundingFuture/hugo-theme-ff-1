@@ -1,0 +1,8 @@
+/* The pieces in the subtopics, listed under the topic's own. */
+.further-down{border-top:1px solid var(--line)}
+.further-down>h2{
+  margin:0;padding:.6rem var(--pad);background:var(--sunk);
+  border-bottom:1px solid var(--line);
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink);font-weight:400;
+}

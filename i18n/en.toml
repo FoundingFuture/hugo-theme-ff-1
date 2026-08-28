@@ -54,3 +54,25 @@ other = "close"
 
 [mainPage]
 other = "Main page"
+
+[linkToSection]
+other = "Link to this section"
+
+[subsections]
+other = "Subtopics"
+
+[furtherDown]
+other = "Further down"
+
+[pieceCount]
+one = "{{ .Count }} piece"
+other = "{{ .Count }} pieces"
+
+[narrowing]
+other = "Pieces"
+
+[noMatch]
+other = "Nothing carries all of those together. Drop one."
+
+[clear]
+other = "Clear the selection"

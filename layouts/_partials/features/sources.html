@@ -1,0 +1,7 @@
+{{- /* Where a piece got what it says. A line of plain references under
+       the text, set in the band the trail uses. */ -}}
+{{- with index .Params "ff-1" "sources" }}
+<p class="sources">
+  {{- if reflect.IsSlice . }}{{ delimit . " · " }}{{ else }}{{ . }}{{ end -}}
+</p>
+{{- end }}

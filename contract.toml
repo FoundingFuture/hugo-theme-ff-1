@@ -4,6 +4,9 @@
 
 front_matter = [
   "colour",
+  "ff-1.colour",
+  "ff-1.kind",
+  "ff-1.sources",
 ]
 params = [
   "ff-1.domains",
@@ -18,20 +21,27 @@ shortcodes = []
 i18n = [
   "backToTop",
   "breadcrumbs",
+  "clear",
   "contents",
   "copy",
   "copyright",
   "editThisPage",
+  "furtherDown",
   "lastModified",
+  "linkToSection",
   "mainPage",
   "menu",
   "menuClose",
   "menuOpen",
+  "narrowing",
   "nextPage",
+  "noMatch",
+  "pieceCount",
   "previousPage",
   "readingTime",
   "related",
   "share",
+  "subsections",
   "wordCount",
 ]
 features = [
@@ -40,6 +50,10 @@ features = [
   "code-copy",
   "dateline",
   "edit-link",
+  "figure-captions",
+  "further-down",
+  "heading-anchors",
+  "kind-label",
   "last-modified",
   "pager",
   "privacy-embeds",
@@ -47,6 +61,9 @@ features = [
   "related",
   "search",
   "share",
+  "sources",
+  "subsection-cards",
+  "tag-narrowing",
   "toc",
   "word-count",
 ]

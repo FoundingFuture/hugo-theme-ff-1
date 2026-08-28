@@ -1,0 +1,30 @@
+{{- /* Narrowing by tag, in the page.
+
+       Every tag is already a real link to its own page, and that is
+       what a browser without the script follows. What this adds is the
+       pieces to narrow, and the script that narrows them.
+
+       The facets are the term rows the template already renders. They
+       carry a data attribute the script reads, which costs nothing
+       when this feature is off. */ -}}
+{{- $key := .Data.Plural }}
+{{- $tagged := where site.RegularPages (printf "Params.%s" $key) "!=" nil }}
+{{- with $tagged }}
+<section class="narrowing">
+  <h2>{{ i18n "narrowing" }}</h2>
+  <div data-part="rows" id="tagged">
+  {{- range . }}
+    <article class="row" data-tags="{{ delimit (index .Params $key) " " }}">
+      <time{{ if not .Date.IsZero }} datetime="{{ .Date.Format "2006-01-02" }}"{{ end }}>
+        {{- if not .Date.IsZero }}{{ .Date.Format "01.02" }}{{ end -}}
+      </time>
+      <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+    </article>
+  {{- end }}
+  </div>
+  <p class="nomatch" id="nomatch" hidden>{{ i18n "noMatch" }}</p>
+  <button class="clear" id="facetclear" type="button" hidden>{{ i18n "clear" }}</button>
+</section>
+{{- $js := resources.Get "js/tags.js" | minify | fingerprint }}
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+{{- end }}

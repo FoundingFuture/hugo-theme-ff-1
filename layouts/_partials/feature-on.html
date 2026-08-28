@@ -1,0 +1,14 @@
+{{- /*
+Report whether one feature is enabled for one page.
+
+@context {string} name The feature's name.
+@context {page} page The page being rendered.
+
+A markup render hook cannot reach a slot, and two features render from
+a hook rather than from one. The resolution lives in feature-set.html
+and is asked for here, so its order is written down once.
+
+@example: {{ if partial "feature-on.html" (dict "name" "toc" "page" .) }}
+*/ -}}
+{{- $set := partialCached "feature-set.html" .page .page.RelPermalink }}
+{{- return (index $set .name) }}

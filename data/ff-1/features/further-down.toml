@@ -1,0 +1,14 @@
+name = "further-down"
+slot = "list.after"
+weight = 20
+default = true
+level = "toggle"
+kinds = ["section"]
+partial = "features/further-down.html"
+css = "css/features/further-down.css"
+i18n = ["furtherDown"]
+
+[skeleton]
+  text = ["section.further-down"]
+  headings = ["section.further-down"]
+  links = ["section.further-down"]
