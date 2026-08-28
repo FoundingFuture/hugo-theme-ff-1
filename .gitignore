@@ -1,0 +1,42 @@
+tools/conformance/themes/
+tools/conformance/public/
+tools/conformance/scale-content/
+tools/.deps/
+tools/conformance/resources/_gen/
+tools/conformance/.hugo_build.lock
+resources/_gen/
+.hugo_build.lock
+public/
+.bootstrap-*
+.hugo-toml-*
+tools/conformance/config/site/
+tools/conformance/config/off/
+tools/conformance/config/ours/
+tools/conformance/config/dev/
+*.tar.gz
+tools/.contract-fresh.*
+tools/.install.*
+dist/
+tools/conformance/config/scale/
+
+# What a full run leaves behind. htmltest caches its results under tmp/,
+# lighthouse-ci writes its reports, and python writes bytecode. None of
+# it is the theme, and git add -A would take all of it.
+tmp/
+.lighthouseci/
+__pycache__/
+*.pyc
+
+# Playwright, when somebody points it here. The browsers are hundreds
+# of megabytes, and a bootstrap run commits whatever it finds.
+.playwright/
+
+# stylelint resolves its shared config from the repository, so it may
+# have to be installed here rather than globally. That leaves thirty
+# megabytes at the root, which is the same hazard as the browsers.
+node_modules/
+
+# The npm tier's ledger, written by ./c setup under tools/. It grows
+# by machine, so it is no more tracked than what it installs.
+tools/package.json
+tools/package-lock.json

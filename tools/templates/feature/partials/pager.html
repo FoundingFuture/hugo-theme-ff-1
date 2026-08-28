@@ -1,0 +1,18 @@
+{{- /* Hugo keeps the neighbours of a page in its section, so this is a
+       lookup rather than a search.
+
+       Filtering site.RegularPages here instead cost a site-wide query
+       on every page. On the scale fixture that was a quarter of all
+       template time, which is the fault the fixture exists to find. */ -}}
+{{- $previous := .PrevInSection }}
+{{- $next := .NextInSection }}
+{{- if or $previous $next }}
+<nav class="pager">
+  {{- with $previous }}
+  <a class="pager-previous" href="{{ .RelPermalink }}">{{ i18n "previousPage" }}</a>
+  {{- end }}
+  {{- with $next }}
+  <a class="pager-next" href="{{ .RelPermalink }}">{{ i18n "nextPage" }}</a>
+  {{- end }}
+</nav>
+{{- end }}

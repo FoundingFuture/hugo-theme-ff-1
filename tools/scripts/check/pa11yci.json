@@ -1,0 +1,18 @@
+{
+  "defaults": {
+    "runners": [
+      "axe"
+    ],
+    "standard": "WCAG2AA",
+    "threshold": 0,
+    "includeWarnings": false,
+    "chromeLaunchConfig": {
+      "args": [
+        "--no-sandbox"
+      ]
+    },
+    "hideElements": "input[type=checkbox][disabled]"
+  },
+  "urls": [],
+  "_why": "Goldmark renders a task list as a disabled checkbox with no label. The markup comes from the renderer, so no template can label it. Only that element is hidden, not the rule, so any other unlabelled form control still fails."
+}

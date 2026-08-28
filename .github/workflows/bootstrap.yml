@@ -1,0 +1,121 @@
+name: bootstrap
+
+# The "Use this template" button copies the files and makes an initial
+# commit. It runs no script of its own, but that commit is a push to
+# main, which is what brings this workflow up.
+#
+# So a repository made with the button arrives with its theme already
+# generated. ./c init deletes the marker, and this never triggers again.
+on:
+  push:
+    branches: [main]
+    # Only a commit touching the marker can be the one that bootstraps.
+    # Without this the workflow woke on every later push, did nothing,
+    # and still finished, which is a run that check.yml would follow.
+    paths: [BOOTSTRAP]
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Two guards. The marker is deleted by ./c init, so this never runs
+      # twice in a project. is_template is true only on the template
+      # itself, which must never generate a theme into itself: doing so
+      # is what the template exists to avoid.
+      - name: Stop on the template, or once the marker is gone
+        id: marker
+        env:
+          IS_TEMPLATE: ${{ github.event.repository.is_template }}
+        run: |
+          if [ "${IS_TEMPLATE}" = "true" ]; then
+            echo "this is the template itself, not a project made from it"
+            echo "run=no" >> "$GITHUB_OUTPUT"
+          elif [ -f BOOTSTRAP ]; then
+            echo "run=yes" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=no" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Install Hugo
+        if: steps.marker.outputs.run == 'yes'
+        run: |
+          set -euo pipefail
+          version="$(curl -fsSL https://api.github.com/repos/gohugoio/hugo/releases/latest \
+            | sed -n 's/.*"tag_name": *"v\([^"]*\)".*/\1/p' | head -1)"
+          curl -fsSL -o "$RUNNER_TEMP/hugo.tar.gz" \
+            "https://github.com/gohugoio/hugo/releases/download/v${version}/hugo_extended_${version}_linux-amd64.tar.gz"
+          mkdir -p "$HOME/.local/bin"
+          tar -xzf "$RUNNER_TEMP/hugo.tar.gz" -C "$HOME/.local/bin" hugo
+          # The gates build under the pinned Hugo and the newest one.
+          # At bootstrap those are the same release, since the theme is
+          # generated from the newest, so the second name points at it.
+          cp "$HOME/.local/bin/hugo" "$HOME/.local/bin/hugo-latest"
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
+      - uses: actions/setup-python@v5
+        if: steps.marker.outputs.run == 'yes'
+        with:
+          python-version: '3.12'
+
+      - name: Generate the theme
+        if: steps.marker.outputs.run == 'yes'
+        run: |
+          set -euo pipefail
+          # The repository name is the theme's name as given. Bootstrap
+          # derives the slug Hugo needs and prints it.
+          #
+          # The owner and the repository are passed rather than read
+          # from the environment, so the same command works by hand and
+          # bootstrap.sh needs to know nothing about this runner.
+          ./c init name="${GITHUB_REPOSITORY##*/}" \
+                  owner="${GITHUB_REPOSITORY_OWNER}" \
+                  repo="${GITHUB_REPOSITORY##*/}"
+
+      # The run that generates the theme is the one that verifies it.
+      #
+      # A push made with the default token raises no push event, so the
+      # commit below sets off no workflow of its own. Handing that to
+      # check.yml through workflow_run does not work either: ./c init
+      # deletes this file, and workflow_run resolves the workflow it
+      # waits on from the default branch, where it no longer is.
+      #
+      # So the gates run here, before the commit. A theme that cannot
+      # pass them is not committed, and the marker stays for a retry.
+      - uses: actions/setup-node@v4
+        if: steps.marker.outputs.run == 'yes'
+        with:
+          node-version: '20'
+
+      - name: Install the tools the gates name
+        if: steps.marker.outputs.run == 'yes'
+        run: |
+          set -euo pipefail
+          pip install --quiet html5validator
+          npm install --global --silent pa11y-ci @lhci/cli stylelint \
+            stylelint-config-standard eslint playwright pixelmatch pngjs
+          npx --yes playwright install --with-deps chromium
+          # Fetched by the same script a workstation uses, so the pin
+          # in tools.sh binds here too.
+          tools/scripts/tools.sh shellcheck fetch
+          tools/scripts/tools.sh htmltest fetch
+
+      - name: Every gate, on what was just generated
+        if: steps.marker.outputs.run == 'yes'
+        env:
+          CI: "true"
+        run: ./c check
+
+      - name: Commit
+        if: steps.marker.outputs.run == 'yes'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Generate theme scaffold from Hugo $(cat .hugo-version)"
+          git push

@@ -1,0 +1,207 @@
+name: check
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  # The template repository holds no theme, so the gates below cannot
+  # run on it. This reads what needs none, and is the only thing that
+  # ever reads the template's own prose and scripts.
+  template:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Stop where a theme exists
+        id: state
+        run: |
+          if [ -f BOOTSTRAP ] || [ ! -d layouts ]; then
+            echo "run=yes" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=no, a theme is here and the full gates cover it" >&2
+            echo "run=no" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/setup-python@v5
+        if: steps.state.outputs.run == 'yes'
+        with:
+          python-version: '3.12'
+
+      # Fetched by the same script a workstation uses, so the pin in
+      # tools.sh binds here too.
+      - name: Fetch shellcheck
+        if: steps.state.outputs.run == 'yes'
+        run: tools/scripts/tools.sh shellcheck fetch
+
+      - name: Reach writing-lint
+        if: steps.state.outputs.run == 'yes'
+        env:
+          WRITING_LINT_KEY: ${{ secrets.WRITING_LINT_DEPLOY_KEY }}
+          GH_TOKEN: ${{ secrets.WRITING_LINT_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -n "${WRITING_LINT_KEY:-}" ]; then
+            mkdir -p ~/.ssh && chmod 700 ~/.ssh
+            printf '%s\n' "$WRITING_LINT_KEY" > ~/.ssh/id_ed25519
+            chmod 600 ~/.ssh/id_ed25519
+            ssh-keyscan github.com >> ~/.ssh/known_hosts 2>/dev/null
+          fi
+          tools/scripts/tools.sh writing-lint
+
+      - name: What needs no theme
+        if: steps.state.outputs.run == 'yes'
+        env:
+          CI: "true"
+          GH_TOKEN: ${{ secrets.WRITING_LINT_TOKEN }}
+        run: ./c check gate=template
+
+  gates:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        hugo: [pinned, latest]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # The template carries no theme, so there is nothing to check on
+      # it. A project made from it has one by its first push.
+      - name: Stop while there is no theme
+        id: state
+        run: |
+          if [ -f BOOTSTRAP ] || [ ! -d layouts ]; then
+            echo "no theme yet, nothing to check"
+            echo "ready=no" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=yes" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Read the pinned Hugo version
+        if: steps.state.outputs.ready == 'yes'
+        id: pin
+        run: echo "version=$(cat .hugo-version)" >> "$GITHUB_OUTPUT"
+
+      # Installed from the release tarball by version, not through a
+      # marketplace action, so the pin is explicit and readable here.
+      - name: Install Hugo
+        if: steps.state.outputs.ready == 'yes'
+        run: |
+          set -euo pipefail
+          if [ "${{ matrix.hugo }}" = latest ]; then
+            version="$(curl -fsSL https://api.github.com/repos/gohugoio/hugo/releases/latest \
+              | sed -n 's/.*"tag_name": *"v\([^"]*\)".*/\1/p' | head -1)"
+          else
+            version="${{ steps.pin.outputs.version }}"
+          fi
+          mkdir -p "$HOME/.local/bin"
+          get() {
+            curl -fsSL -o "$RUNNER_TEMP/hugo-$1.tar.gz" \
+              "https://github.com/gohugoio/hugo/releases/download/v$1/hugo_extended_$1_linux-amd64.tar.gz"
+            tar -xzf "$RUNNER_TEMP/hugo-$1.tar.gz" -C "$RUNNER_TEMP" hugo
+            mv "$RUNNER_TEMP/hugo" "$HOME/.local/bin/$2"
+          }
+          get "${version}" hugo
+          # versions.sh builds under both, and skipped in CI because the
+          # second binary was never installed.
+          newest="$(curl -fsSL https://api.github.com/repos/gohugoio/hugo/releases/latest \
+            | sed -n 's/.*"tag_name": *"v\([^"]*\)".*/\1/p' | head -1)"
+          if [ "$newest" != "${version}" ]; then
+            get "$newest" hugo-latest
+          else
+            cp "$HOME/.local/bin/hugo" "$HOME/.local/bin/hugo-latest"
+          fi
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+          echo "installed hugo ${version} and hugo-latest ${newest}"
+
+      - uses: actions/setup-python@v5
+        if: steps.state.outputs.ready == 'yes'
+        with:
+          python-version: '3.12'
+
+      - uses: actions/setup-node@v4
+        if: steps.state.outputs.ready == 'yes'
+        with:
+          node-version: '20'
+
+      - name: Install the tools the gates name
+        if: steps.state.outputs.ready == 'yes'
+        run: |
+          set -euo pipefail
+          pip install --quiet html5validator
+          npm install --global --silent pa11y-ci @lhci/cli stylelint stylelint-config-standard eslint
+          # visual.sh needs these three, and skipped without them.
+          npm install --global --silent playwright pixelmatch pngjs
+          npx --yes playwright install --with-deps chromium
+          # Fetched by the same script a workstation uses, so the pin
+          # in tools.sh binds here too.
+          tools/scripts/tools.sh shellcheck fetch
+          tools/scripts/tools.sh htmltest fetch
+
+      # The checkers live in a private repository, so CI needs a key or a
+      # token. Either secret works, and neither is needed to build.
+      - name: Reach writing-lint
+        if: steps.state.outputs.ready == 'yes'
+        env:
+          WRITING_LINT_KEY: ${{ secrets.WRITING_LINT_DEPLOY_KEY }}
+          GH_TOKEN: ${{ secrets.WRITING_LINT_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -n "${WRITING_LINT_KEY:-}" ]; then
+            mkdir -p ~/.ssh && chmod 700 ~/.ssh
+            printf '%s\n' "$WRITING_LINT_KEY" > ~/.ssh/id_ed25519
+            chmod 600 ~/.ssh/id_ed25519
+            ssh-keyscan github.com >> ~/.ssh/known_hosts 2>/dev/null
+          fi
+          tools/scripts/tools.sh writing-lint
+
+      - name: Gates
+        if: steps.state.outputs.ready == 'yes'
+        env:
+          CI: "true"
+          GH_TOKEN: ${{ secrets.WRITING_LINT_TOKEN }}
+        run: ./c check
+
+      - name: A real site, when one is named
+        if: steps.state.outputs.ready == 'yes'
+        run: |
+          set -euo pipefail
+          [ -s tools/conformance/sites.txt ] || { echo "no site named"; exit 0; }
+          while IFS= read -r repo; do
+            case "$repo" in ""|\#*) continue ;; esac
+            git clone --depth 1 "$repo" .site-under-test
+            ./c site=.site-under-test
+            rm -rf .site-under-test
+          done < tools/conformance/sites.txt
+
+      - name: Report
+        if: always() && matrix.hugo == 'pinned' && steps.state.outputs.ready == 'yes'
+        run: ./c report || true
+
+      - uses: actions/upload-artifact@v4
+        if: always() && matrix.hugo == 'pinned' && steps.state.outputs.ready == 'yes'
+        with:
+          name: conformance-report
+          path: tools/conformance/public/report
+
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: conformance-output-${{ matrix.hugo }}
+          path: tools/conformance/public
+
+      - name: Comment on the pull request
+        if: always() && github.event_name == 'pull_request' && matrix.hugo == 'pinned'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: tools/conformance
+          message: |
+            The conformance report for this branch is attached to
+            [run ${{ github.run_number }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+            as the `conformance-report` artifact.

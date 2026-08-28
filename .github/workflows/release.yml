@@ -1,0 +1,100 @@
+name: release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  release:
+    # The template carries no theme, so there is nothing to package and
+    # nothing to publish. A version tag here names the pipeline, and the
+    # gates below read a theme. bootstrap.yml reads the same flag.
+    if: github.event.repository.is_template != true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Hugo
+        run: |
+          set -euo pipefail
+          version="$(cat .hugo-version)"
+          curl -fsSL -o "$RUNNER_TEMP/hugo.tar.gz" \
+            "https://github.com/gohugoio/hugo/releases/download/v${version}/hugo_extended_${version}_linux-amd64.tar.gz"
+          mkdir -p "$HOME/.local/bin"
+          tar -xzf "$RUNNER_TEMP/hugo.tar.gz" -C "$HOME/.local/bin" hugo
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install the tools the gates name
+        run: |
+          set -euo pipefail
+          pip install --quiet html5validator
+          npm install --global --silent pa11y-ci @lhci/cli stylelint stylelint-config-standard eslint
+          # Fetched by the same script a workstation uses, so the pin
+          # in tools.sh binds here too.
+          tools/scripts/tools.sh shellcheck fetch
+          tools/scripts/tools.sh htmltest fetch
+
+      - name: Reach writing-lint
+        env:
+          WRITING_LINT_KEY: ${{ secrets.WRITING_LINT_DEPLOY_KEY }}
+          GH_TOKEN: ${{ secrets.WRITING_LINT_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -n "${WRITING_LINT_KEY:-}" ]; then
+            mkdir -p ~/.ssh && chmod 700 ~/.ssh
+            printf '%s\n' "$WRITING_LINT_KEY" > ~/.ssh/id_ed25519
+            chmod 600 ~/.ssh/id_ed25519
+            ssh-keyscan github.com >> ~/.ssh/known_hosts 2>/dev/null
+          fi
+          tools/scripts/tools.sh writing-lint
+
+      - name: Every gate, then the release gate
+        env:
+          CI: "true"
+          RELEASE_TAG: ${{ github.ref_name }}
+          DEMO_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/demo/
+        run: |
+          ./c check
+          ./c check gate=release
+
+      # Written by the same script the gates ran on. Nothing is
+      # assembled here, so nothing here can differ from what was tested.
+      - name: The artefact
+        run: ./c package
+
+      # The changelog section is parsed once, by release.sh, and put in
+      # the annotated tag. Reading it back from the tag is what keeps the
+      # tag message and the release notes from ever disagreeing. The
+      # release gate fails on a missing section, so this cannot be empty.
+      - name: The release notes, from the tag
+        run: |
+          set -euo pipefail
+          git tag -l --format='%(contents:body)' "$GITHUB_REF_NAME" > .release-body.md
+
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          body_path: .release-body.md
+          generate_release_notes: false
+          files: 'dist/*.zip'
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: tools/conformance/public/demo
+
+      - uses: actions/deploy-pages@v4
