@@ -2,7 +2,7 @@
 title = 'back-to-top'
 date = 2026-01-25T08:00:00Z
 description = 'The fixture page for the back-to-top feature, which turns the switch on so that what the manifest declares can be seen.'
-[params.features]
+[params.ff-1.features]
   back-to-top = true
 +++
 

@@ -12,9 +12,9 @@ No page key is read by a template.
 
 | Key | Read as |
 |---|---|
-| `editBase` | `site.Params.editBase` |
-| `features` | `site.Params.features` |
-| `featuresoff` | `site.Params.featuresoff` |
+| `ff-1.editBase` | `site.Params.ff-1.editBase` |
+| `ff-1.features` | `site.Params.ff-1.features` |
+| `ff-1.featuresoff` | `site.Params.ff-1.featuresoff` |
 
 ## Words
 

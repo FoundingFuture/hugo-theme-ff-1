@@ -2,7 +2,7 @@
 title = 'last-modified'
 date = 2026-01-25T08:00:00Z
 description = 'The fixture page for the last-modified feature, which turns the switch on so that what the manifest declares can be seen.'
-[params.features]
+[params.ff-1.features]
   last-modified = true
 +++
 

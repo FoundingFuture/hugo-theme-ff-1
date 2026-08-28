@@ -2,7 +2,7 @@
 title = 'word-count'
 date = 2026-01-25T08:00:00Z
 description = 'The fixture page for the word-count feature, which turns the switch on so that what the manifest declares can be seen.'
-[params.features]
+[params.ff-1.features]
   word-count = true
 +++
 

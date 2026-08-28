@@ -12,7 +12,7 @@
 # Every feature this theme ships, with the default it ships with.
 # Uncomment a line to change it. A page may override any of them
 # in its own front matter.
-# [params.features]
+# [params.ff-1.features]
 #   back-to-top = false
 #   breadcrumbs = true
 #   code-copy = false

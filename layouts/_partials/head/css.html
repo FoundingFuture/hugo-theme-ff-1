@@ -18,9 +18,9 @@
   {{- $sheets = $sheets | append . }}
 {{- end }}
 {{- $features := slice }}
-{{- range $name, $manifest := hugo.Data.features }}
+{{- range $name, $manifest := index hugo.Data "ff-1" "features" }}
   {{- $on := $manifest.default }}
-  {{- with site.Params.features }}
+  {{- with index site.Params "ff-1" "features" }}
     {{- $found := index . $name }}
     {{- if ne $found nil }}{{ $on = $found }}{{ end }}
   {{- end }}

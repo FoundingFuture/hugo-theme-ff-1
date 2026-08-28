@@ -5,7 +5,7 @@ description = 'The fixture page for the reading-time feature, kept short so that
 [params]
   expect = ['1 minute read']
   reject = ['1 minutes read']
-[params.features]
+[params.ff-1.features]
   reading-time = true
 +++
 

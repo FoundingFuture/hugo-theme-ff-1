@@ -4,9 +4,9 @@
 
 front_matter = []
 params = [
-  "editBase",
-  "features",
-  "featuresoff",
+  "ff-1.editBase",
+  "ff-1.features",
+  "ff-1.featuresoff",
 ]
 shortcodes = []
 i18n = [
