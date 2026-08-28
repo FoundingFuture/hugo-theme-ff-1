@@ -104,3 +104,12 @@ other = "Play on SoundCloud"
 
 [embedElsewhere]
 other = "Plays from {{ .Service }} once you press it"
+
+[galleryClose]
+other = "Close"
+
+[galleryPrevious]
+other = "Previous picture"
+
+[galleryNext]
+other = "Next picture"

@@ -39,6 +39,9 @@ template does with an empty value.
 | `editThisPage` |
 | `embedElsewhere` |
 | `furtherDown` |
+| `galleryClose` |
+| `galleryNext` |
+| `galleryPrevious` |
 | `lastModified` |
 | `linkToSection` |
 | `mainPage` |

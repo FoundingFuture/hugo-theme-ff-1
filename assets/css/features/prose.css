@@ -1,0 +1,75 @@
+/* The shortcodes a piece reaches for. */
+
+/* ---- the opening statement, set large ---- */
+.lead h2{
+  margin:0 0 1rem;font-family:var(--display);font-weight:600;
+  font-size:clamp(1.35rem,2.2vw,1.75rem);line-height:1.25;
+  letter-spacing:-.015em;color:var(--ink);max-width:46ch;
+}
+
+/* ---- a line lifted out of the text ---- */
+.pull{
+  margin:1.3rem 0;padding:.2rem 0 .2rem 1.1rem;
+  border-left:3px solid var(--teal);
+  font-family:var(--display);font-weight:500;font-size:1.2rem;
+  line-height:1.35;color:var(--ink);max-width:46ch;
+}
+
+/* ---- two columns of running text, with a rule between ---- */
+.cols{columns:2;column-gap:2.2rem;column-rule:1px solid var(--line);margin:1.2rem 0}
+.cols p{margin:0 0 .85rem;break-inside:avoid}
+
+/* ---- a dense list of named things ---- */
+.list{margin:1.2rem 0;border-top:1px solid var(--line)}
+.item{
+  display:grid;grid-template-columns:minmax(6rem,auto) auto minmax(0,1fr);
+  gap:.75rem;align-items:baseline;padding:.45rem 0;
+  border-bottom:1px solid var(--line);text-decoration:none;color:inherit;
+}
+a.item:hover{background:var(--sunk)}
+.item .nm{font-family:var(--display);font-weight:600;color:var(--ink);font-size:.98rem}
+.item .k{
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.07em;text-transform:uppercase;
+  padding:.05rem .3rem;border:1px solid currentColor;border-radius:2px;
+  white-space:nowrap;color:var(--teal);
+}
+.item .k[data-t="amber"]{color:var(--amber)}
+.item .k[data-t="indigo"]{color:var(--indigo)}
+.item .k[data-t="rose"]{color:var(--rose)}
+.item .ds{color:var(--body);font-size:.9rem;min-width:0}
+
+/* ---- thumbnails, and one of them full size ---- */
+/* No script anywhere here. A thumbnail is a link to a fragment, and
+   the full-size view is the :target of it. Back closes it. */
+.shots{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(13rem,1fr));
+  gap:1px;background:var(--line);margin:1.3rem 0;border:1px solid var(--line);
+}
+.shot{display:block;background:var(--surface);text-decoration:none;color:inherit}
+.shot img{display:block;width:100%;height:auto}
+.shot span{
+  display:block;padding:.4rem .6rem;
+  font-family:var(--mono);font-size:.68rem;color:var(--muted);line-height:1.5;
+}
+.shot:hover span{color:var(--teal)}
+.lit{
+  position:fixed;inset:0;z-index:60;display:none;
+  align-items:center;justify-content:center;padding:2rem;
+}
+.lit:target{display:flex}
+.shade{position:absolute;inset:0;background:rgba(13,22,32,.86)}
+.lit figure{position:relative;margin:0;max-width:min(96vw,1600px)}
+.lit img{display:block;max-width:100%;max-height:82vh;width:auto;height:auto}
+.lit figcaption{
+  padding:.5rem .2rem 0;color:var(--paper);
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;
+}
+.step,.shut{
+  position:absolute;z-index:2;color:var(--paper);text-decoration:none;
+  font-family:var(--mono);line-height:1;
+}
+.step{top:50%;font-size:2.4rem;padding:.4rem .8rem;transform:translateY(-50%)}
+.step.back{left:.4rem}
+.step.on{right:.4rem}
+.shut{top:1rem;right:1.2rem;font-size:1.8rem}
+.step:hover,.shut:hover{color:var(--teal)}

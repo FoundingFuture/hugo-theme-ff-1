@@ -1,0 +1,4 @@
+{{- /* A line lifted out of the text. */ -}}
+{{- if partial "feature-on.html" (dict "name" "prose" "page" .Page) }}
+<div class="pull">{{ .Inner | markdownify | plainify }}</div>
+{{- end }}

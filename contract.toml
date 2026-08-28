@@ -19,7 +19,12 @@ params = [
   "ff-1.tagline",
 ]
 shortcodes = [
+  "columns",
   "embed",
+  "gallery",
+  "items",
+  "lead",
+  "pull",
   "vimeo",
   "youtube",
 ]
@@ -33,6 +38,9 @@ i18n = [
   "editThisPage",
   "embedElsewhere",
   "furtherDown",
+  "galleryClose",
+  "galleryNext",
+  "galleryPrevious",
   "lastModified",
   "linkToSection",
   "mainPage",
@@ -71,6 +79,7 @@ features = [
   "last-modified",
   "pager",
   "privacy-embeds",
+  "prose",
   "reading-time",
   "related",
   "search",

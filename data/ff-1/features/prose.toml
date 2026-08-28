@@ -1,0 +1,28 @@
+name = "prose"
+# Five shortcodes a piece reaches for. They render through Markdown
+# rather than through a slot, so nothing calls a partial for them.
+slot = "none"
+weight = 30
+default = true
+level = "toggle"
+kinds = ["page", "section", "home", "term", "taxonomy"]
+css = "css/features/prose.css"
+i18n = ["galleryClose", "galleryPrevious", "galleryNext"]
+
+[skeleton]
+  # A heading and a link are allowed where their container was
+  # declared, so the lead and the lightbox carry wrappers of their own.
+  text = [
+    "div.lead", "div.pull", "div.cols",
+    "div.list", "a.item", "div.item", "span.nm", "span.k", "span.ds",
+    "div.shots", "a.shot", "div.lit", "a.shade", "a.step", "a.shut",
+    "figcaption",
+  ]
+  headings = ["div.lead"]
+  links = ["div.shots", "div.lit", "div.list"]
+  images = ["a.shot", "div.lit"]
+  counts = ["figure"]
+  # The gallery cuts a thumbnail and a full-size copy from each picture,
+  # and Hugo publishes both beside the page. They exist only where the
+  # shortcode ran. The format follows the binary, so both are named.
+  files = ["*_hu_*.webp", "*_hu_*.jpg"]

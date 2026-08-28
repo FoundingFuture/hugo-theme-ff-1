@@ -24,8 +24,19 @@ rm -rf "$dest/hugo/content" "$dest/hugo/hugo.toml"
 stubs=tools/conformance/stubs.txt
 if [ -f "$stubs" ]; then
   mkdir -p "$dest/hugo/layouts/_shortcodes"
-  while IFS= read -r name; do
-    case "$name" in ''|\#*) continue ;; esac
-    : > "$dest/hugo/layouts/_shortcodes/$name.html"
+  while IFS= read -r line; do
+    case "$line" in ''|\#*) continue ;; esac
+    name="${line%% *}"
+    kind="${line#"$name"}"
+    kind="${kind# }"
+    # Hugo decides whether a shortcode may be closed by reading its
+    # template for .Inner, not by running it. A paired one has to name
+    # it and an unpaired one must not, so the two get different stubs.
+    if [ "$kind" = paired ]; then
+      printf '%s\n' '{{ if false }}{{ .Inner }}{{ end }}' \
+        > "$dest/hugo/layouts/_shortcodes/$name.html"
+    else
+      : > "$dest/hugo/layouts/_shortcodes/$name.html"
+    fi
   done < "$stubs"
 fi

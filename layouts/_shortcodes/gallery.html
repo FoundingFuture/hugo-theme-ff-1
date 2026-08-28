@@ -1,0 +1,56 @@
+{{- /* Thumbnails that open full size when clicked.
+
+       One picture a line: the file first, the caption after a pipe.
+       The files are page resources, so they sit in the page's own
+       folder beside its index.md, and Hugo cuts the thumbnails.
+
+       No script. The full-size view is a :target, so clicking a
+       thumbnail changes the fragment and CSS does the rest. Back
+       closes it, and a link to any picture can be sent to somebody. */ -}}
+{{- if partial "feature-on.html" (dict "name" "prose" "page" .Page) }}
+{{- $id := printf "g%d" .Ordinal }}
+{{- $rows := slice }}
+{{- range (split (trim .Inner "\n") "\n") }}
+  {{- $cut := split . "|" }}
+  {{- $src := trim (index $cut 0) " " }}
+  {{- $cap := "" }}{{ if ge (len $cut) 2 }}{{ $cap = trim (index $cut 1) " " }}{{ end }}
+  {{- with $src }}{{ $rows = $rows | append (dict "src" . "cap" $cap) }}{{ end }}
+{{- end }}
+{{- $n := len $rows }}
+{{- $fmt := cond hugo.IsExtended "webp" "jpg" }}
+<div class="shots" id="{{ $id }}">
+{{- range $i, $r := $rows }}
+  {{- with $.Page.Resources.GetMatch $r.src }}
+  {{- /* Fill, not Fit: one tall picture among wide ones makes a ragged
+         grid three rows deep. Anchored top, because the top of a
+         screen is the part that says which screen it is. */}}
+  {{- $thumb := .Fill (printf "560x380 top %s q82" $fmt) }}
+  <a class="shot" href="#{{ $id }}-{{ $i }}">
+    <img src="{{ $thumb.RelPermalink }}" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}"
+         alt="{{ $r.cap }}" loading="lazy">
+    <span>{{ $r.cap }}</span>
+  </a>
+  {{- end }}
+{{- end }}
+</div>
+{{- range $i, $r := $rows }}
+{{- with $.Page.Resources.GetMatch $r.src }}
+{{- $full := .Fit (printf "1600x1600 %s q86" $fmt) }}
+{{- $prev := printf "#%s-%d" $id (cond (eq $i 0) (sub $n 1) (sub $i 1)) }}
+{{- $next := printf "#%s-%d" $id (cond (eq $i (sub $n 1)) 0 (add $i 1)) }}
+<div class="lit" id="{{ $id }}-{{ $i }}" role="dialog" aria-label="{{ $r.cap }}">
+  <a class="shade" href="#{{ $id }}" aria-label="{{ i18n "galleryClose" }}"></a>
+  <figure>
+    <img src="{{ $full.RelPermalink }}" width="{{ $full.Width }}" height="{{ $full.Height }}"
+         alt="{{ $r.cap }}">
+    <figcaption>{{ $r.cap }}</figcaption>
+  </figure>
+  {{- if gt $n 1 }}
+  <a class="step back" href="{{ $prev }}" aria-label="{{ i18n "galleryPrevious" }}">&#8249;</a>
+  <a class="step on" href="{{ $next }}" aria-label="{{ i18n "galleryNext" }}">&#8250;</a>
+  {{- end }}
+  <a class="shut" href="#{{ $id }}" aria-label="{{ i18n "galleryClose" }}">&#215;</a>
+</div>
+{{- end }}
+{{- end }}
+{{- end }}

@@ -1,0 +1,4 @@
+{{- /* Two columns of running text, with a rule between them. */ -}}
+{{- if partial "feature-on.html" (dict "name" "prose" "page" .Page) }}
+<div class="cols">{{ .Inner | markdownify }}</div>
+{{- end }}

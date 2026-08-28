@@ -13,6 +13,16 @@
 # Hugo already has youtube and vimeo, and the reference must keep
 # rendering its own, or the comparison would flatter the theme.
 #
+# A name followed by "paired" is one written with a closing tag. Hugo
+# refuses a closing tag on a shortcode whose template never names
+# .Inner, and refuses to leave one unclosed when it does, so the two
+# kinds need different stubs.
+#
 # Forgetting a name fails the reference build, and Hugo says which
 # shortcode it could not find.
 embed
+lead paired
+pull paired
+columns paired
+items paired
+gallery paired

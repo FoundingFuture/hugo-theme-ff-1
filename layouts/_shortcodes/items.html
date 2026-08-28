@@ -1,0 +1,22 @@
+{{- /* A dense list of named things, each with a tag and a line.
+
+       One per line: name, tag, what it does, and optionally where it
+       lives. A row with a fourth field is a link. A row without one is
+       not, because a row that looks clickable and goes nowhere is
+       worse than a row that never offered. */ -}}
+{{- if partial "feature-on.html" (dict "name" "prose" "page" .Page) }}
+<div class="list">
+{{- range (split (trim .Inner "\n") "\n") }}
+  {{- $row := split . "|" }}
+  {{- if ge (len $row) 2 }}
+    {{- $url := "" }}{{ if ge (len $row) 4 }}{{ $url = trim (index $row 3) " " }}{{ end }}
+    {{- $tag := index $.Page.Params "ff-1" "colour" | default "teal" }}
+    {{- if $url }}<a class="item" href="{{ $url }}">{{ else }}<div class="item">{{ end }}
+      <span class="nm">{{ trim (index $row 0) " " }}</span>
+      <span class="k" data-t="{{ $tag }}">{{ trim (index $row 1) " " }}</span>
+      {{- if ge (len $row) 3 }}<span class="ds">{{ trim (index $row 2) " " }}</span>{{ end }}
+    {{- if $url }}</a>{{ else }}</div>{{ end }}
+  {{- end }}
+{{- end }}
+</div>
+{{- end }}

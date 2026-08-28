@@ -1,0 +1,8 @@
+{{- /* The opening statement of a piece, set large.
+
+       The heading sits in a wrapper of its own. A heading is allowed
+       where its container was declared, and a class on the heading
+       itself is not that container. */ -}}
+{{- if partial "feature-on.html" (dict "name" "prose" "page" .Page) }}
+<div class="lead"><h2>{{ .Inner | markdownify | plainify }}</h2></div>
+{{- end }}
