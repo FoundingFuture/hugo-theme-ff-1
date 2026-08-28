@@ -579,6 +579,62 @@ the most weight here:
   proves it.
 - `output/a11y`, `output/validity`, `output/perf`, `output/visual`.
 
+## What building it changed
+
+The design was written before the gates had been run against it. Eight
+things it asserted turned out to be wrong or incomplete, and the theme
+follows what the pipeline actually does.
+
+**conform reads more than main.** The plan said shape means the
+elements inside `main`, so the frame was free. It is not.
+`skeleton.py` records every classed element while `in_content()` holds,
+and that is true before `main` is seen. A build with every feature off
+must match Hugo's scaffold exactly, so no manifest can excuse a wrapper
+of the theme's own. The grid is `body`, carrying no class, and every
+wrapper standing before `main` is a chrome element: `nav`, `header`,
+`footer` or `aside`.
+
+**Inside main, the theme's own bands carry a data attribute rather
+than a class,** for the same reason. They add no content, and the gate
+reads them exactly as it reads the unclassed div they replace.
+
+**A link or a heading is allowed where its container was declared.**
+An anchor beside a heading has no classed ancestor, so it counted as a
+link added to the content itself, which is the whole set the gate keeps
+shut. The heading takes a class when the feature is on, and the
+manifest names that. Every feature that adds a list wraps it the same
+way.
+
+**The skeleton pops its stack of classed elements by tag name.** A bare
+`section` closing inside `section.further-down` closed that one too,
+and every row after it read as content. A row inside a feature's block
+is an `article`.
+
+**The fixture could only call shortcodes Hugo ships,** because the
+reference build renders the same content with Hugo's scaffold. The
+reference now gets a no-op for each name in `tools/conformance/stubs.txt`,
+which is what lets the five prose shortcodes be exercised at all. They
+arrive as one feature, `prose`, so the roster is twenty-two rather than
+twenty-one.
+
+**The overrides of `youtube` and `vimeo` render nothing when the
+feature is off,** rather than reproducing Hugo's iframe. An iframe
+carries no class, is neither a link nor an image, and is not a counted
+tag, so Hugo's rendering and no rendering at all are the same shape.
+Copying it would have meant tracking markup that changes when Hugo
+changes it, on a theme built against the newest Hugo every week.
+
+**`css.Build` resolves `url()`.** The plan assumed fonts could stay in
+`static/`. esbuild cannot see that directory, so they are assets, and
+it emits each face content-hashed beside the bundle. Splitting one
+stylesheet into `components/` also moved the font urls a directory
+deeper, which is why the rail's two faces are reached at `../../fonts`.
+
+**`exampleSite/` is kept rather than shipped.** themes.gohugo.io reads
+it from the repository, and a downloader unzipping into `themes/ff-1/`
+has no use for a second Hugo site nested inside the theme, config and
+build lock included.
+
 ## Open questions
 
 1. Whether `check/search.sh`'s 1.5 MB budget should move from
