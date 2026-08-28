@@ -25,3 +25,31 @@
   text-wrap:balance;   /* even the two lines when it wraps */
 }
 
+/* The wordmark is whatever the site put there: the name this theme
+   sets in small capitals, or a mark of its own. Hugo's scaffold puts
+   the home page's h1 in the header, and conform compares that against
+   the scaffold, so the heading stays and is stripped of its own
+   styling instead. */
+.brand h1,.brand .site-title{margin:0;font:inherit}
+.brand h1 svg,.brand .site-title svg{display:block;width:100%;height:auto}
+
+/* Sized against the rail rather than the root, so the name fills the
+   cell at every width the frame collapses through. A long title wraps
+   and keeps filling; a short one grows to the ceiling and stops. */
+.brandcell{container-type:inline-size}
+.wordmark-text{
+  display:block;
+  font-family:'DisplayCaps',var(--display),sans-serif;
+  font-weight:700;
+  /* The column's width over the longest word, or a fixed height over
+     the number of words, whichever is stricter. The partial counts
+     both. A ceiling stops a one-word site filling the screen, and a
+     floor keeps a long one legible. */
+  font-size:clamp(1.05rem,
+    min(calc(185cqw / var(--em,6)), calc(8.5rem / var(--lines,1))),
+    6.2rem);
+  line-height:.92;letter-spacing:-.02em;text-align:center;
+  /* A name breaks between words and never inside one. ff-1 split at
+     its own hyphen into two lines otherwise. */
+  overflow-wrap:normal;word-break:keep-all;hyphens:manual;
+}

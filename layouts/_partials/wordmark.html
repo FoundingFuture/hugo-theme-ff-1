@@ -1,4 +1,24 @@
-{{- /* The theme ships a plain wordmark. A site puts its own at
-       layouts/_partials/wordmark.html and Hugo uses that instead, with
-       nothing to configure. */ -}}
-<span class="wordmark-text">{{ site.Title }}</span>
+{{- /* The site's own name, set in the drawn small capitals the theme
+       uses for a title. It is currentColor, so the brand cell inverts
+       it by colour alone.
+
+       Two counts are carried here rather than fixed in the
+       stylesheet, because CSS cannot measure text. A name of four
+       letters and one of nineteen cannot share a size: the first
+       leaves the cell half empty, the second overruns it.
+
+       The longest word is what has to fit across the column. The
+       number of words is how many lines it may take, because a title
+       sized to fill the width one word at a time grows as tall as it
+       is wide. The stylesheet takes whichever of the two is stricter.
+
+       A site replaces this by writing its own at
+       layouts/_partials/wordmark.html, and Hugo uses that instead with
+       nothing to configure. A drawn mark goes there as inline SVG:
+       give it fill="currentColor" and it inverts like the words do. */ -}}
+{{- $words := split site.Title " " }}
+{{- $longest := 1 }}
+{{- range $words }}
+  {{- with len . }}{{ if gt . $longest }}{{ $longest = . }}{{ end }}{{ end }}
+{{- end }}
+<span class="wordmark-text" style="--em:{{ $longest }};--lines:{{ len $words }}">{{ site.Title }}</span>
