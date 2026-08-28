@@ -66,8 +66,13 @@
   {{- if and (ne $kind "menu") (or $active $ancestor) }}
     {{- $pieces = $e.RegularPages }}
   {{- end }}
+  {{- /* A topic with no words of its own only groups what is under it,
+         so it is not drawn as a topic you can open and read. */ -}}
+  {{- $class := slice }}
+  {{- if gt $depth 0 }}{{ $class = $class | append "sub" }}{{ end }}
+  {{- if and (ne $kind "menu") (not $e.Content) }}{{ $class = $class | append "container" }}{{ end }}
   {{- if or $kids $pieces }}
-  <li><details{{ with $group }} name="{{ . }}"{{ end }}{{ if gt $depth 0 }} class="sub"{{ end }}{{ if or $active $ancestor }} open{{ end }}
+  <li><details{{ with $group }} name="{{ . }}"{{ end }}{{ with $class }} class="{{ delimit . " " }}"{{ end }}{{ if or $active $ancestor }} open{{ end }}
     {{- if eq $depth 0 }} data-t="{{ $colour }}"{{ end }}>
     <summary{{ if $active }} aria-current="page"{{ else if $ancestor }} aria-current="true"{{ end }}><span class="nm">{{ $name }}</span>{{ if $count }}<span class="n">{{ $count }}</span>{{ end }}<span class="chev" aria-hidden="true"></span></summary>
     {{- with $kids }}
