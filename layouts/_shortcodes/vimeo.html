@@ -1,0 +1,6 @@
+{{- /* The same as youtube.html, for the other player Hugo ships. */ -}}
+{{- if partial "feature-on.html" (dict "name" "privacy-embeds" "page" .Page) }}
+  {{- with or (.Get "id") (.Get 0) }}
+    {{- partial "embed.html" (dict "service" "vimeo" "id" . "title" ($.Get "title")) }}
+  {{- end }}
+{{- end }}

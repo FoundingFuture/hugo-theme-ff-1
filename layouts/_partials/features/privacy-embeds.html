@@ -1,0 +1,8 @@
+{{- /* The player arrives when the reader presses play, and not before.
+       Loaded only on a page that carries an embed. */ -}}
+{{- if or (.HasShortcode "embed") (.HasShortcode "youtube") (.HasShortcode "vimeo") }}
+  {{- with resources.Get "js/embed.js" }}
+    {{- $script := . | js.Build (dict "minify" true) | fingerprint }}
+<script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}" defer></script>
+  {{- end }}
+{{- end }}

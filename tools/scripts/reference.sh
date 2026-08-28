@@ -15,3 +15,17 @@ hugo new theme hugo --themesDir "$dest" >/dev/null
 # The fixture supplies content and config. A theme that carries its own
 # would win over the fixture's and the two builds would not compare.
 rm -rf "$dest/hugo/content" "$dest/hugo/hugo.toml"
+
+# A no-op for every shortcode the theme defines and Hugo does not ship.
+# Without one the fixture could only call Hugo's own, and a theme's
+# additions went untested. The stub renders nothing, so the reference
+# puts nothing where the theme puts something, which is the difference
+# the comparison exists to measure.
+stubs=tools/conformance/stubs.txt
+if [ -f "$stubs" ]; then
+  mkdir -p "$dest/hugo/layouts/_shortcodes"
+  while IFS= read -r name; do
+    case "$name" in ''|\#*) continue ;; esac
+    : > "$dest/hugo/layouts/_shortcodes/$name.html"
+  done < "$stubs"
+fi

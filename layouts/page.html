@@ -1,32 +1,3 @@
 {{ define "main" }}
-  {{- $slots := partialCached "slot-map.html" "features" }}
-  {{- /* The shape Hugo's scaffold renders, in ff-1's bands.
-
-         Nothing inside main carries a class. conform records every
-         classed element, and a build with every feature off has to
-         match the scaffold exactly, so a class here would be a
-         difference no manifest may excuse. The wrappers carry a data
-         attribute instead: they add no content, and the gate reads
-         them exactly as it reads the unclassed div they replace.
-
-         A feature's own classes are declared in its manifest, which is
-         what makes them legible to the gate. */ -}}
-  {{ with index $slots "page.before-title" }}{{ partial "slot.html" (dict "slot" "page.before-title" "page" $) }}{{ end }}
-  <div data-part="head">
-    <h1>{{ .Title }}</h1>
-
-    {{ with index $slots "page.after-title" }}{{ partial "slot.html" (dict "slot" "page.after-title" "page" $) }}{{ end }}
-    {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
-    {{ $dateHuman := .Date | time.Format ":date_long" }}
-    <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
-
-    {{ with .Description }}<p data-part="deck">{{ . }}</p>{{ end }}
-    {{ with index $slots "page.meta" }}{{ partial "slot.html" (dict "slot" "page.meta" "page" $) }}{{ end }}
-  </div>
-
-  {{ with index $slots "page.before-body" }}{{ partial "slot.html" (dict "slot" "page.before-body" "page" $) }}{{ end }}
-  <div data-part="body">{{ .Content }}</div>
-  {{ with index $slots "page.after-body" }}{{ partial "slot.html" (dict "slot" "page.after-body" "page" $) }}{{ end }}
-  {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
-  {{ with index $slots "page.footer" }}{{ partial "slot.html" (dict "slot" "page.footer" "page" $) }}{{ end }}
+  {{ partial "piece.html" . }}
 {{ end }}

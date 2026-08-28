@@ -1,0 +1,23 @@
+{{- /* A video or a track, without the visit to a third party.
+
+       Hugo ships youtube and vimeo, and this does not override either.
+       An override lives in the theme, so it renders on every build,
+       including the one that turns every feature off to compare the
+       theme against Hugo's scaffold. Matching Hugo's own iframe there
+       would mean copying markup that changes when Hugo changes it, and
+       the theme is built against the newest Hugo every week.
+
+       So the shortcode is the theme's own, named for what it does. It
+       is also what the theme it descends from always used.
+
+       Called with at and id:
+
+         embed at="soundcloud" id="https://soundcloud.com/user/track"
+         embed at="youtube" id="aqz-KE-bpKQ" title="What it is"
+         embed at="vimeo" id="55073825" */ -}}
+{{- if partial "feature-on.html" (dict "name" "privacy-embeds" "page" .Page) }}
+  {{- $service := .Get "at" | default "youtube" }}
+  {{- with .Get "id" }}
+    {{- partial "embed.html" (dict "service" $service "id" . "title" ($.Get "title")) }}
+  {{- end }}
+{{- end }}

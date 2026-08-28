@@ -1,0 +1,53 @@
+{{ define "main" }}
+  {{- if partial "feature-on.html" (dict "name" "search" "page" .) }}
+  {{- /* Search over everything the site publishes.
+
+         The index is the page. Every piece is a real row carrying its
+         own signals, and the script ranks what is already there. A
+         reader with the script blocked gets a working index rather
+         than an empty box, and nothing can fall out of step with the
+         page, because there is no second copy of it.
+
+         Hugo will not merge an outputs block from a theme into a
+         site's own, so a theme cannot publish a JSON index and have it
+         take effect without asking the site to add one. This asks for
+         nothing. */ -}}
+  <div data-part="head">
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p data-part="deck">{{ . }}</p>{{ end }}
+  </div>
+  {{ with .Content }}<div data-part="body">{{ . }}</div>{{ end }}
+
+  {{- $pages := where site.RegularPages "Params.private" "!=" true }}
+  <form class="search-form" role="search" action="{{ .RelPermalink }}" method="get">
+    <label for="search-query">{{ i18n "searchLabel" }}</label>
+    <input type="search" id="search-query" name="q" autocomplete="off"
+           placeholder="{{ i18n "searchPlaceholder" }}">
+    <button type="submit">{{ i18n "searchSubmit" }}</button>
+  </form>
+  <p class="search-count" role="status"
+     data-one="{{ i18n "searchCount" (dict "Count" 1) }}"
+     data-many="{{ i18n "searchCount" (dict "Count" 999) }}"
+     data-none="{{ i18n "searchNothing" }}">{{ i18n "searchCount" (dict "Count" (len $pages)) }}</p>
+
+  <ul class="search-results">
+    {{- range $pages }}
+    {{- $tags := slice }}
+    {{- range .GetTerms "tags" }}{{ $tags = $tags | append .LinkTitle }}{{ end }}
+    <li class="search-result"
+        data-s="{{ with .CurrentSection }}{{ cond (eq .LinkTitle $.Title) "" .LinkTitle }}{{ end }}"
+        data-g="{{ delimit $tags " " }}"
+        data-d="{{ .Description }}"
+        data-b="{{ .Plain | replaceRE `\s+` " " | truncate 1200 "" }}">
+      <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+      <p class="search-summary">{{ .Summary | plainify | chomp | truncate 160 }}</p>
+    </li>
+    {{- end }}
+  </ul>
+  {{- else }}
+  {{- /* Switched off, this is an ordinary page. A layout is not a
+         slot, so without this the search markup would render in a
+         build that had turned every feature off. */ -}}
+  {{ partial "piece.html" . }}
+  {{- end }}
+{{ end }}

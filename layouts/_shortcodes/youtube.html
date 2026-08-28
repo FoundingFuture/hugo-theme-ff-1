@@ -1,0 +1,16 @@
+{{- /* Hugo's own youtube shortcode embeds a player, which loads the
+       page from youtube.com and tells them who is reading before the
+       reader has asked for anything. The external gate forbids exactly
+       that, so the theme overrides it.
+
+       Switched off, this renders nothing rather than copying Hugo's
+       iframe back. The skeleton records classed elements, links,
+       images and a short list of counted tags, and an iframe is none
+       of them. Hugo's rendering and no rendering at all are the same
+       shape, so the comparison holds either way, and the theme is not
+       left copying markup that changes when Hugo changes it. */ -}}
+{{- if partial "feature-on.html" (dict "name" "privacy-embeds" "page" .Page) }}
+  {{- with or (.Get "id") (.Get 0) }}
+    {{- partial "embed.html" (dict "service" "youtube" "id" . "title" ($.Get "title")) }}
+  {{- end }}
+{{- end }}

@@ -1,9 +1,0 @@
-[searchLabel]
-other = "Search"
-
-[searchSubmit]
-other = "Search"
-
-[searchCount]
-one = "{{ .Count }} page matches"
-other = "{{ .Count }} pages match"

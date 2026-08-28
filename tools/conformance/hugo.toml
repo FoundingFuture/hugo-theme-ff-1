@@ -54,7 +54,7 @@ enableGitInfo = false
   home = ["html", "rss"]
   section = ["html", "rss"]
 
-[params.privacyEmbeds]
+[params.ff-1]
   # Fetching a poster needs the network at build time. The conformance
   # build stays offline and deterministic, so it is off here.
   fetchPosters = false

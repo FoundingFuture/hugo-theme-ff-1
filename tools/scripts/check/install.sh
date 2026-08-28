@@ -120,34 +120,5 @@ if build plain; then
   done < <(grep -o 'href="[^"]*"' "$site/public-plain/index.html" | cut -d'"' -f2 | sort -u)
 fi
 
-# 2. One build per component, configured out of its own README. Two
-#    components both writing [module] cannot share one config file, and
-#    separately is how a site adopts them anyway.
-for component in features/*/; do
-  component="${component%/}"
-  label="$(basename "$component")"
-  [ -f "$component/README.md" ] || continue
-  block="$(instructions "$component/README.md")"
-  [ -n "$block" ] || {
-    report "$component/README.md:1: no toml block. A component says how it is installed."
-    continue
-  }
-  { config; printf '\n%s\n' "$block"; } > "$site/hugo.toml"
-  build "$label" || continue
-  case "$label" in
-    search)
-      holds "$label" find/index.html "search-form"
-      holds "$label" index.json '"title"'
-      size="$(wc -c < "$site/public-$label/index.json" 2>/dev/null || echo 0)"
-      [ "$size" -le 1572864 ] || report "install:1: the index is $((size / 1024)) KB, over the limit it claims."
-      ;;
-    privacy-embeds)
-      holds "$label" posts/one/index.html "embed-youtube"
-      grep -q "<iframe" "$site/public-$label/posts/one/index.html" 2>/dev/null && \
-        report "install:1: $label is mounted and an iframe still reaches another host."
-      ;;
-  esac
-done
-
-[ "$status" -eq 0 ] && printf '%s\n' "install: a bare site built on the zip, and every component out of its README"
+[ "$status" -eq 0 ] && printf '%s\n' "install: a bare site built on the zip, with nothing mounted"
 exit $status

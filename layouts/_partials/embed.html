@@ -1,0 +1,65 @@
+{{- /* A video or a track, without the visit to a third party.
+
+       What ships is a picture and a play button, both served from this
+       domain. Nothing is fetched from YouTube, Vimeo or SoundCloud
+       until a reader asks for it, so a page carrying a video costs a
+       page's worth of requests rather than a megabyte of somebody
+       else's player.
+
+       The poster is pulled once, when the site is built, and stored
+       beside it. With no script the button is a plain link to the
+       original, which is what a reader wants anyway when the player
+       will not run.
+
+       @context {string} service  youtube, vimeo or soundcloud
+       @context {string} id       the video id, or the track's url
+       @context {string} title    what to call it, or empty */ -}}
+{{- $service := .service }}
+{{- $id := .id }}
+{{- $title := .title | default "" }}
+{{- $href := "" }}{{ $src := "" }}{{ $poster := "" }}{{ $remote := "" }}{{ $label := "" }}
+{{- if eq $service "youtube" }}
+  {{- $href = printf "https://www.youtube.com/watch?v=%s" $id }}
+  {{- $src = printf "https://www.youtube-nocookie.com/embed/%s?autoplay=1&rel=0" $id }}
+  {{- $remote = printf "https://i.ytimg.com/vi/%s/hqdefault.jpg" $id }}
+  {{- $label = i18n "playOnYoutube" }}
+{{- else if eq $service "vimeo" }}
+  {{- $href = printf "https://vimeo.com/%s" $id }}
+  {{- $src = printf "https://player.vimeo.com/video/%s?autoplay=1" $id }}
+  {{- $label = i18n "playOnVimeo" }}
+{{- else if eq $service "soundcloud" }}
+  {{- $href = $id }}
+  {{- $src = printf "https://w.soundcloud.com/player/?url=%s&auto_play=true" (urlquery $id) }}
+  {{- $label = i18n "playOnSoundcloud" }}
+{{- end }}
+
+{{- /* Fetching needs the network while the site builds. A build that
+       cannot reach out still produces the page, with a plain link in
+       place of the picture. The failure is said out loud rather than
+       swallowed, because a poster that quietly stopped arriving is a
+       page that quietly got worse. */ -}}
+{{- if and $remote (index site.Params "ff-1" "fetchPosters" | default true) }}
+  {{- with try (resources.GetRemote $remote) }}
+    {{- with .Err }}
+      {{- warnf "embed: the poster at %s could not be fetched: %s" $remote . }}
+    {{- else with .Value }}
+      {{- /* WebP where Hugo can write one. The check on the extended
+             edition was disabled in 0.153.2, so asking the binary is
+             the only way left to know. */ -}}
+      {{- $format := cond hugo.IsExtended "webp" "jpg" }}
+      {{- $poster = (.Fill (printf "960x540 top %s q80" $format)).RelPermalink }}
+    {{- else }}
+      {{- warnf "embed: nothing came back from %s" $remote }}
+    {{- end }}
+  {{- end }}
+{{- end }}
+
+<figure class="embed embed-{{ $service }}" data-src="{{ $src }}" data-title="{{ $title }}">
+  <a class="embed-link" rel="external noopener" href="{{ $href }}">
+    {{- with $poster }}
+    <img src="{{ . }}" alt="" loading="lazy">
+    {{- end }}
+    <span class="embed-title">{{ with $title }}{{ . }}{{ else }}{{ $label }}{{ end }}</span>
+  </a>
+  <figcaption class="embed-caption">{{ i18n "embedElsewhere" (dict "Service" (title $service)) }}</figcaption>
+</figure>

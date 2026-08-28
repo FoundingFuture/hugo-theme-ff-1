@@ -1,8 +1,0 @@
-[watchOnYouTube]
-other = "Watch this video on YouTube"
-
-[watchOnVimeo]
-other = "Watch this video on Vimeo"
-
-[embedElsewhere]
-other = "Hosted on {{ .Service }}. Nothing is loaded until the link is followed."

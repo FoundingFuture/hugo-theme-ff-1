@@ -1,20 +1,23 @@
 name = "privacy-embeds"
-# A component renders through its shortcodes, not through a slot. It
-# has no partial, because a partial nothing calls is an unused template.
-slot = "none"
+# Part of the theme rather than a component a site mounts. It overrides
+# two shortcodes Hugo ships and adds one Hugo has none for, so a site
+# gets it by installing the theme and nothing else.
+slot = "body.end"
 weight = 90
 default = true
-level = "component"
-kinds = ["page"]
-css = "css/privacy-embeds.css"
-i18n = ["watchOnYouTube", "watchOnVimeo", "embedElsewhere"]
+level = "toggle"
+kinds = ["page", "section", "home", "term", "taxonomy"]
+partial = "features/privacy-embeds.html"
+css = "css/features/privacy-embeds.css"
+i18n = ["playOnYoutube", "playOnVimeo", "playOnSoundcloud", "embedElsewhere"]
 
 [skeleton]
-  # The component overrides three shortcodes Hugo ships. What it adds is
-  # a figure holding a link, in place of an iframe from another host.
+  # A figure holding a link and a poster, in place of an iframe from
+  # another host. The player replaces it only when a reader presses it.
   text = [
     "figure.embed", "figure.embed-youtube", "figure.embed-vimeo",
-    "span.embed-title", "figcaption.embed-caption",
+    "figure.embed-soundcloud", "span.embed-title", "figcaption.embed-caption",
   ]
   links = ["figure.embed"]
+  images = ["figure.embed"]
   counts = ["figure"]

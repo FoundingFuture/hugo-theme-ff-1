@@ -1,0 +1,36 @@
+/* Search: the index is the page, so the list is the search. */
+.search-form{
+  display:flex;gap:.6rem;align-items:center;flex-wrap:wrap;
+  padding:.8rem var(--pad);background:var(--sunk);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+.search-form label{
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink);
+}
+.search-form input{
+  flex:1 1 14rem;min-width:0;padding:.4rem .6rem;
+  border:1px solid var(--line);border-radius:3px;background:var(--surface);
+  font-family:var(--text);font-size:.95rem;color:var(--ink);
+}
+.search-form input:focus{outline:2px solid var(--teal);outline-offset:1px}
+.search-form button{
+  padding:.4rem .8rem;cursor:pointer;border:1px solid var(--ink);border-radius:3px;
+  background:var(--ink);color:var(--surface);
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;
+}
+.search-form button:hover{background:var(--teal);border-color:var(--teal)}
+.search-count{
+  margin:0;padding:.5rem var(--pad);border-bottom:1px solid var(--line);
+  font-family:var(--mono);font-size:.7rem;color:var(--muted);
+}
+.search-results{margin:0;padding:0;list-style:none}
+.search-result{
+  padding:.5rem var(--pad);border-bottom:1px solid var(--line);background:var(--surface);
+}
+.search-result:hover{background:var(--sunk)}
+.search-result>a{color:var(--ink);text-decoration:none;font-size:.95rem}
+.search-result>a:hover{color:var(--teal)}
+.search-summary{
+  margin:.15rem 0 0;font-size:.82rem;line-height:1.5;color:var(--muted);
+}

@@ -22,6 +22,7 @@ template does with an empty value.
 | `ff-1.established` | `site.Params.ff-1.established` |
 | `ff-1.features` | `site.Params.ff-1.features` |
 | `ff-1.featuresoff` | `site.Params.ff-1.featuresoff` |
+| `ff-1.fetchPosters` | `site.Params.ff-1.fetchPosters` |
 | `ff-1.palette` | `site.Params.ff-1.palette` |
 | `ff-1.tagline` | `site.Params.ff-1.tagline` |
 
@@ -36,6 +37,7 @@ template does with an empty value.
 | `copy` |
 | `copyright` |
 | `editThisPage` |
+| `embedElsewhere` |
 | `furtherDown` |
 | `lastModified` |
 | `linkToSection` |
@@ -47,9 +49,17 @@ template does with an empty value.
 | `nextPage` |
 | `noMatch` |
 | `pieceCount` |
+| `playOnSoundcloud` |
+| `playOnVimeo` |
+| `playOnYoutube` |
 | `previousPage` |
 | `readingTime` |
 | `related` |
+| `searchCount` |
+| `searchLabel` |
+| `searchNothing` |
+| `searchPlaceholder` |
+| `searchSubmit` |
 | `share` |
 | `subsections` |
 | `wordCount` |

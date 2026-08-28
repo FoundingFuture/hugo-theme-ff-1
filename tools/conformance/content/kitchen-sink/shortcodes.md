@@ -32,9 +32,16 @@ The body of the details element.
 Hugo ships `youtube` and `vimeo`, and each renders an iframe from
 another host, which the external gate forbids.
 
-The `privacy-embeds` component overrides both with a poster and a link.
-The page loads nothing from elsewhere, and the reader chooses whether to
-leave.
+The theme overrides both with a poster and a link. The page loads
+nothing from elsewhere, and the reader chooses whether to leave.
+
+Switched off, the override renders nothing rather than copying Hugo's
+iframe back. An iframe carries no class, is neither a link nor an
+image, and is not a counted tag, so Hugo's rendering and no rendering
+at all are the same shape to the comparison.
+
+The theme also ships `embed`, which Hugo has no equivalent for, and
+which reaches SoundCloud as well.
 
 {{< youtube id="dQw4w9WgXcQ" >}}
 

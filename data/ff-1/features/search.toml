@@ -1,21 +1,23 @@
 name = "search"
+# Part of the theme rather than a component a site mounts. The index is
+# the page, so nothing has to be added to a site's outputs, and there is
+# nothing left to mount.
 slot = "body.end"
 weight = 5
 default = true
-level = "component"
+level = "toggle"
 kinds = ["page"]
 partial = "features/search.html"
-css = "css/search.css"
-i18n = ["searchLabel", "searchSubmit", "searchCount"]
+css = "css/features/search.css"
+i18n = ["searchLabel", "searchSubmit", "searchCount", "searchPlaceholder", "searchNothing"]
 
 [skeleton]
-  # The search page carries a form and a list of every page. Both are
-  # markup, so a reader with the script blocked still has an index.
+  # The page lists every piece in its markup, so a reader with the
+  # script blocked has a working index rather than an empty box. The
+  # script narrows what is already there.
   text = [
     "form.search-form", "p.search-count", "ul.search-results",
     "li.search-result", "p.search-summary",
   ]
   links = ["li.search-result"]
   counts = ["ul"]
-  # The index the script reads, published by the json output format.
-  files = ["index.json", "*/index.json"]

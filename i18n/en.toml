@@ -76,3 +76,31 @@ other = "Nothing carries all of those together. Drop one."
 
 [clear]
 other = "Clear the selection"
+
+[searchLabel]
+other = "Search"
+
+[searchSubmit]
+other = "Search"
+
+[searchPlaceholder]
+other = "A word from a title, the text or a tag"
+
+[searchNothing]
+other = "Nothing matches that."
+
+[searchCount]
+one = "{{ .Count }} piece"
+other = "{{ .Count }} pieces"
+
+[playOnYoutube]
+other = "Play on YouTube"
+
+[playOnVimeo]
+other = "Play on Vimeo"
+
+[playOnSoundcloud]
+other = "Play on SoundCloud"
+
+[embedElsewhere]
+other = "Plays from {{ .Service }} once you press it"
