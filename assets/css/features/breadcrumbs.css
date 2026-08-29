@@ -6,7 +6,7 @@
   font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
 }
 .breadcrumbs li{display:flex;align-items:baseline;gap:.5rem}
-.breadcrumbs li+li::before{content:"/";color:var(--line)}
+.breadcrumbs li+li::before{content:">>";color:var(--line);letter-spacing:-.08em}
 .breadcrumbs a{color:var(--muted);text-decoration:none}
 .breadcrumbs a:hover{color:var(--ink)}
 .breadcrumbs li:last-child a{color:var(--teal)}
