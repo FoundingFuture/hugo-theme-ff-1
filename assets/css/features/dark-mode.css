@@ -37,6 +37,14 @@
 
   /* Lifted off the ground the way the light palette's are pushed onto
      it. Each clears 4.5:1 on all three dark grounds. */
+
+  /* The pager keeps the indigo here. The palette's rose reads on white
+     and disappears into this ground. */
+  --pager-edge:color-mix(in oklab,var(--indigo) 16%, transparent);
+  --pager-edge-lit:color-mix(in oklab,var(--indigo) 34%, transparent);
+
+  /* Categories take the indigo here. */
+  --taxo-categories:var(--indigo);
   --teal:#3FBFB5;
   --indigo:#8B9BF0;
   --rose:#E8879F;
@@ -72,6 +80,14 @@
 
   /* Lifted off the ground the way the light palette's are pushed onto
      it. Each clears 4.5:1 on all three dark grounds. */
+
+  /* The pager keeps the indigo here. The palette's rose reads on white
+     and disappears into this ground. */
+  --pager-edge:color-mix(in oklab,var(--indigo) 16%, transparent);
+  --pager-edge-lit:color-mix(in oklab,var(--indigo) 34%, transparent);
+
+  /* Categories take the indigo here. */
+  --taxo-categories:var(--indigo);
   --teal:#3FBFB5;
   --indigo:#8B9BF0;
   --rose:#E8879F;

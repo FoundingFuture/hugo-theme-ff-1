@@ -60,6 +60,28 @@
      body colour still reads against at full strength: 5.05 to 1 here,
      5.25 in dark. The 45% this started at was 3.33. */
   --tail-end:color-mix(in oklab,var(--muted) 12%, var(--line));
+
+  /* How much larger a formula is set than the text around it.
+     transform.ToMath hands the work to KaTeX, which has no scale of its
+     own: the size is CSS either way. Named here because both output
+     modes read it. */
+
+  /* The pager's edge, at rest and under the pointer. The palette's own
+     rose, so restyling the palette restyles the pager. Dark mode takes
+     the indigo instead: rose carries on a white page and sinks into a
+     dark one. */
+  --pager-edge:color-mix(in oklab,var(--rose) 16%, transparent);
+  --pager-edge-lit:color-mix(in oklab,var(--rose) 34%, transparent);
+
+  /* The accent for the categories chips. A darker cut of the palette's
+     amber, not the amber itself: #B36A1E reads 4.20 to 1 on white and
+     the chips carry text at .86rem, where AA asks 4.5. This is 6.09.
+     Dark mode takes the indigo, which needs no such adjustment. */
+  --taxo-categories:#8F5416;
+
+  /* The column the contents take beside a piece, where there is room. */
+  --toc-rail-width:15rem;
+  --math-scale:1.4;
   --band:3.6rem;
   --band-seen:var(--band);
   --rail:16rem;
