@@ -190,7 +190,7 @@ properties on `:root`:
   --teal:#00706B;  --indigo:#3A49A6;  --rose:#A93356;  --amber:#B36A1E;
   --rail:16rem;              /* the menu's column */
   --pad:1.25rem;             /* the inset content takes from its edges */
-  --crumb-separator:">>";    /* the mark between steps of the trail */
+  --crumb-separator:"\2192";  /* the mark between steps of the trail */
   --crumb-separator-color:#8b979f;
 }
 ```

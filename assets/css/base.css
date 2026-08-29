@@ -26,7 +26,7 @@
   /* The mark between the steps of the trail. It is drawn rather than
      written, so a screen reader never reads it out, and a site changes
      it here rather than by overriding a rule. */
-  --crumb-separator:">>";
+  --crumb-separator:"\2192";
   /* Subordinate to the steps either side of it, and still legible. The
      rule line's colour reads at 1.1 to 1 on the band the trail sits
      in, which is no mark at all. */

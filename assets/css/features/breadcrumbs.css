@@ -6,8 +6,16 @@
   font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
 }
 .breadcrumbs li{display:flex;align-items:baseline;gap:.5rem}
-.breadcrumbs li+li::before{content:var(--crumb-separator, ">>");letter-spacing:-.08em;
-  color:var(--crumb-separator-color, currentColor)}
+/* The arrow is drawn by the display cut, which is the only face this
+   theme ships that carries one. The mono the trail is set in has no
+   U+2192, so naming it here would fall back to whatever the reader's
+   system offers: a different arrow, from a different typeface, on
+   every platform. */
+.breadcrumbs li+li::before{
+  content:var(--crumb-separator, "\2192");
+  font-family:'DisplayCaps',var(--mono);font-weight:400;
+  color:var(--crumb-separator-color, currentColor);
+}
 .breadcrumbs a{color:var(--muted);text-decoration:none}
 .breadcrumbs a:hover{color:var(--ink)}
 .breadcrumbs a[aria-current="page"]{color:var(--teal)}
