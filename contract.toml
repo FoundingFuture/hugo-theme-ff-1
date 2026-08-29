@@ -67,14 +67,18 @@ i18n = [
   "searchNothing",
   "searchPlaceholder",
   "searchSubmit",
+  "searchTerm",
   "share",
   "subsections",
+  "themeDark",
+  "themeLight",
   "wordCount",
 ]
 features = [
   "back-to-top",
   "breadcrumbs",
   "code-copy",
+  "dark-mode",
   "dateline",
   "edit-link",
   "figure-captions",

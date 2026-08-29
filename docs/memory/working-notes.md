@@ -37,6 +37,31 @@ prose *above* any `@example` line or it is read as markup.
 CSS instead: the heading anchor's `#`, the trail's separator, the
 gallery's close. That also keeps a screen reader from reading them.
 
+**Packaging detaches the watcher, and it will invalidate a test.**
+`./c package` does `rm -rf dist/<slug>`, so a server started with
+`--themesDir ../dist` loses the directory it is watching and serves the
+old copy in silence. This is worse than a stale screenshot: a
+before-and-after comparison run across a repack compares a build with
+itself and reports no differences, which reads as proof. **Put a sanity
+check in any such comparison that must show a difference**, and stop if
+it does not.
+
+**The dev loop that avoids all of it.** Point `--themesDir` at a
+directory holding a symlink to the repository, and the server reads the
+sources. No repack, no restart, and `./c package` cannot pull the ground
+out from under it:
+
+```sh
+mkdir -p /tmp/devthemes && ln -s "$PWD" /tmp/devthemes/ff-1
+cd exampleSite && hugo server --themesDir /tmp/devthemes --port 1313 --noBuildLock
+```
+
+**A new feature needs a server restart.** Adding
+`data/<slug>/features/<name>.toml` and its stylesheet while the server
+runs gets the markup but not the CSS: `head/css.html` assembles the
+bundle through `partialCached`, and the resource cache holds the version
+built before the file existed. The feature looks broken and is not.
+
 ## Verifying visually
 
 Nothing in the pipeline looks at the rail, the frame or the footer:
@@ -58,8 +83,9 @@ layout was diagnosed.
 
 ## Outstanding
 
-- **stylelint, eslint, pa11y, Lighthouse and html5validator have never
-  run here.** CI meets them first, over roughly a thousand lines of CSS.
+- Every tool now runs locally after `./c setup` and `./c setup full`,
+  and `./c check` is **30 passed, 0 failed, 0 skipped**. What they found
+  the first time they ran is in `linters-and-browser-support.md`.
 - **`output/visual` has no baseline** until a release writes one.
 - **The tail gradient** is undecided. See `theme-decisions.md`.
 - The narrow layout has been rendered once, at 430px, and matches the

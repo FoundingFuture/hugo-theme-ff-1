@@ -57,6 +57,41 @@ knows.
 kilobytes and a few thousand cost thirty. It is a feature for that
 reason; a very large site turns it off.
 
+## Settled on 2026-08-29
+
+**Search is reachable.** The rail opens with a search box, first child of
+`nav.rail` at every width. It finds the search page by `Layout ==
+"search"` through `partialCached "find-page.html"` keyed on the
+language, so the URL is never written in the theme. It is a plain GET;
+`search.js` already read `?q=` on arrival, so the box needs no script.
+Its class is `findbox` and **not** `search-form`: `search.js` binds the
+first `.search-form` it finds and the rail stands before `main`, so
+sharing the class would hand it the rail's box and leave the real form
+dead.
+
+**The footer spans both columns.** `.side` ends at row 3 rather than
+`-1`, because a sticky item paints over a static one and a sidebar still
+spanning to the last row covered the footer's left end once the page was
+scrolled to the bottom.
+
+**An anchor clears the band.** `.strip` is sticky at `top:0`, so a
+heading whose anchor was followed landed underneath it. `--band` is the
+height the band asks for and `--band-seen` the height it gets: between 34
+and 60rem the brand cell spans two rows and the grid stretches it.
+Raising `--band` there feeds straight back into the row and grows it
+again, which is why they are two names.
+
+**Dark mode.** A sun and a moon in the corner of the brand cell, written
+to `localStorage`, applied from the head before first paint. With nothing
+chosen the page follows `prefers-color-scheme`; an explicit choice wins
+either way. The palette is the theme's own custom properties given other
+values, so a site that restyled the theme gets its own dark mode free.
+`--brand-bg` and `--brand-fg` exist because the slab must **not** invert:
+painted with `--ink` it would become the brightest thing on a dark page.
+
+**`--muted` is `#5A6874`.** The old `#78868F` failed WCAG AA on all three
+grounds. See `linters-and-browser-support.md`.
+
 ## Still undecided
 
 The **tail gradient**: `main::after` fills the space between the last

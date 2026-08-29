@@ -68,6 +68,9 @@ template does with an empty value.
 | `searchNothing` |
 | `searchPlaceholder` |
 | `searchSubmit` |
+| `searchTerm` |
 | `share` |
 | `subsections` |
+| `themeDark` |
+| `themeLight` |
 | `wordCount` |
