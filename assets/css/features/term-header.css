@@ -1,0 +1,17 @@
+/* The band above the pieces under one term. */
+.term-head{border-top:1px solid var(--line)}
+.term-head>h2{
+  display:flex;align-items:baseline;gap:.75rem;
+  margin:0;padding:.6rem var(--pad);background:var(--sunk);
+  border-bottom:1px solid var(--line);
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink);font-weight:400;
+}
+.term-head .c{font-family:var(--mono);font-size:.7rem;color:var(--muted)}
+/* The way back sits at the far side, and says which way it goes. */
+.term-head .more{
+  margin-left:auto;color:var(--teal);text-decoration:none;
+  font-size:.7rem;letter-spacing:.1em;
+}
+.term-head .more::after{content:" \2192"}
+.term-head .more:hover{border-bottom:1px solid currentColor}

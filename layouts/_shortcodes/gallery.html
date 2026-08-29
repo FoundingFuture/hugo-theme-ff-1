@@ -43,7 +43,7 @@
   <figure>
     <img src="{{ $full.RelPermalink }}" width="{{ $full.Width }}" height="{{ $full.Height }}"
          alt="{{ $r.cap }}">
-    <figcaption>{{ $r.cap }}</figcaption>
+    <figcaption>{{ $r.cap }}<span>{{ i18n "galleryPosition" (dict "Index" (add $i 1) "Total" $n) }}</span></figcaption>
   </figure>
   {{- if gt $n 1 }}
   <a class="step back" href="{{ $prev }}" aria-label="{{ i18n "galleryPrevious" }}">&#8249;</a>

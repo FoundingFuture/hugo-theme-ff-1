@@ -18,5 +18,9 @@
   {{- range $trail }}
   <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
   {{- end }}
+  {{- /* A line a site can carry at the end of the trail. It sits under
+         the theme's namespace, so nothing of the site's own collides
+         with it. */ -}}
+  {{- with index site.Params "ff-1" "formula" }}<li class="formula">{{ . }}</li>{{ end }}
 </ol>
 {{- end }}

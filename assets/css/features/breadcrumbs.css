@@ -10,3 +10,7 @@
 .breadcrumbs a{color:var(--muted);text-decoration:none}
 .breadcrumbs a:hover{color:var(--ink)}
 .breadcrumbs li:last-child a{color:var(--teal)}
+/* A line a site carries at the end of the trail, pushed to the far
+   side so it reads as an aside rather than as another step. */
+.breadcrumbs .formula{margin-left:auto;text-transform:none;letter-spacing:.02em;color:var(--amber)}
+.breadcrumbs .formula::before{content:none}

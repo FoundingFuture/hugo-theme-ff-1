@@ -6,6 +6,7 @@
     {{ with .Description }}<p data-part="deck">{{ . }}</p>{{ end }}
   </div>
   {{ with .Content }}<div data-part="body">{{ . }}</div>{{ end }}
+  {{ with index $slots "page.before-body" }}{{ partial "slot.html" (dict "slot" "page.before-body" "page" $) }}{{ end }}
   {{ with .Pages }}
     {{ partial "index-rows.html" (dict "pages" .) }}
   {{ end }}

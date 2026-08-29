@@ -1,31 +1,20 @@
-{{- /* Rendered only from three headings up. On a shorter page a table
-       of contents is longer than the reading it saves.
+{{- /* What is on this page, before the reader commits to it.
 
-       .Fragments.Headings is a tree whose first node is a synthetic
-       root, with no identifier and no title. Ranging it directly put
-       an empty link on every page. Only a node with an identifier is
-       an entry, and the walk descends through the ones that are not. */ -}}
-{{- if ge (len .Fragments.Identifiers) 3 }}
-<nav class="toc" aria-label="{{ i18n "contents" }}">
-  <ol>
-    {{- partial "inline/toc-branch.html" (dict "headings" .Fragments.Headings) }}
-  </ol>
-</nav>
-{{- end }}
+       Rendered from three headings up. On a shorter page a table of
+       contents is longer than the reading it saves.
 
-{{- define "_partials/inline/toc-branch.html" }}
-  {{- range .headings }}
-    {{- if .ID }}
-    <li>
-      <a href="#{{ .ID }}">{{ .Title }}</a>
-      {{- with .Headings }}
-      <ol>{{ partial "inline/toc-branch.html" (dict "headings" .) }}</ol>
-      {{- end }}
-    </li>
-    {{- else }}
-      {{- with .Headings }}
-        {{- partial "inline/toc-branch.html" (dict "headings" .) }}
-      {{- end }}
-    {{- end }}
-  {{- end }}
+       It folds, as it did in the theme this one descends from. A long
+       piece can carry twenty headings, and a list of them above the
+       first paragraph is a wall between the reader and the writing.
+
+       Fragments.ToHTML takes the start level, the end level and the
+       list type as arguments. TableOfContents obeys the site's own
+       markup.tableOfContents instead, which a theme cannot pin, so the
+       same piece would render a different contents on two sites. */ -}}
+{{- $n := len .Fragments.Identifiers }}
+{{- if ge $n 3 }}
+<details class="toc">
+  <summary><span class="nm">{{ i18n "contents" }}</span><span class="n">{{ $n }}</span><span class="chev" aria-hidden="true"></span></summary>
+  {{ .Fragments.ToHTML 2 3 false }}
+</details>
 {{- end }}

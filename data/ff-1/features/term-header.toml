@@ -1,0 +1,14 @@
+name = "term-header"
+slot = "page.before-body"
+weight = 5
+default = true
+level = "toggle"
+kinds = ["term"]
+partial = "features/term-header.html"
+css = "css/features/term-header.css"
+i18n = ["piecesTitle", "allTerms"]
+
+[skeleton]
+  text = ["section.term-head", "span.c", "a.more"]
+  headings = ["section.term-head"]
+  links = ["section.term-head"]

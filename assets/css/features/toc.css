@@ -1,13 +1,29 @@
-/* What is on this page, before the reader commits to it. */
+/* What is on this page. It folds, so a long list is not a wall between
+   the reader and the writing. */
 .toc{
-  margin:0;padding:.75rem var(--pad) .85rem;
-  background:var(--sunk);border-bottom:1px solid var(--line);
+  margin:0;background:var(--sunk);border-bottom:1px solid var(--line);
 }
-.toc ol{margin:0;padding-left:1.1rem}
-.toc ol ol{padding-left:.9rem}
-.toc li{margin:.12rem 0}
-.toc a{
+.toc>summary{
+  display:flex;align-items:center;gap:.5rem;cursor:pointer;list-style:none;
+  padding:.5rem var(--pad);
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink);
+}
+.toc>summary::-webkit-details-marker{display:none}
+.toc>summary:hover{color:var(--teal)}
+.toc>summary .n{font-size:.7rem;color:var(--muted)}
+.toc>summary .chev{
+  margin-left:auto;width:.42rem;height:.42rem;
+  border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;
+  transform:rotate(45deg);margin-top:-.2rem;transition:transform .25s ease;
+}
+.toc[open]>summary .chev{transform:rotate(-135deg);margin-top:.1rem}
+.toc nav{padding:0 var(--pad) .8rem}
+.toc nav ul{margin:0;padding-left:1.1rem;list-style:disc}
+.toc nav ul ul{padding-left:.9rem}
+.toc nav li{margin:.12rem 0}
+.toc nav a{
   color:var(--body);text-decoration:none;font-size:.86rem;line-height:1.4;
   border-bottom:1px solid transparent;
 }
-.toc a:hover{color:var(--teal);border-bottom-color:currentColor}
+.toc nav a:hover{color:var(--teal);border-bottom-color:currentColor}

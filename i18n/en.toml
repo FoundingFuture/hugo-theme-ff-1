@@ -113,3 +113,12 @@ other = "Previous picture"
 
 [galleryNext]
 other = "Next picture"
+
+[piecesTitle]
+other = "Pieces"
+
+[allTerms]
+other = "All {{ .Taxonomy }}"
+
+[galleryPosition]
+other = "{{ .Index }} of {{ .Total }}"

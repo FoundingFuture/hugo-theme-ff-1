@@ -1,0 +1,12 @@
+{{- /* The band above the pieces filed under one term, and the way back
+       to all of them.
+
+       The trail leads back too, but the band is where a reader is
+       looking once they have started reading the list. */ -}}
+<section class="term-head">
+  <h2>{{ i18n "piecesTitle" }}<span class="c">{{ len .Pages }}</span>
+    {{- with .Parent }}
+    <a class="more" href="{{ .RelPermalink }}">{{ i18n "allTerms" (dict "Taxonomy" $.Data.Plural) }}</a>
+    {{- end }}
+  </h2>
+</section>

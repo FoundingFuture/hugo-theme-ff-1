@@ -23,6 +23,7 @@ template does with an empty value.
 | `ff-1.features` | `site.Params.ff-1.features` |
 | `ff-1.featuresoff` | `site.Params.ff-1.featuresoff` |
 | `ff-1.fetchPosters` | `site.Params.ff-1.fetchPosters` |
+| `ff-1.formula` | `site.Params.ff-1.formula` |
 | `ff-1.palette` | `site.Params.ff-1.palette` |
 | `ff-1.tagline` | `site.Params.ff-1.tagline` |
 
@@ -30,6 +31,7 @@ template does with an empty value.
 
 | Key |
 |---|
+| `allTerms` |
 | `backToTop` |
 | `breadcrumbs` |
 | `clear` |
@@ -41,6 +43,7 @@ template does with an empty value.
 | `furtherDown` |
 | `galleryClose` |
 | `galleryNext` |
+| `galleryPosition` |
 | `galleryPrevious` |
 | `lastModified` |
 | `linkToSection` |
@@ -52,6 +55,7 @@ template does with an empty value.
 | `nextPage` |
 | `noMatch` |
 | `pieceCount` |
+| `piecesTitle` |
 | `playOnSoundcloud` |
 | `playOnVimeo` |
 | `playOnYoutube` |
