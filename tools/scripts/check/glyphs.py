@@ -39,6 +39,10 @@ SCANNED = ["layouts/**/*.html", "i18n/*.toml"]
 def stylesheet():
     text = ""
     for path in sorted(glob.glob(os.path.join(CSS, "**", "*.css"), recursive=True)):
+        # A minified library ships its own faces and its own marks.
+        # Neither is the theme's to answer for.
+        if path.endswith(".min.css"):
+            continue
         text += open(path, encoding="utf-8").read() + "\n"
     return re.sub(r"/\*.*?\*/", " ", text, flags=re.S)
 

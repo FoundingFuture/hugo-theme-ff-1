@@ -24,6 +24,7 @@ template does with an empty value.
 | `ff-1.featuresoff` | `site.Params.ff-1.featuresoff` |
 | `ff-1.fetchPosters` | `site.Params.ff-1.fetchPosters` |
 | `ff-1.formula` | `site.Params.ff-1.formula` |
+| `ff-1.katex` | `site.Params.ff-1.katex` |
 | `ff-1.palette` | `site.Params.ff-1.palette` |
 | `ff-1.tagline` | `site.Params.ff-1.tagline` |
 

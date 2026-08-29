@@ -21,5 +21,10 @@ the pipeline that measures it.
   SoundCloud.
 - Five shortcodes for a piece: `lead`, `pull`, `columns`, `items` and
   `gallery`.
+- Mathematics, rendered while the site builds. A formula becomes
+  MathML, which every current browser draws with no stylesheet and no
+  script. A site wanting KaTeX markup instead sets
+  `params.ff-1.katex.output`, and only then is the KaTeX stylesheet
+  linked, and only on a page carrying a formula.
 - Everything under one namespace, `ff-1`, in both `data` and `params`,
   so a site's own keys cannot collide with the theme's.

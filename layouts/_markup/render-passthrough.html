@@ -1,0 +1,35 @@
+{{- /* Render one passthrough span with the KaTeX that Hugo embeds.
+
+       Goldmark hands over the text between the delimiters. transform.ToMath
+       returns MathML by default, which every current browser renders with
+       no stylesheet. A site that sets params.ff-1.katex.output to htmlAndMathml
+       or html gets the KaTeX markup as well, and the head partial then
+       links the KaTeX stylesheet on the pages that carry a formula.
+
+       A formula KaTeX cannot parse fails the build. A page that ships a
+       broken formula is worse than a build that stops and says which line.
+
+       @context {string} Inner The text between the delimiters.
+       @context {string} Type block or inline.
+       @context {string} Position The file, line and column of the span.
+       @context {page} Page The page being rendered. */ -}}
+{{- /* Switched off, the text between the delimiters is written back
+       out as it was. A render hook always overrides, so there is no
+       leaving it to Hugo, and a formula neither rendered nor returned
+       is content the page simply loses. Plain text is not part of a
+       page's shape, so the comparison sees the same page either way. */ -}}
+{{- if not (partial "feature-on.html" (dict "name" "katex" "page" .Page)) }}
+  {{- .Inner }}
+{{- else }}
+{{- $output := "mathml" }}
+{{- with index site.Params "ff-1" "katex" }}{{ with .output }}{{ $output = . }}{{ end }}{{ end }}
+{{- $opts := dict "output" $output "displayMode" (eq .Type "block") "throwOnError" true }}
+{{- with try (transform.ToMath .Inner $opts) }}
+  {{- with .Err }}
+    {{- errorf "%s: %s" $.Position . }}
+  {{- else }}
+    {{- .Value }}
+  {{- end }}
+{{- end }}
+{{- .Page.Store.Set "hasMath" true }}
+{{- end }}

@@ -16,3 +16,12 @@
 <meta property="og:description" content="{{ $description }}">
 <meta property="og:type" content="{{ cond .IsPage "article" "website" }}">
 <meta property="og:url" content="{{ .Permalink }}">
+{{- /* The stylesheet a formula needs, on the pages that carry one.
+
+       Called here rather than registered for the head slot. A slot with
+       one feature in it is a partial call on every page of the site,
+       and the scale fixture reported it. The head is where a stylesheet
+       link belongs anyway. */ -}}
+{{- if partial "feature-on.html" (dict "name" "katex" "page" .) }}
+  {{- partial "features/katex.html" . }}
+{{- end }}

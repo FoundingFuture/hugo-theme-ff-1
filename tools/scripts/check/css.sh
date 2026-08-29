@@ -14,4 +14,4 @@ command -v stylelint >/dev/null 2>&1 || {
 # It is excluded in the file list rather than in the config. The list is
 # resolved from here. The config is resolved from its own directory.
 stylelint --config tools/stylelint.config.mjs \
-  "assets/css/**/*.css" "!assets/css/chroma.css"
+  "assets/css/**/*.css" "!assets/css/chroma.css" "!assets/css/katex/**"

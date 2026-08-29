@@ -1,0 +1,23 @@
+name = "katex"
+# Part of the theme rather than a component a site mounts. Its render
+# hook fires wherever the content carries a formula, and its partial in
+# the head links the stylesheet only when the site asks for KaTeX
+# markup rather than MathML.
+#
+# Neither reaches through a slot. head.html calls the partial, because
+# a slot holding one feature is a partial call on every page of the
+# site and the scale fixture says so.
+slot = "none"
+weight = 30
+default = true
+level = "toggle"
+kinds = ["page", "section", "home", "term", "taxonomy"]
+partial = "features/katex.html"
+css = ""
+
+[skeleton]
+  # With the default output, MathML, a formula is a math element. It has
+  # no class, so the page skeleton records nothing. With KaTeX markup the
+  # formula is wrapped in these spans. The KaTeX rendering inside them
+  # is aria-hidden, which the skeleton leaves out.
+  text = ["span.katex", "span.katex-display", "span.katex-mathml"]
