@@ -86,6 +86,11 @@ other = "Search"
 [searchPlaceholder]
 other = "A word from a title, the text or a tag"
 
+# The rail's field is 11rem wide on a wide screen, so it holds a hint
+# rather than the sentence the search page has room for.
+[searchTerm]
+other = "Search term"
+
 [searchNothing]
 other = "Nothing matches that."
 
@@ -122,3 +127,11 @@ other = "All {{ .Taxonomy }}"
 
 [galleryPosition]
 other = "{{ .Index }} of {{ .Total }}"
+
+# The two halves of the theme switch. Neither word is drawn: each is the
+# accessible name of a button whose face is a sun or a moon.
+[themeLight]
+other = "Light theme"
+
+[themeDark]
+other = "Dark theme"

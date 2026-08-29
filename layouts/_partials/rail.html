@@ -28,6 +28,30 @@
 {{- $menuID := "main" }}
 {{- $palette := default (slice "teal" "indigo" "rose" "amber") (index site.Params "ff-1" "palette") }}
 <nav class="rail">
+{{- /* The box comes first, so the rail starts with a way to search
+       rather than with the tree. It is a plain GET to the search page:
+       search.js reads q from the URL on arrival, so the rail needs no
+       script of its own, and a reader without one lands on the page
+       with the whole index listed.
+
+       Not .search-form. search.js binds the first one it finds, and the
+       rail stands before main, so sharing that class would hand it this
+       box and leave the real form on the search page dead. */ -}}
+{{- if partial "feature-on.html" (dict "name" "search" "page" $) }}
+  {{- with partialCached "find-page.html" $ site.Language.Lang }}
+  <form class="findbox" role="search" action="{{ .RelPermalink }}" method="get">
+    {{- /* The name is on the input rather than in a label of its own. A
+           label here read "Search" beside a field placeheld "Search"
+           beside a button reading "Search", which is the same word three
+           times to anyone listening. A placeholder is not an accessible
+           name, so it cannot simply go; aria-label carries it. */ -}}
+    <input type="search" id="rail-q" name="q" autocomplete="off"
+           aria-label="{{ i18n "searchLabel" }}"
+           placeholder="{{ i18n "searchTerm" }}">
+    <button type="submit">{{ i18n "searchSubmit" }}</button>
+  </form>
+  {{- end }}
+{{- end }}
 {{- with index site.Menus $menuID }}
   {{ partial "topictree.html" (dict "page" $ "kind" "menu" "menuID" $menuID
       "entries" . "pieces" slice "parent" false "depth" 0 "group" "" "palette" $palette) }}

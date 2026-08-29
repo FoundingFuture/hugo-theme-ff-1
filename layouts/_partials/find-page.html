@@ -1,0 +1,22 @@
+{{- /*
+The page that lists the search results, or false if the site has none.
+
+A page becomes the search page by saying layout = "search" in its front
+matter, which is how features/search.html recognises it too. The URL is
+never written down in the theme, so a site puts its search page where
+it likes and the rail follows it there.
+
+The rail calls this on every page of the site, and the lookup walks
+site.Pages, so the caller reaches it through partialCached. The variant
+is the language: partialCached keys on name and variant alone, and a
+multilingual build would otherwise serve one language's search page to
+another.
+
+A range over first 1 rather than index 0, because index on an empty
+slice is an error and a site without a search page is not one.
+
+@example: {{ with partialCached "find-page.html" . site.Language.Lang }}{{ .RelPermalink }}{{ end }}
+*/ -}}
+{{- $found := false }}
+{{- range first 1 (where site.Pages "Layout" "search") }}{{ $found = . }}{{ end }}
+{{- return $found }}

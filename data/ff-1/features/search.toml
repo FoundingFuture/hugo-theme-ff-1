@@ -9,7 +9,8 @@ level = "toggle"
 kinds = ["page"]
 partial = "features/search.html"
 css = "css/features/search.css"
-i18n = ["searchLabel", "searchSubmit", "searchCount", "searchPlaceholder", "searchNothing"]
+i18n = ["searchLabel", "searchSubmit", "searchCount", "searchPlaceholder",
+        "searchTerm", "searchNothing"]
 
 [skeleton]
   # The page lists every piece in its markup, so a reader with the
