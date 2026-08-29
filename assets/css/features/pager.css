@@ -6,15 +6,44 @@
   background:var(--line);
 }
 
+/* Colour at the outer edge, fading inward, so the two together frame the
+   foot of the page and point outward from it. Indigo is the palette's,
+   not a blue of this feature's own: a site that restyles the palette
+   restyles this with it.
+   
+   The gradient is layered over the surface rather than replacing it. A
+   fade to transparent alone would let the page's ground through, and the
+   ground behind a piece is not the same colour as the piece. */
 .pager a{
   flex:1 1 0;
   min-width:0;
   padding:.7rem var(--pad);
-  background:var(--surface);
+  background:
+    linear-gradient(to right,var(--pager-edge),transparent 70%),
+    var(--surface);
   text-decoration:none;
   color:var(--ink);
   font-size:.92rem;
   line-height:1.35;
+  transition:background .18s ease;
 }
-.pager a:hover{background:var(--sunk)}
-.pager a+a{text-align:right}
+
+/* The second one is the mirror of the first. */
+.pager a+a{
+  background:
+    linear-gradient(to left,var(--pager-edge),transparent 70%),
+    var(--surface);
+  text-align:right;
+}
+
+.pager a:hover{
+  background:
+    linear-gradient(to right,var(--pager-edge-lit),transparent 70%),
+    var(--surface);
+}
+
+.pager a+a:hover{
+  background:
+    linear-gradient(to left,var(--pager-edge-lit),transparent 70%),
+    var(--surface);
+}
