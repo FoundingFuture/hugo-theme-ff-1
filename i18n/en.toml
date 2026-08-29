@@ -135,3 +135,9 @@ other = "Light theme"
 
 [themeDark]
 other = "Dark theme"
+
+# The heading over the contents in their own column. The fold-out says
+# "Contents"; this names the same list where it stands apart from the
+# piece, in the register the other bands use.
+[articleContents]
+other = "Article contents"

@@ -1,0 +1,89 @@
+/* The contents of a piece, in a column beside it.
+ *
+ * Hidden below the width that has the room for it, and hidden rather
+ * than placed: a display:none element is not a grid item, so it needs no
+ * column in either narrow block. Anything else added to body does, and
+ * forgetting is how a child lands in the wordmark's column.
+ *
+ * Above that width it takes the third column and the fold-out goes,
+ * because they are the same list and a page does not need it twice.
+ */
+.toc-rail{display:none}
+
+@media (min-width:80rem){
+  .toc-rail{
+    display:block;
+    grid-column:3;
+    grid-row:2;
+
+    /* Below the band, which is sticky at the top. --band-seen is the
+       height the band actually occupies, the same property the anchor
+       offset reads, so the two cannot drift apart. */
+    position:sticky;
+    top:calc(var(--band-seen) + 1rem);
+    align-self:start;
+    max-height:calc(100vh - var(--band-seen) - 2rem);
+    overflow-y:auto;
+    padding:0 1.1rem 1rem 0;
+  }
+
+  /* One list, one place. The fold-out is the same fragments. */
+  .toc{display:none}
+}
+
+.toc-rail h2{
+  margin:0 0 .5rem;
+  font-family:var(--mono);
+  font-size:.68rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  font-weight:400;
+  color:var(--muted);
+}
+
+.toc-rail nav{position:relative}
+
+.toc-rail ul{
+  position:relative;
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+
+.toc-rail ul ul{padding-left:.7rem}
+
+.toc-rail a{
+  display:block;
+  position:relative;
+  z-index:1;
+  padding:.2rem .5rem;
+  border-radius:5px;
+  text-decoration:none;
+  font-size:.88rem;
+  line-height:1.35;
+  color:var(--muted);
+  transition:color .18s ease;
+}
+
+.toc-rail a:hover{color:var(--ink)}
+.toc-rail a.on{color:var(--ink)}
+
+/* The rectangle that follows the reading. Drawn by the script, so a page
+   without one has no marker pointing at nothing. It sits under the
+   words, which is why the links carry a z-index of their own. */
+.toc-rail-marker{
+  position:absolute;
+  inset-inline:0;
+  top:0;
+  z-index:0;
+  height:0;
+  border-radius:5px;
+  background:color-mix(in oklab,var(--teal) 14%, var(--surface));
+  box-shadow:inset 2px 0 0 var(--teal);
+  opacity:0;
+  transition:transform .22s cubic-bezier(.22,.61,.36,1),height .22s ease,opacity .18s ease;
+}
+
+@media (prefers-reduced-motion:reduce){
+  .toc-rail-marker{transition:none}
+}

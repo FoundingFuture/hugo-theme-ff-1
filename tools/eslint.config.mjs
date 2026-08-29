@@ -26,6 +26,9 @@ export default [
         // for the same reason as the rest: a typo here should still be
         // an error.
         localStorage: "readonly",
+
+        // toc-rail.js follows the reading down the page.
+        requestAnimationFrame: "readonly",
       },
     },
     rules: {

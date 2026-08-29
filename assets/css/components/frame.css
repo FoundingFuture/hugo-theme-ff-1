@@ -26,6 +26,18 @@ body{
   background:linear-gradient(to right,var(--surface) 0 var(--rail),var(--paper) var(--rail));
 }
 
+/* Wide enough for a third column. The reading column is capped at 78ch
+   and the menu takes 16rem, so below this the contents would be taking
+   room the words need. Above it, the room was going spare.
+
+   Only the columns change. Everything already placed keeps the column it
+   had, and the band widens to cover the new one so the line across the
+   top is still a line across the top. */
+@media (min-width:80rem){
+  body{grid-template-columns:var(--rail) minmax(0,1fr) var(--toc-rail-width)}
+  .strip{grid-column:2 / -1}
+}
+
 /* the logo and the nav travel together, pinned, as one column */
 .side{
   grid-column:1;

@@ -1,0 +1,24 @@
+{{- /* The contents of a piece, in a column beside it.
+
+       The same fragments the fold-out lists, from two headings up to
+       three, so the two never disagree about what is on the page.
+
+       The id goes. Hugo writes id="TableOfContents" into every
+       .Fragments.ToHTML, and the fold-out is still rendered for narrow
+       screens, so keeping it here would put the same id on the page
+       twice. One id, one element, and the validator says so.
+
+       Rendered only where there is something to list. Three headings is
+       what the fold-out asks for as well: below that a contents is
+       longer than the reading it saves. */ -}}
+{{- $n := len .Fragments.Identifiers }}
+{{- if ge $n 3 }}
+<aside class="toc-rail" aria-labelledby="toc-rail-heading">
+  <h2 id="toc-rail-heading">{{ i18n "articleContents" }}</h2>
+  {{ .Fragments.ToHTML 2 3 false | replaceRE `\sid="TableOfContents"` "" | safeHTML }}
+</aside>
+  {{- with resources.Get "js/toc-rail.js" }}
+    {{- $script := . | js.Build (dict "minify" true) | fingerprint }}
+<script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}" defer></script>
+  {{- end }}
+{{- end }}

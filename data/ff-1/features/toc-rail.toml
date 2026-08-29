@@ -1,0 +1,23 @@
+name = "toc-rail"
+# The contents of a piece, in a column of their own beside it, on a
+# screen wide enough to have the room spare.
+#
+# Its own feature rather than part of toc, because the two answer
+# different rooms: a narrow site may want the fold-out and never the
+# column, and a wide one may want the column and never the fold-out.
+# Either switch is one line in a site's config.
+#
+# slot "none" because it is not part of a page: baseof puts it beside
+# main, inside an aside, where the page-shape comparison does not look.
+slot = "none"
+weight = 15
+default = true
+level = "toggle"
+kinds = ["page"]
+partial = "features/toc-rail.html"
+css = "css/features/toc-rail.css"
+i18n = ["articleContents"]
+
+[skeleton]
+  # Nothing. It is an aside, and chrome is not part of a page's shape.
+  text = []

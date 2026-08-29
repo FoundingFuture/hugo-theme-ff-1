@@ -53,6 +53,16 @@
   {{ block "main" . }}{{ end }}
 </main>
 
+{{- /* The contents beside the piece, on a screen with the room for it.
+       An aside, so the page-shape comparison does not read it, and after
+       main, so a reader moving through the document meets the piece
+       before the list of its parts. Below the width it asks for it is
+       display:none, so it never becomes a grid item in either narrow
+       block and needs no column there. */ -}}
+{{- if partial "feature-on.html" (dict "name" "toc-rail" "page" .) }}
+  {{ partial "features/toc-rail.html" . }}
+{{- end }}
+
 <footer class="foot">
   {{ partial "footer.html" . }}
 </footer>
