@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## v0.1.0, 2026-08-29
 
 The theme itself. What came before was the scaffold Hugo generates and
 the pipeline that measures it.
@@ -28,3 +28,18 @@ the pipeline that measures it.
   linked, and only on a page carrying a formula.
 - Everything under one namespace, `ff-1`, in both `data` and `params`,
   so a site's own keys cannot collide with the theme's.
+- A search box at the head of the menu, on every page. It finds the
+  search page by its layout, so the theme never writes the URL down, and
+  it is a plain form: the page it reaches reads the query from the URL,
+  so nothing here needs a script.
+- A dark theme, chosen by a sun and a moon in the corner of the brand
+  cell and remembered in the browser. It is applied before the first
+  paint, so a reader who chose it never sees a white page turn over.
+  With nothing chosen the page follows the system setting. The palette
+  is the theme's own custom properties given other values, so a site
+  that has restyled the theme gets its own dark mode from the same
+  overrides.
+- An article ends by fading out, over its last 300px, whatever its
+  length.
+- Every colour the theme sets meets WCAG AA on every ground it lands
+  on, checked rather than assumed.
