@@ -1,0 +1,114 @@
+{
+  "counts": {
+    "blockquote": 0,
+    "dl": 0,
+    "figure": 0,
+    "ol": 1,
+    "pre": 0,
+    "table": 0,
+    "ul": 0
+  },
+  "h1": "prose",
+  "h1_count": 1,
+  "headings": [
+    [
+      2,
+      "",
+      "An opening statement, set large.",
+      "div.lead"
+    ],
+    [
+      2,
+      "off-state",
+      "Off state",
+      ""
+    ]
+  ],
+  "images": [],
+  "links": [
+    [
+      "/",
+      "Conformance",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/",
+      "Kitchen sink",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/features/",
+      "Features",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/features/prose/",
+      "prose",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/",
+      "Second thing tagwhat it does",
+      "div.list"
+    ],
+    [
+      "#off-state",
+      "",
+      "h2.anchored"
+    ]
+  ],
+  "marked": [
+    [
+      "ol.breadcrumbs",
+      "Conformance Kitchen sink Features prose"
+    ],
+    [
+      "time.dateline",
+      "January 27, 2026"
+    ],
+    [
+      "div.lead",
+      "An opening statement, set large."
+    ],
+    [
+      "div.pull",
+      "A line lifted out of the text."
+    ],
+    [
+      "div.cols",
+      "Running text in two columns, with a rule between them. It is meant for a passage that reads better narrow than wide. A second paragraph, so the rule has something to sit between."
+    ],
+    [
+      "span.nm",
+      "First thing"
+    ],
+    [
+      "span.k",
+      "tag"
+    ],
+    [
+      "span.ds",
+      "what it does"
+    ],
+    [
+      "div.item",
+      "First thing tagwhat it does"
+    ],
+    [
+      "span.nm",
+      "Second thing"
+    ],
+    [
+      "span.k",
+      "tag"
+    ],
+    [
+      "span.ds",
+      "what it does"
+    ],
+    [
+      "div.list",
+      "First thing tagwhat it does Second thing tagwhat it does"
+    ]
+  ]
+}

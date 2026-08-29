@@ -1,0 +1,89 @@
+{
+  "counts": {
+    "blockquote": 0,
+    "dl": 0,
+    "figure": 0,
+    "ol": 1,
+    "pre": 0,
+    "table": 0,
+    "ul": 2
+  },
+  "h1": "Third post",
+  "h1_count": 1,
+  "headings": [
+    [
+      2,
+      "position",
+      "Position",
+      ""
+    ],
+    [
+      2,
+      "",
+      "Related pages",
+      "section.related"
+    ]
+  ],
+  "images": [],
+  "links": [
+    [
+      "/",
+      "Conformance",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/posts/",
+      "Posts",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/posts/post-3/",
+      "Third post",
+      "ol.breadcrumbs"
+    ],
+    [
+      "#position",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "/kitchen-sink/taxonomies/",
+      "Taxonomy terms",
+      "section.related"
+    ],
+    [
+      "/posts/post-2/",
+      "Second post",
+      "section.related"
+    ],
+    [
+      "/posts/post-1/",
+      "First post",
+      "section.related"
+    ],
+    [
+      "/tags/alpha/",
+      "Alpha",
+      ""
+    ],
+    [
+      "/tags/beta/",
+      "Beta",
+      ""
+    ]
+  ],
+  "marked": [
+    [
+      "ol.breadcrumbs",
+      "Conformance Posts Third post"
+    ],
+    [
+      "time.dateline",
+      "February 13, 2026"
+    ],
+    [
+      "section.related",
+      "Related pages Taxonomy terms Second post First post"
+    ]
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "counts": {
+    "blockquote": 0,
+    "dl": 0,
+    "figure": 0,
+    "ol": 1,
+    "pre": 0,
+    "table": 0,
+    "ul": 0
+  },
+  "h1": "Posts",
+  "h1_count": 1,
+  "headings": [
+    [
+      2,
+      "",
+      "Post 3",
+      ""
+    ],
+    [
+      2,
+      "",
+      "Post 2",
+      ""
+    ],
+    [
+      2,
+      "",
+      "Post 1",
+      ""
+    ]
+  ],
+  "images": [],
+  "links": [
+    [
+      "/",
+      "Conformance",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/scaffold/",
+      "Home",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/scaffold/posts/",
+      "Posts",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/scaffold/posts/post-3/",
+      "Post 3",
+      ""
+    ],
+    [
+      "/scaffold/posts/post-2/",
+      "Post 2",
+      ""
+    ],
+    [
+      "/scaffold/posts/post-1/",
+      "Post 1",
+      ""
+    ]
+  ],
+  "marked": [
+    [
+      "ol.breadcrumbs",
+      "Conformance Home Posts"
+    ]
+  ]
+}

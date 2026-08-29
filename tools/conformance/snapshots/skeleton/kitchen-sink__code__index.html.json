@@ -1,0 +1,124 @@
+{
+  "counts": {
+    "blockquote": 0,
+    "dl": 0,
+    "figure": 0,
+    "ol": 1,
+    "pre": 4,
+    "table": 1,
+    "ul": 0
+  },
+  "h1": "Code blocks",
+  "h1_count": 1,
+  "headings": [
+    [
+      2,
+      "fenced-with-a-language",
+      "Fenced with a language",
+      ""
+    ],
+    [
+      2,
+      "fenced-without-a-language",
+      "Fenced without a language",
+      ""
+    ],
+    [
+      2,
+      "highlight-shortcode",
+      "Highlight shortcode",
+      ""
+    ]
+  ],
+  "images": [],
+  "links": [
+    [
+      "/",
+      "Conformance",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/",
+      "Kitchen sink",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/code/",
+      "Code blocks",
+      "ol.breadcrumbs"
+    ],
+    [
+      "#fenced-with-a-language",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "#fenced-without-a-language",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "#highlight-shortcode",
+      "",
+      "h2.anchored"
+    ]
+  ],
+  "marked": [
+    [
+      "ol.breadcrumbs",
+      "Conformance Kitchen sink Code blocks"
+    ],
+    [
+      "time.dateline",
+      "January 17, 2026"
+    ],
+    [
+      "span.nm",
+      "Contents"
+    ],
+    [
+      "span.n",
+      "3"
+    ],
+    [
+      "details.toc",
+      "Contents3 Fenced with a language Fenced without a language Highlight shortcode"
+    ],
+    [
+      "pre.chroma",
+      "package main func main() { println(\"hello\") }"
+    ],
+    [
+      "div.highlight",
+      "package main func main() { println(\"hello\") }"
+    ],
+    [
+      "pre.chroma",
+      "1 2 3 4 5"
+    ],
+    [
+      "td.lntd",
+      "1 2 3 4 5"
+    ],
+    [
+      "pre.chroma",
+      "package main func main() { println(\"numbered\") }"
+    ],
+    [
+      "td.lntd",
+      "package main func main() { println(\"numbered\") }"
+    ],
+    [
+      "table.lntable",
+      "1 2 3 4 5 package main func main() { println(\"numbered\") }"
+    ],
+    [
+      "div.chroma",
+      "1 2 3 4 5 package main func main() { println(\"numbered\") }"
+    ],
+    [
+      "div.highlight",
+      "1 2 3 4 5 package main func main() { println(\"numbered\") }"
+    ]
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "counts": {
+    "blockquote": 0,
+    "dl": 0,
+    "figure": 0,
+    "ol": 1,
+    "pre": 0,
+    "table": 0,
+    "ul": 0
+  },
+  "h1": "Ada",
+  "h1_count": 1,
+  "headings": [
+    [
+      2,
+      "",
+      "Pieces1 All authors",
+      "section.term-head"
+    ],
+    [
+      2,
+      "",
+      "Taxonomy terms",
+      ""
+    ]
+  ],
+  "images": [],
+  "links": [
+    [
+      "/",
+      "Conformance",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/authors/",
+      "Authors",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/authors/ada/",
+      "Ada",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/authors/",
+      "All authors",
+      "section.term-head"
+    ],
+    [
+      "/kitchen-sink/taxonomies/",
+      "Taxonomy terms",
+      ""
+    ]
+  ],
+  "marked": [
+    [
+      "ol.breadcrumbs",
+      "Conformance Authors Ada"
+    ],
+    [
+      "span.c",
+      "1"
+    ],
+    [
+      "section.term-head",
+      "Pieces1 All authors"
+    ]
+  ]
+}

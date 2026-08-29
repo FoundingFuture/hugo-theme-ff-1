@@ -1,0 +1,759 @@
+{
+  "counts": {
+    "blockquote": 0,
+    "dl": 0,
+    "figure": 0,
+    "ol": 0,
+    "pre": 0,
+    "table": 0,
+    "ul": 1
+  },
+  "h1": "Search",
+  "h1_count": 1,
+  "headings": [],
+  "images": [],
+  "links": [
+    [
+      "/kitchen-sink/front-matter-keys/",
+      "Front matter keys",
+      "li.search-result"
+    ],
+    [
+      "/posts/post-7/",
+      "Seventh post",
+      "li.search-result"
+    ],
+    [
+      "/posts/post-6/",
+      "Sixth post",
+      "li.search-result"
+    ],
+    [
+      "/posts/post-5/",
+      "Fifth post",
+      "li.search-result"
+    ],
+    [
+      "/posts/post-4/",
+      "Fourth post",
+      "li.search-result"
+    ],
+    [
+      "/posts/post-3/",
+      "Third post",
+      "li.search-result"
+    ],
+    [
+      "/posts/post-2/",
+      "Second post",
+      "li.search-result"
+    ],
+    [
+      "/posts/post-1/",
+      "First post",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/features/dark-mode/",
+      "dark-mode",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/prose/",
+      "A gallery",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/features/prose/",
+      "prose",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/embeds/",
+      "Embeds",
+      "li.search-result"
+    ],
+    [
+      "/search/",
+      "Search",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/features/back-to-top/",
+      "back-to-top",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/features/breadcrumbs/",
+      "breadcrumbs",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/features/code-copy/",
+      "code-copy",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/features/dateline/",
+      "dateline",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/features/edit-link/",
+      "edit-link",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/features/figure-captions/",
+      "figure-captions",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/features/further-down/",
+      "further-down",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/features/heading-anchors/",
+      "heading-anchors",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/features/katex/",
+      "katex",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/features/kind-label/",
+      "kind-label",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/features/last-modified/",
+      "last-modified",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/features/pager/",
+      "pager",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/features/privacy-embeds/",
+      "privacy-embeds",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/features/rail-pages/",
+      "rail-pages",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/features/reading-time/",
+      "reading-time",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/features/related/",
+      "related",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/features/search/",
+      "search",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/features/share/",
+      "share",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/features/sources/",
+      "sources",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/features/subsection-cards/",
+      "subsection-cards",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/features/tag-narrowing/",
+      "tag-narrowing",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/features/term-header/",
+      "term-header",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/features/toc/",
+      "toc",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/features/word-count/",
+      "word-count",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/long/",
+      "Long page for contents",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/shortcodes/",
+      "Built-in shortcodes",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/goldmark/",
+      "Goldmark extensions",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/translated/",
+      "Translated page",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/entities/",
+      "Fish & \"Chips\" <plate>",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/blockquote/",
+      "Blockquotes",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/code/",
+      "Code blocks",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/links/",
+      "Link forms",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/headings/",
+      "Heading levels",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/taxonomies/",
+      "Taxonomy terms",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/summary-front-matter/",
+      "Summary from front matter",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/summary-divider/",
+      "Summary from a divider",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/no-description/",
+      "Page without a description",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/bundle/",
+      "Leaf bundle",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/sections/deeper/leaf/",
+      "Leaf three levels down",
+      "li.search-result"
+    ],
+    [
+      "/scaffold/posts/post-3/",
+      "Post 3",
+      "li.search-result"
+    ],
+    [
+      "/scaffold/posts/post-2/",
+      "Post 2",
+      "li.search-result"
+    ],
+    [
+      "/scaffold/posts/post-1/",
+      "Post 1",
+      "li.search-result"
+    ],
+    [
+      "/kitchen-sink/no-date/",
+      "Page without a date",
+      "li.search-result"
+    ]
+  ],
+  "marked": [
+    [
+      "form.search-form",
+      "Search Search"
+    ],
+    [
+      "p.search-count",
+      "56 pieces"
+    ],
+    [
+      "p.search-summary",
+      "This page exercises the front matter keys a theme reads. Each key below changes something observable in the built output."
+    ],
+    [
+      "li.search-result",
+      "Front matter keys This page exercises the front matter keys a theme reads. Each key below changes something observable in the built output."
+    ],
+    [
+      "p.search-summary",
+      "This post exercises pagination and date ordering. It is post 7 of seven, and the pager splits the seven into three pages."
+    ],
+    [
+      "li.search-result",
+      "Seventh post This post exercises pagination and date ordering. It is post 7 of seven, and the pager splits the seven into three pages."
+    ],
+    [
+      "p.search-summary",
+      "This post exercises pagination and date ordering. It is post 6 of seven, and the pager splits the seven into three pages."
+    ],
+    [
+      "li.search-result",
+      "Sixth post This post exercises pagination and date ordering. It is post 6 of seven, and the pager splits the seven into three pages."
+    ],
+    [
+      "p.search-summary",
+      "This post exercises pagination and date ordering. It is post 5 of seven, and the pager splits the seven into three pages."
+    ],
+    [
+      "li.search-result",
+      "Fifth post This post exercises pagination and date ordering. It is post 5 of seven, and the pager splits the seven into three pages."
+    ],
+    [
+      "p.search-summary",
+      "This post exercises pagination and date ordering. It is post 4 of seven, and the pager splits the seven into three pages."
+    ],
+    [
+      "li.search-result",
+      "Fourth post This post exercises pagination and date ordering. It is post 4 of seven, and the pager splits the seven into three pages."
+    ],
+    [
+      "p.search-summary",
+      "This post exercises pagination and date ordering. It is post 3 of seven, and the pager splits the seven into three pages."
+    ],
+    [
+      "li.search-result",
+      "Third post This post exercises pagination and date ordering. It is post 3 of seven, and the pager splits the seven into three pages."
+    ],
+    [
+      "p.search-summary",
+      "This post exercises pagination and date ordering. It is post 2 of seven, and the pager splits the seven into three pages."
+    ],
+    [
+      "li.search-result",
+      "Second post This post exercises pagination and date ordering. It is post 2 of seven, and the pager splits the seven into three pages."
+    ],
+    [
+      "p.search-summary",
+      "This post exercises pagination and date ordering. It is post 1 of seven, and the pager splits the seven into three pages."
+    ],
+    [
+      "li.search-result",
+      "First post This post exercises pagination and date ordering. It is post 1 of seven, and the pager splits the seven into three pages."
+    ],
+    [
+      "p.search-summary",
+      "This page exercises the dark-mode feature. The switch itself is in the brand cell, which is chrome, so nothing it renders is part of this page\u2019s shape."
+    ],
+    [
+      "li.search-result",
+      "dark-mode This page exercises the dark-mode feature. The switch itself is in the brand cell, which is chrome, so nothing it renders is part of this page\u2019s shape."
+    ],
+    [
+      "p.search-summary",
+      "The gallery takes page resources, so it is exercised here, on a page that carries pictures rather than beside the other shortcodes."
+    ],
+    [
+      "li.search-result",
+      "A gallery The gallery takes page resources, so it is exercised here, on a page that carries pictures rather than beside the other shortcodes."
+    ],
+    [
+      "p.search-summary",
+      "This page exercises the prose feature. The switch above turns it on, so the elements its manifest declares appear on the page."
+    ],
+    [
+      "li.search-result",
+      "prose This page exercises the prose feature. The switch above turns it on, so the elements its manifest declares appear on the page."
+    ],
+    [
+      "p.search-summary",
+      "Hugo ships youtube and vimeo, and the theme overrides both. It ships nothing for audio, so a track is reached through embed."
+    ],
+    [
+      "li.search-result",
+      "Embeds Hugo ships youtube and vimeo, and the theme overrides both. It ships nothing for audio, so a track is reached through embed."
+    ],
+    [
+      "p.search-summary",
+      "Every page appears below. The script filters the list as a query is typed, and the list stands on its own when no script runs."
+    ],
+    [
+      "li.search-result",
+      "Search Every page appears below. The script filters the list as a query is typed, and the list stands on its own when no script runs."
+    ],
+    [
+      "p.search-summary",
+      "This page exercises the back-to-top feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "li.search-result",
+      "back-to-top This page exercises the back-to-top feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "p.search-summary",
+      "This page exercises the breadcrumbs feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "li.search-result",
+      "breadcrumbs This page exercises the breadcrumbs feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "p.search-summary",
+      "This page exercises the code-copy feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "li.search-result",
+      "code-copy This page exercises the code-copy feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "p.search-summary",
+      "This page exercises the dateline feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "li.search-result",
+      "dateline This page exercises the dateline feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "p.search-summary",
+      "This page exercises the edit-link feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "li.search-result",
+      "edit-link This page exercises the edit-link feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "p.search-summary",
+      "This page exercises the figure-captions feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "li.search-result",
+      "figure-captions This page exercises the figure-captions feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "p.search-summary",
+      "This page exercises the further-down feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "li.search-result",
+      "further-down This page exercises the further-down feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "p.search-summary",
+      "This page exercises the heading-anchors feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "li.search-result",
+      "heading-anchors This page exercises the heading-anchors feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "p.search-summary",
+      "This page exercises the katex component. Each formula below is rendered at build time by the KaTeX inside Hugo. The rendered page carries the integral sign \u2026"
+    ],
+    [
+      "li.search-result",
+      "katex This page exercises the katex component. Each formula below is rendered at build time by the KaTeX inside Hugo. The rendered page carries the integral sign \u2026"
+    ],
+    [
+      "p.search-summary",
+      "This page exercises the kind-label feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "li.search-result",
+      "kind-label This page exercises the kind-label feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "p.search-summary",
+      "This page exercises the last-modified feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "li.search-result",
+      "last-modified This page exercises the last-modified feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "p.search-summary",
+      "This page exercises the pager feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "li.search-result",
+      "pager This page exercises the pager feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "p.search-summary",
+      "This page exercises the privacy-embeds feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "li.search-result",
+      "privacy-embeds This page exercises the privacy-embeds feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "p.search-summary",
+      "This page exercises the rail-pages feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "li.search-result",
+      "rail-pages This page exercises the rail-pages feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "p.search-summary",
+      "This page exercises the reading-time feature. It is deliberately short, so the reading time is one minute and the singular form is the one that renders."
+    ],
+    [
+      "li.search-result",
+      "reading-time This page exercises the reading-time feature. It is deliberately short, so the reading time is one minute and the singular form is the one that renders."
+    ],
+    [
+      "p.search-summary",
+      "This page exercises the related feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "li.search-result",
+      "related This page exercises the related feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "p.search-summary",
+      "This page exercises the search feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "li.search-result",
+      "search This page exercises the search feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "p.search-summary",
+      "This page exercises the share feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "li.search-result",
+      "share This page exercises the share feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "p.search-summary",
+      "This page exercises the sources feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "li.search-result",
+      "sources This page exercises the sources feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "p.search-summary",
+      "This page exercises the subsection-cards feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "li.search-result",
+      "subsection-cards This page exercises the subsection-cards feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "p.search-summary",
+      "This page exercises the tag-narrowing feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "li.search-result",
+      "tag-narrowing This page exercises the tag-narrowing feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "p.search-summary",
+      "This page exercises the term-header feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "li.search-result",
+      "term-header This page exercises the term-header feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "p.search-summary",
+      "This page exercises the toc feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "li.search-result",
+      "toc This page exercises the toc feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "p.search-summary",
+      "This page exercises the word-count feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "li.search-result",
+      "word-count This page exercises the word-count feature. The switch above turns it on, so the element its manifest declares appears on the page."
+    ],
+    [
+      "p.search-summary",
+      "This page exercises a table of contents. Twelve headings follow, which is more than a short page and enough to need navigation."
+    ],
+    [
+      "li.search-result",
+      "Long page for contents This page exercises a table of contents. Twelve headings follow, which is more than a short page and enough to need navigation."
+    ],
+    [
+      "p.search-summary",
+      "This page exercises the shortcodes Hugo ships. A theme may override any of them, and the skeleton records what changes."
+    ],
+    [
+      "li.search-result",
+      "Built-in shortcodes This page exercises the shortcodes Hugo ships. A theme may override any of them, and the skeleton records what changes."
+    ],
+    [
+      "p.search-summary",
+      "This page exercises the Goldmark extensions. Each block below needs its own configuration, and a theme needs styling for each one."
+    ],
+    [
+      "li.search-result",
+      "Goldmark extensions This page exercises the Goldmark extensions. Each block below needs its own configuration, and a theme needs styling for each one."
+    ],
+    [
+      "p.search-summary",
+      "This page exercises translation. A counterpart exists in the second language, and a theme links the two."
+    ],
+    [
+      "li.search-result",
+      "Translated page This page exercises translation. A counterpart exists in the second language, and a theme links the two."
+    ],
+    [
+      "p.search-summary",
+      "This page exercises character escaping in a title. An ampersand, quotation marks and angle brackets all appear in it."
+    ],
+    [
+      "li.search-result",
+      "Fish & \"Chips\" <plate> This page exercises character escaping in a title. An ampersand, quotation marks and angle brackets all appear in it."
+    ],
+    [
+      "p.search-summary",
+      "This page exercises blockquotes. One is at the top level and one is nested inside another."
+    ],
+    [
+      "li.search-result",
+      "Blockquotes This page exercises blockquotes. One is at the top level and one is nested inside another."
+    ],
+    [
+      "p.search-summary",
+      "This page exercises code rendering. A theme styles three cases here, and a render hook may replace any of them."
+    ],
+    [
+      "li.search-result",
+      "Code blocks This page exercises code rendering. A theme styles three cases here, and a render hook may replace any of them."
+    ],
+    [
+      "p.search-summary",
+      "This page exercises the link forms Hugo resolves. Each form below points at something that exists."
+    ],
+    [
+      "li.search-result",
+      "Link forms This page exercises the link forms Hugo resolves. Each form below points at something that exists."
+    ],
+    [
+      "p.search-summary",
+      "This page exercises heading levels. The levels run in order and skip none, which is what a table of contents expects. The page is exempt from the content rules \u2026"
+    ],
+    [
+      "li.search-result",
+      "Heading levels This page exercises heading levels. The levels run in order and skip none, which is what a table of contents expects. The page is exempt from the content rules \u2026"
+    ],
+    [
+      "p.search-summary",
+      "This page exercises three taxonomies at once. Each term produces a term page, and each term page lists this page."
+    ],
+    [
+      "li.search-result",
+      "Taxonomy terms This page exercises three taxonomies at once. Each term produces a term page, and each term page lists this page."
+    ],
+    [
+      "p.search-summary",
+      "This page exercises a front matter summary. The body opens with a paragraph that no list should show."
+    ],
+    [
+      "li.search-result",
+      "Summary from front matter This page exercises a front matter summary. The body opens with a paragraph that no list should show."
+    ],
+    [
+      "p.search-summary",
+      "This page exercises a summary divider. The paragraph above the divider is the summary, and a list shows it alone."
+    ],
+    [
+      "li.search-result",
+      "Summary from a divider This page exercises a summary divider. The paragraph above the divider is the summary, and a list shows it alone."
+    ],
+    [
+      "p.search-summary",
+      "This page exercises a missing description. A theme falls back to the summary, and the first paragraph is long enough that the fallback has to truncate it \u2026"
+    ],
+    [
+      "li.search-result",
+      "Page without a description This page exercises a missing description. A theme falls back to the summary, and the first paragraph is long enough that the fallback has to truncate it \u2026"
+    ],
+    [
+      "p.search-summary",
+      "This page exercises a leaf bundle. Two images live beside the page file, and both are page resources instead of static files."
+    ],
+    [
+      "li.search-result",
+      "Leaf bundle This page exercises a leaf bundle. Two images live beside the page file, and both are page resources instead of static files."
+    ],
+    [
+      "p.search-summary",
+      "This page exercises a leaf page at depth three. A relative link resolved from here reaches a different place than one resolved from the root."
+    ],
+    [
+      "li.search-result",
+      "Leaf three levels down This page exercises a leaf page at depth three. A relative link resolved from here reaches a different place than one resolved from the root."
+    ],
+    [
+      "p.search-summary",
+      "Occaecat aliqua consequat laborum ut ex aute aliqua culpa quis irure esse magna dolore quis. Proident fugiat labore eu laboris officia Lorem enim. Ipsum \u2026"
+    ],
+    [
+      "li.search-result",
+      "Post 3 Occaecat aliqua consequat laborum ut ex aute aliqua culpa quis irure esse magna dolore quis. Proident fugiat labore eu laboris officia Lorem enim. Ipsum \u2026"
+    ],
+    [
+      "p.search-summary",
+      "Anim eiusmod irure incididunt sint cupidatat. Incididunt irure irure irure nisi ipsum do ut quis fugiat consectetur proident cupidatat incididunt cillum. Dolore \u2026"
+    ],
+    [
+      "li.search-result",
+      "Post 2 Anim eiusmod irure incididunt sint cupidatat. Incididunt irure irure irure nisi ipsum do ut quis fugiat consectetur proident cupidatat incididunt cillum. Dolore \u2026"
+    ],
+    [
+      "p.search-summary",
+      "Tempor proident minim aliquip reprehenderit dolor et ad anim Lorem duis sint eiusmod. Labore ut ea duis dolor. Incididunt consectetur proident qui occaecat \u2026"
+    ],
+    [
+      "li.search-result",
+      "Post 1 Tempor proident minim aliquip reprehenderit dolor et ad anim Lorem duis sint eiusmod. Labore ut ea duis dolor. Incididunt consectetur proident qui occaecat \u2026"
+    ],
+    [
+      "p.search-summary",
+      "This page exercises a missing date. A dateline that assumes a date renders the zero time here, which reads as the year one."
+    ],
+    [
+      "li.search-result",
+      "Page without a date This page exercises a missing date. A dateline that assumes a date renders the zero time here, which reads as the year one."
+    ],
+    [
+      "ul.search-results",
+      "Front matter keys This page exercises the front matter keys a theme reads. Each key below changes something observable in the built output. Seventh post This post exercises pagination and date ordering. It is post 7 of seven, and the pager splits the seven into three pages. Sixth post This post exercises pagination and date ordering. It is post 6 of seven, and the pager splits the seven into three pages. Fifth post This post exercises pagination and date ordering. It is post 5 of seven, and the pager splits the seven into three pages. Fourth post This post exercises pagination and date ordering. It is post 4 of seven, and the pager splits the seven into three pages. Third post This post exercises pagination and date ordering. It is post 3 of seven, and the pager splits the seven into three pages. Second post This post exercises pagination and date ordering. It is post 2 of seven, and the pager splits the seven into three pages. First post This post exercises pagination and date ordering. It is post 1 of seven, and the pager splits the seven into three pages. dark-mode This page exercises the dark-mode feature. The switch itself is in the brand cell, which is chrome, so nothing it renders is part of this page\u2019s shape. A gallery The gallery takes page resources, so it is exercised here, on a page that carries pictures rather than beside the other shortcodes. prose This page exercises the prose feature. The switch above turns it on, so the elements its manifest declares appear on the page. Embeds Hugo ships youtube and vimeo, and the theme overrides both. It ships nothing for audio, so a track is reached through embed. Search Every page appears below. The script filters the list as a query is typed, and the list stands on its own when no script runs. back-to-top This page exercises the back-to-top feature. The switch above turns it on, so the element its manifest declares appears on the page. breadcrumbs This page exercises the breadcrumbs feature. The switch above turns it on, so the element its manifest declares appears on the page. code-copy This page exercises the code-copy feature. The switch above turns it on, so the element its manifest declares appears on the page. dateline This page exercises the dateline feature. The switch above turns it on, so the element its manifest declares appears on the page. edit-link This page exercises the edit-link feature. The switch above turns it on, so the element its manifest declares appears on the page. figure-captions This page exercises the figure-captions feature. The switch above turns it on, so the element its manifest declares appears on the page. further-down This page exercises the further-down feature. The switch above turns it on, so the element its manifest declares appears on the page. heading-anchors This page exercises the heading-anchors feature. The switch above turns it on, so the element its manifest declares appears on the page. katex This page exercises the katex component. Each formula below is rendered at build time by the KaTeX inside Hugo. The rendered page carries the integral sign \u2026 kind-label This page exercises the kind-label feature. The switch above turns it on, so the element its manifest declares appears on the page. last-modified This page exercises the last-modified feature. The switch above turns it on, so the element its manifest declares appears on the page. pager This page exercises the pager feature. The switch above turns it on, so the element its manifest declares appears on the page. privacy-embeds This page exercises the privacy-embeds feature. The switch above turns it on, so the element its manifest declares appears on the page. rail-pages This page exercises the rail-pages feature. The switch above turns it on, so the element its manifest declares appears on the page. reading-time This page exercises the reading-time feature. It is deliberately short, so the reading time is one minute and the singular form is the one that renders. related This page exercises the related feature. The switch above turns it on, so the element its manifest declares appears on the page. search This page exercises the search feature. The switch above turns it on, so the element its manifest declares appears on the page. share This page exercises the share feature. The switch above turns it on, so the element its manifest declares appears on the page. sources This page exercises the sources feature. The switch above turns it on, so the element its manifest declares appears on the page. subsection-cards This page exercises the subsection-cards feature. The switch above turns it on, so the element its manifest declares appears on the page. tag-narrowing This page exercises the tag-narrowing feature. The switch above turns it on, so the element its manifest declares appears on the page. term-header This page exercises the term-header feature. The switch above turns it on, so the element its manifest declares appears on the page. toc This page exercises the toc feature. The switch above turns it on, so the element its manifest declares appears on the page. word-count This page exercises the word-count feature. The switch above turns it on, so the element its manifest declares appears on the page. Long page for contents This page exercises a table of contents. Twelve headings follow, which is more than a short page and enough to need navigation. Built-in shortcodes This page exercises the shortcodes Hugo ships. A theme may override any of them, and the skeleton records what changes. Goldmark extensions This page exercises the Goldmark extensions. Each block below needs its own configuration, and a theme needs styling for each one. Translated page This page exercises translation. A counterpart exists in the second language, and a theme links the two. Fish & \"Chips\" <plate> This page exercises character escaping in a title. An ampersand, quotation marks and angle brackets all appear in it. Blockquotes This page exercises blockquotes. One is at the top level and one is nested inside another. Code blocks This page exercises code rendering. A theme styles three cases here, and a render hook may replace any of them. Link forms This page exercises the link forms Hugo resolves. Each form below points at something that exists. Heading levels This page exercises heading levels. The levels run in order and skip none, which is what a table of contents expects. The page is exempt from the content rules \u2026 Taxonomy terms This page exercises three taxonomies at once. Each term produces a term page, and each term page lists this page. Summary from front matter This page exercises a front matter summary. The body opens with a paragraph that no list should show. Summary from a divider This page exercises a summary divider. The paragraph above the divider is the summary, and a list shows it alone. Page without a description This page exercises a missing description. A theme falls back to the summary, and the first paragraph is long enough that the fallback has to truncate it \u2026 Leaf bundle This page exercises a leaf bundle. Two images live beside the page file, and both are page resources instead of static files. Leaf three levels down This page exercises a leaf page at depth three. A relative link resolved from here reaches a different place than one resolved from the root. Post 3 Occaecat aliqua consequat laborum ut ex aute aliqua culpa quis irure esse magna dolore quis. Proident fugiat labore eu laboris officia Lorem enim. Ipsum \u2026 Post 2 Anim eiusmod irure incididunt sint cupidatat. Incididunt irure irure irure nisi ipsum do ut quis fugiat consectetur proident cupidatat incididunt cillum. Dolore \u2026 Post 1 Tempor proident minim aliquip reprehenderit dolor et ad anim Lorem duis sint eiusmod. Labore ut ea duis dolor. Incididunt consectetur proident qui occaecat \u2026 Page without a date This page exercises a missing date. A dateline that assumes a date renders the zero time here, which reads as the year one."
+    ]
+  ]
+}

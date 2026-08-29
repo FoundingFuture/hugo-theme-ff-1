@@ -1,0 +1,165 @@
+{
+  "counts": {
+    "blockquote": 1,
+    "dl": 1,
+    "figure": 0,
+    "ol": 2,
+    "pre": 0,
+    "table": 1,
+    "ul": 1
+  },
+  "h1": "Goldmark extensions",
+  "h1_count": 1,
+  "headings": [
+    [
+      2,
+      "table",
+      "Table",
+      ""
+    ],
+    [
+      2,
+      "definition-list",
+      "Definition list",
+      ""
+    ],
+    [
+      2,
+      "task-list",
+      "Task list",
+      ""
+    ],
+    [
+      2,
+      "strikethrough-and-footnote",
+      "Strikethrough and footnote",
+      ""
+    ],
+    [
+      2,
+      "alert",
+      "Alert",
+      ""
+    ],
+    [
+      2,
+      "custom-id",
+      "Heading with an identifier",
+      ""
+    ],
+    [
+      2,
+      "mathematics",
+      "Mathematics",
+      ""
+    ],
+    [
+      2,
+      "emoji",
+      "Emoji",
+      ""
+    ]
+  ],
+  "images": [],
+  "links": [
+    [
+      "/",
+      "Conformance",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/",
+      "Kitchen sink",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/goldmark/",
+      "Goldmark extensions",
+      "ol.breadcrumbs"
+    ],
+    [
+      "#table",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "#definition-list",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "#task-list",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "#strikethrough-and-footnote",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "#fn:1",
+      "1",
+      ""
+    ],
+    [
+      "#alert",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "#custom-id",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "#mathematics",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "#emoji",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "#fnref:1",
+      "\u21a9\ufe0e",
+      "div.footnotes"
+    ]
+  ],
+  "marked": [
+    [
+      "ol.breadcrumbs",
+      "Conformance Kitchen sink Goldmark extensions"
+    ],
+    [
+      "time.dateline",
+      "January 21, 2026"
+    ],
+    [
+      "span.nm",
+      "Contents"
+    ],
+    [
+      "span.n",
+      "8"
+    ],
+    [
+      "details.toc",
+      "Contents8 Table Definition list Task list Strikethrough and footnote Alert Heading with an identifier Mathematics Emoji"
+    ],
+    [
+      "span.katex",
+      "a2+b2=c2a^2 + b^2 = c^2"
+    ],
+    [
+      "span.katex",
+      "\u222b01x2 dx=13 \\int_0^1 x^2 \\, dx = \\frac{1}{3}"
+    ],
+    [
+      "div.footnotes",
+      "The footnote body. \u21a9\ufe0e"
+    ]
+  ]
+}

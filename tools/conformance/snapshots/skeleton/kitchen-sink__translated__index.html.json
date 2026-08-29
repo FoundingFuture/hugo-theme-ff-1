@@ -1,0 +1,54 @@
+{
+  "counts": {
+    "blockquote": 0,
+    "dl": 0,
+    "figure": 0,
+    "ol": 1,
+    "pre": 0,
+    "table": 0,
+    "ul": 0
+  },
+  "h1": "Translated page",
+  "h1_count": 1,
+  "headings": [
+    [
+      2,
+      "counterpart",
+      "Counterpart",
+      ""
+    ]
+  ],
+  "images": [],
+  "links": [
+    [
+      "/",
+      "Conformance",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/",
+      "Kitchen sink",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/translated/",
+      "Translated page",
+      "ol.breadcrumbs"
+    ],
+    [
+      "#counterpart",
+      "",
+      "h2.anchored"
+    ]
+  ],
+  "marked": [
+    [
+      "ol.breadcrumbs",
+      "Conformance Kitchen sink Translated page"
+    ],
+    [
+      "time.dateline",
+      "January 20, 2026"
+    ]
+  ]
+}

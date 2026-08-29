@@ -1,0 +1,54 @@
+{
+  "counts": {
+    "blockquote": 0,
+    "dl": 0,
+    "figure": 0,
+    "ol": 1,
+    "pre": 0,
+    "table": 0,
+    "ul": 0
+  },
+  "h1": "Summary from front matter",
+  "h1_count": 1,
+  "headings": [
+    [
+      2,
+      "precedence",
+      "Precedence",
+      ""
+    ]
+  ],
+  "images": [],
+  "links": [
+    [
+      "/",
+      "Conformance",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/",
+      "Kitchen sink",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/summary-front-matter/",
+      "Summary from front matter",
+      "ol.breadcrumbs"
+    ],
+    [
+      "#precedence",
+      "",
+      "h2.anchored"
+    ]
+  ],
+  "marked": [
+    [
+      "ol.breadcrumbs",
+      "Conformance Kitchen sink Summary from front matter"
+    ],
+    [
+      "time.dateline",
+      "January 13, 2026"
+    ]
+  ]
+}

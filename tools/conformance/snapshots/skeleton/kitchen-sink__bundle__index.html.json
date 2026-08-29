@@ -1,0 +1,71 @@
+{
+  "counts": {
+    "blockquote": 0,
+    "dl": 0,
+    "figure": 2,
+    "ol": 1,
+    "pre": 0,
+    "table": 0,
+    "ul": 0
+  },
+  "h1": "Leaf bundle",
+  "h1_count": 1,
+  "headings": [
+    [
+      2,
+      "images",
+      "Images",
+      ""
+    ]
+  ],
+  "images": [
+    [
+      "/kitchen-sink/bundle/a.png",
+      "A grey square used as bundle test artwork"
+    ],
+    [
+      "/kitchen-sink/bundle/b.png",
+      "A grey square with a caption attached"
+    ],
+    [
+      "/kitchen-sink/bundle/a.png",
+      "The same square, placed through the figure shortcode"
+    ]
+  ],
+  "links": [
+    [
+      "/",
+      "Conformance",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/",
+      "Kitchen sink",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/bundle/",
+      "Leaf bundle",
+      "ol.breadcrumbs"
+    ],
+    [
+      "#images",
+      "",
+      "h2.anchored"
+    ]
+  ],
+  "marked": [
+    [
+      "ol.breadcrumbs",
+      "Conformance Kitchen sink Leaf bundle"
+    ],
+    [
+      "time.dateline",
+      "January 6, 2026"
+    ],
+    [
+      "figure.captioned",
+      "Caption on the second image"
+    ]
+  ]
+}

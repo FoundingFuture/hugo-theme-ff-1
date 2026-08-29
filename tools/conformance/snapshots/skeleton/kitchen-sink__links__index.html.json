@@ -1,0 +1,84 @@
+{
+  "counts": {
+    "blockquote": 0,
+    "dl": 0,
+    "figure": 0,
+    "ol": 1,
+    "pre": 0,
+    "table": 0,
+    "ul": 1
+  },
+  "h1": "Link forms",
+  "h1_count": 1,
+  "headings": [
+    [
+      2,
+      "forms",
+      "Forms",
+      ""
+    ]
+  ],
+  "images": [],
+  "links": [
+    [
+      "/",
+      "Conformance",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/",
+      "Kitchen sink",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/links/",
+      "Link forms",
+      "ol.breadcrumbs"
+    ],
+    [
+      "#forms",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "/posts/",
+      "posts",
+      ""
+    ],
+    [
+      "/posts/",
+      "posts again",
+      ""
+    ],
+    [
+      "/kitchen-sink/links/#forms",
+      "forms",
+      ""
+    ],
+    [
+      "https://example.com/",
+      "example",
+      ""
+    ],
+    [
+      "/kitchen-sink/bundle/",
+      "bundle",
+      ""
+    ],
+    [
+      "https://example.org/kitchen-sink/bundle/",
+      "bundle again",
+      ""
+    ]
+  ],
+  "marked": [
+    [
+      "ol.breadcrumbs",
+      "Conformance Kitchen sink Link forms"
+    ],
+    [
+      "time.dateline",
+      "January 16, 2026"
+    ]
+  ]
+}

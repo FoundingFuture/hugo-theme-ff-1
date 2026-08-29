@@ -1,0 +1,93 @@
+{
+  "counts": {
+    "blockquote": 0,
+    "dl": 0,
+    "figure": 0,
+    "ol": 1,
+    "pre": 0,
+    "table": 0,
+    "ul": 0
+  },
+  "h1": "dark-mode",
+  "h1_count": 1,
+  "headings": [
+    [
+      2,
+      "what-it-adds",
+      "What it adds",
+      ""
+    ],
+    [
+      2,
+      "what-it-does-not-add",
+      "What it does not add",
+      ""
+    ],
+    [
+      2,
+      "off-state",
+      "Off state",
+      ""
+    ]
+  ],
+  "images": [],
+  "links": [
+    [
+      "/",
+      "Conformance",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/",
+      "Kitchen sink",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/features/",
+      "Features",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/features/dark-mode/",
+      "dark-mode",
+      "ol.breadcrumbs"
+    ],
+    [
+      "#what-it-adds",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "#what-it-does-not-add",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "#off-state",
+      "",
+      "h2.anchored"
+    ]
+  ],
+  "marked": [
+    [
+      "ol.breadcrumbs",
+      "Conformance Kitchen sink Features dark-mode"
+    ],
+    [
+      "time.dateline",
+      "January 29, 2026"
+    ],
+    [
+      "span.nm",
+      "Contents"
+    ],
+    [
+      "span.n",
+      "3"
+    ],
+    [
+      "details.toc",
+      "Contents3 What it adds What it does not add Off state"
+    ]
+  ]
+}

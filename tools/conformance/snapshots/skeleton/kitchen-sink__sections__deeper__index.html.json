@@ -1,0 +1,66 @@
+{
+  "counts": {
+    "blockquote": 0,
+    "dl": 0,
+    "figure": 0,
+    "ol": 1,
+    "pre": 0,
+    "table": 0,
+    "ul": 0
+  },
+  "h1": "Third level section",
+  "h1_count": 1,
+  "headings": [
+    [
+      2,
+      "ancestors",
+      "Ancestors",
+      ""
+    ],
+    [
+      2,
+      "",
+      "Leaf three levels down",
+      ""
+    ]
+  ],
+  "images": [],
+  "links": [
+    [
+      "/",
+      "Conformance",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/",
+      "Kitchen sink",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/sections/",
+      "Nested section",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/sections/deeper/",
+      "Third level section",
+      "ol.breadcrumbs"
+    ],
+    [
+      "#ancestors",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "/kitchen-sink/sections/deeper/leaf/",
+      "Leaf three levels down",
+      ""
+    ]
+  ],
+  "marked": [
+    [
+      "ol.breadcrumbs",
+      "Conformance Kitchen sink Nested section Third level section"
+    ]
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "counts": {
+    "blockquote": 0,
+    "dl": 0,
+    "figure": 0,
+    "ol": 1,
+    "pre": 0,
+    "table": 0,
+    "ul": 0
+  },
+  "h1": "Summary from a divider",
+  "h1_count": 1,
+  "headings": [
+    [
+      2,
+      "after-the-divider",
+      "After the divider",
+      ""
+    ]
+  ],
+  "images": [],
+  "links": [
+    [
+      "/",
+      "Conformance",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/",
+      "Kitchen sink",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/summary-divider/",
+      "Summary from a divider",
+      "ol.breadcrumbs"
+    ],
+    [
+      "#after-the-divider",
+      "",
+      "h2.anchored"
+    ]
+  ],
+  "marked": [
+    [
+      "ol.breadcrumbs",
+      "Conformance Kitchen sink Summary from a divider"
+    ],
+    [
+      "time.dateline",
+      "January 12, 2026"
+    ]
+  ]
+}

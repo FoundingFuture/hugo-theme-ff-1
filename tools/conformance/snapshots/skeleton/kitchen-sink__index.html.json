@@ -1,0 +1,612 @@
+{
+  "counts": {
+    "blockquote": 0,
+    "dl": 0,
+    "figure": 0,
+    "ol": 1,
+    "pre": 0,
+    "table": 0,
+    "ul": 0
+  },
+  "h1": "Kitchen sink",
+  "h1_count": 1,
+  "headings": [
+    [
+      2,
+      "page-inventory",
+      "Page inventory",
+      ""
+    ],
+    [
+      2,
+      "",
+      "Nested section",
+      ""
+    ],
+    [
+      2,
+      "",
+      "Front matter keys",
+      ""
+    ],
+    [
+      2,
+      "",
+      "A gallery",
+      ""
+    ],
+    [
+      2,
+      "",
+      "Embeds",
+      ""
+    ],
+    [
+      2,
+      "",
+      "Features",
+      ""
+    ],
+    [
+      2,
+      "",
+      "Long page for contents",
+      ""
+    ],
+    [
+      2,
+      "",
+      "Built-in shortcodes",
+      ""
+    ],
+    [
+      2,
+      "",
+      "Goldmark extensions",
+      ""
+    ],
+    [
+      2,
+      "",
+      "Translated page",
+      ""
+    ],
+    [
+      2,
+      "",
+      "Fish & \"Chips\" <plate>",
+      ""
+    ],
+    [
+      2,
+      "",
+      "Blockquotes",
+      ""
+    ],
+    [
+      2,
+      "",
+      "Code blocks",
+      ""
+    ],
+    [
+      2,
+      "",
+      "Link forms",
+      ""
+    ],
+    [
+      2,
+      "",
+      "Heading levels",
+      ""
+    ],
+    [
+      2,
+      "",
+      "Taxonomy terms",
+      ""
+    ],
+    [
+      2,
+      "",
+      "Summary from front matter",
+      ""
+    ],
+    [
+      2,
+      "",
+      "Summary from a divider",
+      ""
+    ],
+    [
+      2,
+      "",
+      "Page without a description",
+      ""
+    ],
+    [
+      2,
+      "",
+      "Leaf bundle",
+      ""
+    ],
+    [
+      2,
+      "",
+      "Page without a date",
+      ""
+    ],
+    [
+      2,
+      "",
+      "Subtopics2",
+      "section.subsections"
+    ],
+    [
+      3,
+      "",
+      "Nested section",
+      "section.subsections"
+    ],
+    [
+      3,
+      "",
+      "Features",
+      "section.subsections"
+    ],
+    [
+      2,
+      "",
+      "Further down27",
+      "section.further-down"
+    ],
+    [
+      3,
+      "",
+      "dark-modeFeatures",
+      "section.further-down"
+    ],
+    [
+      3,
+      "",
+      "proseFeatures",
+      "section.further-down"
+    ],
+    [
+      3,
+      "",
+      "back-to-topFeatures",
+      "section.further-down"
+    ],
+    [
+      3,
+      "",
+      "breadcrumbsFeatures",
+      "section.further-down"
+    ],
+    [
+      3,
+      "",
+      "code-copyFeatures",
+      "section.further-down"
+    ],
+    [
+      3,
+      "",
+      "datelineFeatures",
+      "section.further-down"
+    ],
+    [
+      3,
+      "",
+      "edit-linkFeatures",
+      "section.further-down"
+    ],
+    [
+      3,
+      "",
+      "figure-captionsFeatures",
+      "section.further-down"
+    ],
+    [
+      3,
+      "",
+      "further-downFeatures",
+      "section.further-down"
+    ],
+    [
+      3,
+      "",
+      "heading-anchorsFeatures",
+      "section.further-down"
+    ],
+    [
+      3,
+      "",
+      "katexFeatures",
+      "section.further-down"
+    ],
+    [
+      3,
+      "",
+      "kind-labelFeatures",
+      "section.further-down"
+    ],
+    [
+      3,
+      "",
+      "last-modifiedFeatures",
+      "section.further-down"
+    ],
+    [
+      3,
+      "",
+      "pagerFeatures",
+      "section.further-down"
+    ],
+    [
+      3,
+      "",
+      "privacy-embedsFeatures",
+      "section.further-down"
+    ],
+    [
+      3,
+      "",
+      "rail-pagesFeatures",
+      "section.further-down"
+    ],
+    [
+      3,
+      "",
+      "reading-timeFeatures",
+      "section.further-down"
+    ],
+    [
+      3,
+      "",
+      "relatedFeatures",
+      "section.further-down"
+    ],
+    [
+      3,
+      "",
+      "searchFeatures",
+      "section.further-down"
+    ],
+    [
+      3,
+      "",
+      "shareFeatures",
+      "section.further-down"
+    ],
+    [
+      3,
+      "",
+      "sourcesFeatures",
+      "section.further-down"
+    ],
+    [
+      3,
+      "",
+      "subsection-cardsFeatures",
+      "section.further-down"
+    ],
+    [
+      3,
+      "",
+      "tag-narrowingFeatures",
+      "section.further-down"
+    ],
+    [
+      3,
+      "",
+      "term-headerFeatures",
+      "section.further-down"
+    ],
+    [
+      3,
+      "",
+      "tocFeatures",
+      "section.further-down"
+    ],
+    [
+      3,
+      "",
+      "word-countFeatures",
+      "section.further-down"
+    ],
+    [
+      3,
+      "",
+      "Leaf three levels downThird level section",
+      "section.further-down"
+    ]
+  ],
+  "images": [],
+  "links": [
+    [
+      "/",
+      "Conformance",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/",
+      "Kitchen sink",
+      "ol.breadcrumbs"
+    ],
+    [
+      "#page-inventory",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "/kitchen-sink/sections/",
+      "Nested section",
+      ""
+    ],
+    [
+      "/kitchen-sink/front-matter-keys/",
+      "Front matter keys",
+      ""
+    ],
+    [
+      "/kitchen-sink/prose/",
+      "A gallery",
+      ""
+    ],
+    [
+      "/kitchen-sink/embeds/",
+      "Embeds",
+      ""
+    ],
+    [
+      "/kitchen-sink/features/",
+      "Features",
+      ""
+    ],
+    [
+      "/kitchen-sink/long/",
+      "Long page for contents",
+      ""
+    ],
+    [
+      "/kitchen-sink/shortcodes/",
+      "Built-in shortcodes",
+      ""
+    ],
+    [
+      "/kitchen-sink/goldmark/",
+      "Goldmark extensions",
+      ""
+    ],
+    [
+      "/kitchen-sink/translated/",
+      "Translated page",
+      ""
+    ],
+    [
+      "/kitchen-sink/entities/",
+      "Fish & \"Chips\" <plate>",
+      ""
+    ],
+    [
+      "/kitchen-sink/blockquote/",
+      "Blockquotes",
+      ""
+    ],
+    [
+      "/kitchen-sink/code/",
+      "Code blocks",
+      ""
+    ],
+    [
+      "/kitchen-sink/links/",
+      "Link forms",
+      ""
+    ],
+    [
+      "/kitchen-sink/headings/",
+      "Heading levels",
+      ""
+    ],
+    [
+      "/kitchen-sink/taxonomies/",
+      "Taxonomy terms",
+      ""
+    ],
+    [
+      "/kitchen-sink/summary-front-matter/",
+      "Summary from front matter",
+      ""
+    ],
+    [
+      "/kitchen-sink/summary-divider/",
+      "Summary from a divider",
+      ""
+    ],
+    [
+      "/kitchen-sink/no-description/",
+      "Page without a description",
+      ""
+    ],
+    [
+      "/kitchen-sink/bundle/",
+      "Leaf bundle",
+      ""
+    ],
+    [
+      "/kitchen-sink/no-date/",
+      "Page without a date",
+      ""
+    ],
+    [
+      "/kitchen-sink/sections/",
+      "Nested sectionA section one level below the kitchen sink, carrying a weight so that ordering by weight can be observed. 1 piece",
+      "section.subsections"
+    ],
+    [
+      "/kitchen-sink/features/",
+      "FeaturesOne page per shipped feature, each turning its own feature on so that what the manifest declares can be seen. 26 pieces",
+      "section.subsections"
+    ],
+    [
+      "/kitchen-sink/features/dark-mode/",
+      "dark-modeFeatures",
+      "section.further-down"
+    ],
+    [
+      "/kitchen-sink/features/prose/",
+      "proseFeatures",
+      "section.further-down"
+    ],
+    [
+      "/kitchen-sink/features/back-to-top/",
+      "back-to-topFeatures",
+      "section.further-down"
+    ],
+    [
+      "/kitchen-sink/features/breadcrumbs/",
+      "breadcrumbsFeatures",
+      "section.further-down"
+    ],
+    [
+      "/kitchen-sink/features/code-copy/",
+      "code-copyFeatures",
+      "section.further-down"
+    ],
+    [
+      "/kitchen-sink/features/dateline/",
+      "datelineFeatures",
+      "section.further-down"
+    ],
+    [
+      "/kitchen-sink/features/edit-link/",
+      "edit-linkFeatures",
+      "section.further-down"
+    ],
+    [
+      "/kitchen-sink/features/figure-captions/",
+      "figure-captionsFeatures",
+      "section.further-down"
+    ],
+    [
+      "/kitchen-sink/features/further-down/",
+      "further-downFeatures",
+      "section.further-down"
+    ],
+    [
+      "/kitchen-sink/features/heading-anchors/",
+      "heading-anchorsFeatures",
+      "section.further-down"
+    ],
+    [
+      "/kitchen-sink/features/katex/",
+      "katexFeatures",
+      "section.further-down"
+    ],
+    [
+      "/kitchen-sink/features/kind-label/",
+      "kind-labelFeatures",
+      "section.further-down"
+    ],
+    [
+      "/kitchen-sink/features/last-modified/",
+      "last-modifiedFeatures",
+      "section.further-down"
+    ],
+    [
+      "/kitchen-sink/features/pager/",
+      "pagerFeatures",
+      "section.further-down"
+    ],
+    [
+      "/kitchen-sink/features/privacy-embeds/",
+      "privacy-embedsFeatures",
+      "section.further-down"
+    ],
+    [
+      "/kitchen-sink/features/rail-pages/",
+      "rail-pagesFeatures",
+      "section.further-down"
+    ],
+    [
+      "/kitchen-sink/features/reading-time/",
+      "reading-timeFeatures",
+      "section.further-down"
+    ],
+    [
+      "/kitchen-sink/features/related/",
+      "relatedFeatures",
+      "section.further-down"
+    ],
+    [
+      "/kitchen-sink/features/search/",
+      "searchFeatures",
+      "section.further-down"
+    ],
+    [
+      "/kitchen-sink/features/share/",
+      "shareFeatures",
+      "section.further-down"
+    ],
+    [
+      "/kitchen-sink/features/sources/",
+      "sourcesFeatures",
+      "section.further-down"
+    ],
+    [
+      "/kitchen-sink/features/subsection-cards/",
+      "subsection-cardsFeatures",
+      "section.further-down"
+    ],
+    [
+      "/kitchen-sink/features/tag-narrowing/",
+      "tag-narrowingFeatures",
+      "section.further-down"
+    ],
+    [
+      "/kitchen-sink/features/term-header/",
+      "term-headerFeatures",
+      "section.further-down"
+    ],
+    [
+      "/kitchen-sink/features/toc/",
+      "tocFeatures",
+      "section.further-down"
+    ],
+    [
+      "/kitchen-sink/features/word-count/",
+      "word-countFeatures",
+      "section.further-down"
+    ],
+    [
+      "/kitchen-sink/sections/deeper/leaf/",
+      "Leaf three levels downThird level section",
+      "section.further-down"
+    ]
+  ],
+  "marked": [
+    [
+      "ol.breadcrumbs",
+      "Conformance Kitchen sink"
+    ],
+    [
+      "span.c",
+      "2"
+    ],
+    [
+      "section.subsections",
+      "Subtopics2 Nested sectionA section one level below the kitchen sink, carrying a weight so that ordering by weight can be observed. 1 piece FeaturesOne page per shipped feature, each turning its own feature on so that what the manifest declares can be seen. 26 pieces"
+    ],
+    [
+      "span.c",
+      "27"
+    ],
+    [
+      "section.further-down",
+      "Further down27 01.29 dark-modeFeatures 01.27 proseFeatures 01.25 back-to-topFeatures 01.25 breadcrumbsFeatures 01.25 code-copyFeatures 01.25 datelineFeatures 01.25 edit-linkFeatures 01.25 figure-captionsFeatures 01.25 further-downFeatures 01.25 heading-anchorsFeatures 01.25 katexFeatures 01.25 kind-labelFeatures 01.25 last-modifiedFeatures 01.25 pagerFeatures 01.25 privacy-embedsFeatures 01.25 rail-pagesFeatures 01.25 reading-timeFeatures 01.25 relatedFeatures 01.25 searchFeatures 01.25 shareFeatures 01.25 sourcesFeatures 01.25 subsection-cardsFeatures 01.25 tag-narrowingFeatures 01.25 term-headerFeatures 01.25 tocFeatures 01.25 word-countFeatures 01.05 Leaf three levels downThird level section"
+    ]
+  ]
+}

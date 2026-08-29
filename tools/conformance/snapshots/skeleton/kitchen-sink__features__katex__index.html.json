@@ -1,0 +1,120 @@
+{
+  "counts": {
+    "blockquote": 0,
+    "dl": 0,
+    "figure": 0,
+    "ol": 1,
+    "pre": 0,
+    "table": 0,
+    "ul": 0
+  },
+  "h1": "katex",
+  "h1_count": 1,
+  "headings": [
+    [
+      2,
+      "inline",
+      "Inline",
+      ""
+    ],
+    [
+      2,
+      "display-dollar-delimiters",
+      "Display, dollar delimiters",
+      ""
+    ],
+    [
+      2,
+      "display-bracket-delimiters",
+      "Display, bracket delimiters",
+      ""
+    ],
+    [
+      2,
+      "off-state",
+      "Off state",
+      ""
+    ]
+  ],
+  "images": [],
+  "links": [
+    [
+      "/",
+      "Conformance",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/",
+      "Kitchen sink",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/features/",
+      "Features",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/features/katex/",
+      "katex",
+      "ol.breadcrumbs"
+    ],
+    [
+      "#inline",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "#display-dollar-delimiters",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "#display-bracket-delimiters",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "#off-state",
+      "",
+      "h2.anchored"
+    ]
+  ],
+  "marked": [
+    [
+      "ol.breadcrumbs",
+      "Conformance Kitchen sink Features katex"
+    ],
+    [
+      "time.dateline",
+      "January 25, 2026"
+    ],
+    [
+      "span.nm",
+      "Contents"
+    ],
+    [
+      "span.n",
+      "4"
+    ],
+    [
+      "details.toc",
+      "Contents4 Inline Display, dollar delimiters Display, bracket delimiters Off state"
+    ],
+    [
+      "span.katex",
+      "E=h\u03bdE = h \\nu"
+    ],
+    [
+      "span.katex",
+      "\u03b1\\alpha"
+    ],
+    [
+      "span.katex",
+      "\u222b01x2 dx=13 \\int_0^1 x^2 \\, dx = \\frac{1}{3}"
+    ],
+    [
+      "span.katex",
+      "ei\u03c0+1=0 e^{i\\pi} + 1 = 0"
+    ]
+  ]
+}

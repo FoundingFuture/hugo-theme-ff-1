@@ -1,0 +1,59 @@
+{
+  "counts": {
+    "blockquote": 0,
+    "dl": 0,
+    "figure": 0,
+    "ol": 1,
+    "pre": 0,
+    "table": 0,
+    "ul": 0
+  },
+  "h1": "related",
+  "h1_count": 1,
+  "headings": [
+    [
+      2,
+      "off-state",
+      "Off state",
+      ""
+    ]
+  ],
+  "images": [],
+  "links": [
+    [
+      "/",
+      "Conformance",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/",
+      "Kitchen sink",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/features/",
+      "Features",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/features/related/",
+      "related",
+      "ol.breadcrumbs"
+    ],
+    [
+      "#off-state",
+      "",
+      "h2.anchored"
+    ]
+  ],
+  "marked": [
+    [
+      "ol.breadcrumbs",
+      "Conformance Kitchen sink Features related"
+    ],
+    [
+      "time.dateline",
+      "January 25, 2026"
+    ]
+  ]
+}

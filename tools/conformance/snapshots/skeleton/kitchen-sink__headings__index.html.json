@@ -1,0 +1,110 @@
+{
+  "counts": {
+    "blockquote": 0,
+    "dl": 0,
+    "figure": 0,
+    "ol": 1,
+    "pre": 0,
+    "table": 0,
+    "ul": 0
+  },
+  "h1": "Heading levels",
+  "h1_count": 1,
+  "headings": [
+    [
+      2,
+      "second-level",
+      "Second level",
+      ""
+    ],
+    [
+      3,
+      "third-level",
+      "Third level",
+      ""
+    ],
+    [
+      4,
+      "fourth-level",
+      "Fourth level",
+      ""
+    ],
+    [
+      5,
+      "fifth-level",
+      "Fifth level",
+      ""
+    ],
+    [
+      6,
+      "sixth-level",
+      "Sixth level",
+      ""
+    ]
+  ],
+  "images": [],
+  "links": [
+    [
+      "/",
+      "Conformance",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/",
+      "Kitchen sink",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/headings/",
+      "Heading levels",
+      "ol.breadcrumbs"
+    ],
+    [
+      "#second-level",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "#third-level",
+      "",
+      "h3.anchored"
+    ],
+    [
+      "#fourth-level",
+      "",
+      "h4.anchored"
+    ],
+    [
+      "#fifth-level",
+      "",
+      "h5.anchored"
+    ],
+    [
+      "#sixth-level",
+      "",
+      "h6.anchored"
+    ]
+  ],
+  "marked": [
+    [
+      "ol.breadcrumbs",
+      "Conformance Kitchen sink Heading levels"
+    ],
+    [
+      "time.dateline",
+      "January 15, 2026"
+    ],
+    [
+      "span.nm",
+      "Contents"
+    ],
+    [
+      "span.n",
+      "5"
+    ],
+    [
+      "details.toc",
+      "Contents5 Second level Third level"
+    ]
+  ]
+}

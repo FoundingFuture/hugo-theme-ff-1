@@ -1,0 +1,65 @@
+{
+  "counts": {
+    "blockquote": 0,
+    "dl": 0,
+    "figure": 0,
+    "ol": 1,
+    "pre": 0,
+    "table": 0,
+    "ul": 0
+  },
+  "h1": "Front matter keys",
+  "h1_count": 1,
+  "headings": [
+    [
+      2,
+      "keys-in-use",
+      "Keys in use",
+      ""
+    ],
+    [
+      2,
+      "custom-values",
+      "Custom values",
+      ""
+    ]
+  ],
+  "images": [],
+  "links": [
+    [
+      "/",
+      "Conformance",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/",
+      "Kitchen sink",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/front-matter-keys/",
+      "Front matter keys",
+      "ol.breadcrumbs"
+    ],
+    [
+      "#keys-in-use",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "#custom-values",
+      "",
+      "h2.anchored"
+    ]
+  ],
+  "marked": [
+    [
+      "ol.breadcrumbs",
+      "Conformance Kitchen sink Front matter keys"
+    ],
+    [
+      "time.dateline",
+      "January 8, 2026"
+    ]
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "counts": {
+    "blockquote": 0,
+    "dl": 0,
+    "figure": 0,
+    "ol": 1,
+    "pre": 0,
+    "table": 0,
+    "ul": 0
+  },
+  "h1": "Leaf three levels down",
+  "h1_count": 1,
+  "headings": [
+    [
+      2,
+      "position",
+      "Position",
+      ""
+    ]
+  ],
+  "images": [],
+  "links": [
+    [
+      "/",
+      "Conformance",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/",
+      "Kitchen sink",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/sections/",
+      "Nested section",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/sections/deeper/",
+      "Third level section",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/sections/deeper/leaf/",
+      "Leaf three levels down",
+      "ol.breadcrumbs"
+    ],
+    [
+      "#position",
+      "",
+      "h2.anchored"
+    ]
+  ],
+  "marked": [
+    [
+      "ol.breadcrumbs",
+      "Conformance Kitchen sink Nested section Third level section Leaf three levels down"
+    ],
+    [
+      "time.dateline",
+      "January 5, 2026"
+    ]
+  ]
+}

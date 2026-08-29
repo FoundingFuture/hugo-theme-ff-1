@@ -1,0 +1,45 @@
+{
+  "counts": {
+    "blockquote": 0,
+    "dl": 0,
+    "figure": 0,
+    "ol": 1,
+    "pre": 0,
+    "table": 0,
+    "ul": 0
+  },
+  "h1": "Kitchen-Sinks",
+  "h1_count": 1,
+  "headings": [
+    [
+      2,
+      "",
+      "Vertaalde pagina",
+      ""
+    ]
+  ],
+  "images": [],
+  "links": [
+    [
+      "/nl/",
+      "Conformance",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/nl/kitchen-sink/",
+      "Kitchen-Sinks",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/nl/kitchen-sink/translated/",
+      "Vertaalde pagina",
+      ""
+    ]
+  ],
+  "marked": [
+    [
+      "ol.breadcrumbs",
+      "Conformance Kitchen-Sinks"
+    ]
+  ]
+}

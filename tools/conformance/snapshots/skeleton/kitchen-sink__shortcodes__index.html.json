@@ -1,0 +1,161 @@
+{
+  "counts": {
+    "blockquote": 0,
+    "dl": 0,
+    "figure": 3,
+    "ol": 1,
+    "pre": 0,
+    "table": 0,
+    "ul": 0
+  },
+  "h1": "Built-in shortcodes",
+  "h1_count": 1,
+  "headings": [
+    [
+      2,
+      "figure",
+      "Figure",
+      ""
+    ],
+    [
+      2,
+      "parameter",
+      "Parameter",
+      ""
+    ],
+    [
+      2,
+      "details",
+      "Details",
+      ""
+    ],
+    [
+      2,
+      "quick-reference",
+      "Quick reference",
+      ""
+    ],
+    [
+      2,
+      "embeds",
+      "Embeds",
+      ""
+    ]
+  ],
+  "images": [
+    [
+      "/kitchen-sink/bundle/a.png",
+      "A grey square shown through the figure shortcode"
+    ],
+    [
+      "/qr_301476dcaebd206a.png",
+      "A QR code linking to the example site"
+    ]
+  ],
+  "links": [
+    [
+      "/",
+      "Conformance",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/",
+      "Kitchen sink",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/shortcodes/",
+      "Built-in shortcodes",
+      "ol.breadcrumbs"
+    ],
+    [
+      "#figure",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "#parameter",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "#details",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "#quick-reference",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "#embeds",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "Play on YouTube",
+      "figure.embed"
+    ],
+    [
+      "https://vimeo.com/55073825",
+      "Play on Vimeo",
+      "figure.embed"
+    ]
+  ],
+  "marked": [
+    [
+      "ol.breadcrumbs",
+      "Conformance Kitchen sink Built-in shortcodes"
+    ],
+    [
+      "time.dateline",
+      "January 22, 2026"
+    ],
+    [
+      "span.nm",
+      "Contents"
+    ],
+    [
+      "span.n",
+      "5"
+    ],
+    [
+      "details.toc",
+      "Contents5 Figure Parameter Details Quick reference Embeds"
+    ],
+    [
+      "span.embed-title",
+      "Play on YouTube"
+    ],
+    [
+      "figcaption.embed-caption",
+      "Plays from Youtube once you press it"
+    ],
+    [
+      "figure.embed",
+      "Play on YouTube Plays from Youtube once you press it"
+    ],
+    [
+      "figure.embed-youtube",
+      "Play on YouTube Plays from Youtube once you press it"
+    ],
+    [
+      "span.embed-title",
+      "Play on Vimeo"
+    ],
+    [
+      "figcaption.embed-caption",
+      "Plays from Vimeo once you press it"
+    ],
+    [
+      "figure.embed",
+      "Play on Vimeo Plays from Vimeo once you press it"
+    ],
+    [
+      "figure.embed-vimeo",
+      "Play on Vimeo Plays from Vimeo once you press it"
+    ]
+  ]
+}

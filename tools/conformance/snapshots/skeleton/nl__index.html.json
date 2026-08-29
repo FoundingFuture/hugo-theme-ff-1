@@ -1,0 +1,30 @@
+{
+  "counts": {
+    "blockquote": 0,
+    "dl": 0,
+    "figure": 0,
+    "ol": 0,
+    "pre": 0,
+    "table": 0,
+    "ul": 0
+  },
+  "h1": null,
+  "h1_count": 0,
+  "headings": [
+    [
+      2,
+      "",
+      "Vertaalde pagina",
+      ""
+    ]
+  ],
+  "images": [],
+  "links": [
+    [
+      "/nl/kitchen-sink/translated/",
+      "Vertaalde pagina",
+      ""
+    ]
+  ],
+  "marked": []
+}

@@ -1,0 +1,73 @@
+{
+  "counts": {
+    "blockquote": 0,
+    "dl": 0,
+    "figure": 0,
+    "ol": 1,
+    "pre": 0,
+    "table": 0,
+    "ul": 2
+  },
+  "h1": "Post 2",
+  "h1_count": 1,
+  "headings": [
+    [
+      2,
+      "",
+      "Related pages",
+      "section.related"
+    ]
+  ],
+  "images": [],
+  "links": [
+    [
+      "/",
+      "Conformance",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/scaffold/",
+      "Home",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/scaffold/posts/",
+      "Posts",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/scaffold/posts/post-2/",
+      "Post 2",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/scaffold/posts/post-1/",
+      "Post 1",
+      "section.related"
+    ],
+    [
+      "/tags/red/",
+      "Red",
+      ""
+    ],
+    [
+      "/tags/green/",
+      "Green",
+      ""
+    ]
+  ],
+  "marked": [
+    [
+      "ol.breadcrumbs",
+      "Conformance Home Posts Post 2"
+    ],
+    [
+      "time.dateline",
+      "February 15, 2023"
+    ],
+    [
+      "section.related",
+      "Related pages Post 1"
+    ]
+  ]
+}

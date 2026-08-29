@@ -1,0 +1,75 @@
+{
+  "counts": {
+    "blockquote": 0,
+    "dl": 0,
+    "figure": 1,
+    "ol": 1,
+    "pre": 0,
+    "table": 0,
+    "ul": 0
+  },
+  "h1": "Embeds",
+  "h1_count": 1,
+  "headings": [
+    [
+      2,
+      "a-track",
+      "A track",
+      ""
+    ]
+  ],
+  "images": [],
+  "links": [
+    [
+      "/",
+      "Conformance",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/",
+      "Kitchen sink",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/embeds/",
+      "Embeds",
+      "ol.breadcrumbs"
+    ],
+    [
+      "#a-track",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "https://soundcloud.com/example/a-track",
+      "A track",
+      "figure.embed"
+    ]
+  ],
+  "marked": [
+    [
+      "ol.breadcrumbs",
+      "Conformance Kitchen sink Embeds"
+    ],
+    [
+      "time.dateline",
+      "January 26, 2026"
+    ],
+    [
+      "span.embed-title",
+      "A track"
+    ],
+    [
+      "figcaption.embed-caption",
+      "Plays from Soundcloud once you press it"
+    ],
+    [
+      "figure.embed",
+      "A track Plays from Soundcloud once you press it"
+    ],
+    [
+      "figure.embed-soundcloud",
+      "A track Plays from Soundcloud once you press it"
+    ]
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "counts": {
+    "blockquote": 0,
+    "dl": 0,
+    "figure": 0,
+    "ol": 1,
+    "pre": 0,
+    "table": 0,
+    "ul": 0
+  },
+  "h1": "Nested section",
+  "h1_count": 1,
+  "headings": [
+    [
+      2,
+      "depth",
+      "Depth",
+      ""
+    ],
+    [
+      2,
+      "",
+      "Third level section",
+      ""
+    ],
+    [
+      2,
+      "",
+      "Subtopics1",
+      "section.subsections"
+    ],
+    [
+      3,
+      "",
+      "Third level section",
+      "section.subsections"
+    ],
+    [
+      2,
+      "",
+      "Further down1",
+      "section.further-down"
+    ],
+    [
+      3,
+      "",
+      "Leaf three levels downThird level section",
+      "section.further-down"
+    ]
+  ],
+  "images": [],
+  "links": [
+    [
+      "/",
+      "Conformance",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/",
+      "Kitchen sink",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/sections/",
+      "Nested section",
+      "ol.breadcrumbs"
+    ],
+    [
+      "#depth",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "/kitchen-sink/sections/deeper/",
+      "Third level section",
+      ""
+    ],
+    [
+      "/kitchen-sink/sections/deeper/",
+      "Third level sectionA section three levels below the site root, testing whether breadcrumbs and ancestor menus survive the depth. 1 piece",
+      "section.subsections"
+    ],
+    [
+      "/kitchen-sink/sections/deeper/leaf/",
+      "Leaf three levels downThird level section",
+      "section.further-down"
+    ]
+  ],
+  "marked": [
+    [
+      "ol.breadcrumbs",
+      "Conformance Kitchen sink Nested section"
+    ],
+    [
+      "span.c",
+      "1"
+    ],
+    [
+      "section.subsections",
+      "Subtopics1 Third level sectionA section three levels below the site root, testing whether breadcrumbs and ancestor menus survive the depth. 1 piece"
+    ],
+    [
+      "span.c",
+      "1"
+    ],
+    [
+      "section.further-down",
+      "Further down1 01.05 Leaf three levels downThird level section"
+    ]
+  ]
+}

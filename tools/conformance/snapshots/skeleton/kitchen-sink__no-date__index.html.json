@@ -1,0 +1,50 @@
+{
+  "counts": {
+    "blockquote": 0,
+    "dl": 0,
+    "figure": 0,
+    "ol": 1,
+    "pre": 0,
+    "table": 0,
+    "ul": 0
+  },
+  "h1": "Page without a date",
+  "h1_count": 1,
+  "headings": [
+    [
+      2,
+      "expected-handling",
+      "Expected handling",
+      ""
+    ]
+  ],
+  "images": [],
+  "links": [
+    [
+      "/",
+      "Conformance",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/",
+      "Kitchen sink",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/no-date/",
+      "Page without a date",
+      "ol.breadcrumbs"
+    ],
+    [
+      "#expected-handling",
+      "",
+      "h2.anchored"
+    ]
+  ],
+  "marked": [
+    [
+      "ol.breadcrumbs",
+      "Conformance Kitchen sink Page without a date"
+    ]
+  ]
+}

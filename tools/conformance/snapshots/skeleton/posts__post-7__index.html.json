@@ -1,0 +1,79 @@
+{
+  "counts": {
+    "blockquote": 0,
+    "dl": 0,
+    "figure": 0,
+    "ol": 1,
+    "pre": 0,
+    "table": 0,
+    "ul": 2
+  },
+  "h1": "Seventh post",
+  "h1_count": 1,
+  "headings": [
+    [
+      2,
+      "position",
+      "Position",
+      ""
+    ],
+    [
+      2,
+      "",
+      "Related pages",
+      "section.related"
+    ]
+  ],
+  "images": [],
+  "links": [
+    [
+      "/",
+      "Conformance",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/posts/",
+      "Posts",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/posts/post-7/",
+      "Seventh post",
+      "ol.breadcrumbs"
+    ],
+    [
+      "#position",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "/posts/post-6/",
+      "Sixth post",
+      "section.related"
+    ],
+    [
+      "/posts/post-4/",
+      "Fourth post",
+      "section.related"
+    ],
+    [
+      "/tags/gamma/",
+      "Gamma",
+      ""
+    ]
+  ],
+  "marked": [
+    [
+      "ol.breadcrumbs",
+      "Conformance Posts Seventh post"
+    ],
+    [
+      "time.dateline",
+      "February 17, 2026"
+    ],
+    [
+      "section.related",
+      "Related pages Sixth post Fourth post"
+    ]
+  ]
+}

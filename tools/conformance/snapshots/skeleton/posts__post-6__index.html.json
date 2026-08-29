@@ -1,0 +1,94 @@
+{
+  "counts": {
+    "blockquote": 0,
+    "dl": 0,
+    "figure": 0,
+    "ol": 1,
+    "pre": 0,
+    "table": 0,
+    "ul": 2
+  },
+  "h1": "Sixth post",
+  "h1_count": 1,
+  "headings": [
+    [
+      2,
+      "position",
+      "Position",
+      ""
+    ],
+    [
+      2,
+      "",
+      "Related pages",
+      "section.related"
+    ]
+  ],
+  "images": [],
+  "links": [
+    [
+      "/",
+      "Conformance",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/posts/",
+      "Posts",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/posts/post-6/",
+      "Sixth post",
+      "ol.breadcrumbs"
+    ],
+    [
+      "#position",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "/posts/post-4/",
+      "Fourth post",
+      "section.related"
+    ],
+    [
+      "/posts/post-3/",
+      "Third post",
+      "section.related"
+    ],
+    [
+      "/posts/post-2/",
+      "Second post",
+      "section.related"
+    ],
+    [
+      "/kitchen-sink/taxonomies/",
+      "Taxonomy terms",
+      "section.related"
+    ],
+    [
+      "/tags/beta/",
+      "Beta",
+      ""
+    ],
+    [
+      "/tags/gamma/",
+      "Gamma",
+      ""
+    ]
+  ],
+  "marked": [
+    [
+      "ol.breadcrumbs",
+      "Conformance Posts Sixth post"
+    ],
+    [
+      "time.dateline",
+      "February 16, 2026"
+    ],
+    [
+      "section.related",
+      "Related pages Fourth post Third post Second post Taxonomy terms"
+    ]
+  ]
+}

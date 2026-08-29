@@ -1,0 +1,187 @@
+{
+  "counts": {
+    "blockquote": 0,
+    "dl": 0,
+    "figure": 0,
+    "ol": 1,
+    "pre": 0,
+    "table": 0,
+    "ul": 0
+  },
+  "h1": "Long page for contents",
+  "h1_count": 1,
+  "headings": [
+    [
+      2,
+      "structure",
+      "Structure",
+      ""
+    ],
+    [
+      2,
+      "ordering",
+      "Ordering",
+      ""
+    ],
+    [
+      2,
+      "depth",
+      "Depth",
+      ""
+    ],
+    [
+      2,
+      "anchors",
+      "Anchors",
+      ""
+    ],
+    [
+      2,
+      "navigation",
+      "Navigation",
+      ""
+    ],
+    [
+      2,
+      "density",
+      "Density",
+      ""
+    ],
+    [
+      2,
+      "placement",
+      "Placement",
+      ""
+    ],
+    [
+      2,
+      "fallback",
+      "Fallback",
+      ""
+    ],
+    [
+      2,
+      "truncation",
+      "Truncation",
+      ""
+    ],
+    [
+      2,
+      "nesting",
+      "Nesting",
+      ""
+    ],
+    [
+      2,
+      "ranges",
+      "Ranges",
+      ""
+    ],
+    [
+      2,
+      "limits",
+      "Limits",
+      ""
+    ]
+  ],
+  "images": [],
+  "links": [
+    [
+      "/",
+      "Conformance",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/",
+      "Kitchen sink",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/long/",
+      "Long page for contents",
+      "ol.breadcrumbs"
+    ],
+    [
+      "#structure",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "#ordering",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "#depth",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "#anchors",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "#navigation",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "#density",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "#placement",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "#fallback",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "#truncation",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "#nesting",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "#ranges",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "#limits",
+      "",
+      "h2.anchored"
+    ]
+  ],
+  "marked": [
+    [
+      "ol.breadcrumbs",
+      "Conformance Kitchen sink Long page for contents"
+    ],
+    [
+      "time.dateline",
+      "January 23, 2026"
+    ],
+    [
+      "span.nm",
+      "Contents"
+    ],
+    [
+      "span.n",
+      "12"
+    ],
+    [
+      "details.toc",
+      "Contents12 Structure Ordering Depth Anchors Navigation Density Placement Fallback Truncation Nesting Ranges Limits"
+    ]
+  ]
+}

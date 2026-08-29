@@ -1,0 +1,121 @@
+{
+  "counts": {
+    "blockquote": 0,
+    "dl": 0,
+    "figure": 0,
+    "ol": 0,
+    "pre": 0,
+    "table": 0,
+    "ul": 0
+  },
+  "h1": "Categories",
+  "h1_count": 1,
+  "headings": [
+    [
+      2,
+      "",
+      "Reference",
+      ""
+    ],
+    [
+      2,
+      "",
+      "Pieces",
+      "section.narrowing"
+    ]
+  ],
+  "images": [],
+  "links": [
+    [
+      "/categories/reference/",
+      "Reference",
+      ""
+    ],
+    [
+      "/posts/post-7/",
+      "Seventh post",
+      "article.row"
+    ],
+    [
+      "/posts/post-6/",
+      "Sixth post",
+      "article.row"
+    ],
+    [
+      "/posts/post-5/",
+      "Fifth post",
+      "article.row"
+    ],
+    [
+      "/posts/post-4/",
+      "Fourth post",
+      "article.row"
+    ],
+    [
+      "/posts/post-3/",
+      "Third post",
+      "article.row"
+    ],
+    [
+      "/posts/post-2/",
+      "Second post",
+      "article.row"
+    ],
+    [
+      "/posts/post-1/",
+      "First post",
+      "article.row"
+    ],
+    [
+      "/kitchen-sink/taxonomies/",
+      "Taxonomy terms",
+      "article.row"
+    ]
+  ],
+  "marked": [
+    [
+      "article.row",
+      "02.17 Seventh post"
+    ],
+    [
+      "article.row",
+      "02.16 Sixth post"
+    ],
+    [
+      "article.row",
+      "02.15 Fifth post"
+    ],
+    [
+      "article.row",
+      "02.14 Fourth post"
+    ],
+    [
+      "article.row",
+      "02.13 Third post"
+    ],
+    [
+      "article.row",
+      "02.12 Second post"
+    ],
+    [
+      "article.row",
+      "02.11 First post"
+    ],
+    [
+      "article.row",
+      "01.14 Taxonomy terms"
+    ],
+    [
+      "p.nomatch",
+      "Nothing carries all of those together. Drop one."
+    ],
+    [
+      "button.clear",
+      "Clear the selection"
+    ],
+    [
+      "section.narrowing",
+      "Pieces 02.17 Seventh post 02.16 Sixth post 02.15 Fifth post 02.14 Fourth post 02.13 Third post 02.12 Second post 02.11 First post 01.14 Taxonomy terms Nothing carries all of those together. Drop one. Clear the selection"
+    ]
+  ]
+}

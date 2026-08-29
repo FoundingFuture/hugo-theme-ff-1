@@ -1,0 +1,54 @@
+{
+  "counts": {
+    "blockquote": 0,
+    "dl": 0,
+    "figure": 0,
+    "ol": 1,
+    "pre": 0,
+    "table": 0,
+    "ul": 0
+  },
+  "h1": "Fish & \"Chips\" <plate>",
+  "h1_count": 1,
+  "headings": [
+    [
+      2,
+      "where-it-shows",
+      "Where it shows",
+      ""
+    ]
+  ],
+  "images": [],
+  "links": [
+    [
+      "/",
+      "Conformance",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/",
+      "Kitchen sink",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/entities/",
+      "Fish & \"Chips\" <plate>",
+      "ol.breadcrumbs"
+    ],
+    [
+      "#where-it-shows",
+      "",
+      "h2.anchored"
+    ]
+  ],
+  "marked": [
+    [
+      "ol.breadcrumbs",
+      "Conformance Kitchen sink Fish & \"Chips\" <plate>"
+    ],
+    [
+      "time.dateline",
+      "January 19, 2026"
+    ]
+  ]
+}

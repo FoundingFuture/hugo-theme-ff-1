@@ -1,0 +1,58 @@
+{
+  "counts": {
+    "blockquote": 0,
+    "dl": 0,
+    "figure": 0,
+    "ol": 0,
+    "pre": 0,
+    "table": 0,
+    "ul": 0
+  },
+  "h1": "Authors",
+  "h1_count": 1,
+  "headings": [
+    [
+      2,
+      "",
+      "Ada",
+      ""
+    ],
+    [
+      2,
+      "",
+      "Pieces",
+      "section.narrowing"
+    ]
+  ],
+  "images": [],
+  "links": [
+    [
+      "/authors/ada/",
+      "Ada",
+      ""
+    ],
+    [
+      "/kitchen-sink/taxonomies/",
+      "Taxonomy terms",
+      "article.row"
+    ]
+  ],
+  "marked": [
+    [
+      "article.row",
+      "01.14 Taxonomy terms"
+    ],
+    [
+      "p.nomatch",
+      "Nothing carries all of those together. Drop one."
+    ],
+    [
+      "button.clear",
+      "Clear the selection"
+    ],
+    [
+      "section.narrowing",
+      "Pieces 01.14 Taxonomy terms Nothing carries all of those together. Drop one. Clear the selection"
+    ]
+  ]
+}

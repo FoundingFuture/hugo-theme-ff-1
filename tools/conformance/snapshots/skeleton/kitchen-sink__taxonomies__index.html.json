@@ -1,0 +1,64 @@
+{
+  "counts": {
+    "blockquote": 0,
+    "dl": 0,
+    "figure": 0,
+    "ol": 1,
+    "pre": 0,
+    "table": 0,
+    "ul": 1
+  },
+  "h1": "Taxonomy terms",
+  "h1_count": 1,
+  "headings": [
+    [
+      2,
+      "terms-in-use",
+      "Terms in use",
+      ""
+    ]
+  ],
+  "images": [],
+  "links": [
+    [
+      "/",
+      "Conformance",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/",
+      "Kitchen sink",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/taxonomies/",
+      "Taxonomy terms",
+      "ol.breadcrumbs"
+    ],
+    [
+      "#terms-in-use",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "/tags/alpha/",
+      "Alpha",
+      ""
+    ],
+    [
+      "/tags/beta/",
+      "Beta",
+      ""
+    ]
+  ],
+  "marked": [
+    [
+      "ol.breadcrumbs",
+      "Conformance Kitchen sink Taxonomy terms"
+    ],
+    [
+      "time.dateline",
+      "January 14, 2026"
+    ]
+  ]
+}

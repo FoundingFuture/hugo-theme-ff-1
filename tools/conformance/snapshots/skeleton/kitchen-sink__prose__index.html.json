@@ -1,0 +1,121 @@
+{
+  "counts": {
+    "blockquote": 0,
+    "dl": 0,
+    "figure": 2,
+    "ol": 1,
+    "pre": 0,
+    "table": 0,
+    "ul": 0
+  },
+  "h1": "A gallery",
+  "h1_count": 1,
+  "headings": [],
+  "images": [
+    [
+      "/kitchen-sink/prose/a_hu_481cc7472a927f7b.webp",
+      "A grey square"
+    ],
+    [
+      "/kitchen-sink/prose/b_hu_962e54d9bc7e91fc.webp",
+      "Another grey square"
+    ],
+    [
+      "/kitchen-sink/prose/a_hu_7fda7729d3d466e9.webp",
+      "A grey square"
+    ],
+    [
+      "/kitchen-sink/prose/b_hu_720ea758551b911f.webp",
+      "Another grey square"
+    ]
+  ],
+  "links": [
+    [
+      "/",
+      "Conformance",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/",
+      "Kitchen sink",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/prose/",
+      "A gallery",
+      "ol.breadcrumbs"
+    ],
+    [
+      "#g0-0",
+      "A grey square",
+      "div.shots"
+    ],
+    [
+      "#g0-1",
+      "Another grey square",
+      "div.shots"
+    ],
+    [
+      "#g0",
+      "",
+      "div.lit"
+    ],
+    [
+      "#g0-1",
+      "\u2039",
+      "div.lit"
+    ],
+    [
+      "#g0-1",
+      "\u203a",
+      "div.lit"
+    ],
+    [
+      "#g0",
+      "\u00d7",
+      "div.lit"
+    ],
+    [
+      "#g0",
+      "",
+      "div.lit"
+    ],
+    [
+      "#g0-0",
+      "\u2039",
+      "div.lit"
+    ],
+    [
+      "#g0-0",
+      "\u203a",
+      "div.lit"
+    ],
+    [
+      "#g0",
+      "\u00d7",
+      "div.lit"
+    ]
+  ],
+  "marked": [
+    [
+      "ol.breadcrumbs",
+      "Conformance Kitchen sink A gallery"
+    ],
+    [
+      "time.dateline",
+      "January 27, 2026"
+    ],
+    [
+      "div.shots",
+      "A grey square Another grey square"
+    ],
+    [
+      "div.lit",
+      "A grey square1 of 2 \u2039 \u203a \u00d7"
+    ],
+    [
+      "div.lit",
+      "Another grey square2 of 2 \u2039 \u203a \u00d7"
+    ]
+  ]
+}

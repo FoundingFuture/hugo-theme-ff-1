@@ -1,0 +1,117 @@
+{
+  "counts": {
+    "blockquote": 0,
+    "dl": 0,
+    "figure": 0,
+    "ol": 1,
+    "pre": 0,
+    "table": 0,
+    "ul": 0
+  },
+  "h1": "Home",
+  "h1_count": 1,
+  "headings": [
+    [
+      2,
+      "",
+      "Posts",
+      ""
+    ],
+    [
+      2,
+      "",
+      "Subtopics1",
+      "section.subsections"
+    ],
+    [
+      3,
+      "",
+      "Posts",
+      "section.subsections"
+    ],
+    [
+      2,
+      "",
+      "Further down3",
+      "section.further-down"
+    ],
+    [
+      3,
+      "",
+      "Post 3Posts",
+      "section.further-down"
+    ],
+    [
+      3,
+      "",
+      "Post 2Posts",
+      "section.further-down"
+    ],
+    [
+      3,
+      "",
+      "Post 1Posts",
+      "section.further-down"
+    ]
+  ],
+  "images": [],
+  "links": [
+    [
+      "/",
+      "Conformance",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/scaffold/",
+      "Home",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/scaffold/posts/",
+      "Posts",
+      ""
+    ],
+    [
+      "/scaffold/posts/",
+      "Posts 3 pieces",
+      "section.subsections"
+    ],
+    [
+      "/scaffold/posts/post-3/",
+      "Post 3Posts",
+      "section.further-down"
+    ],
+    [
+      "/scaffold/posts/post-2/",
+      "Post 2Posts",
+      "section.further-down"
+    ],
+    [
+      "/scaffold/posts/post-1/",
+      "Post 1Posts",
+      "section.further-down"
+    ]
+  ],
+  "marked": [
+    [
+      "ol.breadcrumbs",
+      "Conformance Home"
+    ],
+    [
+      "span.c",
+      "1"
+    ],
+    [
+      "section.subsections",
+      "Subtopics1 Posts 3 pieces"
+    ],
+    [
+      "span.c",
+      "3"
+    ],
+    [
+      "section.further-down",
+      "Further down3 03.15 Post 3Posts 02.15 Post 2Posts 01.15 Post 1Posts"
+    ]
+  ]
+}
