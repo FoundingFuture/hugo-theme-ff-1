@@ -1,6 +1,7 @@
 +++
 date = '2025-07-29T09:00:00Z'
 draft = false
+categories = ['reference']
 tags = ['red']
 title = 'Page Three'
 +++

@@ -61,4 +61,9 @@
       "entries" . "pieces" slice "parent" false "depth" 0 "group" "" "palette" $palette) }}
   {{- end }}
 {{- end }}
+{{- /* The taxonomies, under the tree. Asked for here rather than given
+       a slot, because the menu has none. */ -}}
+{{- if partial "feature-on.html" (dict "name" "taxonomy-nav" "page" $) }}
+  {{ partial "features/taxonomy-nav.html" $ }}
+{{- end }}
 </nav>

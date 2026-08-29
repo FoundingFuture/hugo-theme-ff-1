@@ -1,0 +1,38 @@
+{{- /* The site's taxonomies, under its topics, as terms you can press.
+
+       Not a branch of the tree. A topic is somewhere you are; a term is
+       a filter you apply, and the two read differently, so the terms are
+       laid out as marks rather than as rows.
+
+       Every name and count comes from Hugo, so a site that defines its
+       own taxonomies gets them here without configuring anything, and a
+       site whose taxonomy has no terms gets nothing.
+
+       A term links to its own page. .RelPermalink carries the site's own
+       path prefix, which a hand-written /tags/<term>/ would not. */ -}}
+{{- $page := . }}
+{{- $out := slice }}
+{{- range $name, $terms := site.Taxonomies }}
+  {{- with site.GetPage (printf "/%s" $name) }}
+    {{- if .Pages }}{{ $out = $out | append . }}{{ end }}
+  {{- end }}
+{{- end }}
+{{- with $out }}
+<div class="taxo">
+  {{- range . }}
+  {{- /* The taxonomy names itself on its own group, so a site can colour
+         any taxonomy it defines without the theme knowing what it is
+         called. The stylesheet only names Hugo's two defaults. */ -}}
+  <div class="taxo-group" data-taxo="{{ .Section }}">
+    <a class="taxo-name" href="{{ .RelPermalink }}"
+      {{- if eq $page . }} aria-current="page"{{ end }}>{{ .LinkTitle }}</a>
+    <ul class="taxo-terms">
+      {{- range .Pages }}
+      <li><a href="{{ .RelPermalink }}"
+        {{- if eq $page . }} aria-current="page"{{ end }}>{{ .LinkTitle }}</a></li>
+      {{- end }}
+    </ul>
+  </div>
+  {{- end }}
+</div>
+{{- end }}

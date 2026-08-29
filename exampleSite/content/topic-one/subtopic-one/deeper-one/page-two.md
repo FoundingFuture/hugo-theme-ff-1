@@ -1,6 +1,7 @@
 +++
 date = '2024-03-17T09:00:00Z'
 draft = false
+categories = ['guide']
 tags = ['red', 'green']
 title = 'Page Two'
 +++

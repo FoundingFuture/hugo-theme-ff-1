@@ -72,6 +72,11 @@ TREE = {
 
 TAGS = ["blue", "green", "red", "yellow"]
 
+# A category says what kind of piece it is, where a tag says what it is
+# about, so one is assigned per top-level section rather than sampled.
+# The demo needs both to show what the menu does with a taxonomy.
+CATEGORIES = ["guide", "reference", "note"]
+
 
 def hugo_new(path):
     """Ask Hugo for a content file, through the site's archetype."""
@@ -97,7 +102,7 @@ def paragraphs(rng, count):
     return out
 
 
-def fill(path, rng, tags, intro=False, weight=0, long=False):
+def fill(path, rng, tags, intro=False, weight=0, long=False, category=""):
     """Undraft the page Hugo wrote, tag it, and give it a body.
 
     A section gets an introduction rather than an article. What sits
@@ -127,6 +132,9 @@ def fill(path, rng, tags, intro=False, weight=0, long=False):
     if tags:
         listed = ", ".join("'%s'" % tag for tag in tags)
         text = text.replace("draft = false", "draft = false\ntags = [%s]" % listed, 1)
+    if category:
+        text = text.replace("draft = false",
+                            "draft = false\ncategories = ['%s']" % category, 1)
 
     if intro:
         count = 1
@@ -184,7 +192,8 @@ def build(node, prefix, rng):
             hugo_new("%s/%s.md" % (here, page))
             fill(os.path.join(SITE, "content", here, page + ".md"),
                  rng, rng.sample(TAGS, rng.randint(1, 2)),
-                 long=page in spec.get("long", []))
+                 long=page in spec.get("long", []),
+                 category=CATEGORIES[(index - 1) % len(CATEGORIES)])
 
         build(spec.get("sections", {}), here, rng)
 

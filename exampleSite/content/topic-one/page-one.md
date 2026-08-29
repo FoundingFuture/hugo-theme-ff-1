@@ -1,6 +1,7 @@
 +++
 date = '2025-01-08T09:00:00Z'
 draft = false
+categories = ['guide']
 tags = ['yellow']
 title = 'Page One'
 +++

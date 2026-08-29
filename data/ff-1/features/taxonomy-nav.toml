@@ -1,0 +1,19 @@
+name = "taxonomy-nav"
+# The taxonomies a site defines, listed in the menu beneath its topics.
+# Hugo names them and counts them, so a site that defines none, or whose
+# terms are empty, gets nothing without configuring anything.
+#
+# slot "none" because the menu has no slot: rail.html asks feature-on
+# for it, the way it asks before drawing the search box.
+slot = "none"
+weight = 15
+default = true
+level = "toggle"
+kinds = ["page", "section", "home", "term", "taxonomy"]
+partial = "features/taxonomy-nav.html"
+css = "css/features/taxonomy-nav.css"
+
+[skeleton]
+  # Nothing. It renders inside the nav, and chrome is not part of a
+  # page's shape.
+  text = []

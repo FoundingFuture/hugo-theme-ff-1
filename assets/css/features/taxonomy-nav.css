@@ -1,0 +1,88 @@
+/* The taxonomies in the menu, as terms you can press.
+ *
+ * The chip is the one the foot of a piece already uses for the terms it
+ * is filed under, so pressing a tag in the menu and seeing a tag on a
+ * page are the same thing to look at. Smaller here, and set in the
+ * menu's own condensed face, because the rail is 16rem wide and a term
+ * can be a long word.
+ */
+.taxo{
+  margin:.7rem .6rem 0;
+  padding-top:.6rem;
+  border-top:1px solid var(--line);
+}
+
+/* The name of the taxonomy, and a way into its own page. The mark is
+   drawn rather than written: a visible string in markup fails
+   static/i18n, which is why the trail's separator comes from CSS too. */
+.taxo-name{
+  display:block;
+  margin:.5rem 0 .3rem;
+  text-decoration:none;
+  font-family:var(--mono);
+  font-size:.68rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--tc);
+}
+
+.taxo-name::before{
+  content:"#";
+  margin-right:.1em;
+}
+.taxo-name:hover{color:var(--tc)}
+.taxo-group:first-child .taxo-name{margin-top:0}
+
+/* Each taxonomy takes a colour, the way each top-level topic does. The
+   accent is a property, so a site colours its own taxonomies by setting
+   it on the group. Only Hugo's two defaults are named here: tags and
+   categories are Hugo's, not a site's own invention. */
+.taxo-group{--tc:var(--teal)}
+.taxo-group[data-taxo="categories"]{--tc:var(--taxo-categories)}
+
+.taxo-terms{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.25rem;
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+
+.taxo-terms a{
+  display:inline-block;
+  padding:.1rem .4rem;
+  border:1px solid color-mix(in oklab,var(--tc) 45%, var(--line));
+  border-radius:4px;
+  background:var(--surface);
+  text-decoration:none;
+  font-family:Menu,var(--text);
+  font-size:.86rem;
+  line-height:1.35;
+  color:var(--tc);
+}
+
+.taxo-terms a:hover{
+  border-color:var(--teal);
+  background:color-mix(in oklab,var(--teal) 10%, var(--surface));
+  color:var(--teal);
+}
+
+/* The rail marks the row you are reading with a bar down its left edge.
+   Neither of these is a row: on the label the bar sits beside the word
+   like a stray mark, and on a chip it cuts through the border. The
+   colour still says where you are.
+
+   Named through .rail, because the rule being undone is .rail
+   a[aria-current="page"] and a shorter selector loses to it. */
+.rail .taxo-name[aria-current]{
+  box-shadow:none;
+  color:var(--teal);
+}
+
+.rail .taxo-terms a[aria-current]{
+  box-shadow:none;
+  border-color:var(--teal);
+  background:color-mix(in oklab,var(--teal) 10%, var(--surface));
+  color:var(--teal);
+}
