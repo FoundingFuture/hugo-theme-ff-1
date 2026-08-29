@@ -6,6 +6,10 @@
        values, because .IsMenuCurrent exists only on a real menu entry
        and a section has to work its state out for itself.
 
+       A summary is a control that opens a branch, not a link to a
+       page, so it says aria-current true and never page. The row that
+       points at the page being read says page, and there is one of it.
+
        A topic's subtopics and its own pieces are siblings, so they go
        in one list. Rendered as two, the pieces read as a level below
        the subtopics rather than beside them.
@@ -77,7 +81,7 @@
   {{- if or $kids $own }}
   <li><details{{ with $group }} name="{{ . }}"{{ end }}{{ with $class }} class="{{ delimit . " " }}"{{ end }}{{ if or $active $ancestor }} open{{ end }}
     {{- if eq $depth 0 }} data-t="{{ $colour }}"{{ end }}>
-    <summary{{ if $active }} aria-current="page"{{ else if $ancestor }} aria-current="true"{{ end }}><span class="nm">{{ $name }}</span>{{ if $count }}<span class="n">{{ $count }}</span>{{ end }}<span class="chev" aria-hidden="true"></span></summary>
+    <summary{{ if or $active $ancestor }} aria-current="true"{{ end }}><span class="nm">{{ $name }}</span>{{ if $count }}<span class="n">{{ $count }}</span>{{ end }}<span class="chev" aria-hidden="true"></span></summary>
     {{ partial "topictree.html" (dict "page" $page "kind" $kind "menuID" $menuID
         "entries" $kids "pieces" $own "parent" (cond (eq $kind "section") $e false)
         "depth" (add $depth 1) "group" $url "palette" $palette) }}

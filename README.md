@@ -178,6 +178,26 @@ and a play button, both served from your own domain, and adds `embed`
 for SoundCloud. Nothing reaches another host until a reader presses
 play.
 
+## Changing what it looks like
+
+A site's own stylesheet is loaded after the theme's, so anything the
+theme sets can be changed by setting it again. The palette, the faces,
+the rail's width and the inset a column takes are all custom
+properties on `:root`:
+
+```css
+:root{
+  --teal:#00706B;  --indigo:#3A49A6;  --rose:#A93356;  --amber:#B36A1E;
+  --rail:16rem;              /* the menu's column */
+  --pad:1.25rem;             /* the inset content takes from its edges */
+  --crumb-separator:">>";    /* the mark between steps of the trail */
+}
+```
+
+The trail's separator is drawn by the stylesheet rather than written
+into the markup, so a screen reader never reads it out between every
+step. That is why it is a property rather than a word in `i18n`.
+
 ## The shortcodes
 
 Five more, for a piece rather than a page:

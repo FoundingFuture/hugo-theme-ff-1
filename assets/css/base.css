@@ -23,6 +23,11 @@
   --text:'Instrument Sans',ui-sans-serif,system-ui,sans-serif;
   --mono:'Plex Mono',ui-monospace,monospace;
 
+  /* The mark between the steps of the trail. It is drawn rather than
+     written, so a screen reader never reads it out, and a site changes
+     it here rather than by overriding a rule. */
+  --crumb-separator:">>";
+
   --rail:16rem;
   --pad:1.25rem;   /* content's inset from the edges of its column */
 }

@@ -190,3 +190,10 @@
 .topics details.container[open]>summary{background:transparent;font-weight:400}
 .topics details.container[open]>summary .nm{color:var(--ink)}
 .topics details.container>summary{font-size:.98rem}
+
+/* ---- where you are ---- */
+/* Any row that points at the page being read, whatever level it sits
+   at: a topic, a subtopic, its main page, or one of its pieces. */
+.rail a[aria-current="page"]{
+  color:var(--teal);font-weight:500;box-shadow:inset 2px 0 0 var(--teal);
+}

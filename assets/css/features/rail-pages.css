@@ -1,7 +1,0 @@
-/* ---- the pieces a topic holds, listed in the menu ---- */
-/* They are siblings of the subtopics and sit in the same list, so they
-   need no indent of their own. Only the one being read is marked. */
-.topics .piece>a[aria-current="page"],
-.topics>li>a[aria-current="page"]{
-  color:var(--teal);font-weight:500;box-shadow:inset 2px 0 0 var(--teal);
-}

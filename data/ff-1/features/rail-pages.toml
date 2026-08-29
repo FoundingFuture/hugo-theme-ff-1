@@ -7,7 +7,6 @@ weight = 10
 default = true
 level = "toggle"
 kinds = ["page", "section", "home", "term", "taxonomy"]
-css = "css/features/rail-pages.css"
 
 [skeleton]
   # Nothing. Every row it adds sits inside the nav, and chrome is not
