@@ -8,10 +8,10 @@
 # still builds. The fixture cannot answer that. It is developed against
 # this repository, and a downloader has a directory under themes/.
 #
-# Each component is then installed out of the fenced toml block in its
-# own README, verbatim. The README is executed rather than paraphrased,
-# so one that drifts from its component fails here.
-# reads: dist features
+# There is nothing to mount. Search and the embeds are part of the
+# theme rather than components a site installs out of their own README,
+# so a bare site is the whole of what this gate has to prove.
+# reads: dist
 set -uo pipefail
 cd "$(dirname "$0")/../../.." || exit 1
 
@@ -59,16 +59,6 @@ config() {
   printf "baseURL = 'https://example.org/'\nlocale = 'en-US'\ntitle = 'A Downloader'\ntheme = '%s'\n" "$slug"
 }
 
-# The first fenced toml block in a README, which is how a component
-# says to install itself. THEME is the directory the theme went into.
-instructions() {
-  awk '
-    /^```toml$/ { if (!found) { found = 1; inside = 1; next } }
-    /^```$/     { inside = 0 }
-    inside      { print }
-  ' "$1" | sed "s|THEME|$slug|g"
-}
-
 build() {
   local label
   local out
@@ -84,16 +74,6 @@ build() {
     return 1
   fi
   return 0
-}
-
-holds() {
-  local file
-  file="$site/public-$1/$2"
-  if [ ! -f "$file" ]; then
-    report "install:1: $1, $2 is missing. The instructions do not work."
-  elif ! grep -q "$3" "$file"; then
-    report "install:1: $1, $2 does not carry $3."
-  fi
 }
 
 # 1. The theme alone. Nothing mounted, nothing configured.
