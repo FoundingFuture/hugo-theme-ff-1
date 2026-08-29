@@ -9,6 +9,23 @@
     noClasses = false
     style = 'xcode'
 
+# One line your site has to write for itself, if you leave
+# figure-captions on:
+#
+#   [markup.goldmark.parser]
+#     wrapStandAloneImageWithinParagraph = false
+#
+# Goldmark wraps a Markdown image that stands alone in a paragraph in a
+# <p>. figure-captions renders that image as a <figure>, and a figure
+# inside a paragraph closes it, so the page carries a stray </p> and
+# stops validating. Setting it above would do nothing: Hugo merges maps
+# from a theme, but markup is not among them, so only the site can say
+# it. It is the same wall that stops a theme adding an [outputs] format
+# or a menus entry, and it is written down in the README too.
+#
+# exampleSite/hugo.toml sets it, so a site started from the demo has it
+# already.
+
 # Every feature this theme ships, with the default it ships with.
 # Uncomment a line to change it. A page may override any of them
 # in its own front matter.

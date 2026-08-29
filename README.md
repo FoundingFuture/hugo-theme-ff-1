@@ -178,6 +178,38 @@ and a play button, both served from your own domain, and adds `embed`
 for SoundCloud. Nothing reaches another host until a reader presses
 play.
 
+`dark-mode` puts a sun and a moon in the corner of the brand cell. The
+choice is written to `localStorage` and applied from the head, before
+anything is painted, so a reader who chose dark never sees a white page
+flash first. With nothing chosen the page follows the reader's system
+setting; an explicit choice outranks it in both directions.
+
+The dark palette is the theme's own custom properties given other
+values, so a site that has restyled the theme gets its own dark mode
+from the same overrides. Every colour in it clears WCAG AA on all three
+of its grounds, and the generated code colours are remapped to match.
+Turn the feature off and neither the switch nor the stylesheet is
+served, and the system setting is not answered either.
+
+`figure-captions` turns a Markdown image that carries a title into a
+`<figure>` with a `<figcaption>`. It is the one feature that asks your
+site for a line of configuration:
+
+```toml
+[markup.goldmark.parser]
+  wrapStandAloneImageWithinParagraph = false
+```
+
+Goldmark wraps an image standing alone in a paragraph in a `<p>`, and a
+`<figure>` inside a paragraph closes it, so the page ends up carrying a
+stray `</p>` and stops being valid HTML. The theme cannot set this for
+you: Hugo merges maps from a theme, but `markup` is not among them, so
+only the site can say it. It is the same wall that stops a theme adding
+an `[outputs]` format or a `menus` entry.
+
+`exampleSite/hugo.toml` sets it, so a site started from the demo already
+has it. A site that turns `figure-captions` off does not need it.
+
 ## Changing what it looks like
 
 A site's own stylesheet is loaded after the theme's, so anything the

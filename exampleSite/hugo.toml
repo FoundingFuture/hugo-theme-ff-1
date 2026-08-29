@@ -17,3 +17,14 @@ theme = 'ff-1'
   # on anything the theme did. The embed then renders its link, which
   # is what a reader without the script gets anyway.
   fetchPosters = false
+
+# A Markdown image alone in a paragraph is wrapped in <p> by Goldmark.
+# figure-captions renders such an image as a <figure>, and a figure
+# inside a paragraph closes it: the browser emits a stray </p> and the
+# page stops being valid HTML.
+#
+# A theme cannot set this. Hugo merges params and other maps from a
+# theme but not markup, so the site has to say it. Same wall that stops
+# a theme adding an [outputs] format or a menus entry.
+[markup.goldmark.parser]
+  wrapStandAloneImageWithinParagraph = false
