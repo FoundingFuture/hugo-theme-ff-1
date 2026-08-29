@@ -17,9 +17,7 @@
   <div data-part="rows">
   {{- range . }}
     <article>
-      <time{{ if not .Date.IsZero }} datetime="{{ .Date.Format "2006-01-02" }}"{{ end }}>
-        {{- if not .Date.IsZero }}{{ .Date.Format "01.02" }}{{ end -}}
-      </time>
+      {{ if .Date.IsZero }}<span></span>{{ else }}<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "01.02" }}</time>{{ end }}
       <h3><a href="{{ .RelPermalink }}">{{ .LinkTitle }}
         {{- with .CurrentSection }}<em>{{ .LinkTitle }}</em>{{ end -}}
       </a></h3>

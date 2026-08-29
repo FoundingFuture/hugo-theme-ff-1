@@ -9,26 +9,57 @@
  * name, so a section nested in a classed section closes that one too.
  */
 [data-part="rows"]{
-  display:grid;grid-template-columns:1fr 1fr;
+  display:grid;
+  grid-template-columns:1fr 1fr;
   border-top:1px solid var(--line);
 }
+
 [data-part="rows"]>*{
-  display:grid;grid-template-columns:2.9rem minmax(0,1fr) auto;
-  gap:.75rem;align-items:baseline;padding:.55rem var(--pad);
-  border-bottom:1px solid var(--line);border-right:1px solid var(--line);
-  background:var(--surface);min-width:0;
+  display:grid;
+  grid-template-columns:2.9rem minmax(0,1fr) auto;
+  gap:.75rem;
+  align-items:baseline;
+  padding:.55rem var(--pad);
+  border-bottom:1px solid var(--line);
+  border-right:1px solid var(--line);
+  background:var(--surface);
+  min-width:0;
 }
 [data-part="rows"]>*:hover{background:var(--sunk)}
+
 [data-part="rows"] time{
-  font-family:var(--mono);font-size:.7rem;color:var(--muted);white-space:nowrap;
+  font-family:var(--mono);
+  font-size:.7rem;
+  color:var(--muted);
+  white-space:nowrap;
 }
-/* A page without a date still holds the column, so titles stay aligned. */
-[data-part="rows"] time:empty{min-width:2.9rem}
+
+/* A page without a date still holds the column, so titles stay aligned. It
+   is a bare span rather than an empty <time>, because a time element with
+   neither a datetime attribute nor text content is invalid HTML and
+   html5validator says so. The grid already fixes the column at 2.9rem;
+   this keeps the floor if the row is ever laid out another way. */
+[data-part="rows"]>*>:is(time,span):empty{min-width:2.9rem}
+
 [data-part="rows"] h2,[data-part="rows"] h3{
-  margin:0;min-width:0;font-family:var(--text);font-weight:400;
-  font-size:.95rem;line-height:1.35;color:var(--ink);
+  margin:0;
+  min-width:0;
+  font-family:var(--text);
+  font-weight:400;
+  font-size:.95rem;
+  line-height:1.35;
+  color:var(--ink);
 }
-[data-part="rows"] h2>a,[data-part="rows"] h3>a{text-decoration:none;color:inherit}
+
+[data-part="rows"] h2>a,[data-part="rows"] h3>a{
+  text-decoration:none;
+  color:inherit
+}
 [data-part="rows"] h2>a:hover,[data-part="rows"] h3>a:hover{color:var(--teal)}
+
 /* which subtopic a gathered piece came from */
-[data-part="rows"] em{font-style:normal;color:var(--muted);margin-left:.5rem}
+[data-part="rows"] em{
+  font-style:normal;
+  color:var(--muted);
+  margin-left:.5rem
+}

@@ -21,6 +21,12 @@
        thousands turns the rail-pages feature off and reaches them from
        the topic's own page instead.
 
+       A menu entry with neither children nor a URL is dropped. Hugo
+       leaves .URL empty when an entry's page does not exist in the
+       language being built, and a row without one rendered <a href="">:
+       a link to the page you are already on, and invalid besides. There
+       is nothing to point at, so there is no row.
+
        page      the page being rendered, so its branch opens
        kind      "menu" or "section", naming the source
        menuID    which menu, when the source is one
@@ -86,7 +92,7 @@
         "entries" $kids "pieces" $own "parent" (cond (eq $kind "section") $e false)
         "depth" (add $depth 1) "group" $url "palette" $palette) }}
   </details></li>
-  {{- else }}
+  {{- else if $url }}
   <li><a href="{{ $url }}"
     {{- if $active }} aria-current="page"{{ else if $ancestor }} aria-current="true"{{ end -}}
   >{{ $name }}{{ if $count }} <span class="n">{{ $count }}</span>{{ end }}</a></li>

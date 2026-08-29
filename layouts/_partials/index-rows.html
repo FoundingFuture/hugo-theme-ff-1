@@ -15,9 +15,7 @@
 {{- range $pages }}
   {{- $p := . }}
   <section>
-    <time{{ if not .Date.IsZero }} datetime="{{ .Date.Format "2006-01-02" }}"{{ end }}>
-      {{- if not .Date.IsZero }}{{ .Date.Format "01.02" }}{{ end -}}
-    </time>
+    {{ if .Date.IsZero }}<span></span>{{ else }}<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "01.02" }}</time>{{ end }}
     <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}
       {{- if $showSection }}{{ with .CurrentSection }}<em>{{ .LinkTitle }}</em>{{ end }}{{ end -}}
     </a></h2>
