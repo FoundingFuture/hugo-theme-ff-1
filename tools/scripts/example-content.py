@@ -49,6 +49,11 @@ WORDS = (
 TREE = {
     "topic-one": {
         "pages": ["page-one", "page-two"],
+        # One page has to outrun the viewport. The tail below a piece
+        # fades over the last half screen whatever the piece's length,
+        # and a demo whose every page fits on one screen only ever shows
+        # that fade filling leftover space.
+        "long": ["page-one"],
         "sections": {
             "subtopic-one": {
                 "pages": ["page-one"],
@@ -92,7 +97,7 @@ def paragraphs(rng, count):
     return out
 
 
-def fill(path, rng, tags, intro=False, weight=0):
+def fill(path, rng, tags, intro=False, weight=0, long=False):
     """Undraft the page Hugo wrote, tag it, and give it a body.
 
     A section gets an introduction rather than an article. What sits
@@ -123,7 +128,15 @@ def fill(path, rng, tags, intro=False, weight=0):
         listed = ", ".join("'%s'" % tag for tag in tags)
         text = text.replace("draft = false", "draft = false\ntags = [%s]" % listed, 1)
 
-    body = paragraphs(rng, 1 if intro else rng.randint(4, 6))
+    if intro:
+        count = 1
+    elif long:
+        # Twice the longest ordinary page, so it scrolls on any screen a
+        # reader is likely to have.
+        count = rng.randint(12, 14)
+    else:
+        count = rng.randint(4, 6)
+    body = paragraphs(rng, count)
     # A summary divider after the first paragraph. Without one a list
     # page repeats whatever ids the opening words carry. Two such pages
     # on one list are two elements sharing an id.
@@ -170,7 +183,8 @@ def build(node, prefix, rng):
         for page in spec.get("pages", []):
             hugo_new("%s/%s.md" % (here, page))
             fill(os.path.join(SITE, "content", here, page + ".md"),
-                 rng, rng.sample(TAGS, rng.randint(1, 2)))
+                 rng, rng.sample(TAGS, rng.randint(1, 2)),
+                 long=page in spec.get("long", []))
 
         build(spec.get("sections", {}), here, rng)
 
