@@ -44,7 +44,7 @@
   ],
   "images": [
     [
-      "/kitchen-sink/bundle/a.png",
+      "../bundle/a.png",
       "A grey square shown through the figure shortcode"
     ],
     [
