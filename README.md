@@ -191,6 +191,7 @@ properties on `:root`:
   --rail:16rem;              /* the menu's column */
   --pad:1.25rem;             /* the inset content takes from its edges */
   --crumb-separator:">>";    /* the mark between steps of the trail */
+  --crumb-separator-color:#8b979f;
 }
 ```
 

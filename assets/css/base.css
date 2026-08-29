@@ -27,6 +27,10 @@
      written, so a screen reader never reads it out, and a site changes
      it here rather than by overriding a rule. */
   --crumb-separator:">>";
+  /* Subordinate to the steps either side of it, and still legible. The
+     rule line's colour reads at 1.1 to 1 on the band the trail sits
+     in, which is no mark at all. */
+  --crumb-separator-color:color-mix(in oklab, var(--muted) 75%, var(--line));
 
   --rail:16rem;
   --pad:1.25rem;   /* content's inset from the edges of its column */
