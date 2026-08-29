@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.1.1, 2026-08-29
+
+- `items` resolves the address in a row's fourth field instead of
+  printing it as written. A site served from a subdirectory, which every
+  GitHub project page is, had those rows linking to nothing: a path
+  written `/topic/` is `/prefix/topic/` there, and Hugo does not rewrite
+  a path a person typed. An address that names a host is untouched.
+
 ## v0.1.0, 2026-08-29
 
 The theme itself. What came before was the scaffold Hugo generates and
