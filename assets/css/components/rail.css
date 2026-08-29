@@ -2,28 +2,52 @@
 
 .rail{
   border-right:1px solid var(--line);
-  flex:1 1 auto;min-height:0;overflow-y:auto;padding:1.1rem 0 2rem;
+  flex:1 1 auto;
+  min-height:0;
+  overflow-y:auto;
+  padding:1.1rem 0 2rem;
+
   /* The counts beside a row stay monospaced. Their own rules say so, and
      they are more specific than this. */
-  font-family:'Menu',var(--text);
+  font-family:Menu,var(--text);
 }
-.rail ul{list-style:none;margin:0 0 .18rem;padding:0}
+
+.rail ul{
+  list-style:none;
+  margin:0 0 .18rem;
+  padding:0
+}
+
 /* A site can fill both site.Menus.main and params.extraNav. Close the gap so
    the two lists read as one block under the tree. */
 .rail ul.topics+ul.topics{margin-top:0}
 
 
 /* ---- topic menu: each topic carries its colour, open state fills it ---- */
-.rail .topics{--r:7px;list-style:none;margin:0 0 .25rem;padding:0 .6rem}
+.rail .topics{
+  --r:7px;
+  --tc:var(--teal);
+
+  list-style:none;
+  margin:0 0 .25rem;
+  padding:0 .6rem
+}
 .topics>li{margin-bottom:.08rem}
-.rail .topics{--tc:var(--teal)}
 .topics details[data-t="indigo"]{--tc:var(--indigo)}
 .topics details[data-t="rose"]{--tc:var(--rose)}
 .topics details[data-t="amber"]{--tc:var(--amber)}
 
 .topics summary{
-  display:flex;align-items:center;gap:.5rem;cursor:pointer;list-style:none;
-  padding:.28rem .5rem;line-height:1.25;border-radius:var(--r);font-size:1.03rem;color:var(--body);
+  display:flex;
+  align-items:center;
+  gap:.5rem;
+  cursor:pointer;
+  list-style:none;
+  padding:.28rem .5rem;
+  line-height:1.25;
+  border-radius:var(--r);
+  font-size:1.03rem;
+  color:var(--body);
   transition:background .18s ease,color .18s ease;
 }
 .topics summary::-webkit-details-marker{display:none}
@@ -38,54 +62,120 @@
    square hover, which is how Printing came to sit further right than
    everything above it. */
 .topics>li>a{
-  display:flex;align-items:center;gap:.5rem;padding:.28rem .5rem;line-height:1.25;border-radius:var(--r);
-  font-size:1.03rem;color:var(--body);text-decoration:none;
+  display:flex;
+  align-items:center;
+  gap:.5rem;
+  padding:.28rem .5rem;
+  line-height:1.25;
+  border-radius:var(--r);
+  font-size:1.03rem;
+  color:var(--body);
+  text-decoration:none;
   transition:background .18s ease,color .18s ease;
 }
-.topics>li>a:hover{background:color-mix(in oklab,var(--ink) 8%, transparent);color:var(--ink)}
+
+.topics>li>a:hover{
+  background:color-mix(in oklab,var(--ink) 8%, transparent);
+  color:var(--ink)
+}
+
 .topics>li>a[aria-current]{
   background:color-mix(in oklab,var(--ink) 13%, transparent);
-  color:var(--ink);font-weight:500;
+  color:var(--ink);
+  font-weight:500;
 }
-.topics summary:hover{background:color-mix(in oklab,var(--tc) 13%, transparent);color:var(--ink)}
-.topics details[open]>summary{background:var(--tc);color:#fff}
-.topics details[open]>summary .n{color:#fff;opacity:.75}
+
+.topics summary:hover{
+  background:color-mix(in oklab,var(--tc) 13%, transparent);
+  color:var(--ink)
+}
+
+.topics details[open]>summary{
+  background:var(--tc);
+  color:#fff
+}
+
+.topics details[open]>summary .n{
+  color:#fff;
+  opacity:.75
+}
+
 .topics summary .n,
-.topics>li>a .n{margin-left:auto;font-family:var(--mono);font-size:.72rem;color:var(--muted)}
+.topics>li>a .n{
+  margin-left:auto;
+  font-family:var(--mono);
+  font-size:.72rem;
+  color:var(--muted)
+}
 
 /* the chevron turns as the section opens */
 .topics .chev{
-  flex:0 0 auto;width:.42rem;height:.42rem;margin-right:.1rem;
-  border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;
-  transform:rotate(-45deg);opacity:.65;
+  flex:0 0 auto;
+  width:.42rem;
+  height:.42rem;
+  margin-right:.1rem;
+  border-right:1.5px solid currentcolor;
+  border-bottom:1.5px solid currentcolor;
+  transform:rotate(-45deg);
+  opacity:.65;
   transition:transform .42s cubic-bezier(.22,.61,.36,1),opacity .2s ease;
 }
-.topics details[open]>summary .chev{transform:rotate(45deg);opacity:.9}
+
+.topics details[open]>summary .chev{
+  transform:rotate(45deg);
+  opacity:.9
+}
 
 .topics details>ul{
-  list-style:none;margin:0;
-  background:color-mix(in oklab,var(--tc) 10%, var(--surface));
+  list-style:none;
+  margin:0;
   border-radius:10px;
   padding:0 .35rem;   /* horizontal only. vertical padding floors the grid
                          item's height and jolts the end of every close */
+
+  /* ---- depth alternates instead of climbing ----
+     The panel takes its parity from the row above it, and the row hands
+     its own children the opposite. The two properties live on different
+     elements, so neither refers to itself and nothing cycles. Every
+     panel therefore contrasts with its parent at any depth, and no level
+     needs declaring. The row's half is on .topics details>ul>li below. */
+  --p:var(--q,0);
+
+  background:color-mix(in oklab,var(--tc) calc(10% + var(--p) * 12%), var(--surface));
 }
 .topics details ul li{margin-bottom:.08rem}
 .topics details ul li:first-child{margin-top:.32rem}
 .topics details ul li:last-child{margin-bottom:.32rem}
+
 .topics details ul a{
-  display:flex;align-items:baseline;gap:.5rem;padding:.25rem .5rem;line-height:1.25;
-  border-radius:6px;text-decoration:none;font-size:.98rem;color:var(--body);
+  display:flex;
+  align-items:baseline;
+  gap:.5rem;
+  padding:.25rem .5rem;
+  line-height:1.25;
+  border-radius:6px;
+  text-decoration:none;
+  font-size:.98rem;
+  color:var(--body);
   background:transparent;
   transition:background .18s ease,color .18s ease;
 }
-.topics details ul a:hover{background:color-mix(in oklab,var(--tc) 24%, var(--surface));color:var(--ink)}
+
 .topics details ul a[aria-current]{
   background:color-mix(in oklab,var(--tc) 34%, var(--surface));
-  color:var(--ink);font-weight:500;
+  color:var(--ink);
+  font-weight:500;
 }
-.topics details ul .n{margin-left:auto;font-family:var(--mono);font-size:.72rem;color:var(--muted)}
+
+.topics details ul .n{
+  margin-left:auto;
+  font-family:var(--mono);
+  font-size:.72rem;
+  color:var(--muted)
+}
 
 /* height animation, where the browser supports it; elsewhere it just opens */
+
 /* a grid row from 0fr to 1fr animates on its own, where animating to a
    block-size of auto needs interpolate-size, which fewer browsers have.
    content-visibility is held visible so the height is the only thing that
@@ -96,25 +186,43 @@
 @supports selector(::details-content){
   .topics details::details-content{
     content-visibility:visible;
-    display:grid;grid-template-rows:0fr;overflow:hidden;
+    display:grid;
+    grid-template-rows:0fr;
+    overflow:hidden;
     transition:grid-template-rows .48s cubic-bezier(.22,.61,.36,1);
   }
   .topics details[open]::details-content{grid-template-rows:1fr}
+
   .topics details>ul{
-    min-height:0;overflow:hidden;
-    visibility:hidden;transition:visibility 0s linear .48s;
+    min-height:0;
+    overflow:hidden;
+    visibility:hidden;
+    transition:visibility 0s linear .48s;
   }
-  .topics details[open]>ul{visibility:visible;transition-delay:0s}
+
+  .topics details[open]>ul{
+    visibility:visible;
+    transition-delay:0s
+  }
 }
 
 /* the rows fade and slide with the height, in both directions. A transition
    rather than a keyframe, because a keyframe on [open] has nothing to run
    against once the attribute is gone */
 .topics details>ul>li{
-  opacity:0;transform:translateY(-7px);
+  /* The other half of the parity pair above: the row hands its own
+     children the opposite of what its panel took. */
+  --q:calc(1 - var(--p));
+
+  opacity:0;
+  transform:translateY(-7px);
   transition:opacity .26s ease,transform .26s cubic-bezier(.22,.61,.36,1);
 }
-.topics details[open]>ul>li{opacity:1;transform:none}
+
+.topics details[open]>ul>li{
+  opacity:1;
+  transform:none
+}
 .topics details[open]>ul>li:nth-child(1){transition-delay:.05s}
 .topics details[open]>ul>li:nth-child(2){transition-delay:.1s}
 .topics details[open]>ul>li:nth-child(3){transition-delay:.15s}
@@ -123,50 +231,72 @@
 
 
 /* ================= deep topic tree ================= */
+
 /* The whole menu is set in this. Condensed, because a topic name can be
    long and the rail is narrow, and it carries small capitals a designer
    drew rather than capitals a browser shrank. Shrunken capitals keep the
    stroke weight of full ones, which is what made the first menu look
    uneven. Cut by scripts/build-menucaps.py. */
 @font-face{
-  font-family:'Menu';
+  font-family:Menu;
   src:url('../../fonts/roboto-condensed-caps.woff2') format('woff2');
   font-weight:400;font-display:swap;
 }
+
 /* Cut from the display face for titles. Its lowercase glyphs are already
    small capitals, so nothing needs font-variant-caps. */
 @font-face{
-  font-family:'DisplayCaps';
+  font-family:DisplayCaps;
   src:url('../../fonts/bricolage-smallcaps-700.woff2') format('woff2');
   font-weight:700;font-display:swap;
 }
 
 /* ---- level two that opens further: a row, never a filled pill ---- */
 .topics details.sub>summary{
-  padding:.25rem .5rem;line-height:1.25;border-radius:6px;font-size:.98rem;
-  color:var(--body);background:transparent;
+  padding:.25rem .5rem;
+  line-height:1.25;
+  border-radius:6px;
+  font-size:.98rem;
+  color:var(--body);
+  background:transparent;
 }
-.topics details.sub>summary:hover{background:color-mix(in oklab,var(--tc) calc(22% + var(--p) * 12%), var(--surface));color:var(--ink)}
+
+.topics details.sub>summary:hover{
+  background:color-mix(in oklab,var(--tc) calc(22% + var(--p) * 12%), var(--surface));
+  color:var(--ink)
+}
+
 .topics details.sub[open]>summary{
   background:color-mix(in oklab,var(--tc) calc(28% + var(--p) * 12%), var(--surface));
-  color:var(--ink);font-weight:500;
+  color:var(--ink);
+  font-weight:500;
 }
-.topics details.sub[open]>summary .n{color:var(--muted);opacity:1}
-.topics details.sub>summary .chev{width:.36rem;height:.36rem}
 
-/* ---- depth alternates instead of climbing ----
-   The panel takes its parity from the row above it, and the row hands its
-   own children the opposite. The two properties live on different elements,
-   so neither refers to itself and nothing cycles. Every panel therefore
-   contrasts with its parent at any depth, and no level needs declaring. */
-.topics details>ul{--p:var(--q,0)}
-.topics details>ul>li{--q:calc(1 - var(--p))}
-.topics details>ul{
-  background:color-mix(in oklab,var(--tc) calc(10% + var(--p) * 12%), var(--surface));
+.topics details.sub[open]>summary .n{
+  color:var(--muted);
+  opacity:1
 }
-.topics details.sub>ul{border-radius:8px;margin:0 0 .1rem .3rem;padding:0 .3rem}
-.topics details.sub ul a{font-size:.94rem;padding:.23rem .45rem}
-.topics details ul a:hover{background:color-mix(in oklab,var(--tc) calc(22% + var(--p) * 12%), var(--surface));color:var(--ink)}
+
+.topics details.sub>summary .chev{
+  width:.36rem;
+  height:.36rem
+}
+
+.topics details.sub>ul{
+  border-radius:8px;
+  margin:0 0 .1rem .3rem;
+  padding:0 .3rem
+}
+
+.topics details.sub ul a{
+  font-size:.94rem;
+  padding:.23rem .45rem
+}
+
+.topics details ul a:hover{
+  background:color-mix(in oklab,var(--tc) calc(22% + var(--p) * 12%), var(--surface));
+  color:var(--ink)
+}
 .topics details.sub ul li:first-child{margin-top:.26rem}
 .topics details.sub ul li:last-child{margin-bottom:.26rem}
 
@@ -174,26 +304,36 @@
        leads to the topic's own page. Every other row is the same face
        without them, so the lettering still says which rows go deeper ---- */
 .topics summary .nm{
-  font-variant-caps:small-caps;letter-spacing:.03em;font-weight:400;
+  font-variant-caps:small-caps;
+  letter-spacing:.03em;
+  font-weight:400;
 }
 .topics details:not(.sub)>summary .nm{font-size:1.15rem}
 .topics details.sub>summary .nm{font-size:1.09rem}
 
 /* the main page row names the topic, so it takes the topic's lettering */
  .topics .all a{
-  font-variant-caps:small-caps;letter-spacing:.03em;
+  font-variant-caps:small-caps;
+   letter-spacing:.03em;
 }
 
 /* ---- a container only groups. No page of its own, so no count ---- */
 .topics details.container>summary .nm{color:var(--muted)}
 .topics details.container>summary .chev{margin-left:auto}
-.topics details.container[open]>summary{background:transparent;font-weight:400}
+
+.topics details.container[open]>summary{
+  background:transparent;
+  font-weight:400
+}
 .topics details.container[open]>summary .nm{color:var(--ink)}
 .topics details.container>summary{font-size:.98rem}
 
 /* ---- where you are ---- */
+
 /* Any row that points at the page being read, whatever level it sits
    at: a topic, a subtopic, its main page, or one of its pieces. */
 .rail a[aria-current="page"]{
-  color:var(--teal);font-weight:500;box-shadow:inset 2px 0 0 var(--teal);
+  color:var(--teal);
+  font-weight:500;
+  box-shadow:inset 2px 0 0 var(--teal);
 }

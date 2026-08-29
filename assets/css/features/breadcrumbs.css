@@ -1,24 +1,56 @@
 /* Where the page sits, named the whole way down, in the band above it. */
 .breadcrumbs{
-  display:flex;align-items:baseline;gap:.5rem;flex-wrap:wrap;
-  margin:0;padding:.55rem var(--pad);list-style:none;
-  background:var(--sunk);border-bottom:1px solid var(--line);
-  font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
+  display:flex;
+  align-items:baseline;
+  gap:.5rem;
+  flex-wrap:wrap;
+  margin:0;
+
+  /* The row is 24px whatever this says: a11y.css gives every link in
+     main a 24px minimum block size, which is WCAG 2.2's target size, and
+     the trail's text needs only 17.4px of that. So the padding is the
+     only slack in the band, and it is kept to what keeps the words off
+     the rules above and below. */
+  padding:.25rem var(--pad);
+  list-style:none;
+  background:var(--sunk);
+  border-bottom:1px solid var(--line);
+  font-family:var(--mono);
+  font-size:.7rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
 }
-.breadcrumbs li{display:flex;align-items:baseline;gap:.5rem}
+
+.breadcrumbs li{
+  display:flex;
+  align-items:baseline;
+  gap:.5rem
+}
+
 /* The mono first, and the display cut behind it. A browser falls back
    one glyph at a time, so the mark comes from the mono when the mono
    has it, and from the cut that does when it does not. A site setting
    the separator to an arrow gets one without having to name a face. */
 .breadcrumbs li+li::before{
   content:var(--crumb-separator, ">>");
-  font-family:var(--mono),'DisplayCaps';font-weight:400;
+  font-family:var(--mono),DisplayCaps,monospace;
+  font-weight:400;
   color:var(--crumb-separator-color, currentColor);
 }
-.breadcrumbs a{color:var(--muted);text-decoration:none}
+
+.breadcrumbs a{
+  color:var(--muted);
+  text-decoration:none
+}
 .breadcrumbs a:hover{color:var(--ink)}
 .breadcrumbs a[aria-current="page"]{color:var(--teal)}
+
 /* A line a site carries at the end of the trail, pushed to the far
    side so it reads as an aside rather than as another step. */
-.breadcrumbs .formula{margin-left:auto;text-transform:none;letter-spacing:.02em;color:var(--amber)}
+.breadcrumbs .formula{
+  margin-left:auto;
+  text-transform:none;
+  letter-spacing:.02em;
+  color:var(--amber)
+}
 .breadcrumbs .formula::before{content:none}

@@ -1,6 +1,7 @@
 /* The page frame, and the two widths it collapses through. */
 
 /* ---- page frame ---- */
+
 /* The grid is body itself, and it carries no class.
  *
  * conform reduces a page to its shape, and that shape records every
@@ -14,119 +15,256 @@
  * shape the rule was asking for anyway. */
 body{
   position:relative;
+
   /* tall enough that a short page still puts its footer on the screen's
      last line, and no taller, so a long one just flows past */
-  min-height:100vh;min-height:100dvh;
+  min-height:100vh;
+  min-height:100dvh;
   display:grid;
   grid-template-columns:var(--rail) minmax(0,1fr);
   grid-template-rows:auto 1fr auto;
   background:linear-gradient(to right,var(--surface) 0 var(--rail),var(--paper) var(--rail));
 }
+
 /* the logo and the nav travel together, pinned, as one column */
 .side{
-  grid-column:1;grid-row:1 / -1;
-  display:flex;flex-direction:column;position:sticky;top:0;
-  align-self:start;max-height:100vh;
+  grid-column:1;
+  grid-row:1 / 3;
+  display:flex;
+  flex-direction:column;
+  position:sticky;
+  top:0;
+  align-self:start;
+  max-height:100vh;
 }
+
 /* Placed with the same weight the narrow blocks use. body>main reads
    as one selector more specific than the main they say, so the wide
    placement won at every width and the content sat in a column that
    collapses to nothing below 60rem. */
-.strip{grid-column:2;grid-row:1}
-main{grid-column:2;grid-row:2;min-width:0}
-.foot{grid-column:2;grid-row:3}
+.strip{
+  grid-column:2;
+  grid-row:1
+}
+
+main{
+  grid-column:2;
+  grid-row:2;
+  min-width:0
+}
+
+/* Across both columns, so the last line of the page is the width of the
+   page. The rail's column ends above it: .side is sticky, and a sticky
+   item paints over a static one, so a side still spanning to -1 would
+   cover the footer's left end once the page was scrolled to the bottom.
+   footer.foot carries its own opaque background, which is what hides
+   body's rail-coloured gradient underneath. */
+.foot{
+  grid-column:1 / -1;
+  grid-row:3
+}
+
 /* the wrapper is plumbing on a wide screen and a dropdown on a narrow one.
    Its content is forced visible here, so being closed costs nothing. */
-.railwrap{display:flex;flex-direction:column;flex:1 1 auto;min-height:0}
+.railwrap{
+  display:flex;
+  flex-direction:column;
+  flex:1 1 auto;
+  min-height:0
+}
 .railwrap>summary{display:none}
+
 .railwrap::details-content{
   content-visibility:visible;
-  display:flex;flex-direction:column;flex:1 1 auto;min-height:0;
+  display:flex;
+  flex-direction:column;
+  flex:1 1 auto;
+  min-height:0;
 }
 
 @media (max-width:60rem){
-  :root{--rail:100%;--menugap:.8rem}
+  :root{
+    --rail:100%;
+    --menugap:.8rem;
+
+    /* What the band actually occupies here. The brand cell spans both
+       rows, so the grid stretches the band past its own min-height to
+       4.4rem. Raising --band instead would feed straight back into the
+       row and grow it again, so the declared height and the rendered one
+       are two different numbers and carry two different names. */
+    --band-seen:4.4rem;
+  }
+
   /* the masthead keeps two columns even here, or the logo sits alone beside
      a blank half screen, which is the opposite of collapsing to save room */
+
   /* not auto: main spans both columns, and a spanning item hands part of
      its max-content to every track it covers, so an auto track here grew
      to most of the page. The wordmark caps at 11rem, so 13rem holds it. */
-  body{grid-template-columns:minmax(0,13rem) minmax(0,1fr);
-    grid-template-rows:auto auto 1fr auto}
+  body{
+    grid-template-columns:minmax(0,13rem) minmax(0,1fr);
+    grid-template-rows:auto auto 1fr auto;
+    background:var(--paper)
+  }
   .side{display:contents}
+
   /* the wordmark is two rows tall, so the tagline and the menu control
      stack beside it and the white beneath the tagline is used */
-  .brandcell{grid-column:1;grid-row:1 / span 2}
-  .strip{grid-column:2;grid-row:1;position:relative;z-index:0;
-    justify-content:flex-start;align-items:center;border-bottom:none}
+  .brandcell{
+    grid-column:1;
+    grid-row:1 / span 2;
+    order:1;
+    border-right:none;
+    border-bottom:1px solid var(--line)
+  }
+
+  .strip{
+    grid-column:2;
+    grid-row:1;
+    position:relative;
+    z-index:0;
+    justify-content:flex-start;
+    align-items:flex-start;
+    border-bottom:none;
+    order:2;
+    flex-direction:column;
+    gap:.45rem
+  }
+
   /* an empty cell behind the bar's row. Spanning the strip over it made the
      tagline's height share two rows and spill onto the bar. */
-  body::before{content:'';grid-column:2;grid-row:2;background:var(--surface);
-    border-bottom:1px solid var(--line)}
+  body::before{
+    content:'';
+    grid-column:2;
+    grid-row:2;
+    background:var(--surface);
+    border-bottom:1px solid var(--line)
+  }
   .strip p{text-align:left}
   .brand svg{max-width:11rem}
+
   /* display:contents lets the button sit in the masthead while the panel it
      opens spans the full width on its own row */
   .railwrap{display:contents}
-  .railwrap>summary{grid-column:2;grid-row:2;align-self:end;
-    position:relative;z-index:2}
-  /* the panel is anchored to the button's column, not the page */
-  .railwrap::details-content{grid-column:2;grid-row:3;position:relative}
-  main{grid-column:1 / -1;grid-row:3}
-  .foot{grid-column:1 / -1;grid-row:4}
-  /* the panel floats over the content rather than taking a row. In flow it
-     opened inside column two and stretched the wordmark's cell beside it. */
-  .rail{
-    position:absolute;left:1.25rem;right:1.25rem;z-index:30;
-    top:calc(-1 * var(--menugap) - 2px);
-    background:var(--surface);border:1px solid var(--line);border-top:none;
-    border-radius:0 0 8px 8px;
-    box-shadow:0 22px 46px -22px rgba(13,22,32,.55);
-    max-height:min(74vh,40rem);overflow-y:auto;
-  }
-  /* the bar and the panel read as one piece while it is open */
-  .railwrap[open]>summary{border-radius:7px 7px 0 0}
-  .brandcell{order:1;border-right:none;border-bottom:1px solid var(--line)}
-  .brand{padding:.75rem 1rem .35rem}
-  .est{padding-bottom:.7rem;letter-spacing:.2em}
-  .strip{order:2}
-  body{background:var(--paper)}
-  /* navigation comes before the content, but folded away until asked for */
-  .railwrap:not([open])::details-content{content-visibility:hidden}
-  .railwrap::details-content{display:block}
+
   /* it is the only way to navigate on a phone, so it reads as a control
      rather than as a label. Same pill the topics use. */
   .railwrap>summary{
-    display:flex;align-items:center;gap:.55rem;cursor:pointer;list-style:none;
-    margin:0 1.25rem var(--menugap);padding:.4rem .85rem;border-radius:7px;
-    background:var(--ink);color:var(--surface);
-    font-family:var(--mono);font-size:1.02rem;
-    letter-spacing:.16em;text-transform:uppercase;
-    transition:background .18s ease;
+    grid-column:2;
+    grid-row:2;
+    align-self:end;
+    position:relative;
+    z-index:2;
+    display:flex;
+    align-items:center;
+    gap:.55rem;
+    cursor:pointer;
+    list-style:none;
+    margin:0 1.25rem var(--menugap);
+    padding:.4rem .85rem;
+    border-radius:7px;
+    background:var(--ink);
+    color:var(--surface);
+    font-family:var(--mono);
+    font-size:1.02rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    transition:background .18s ease
   }
+
+  /* the panel is anchored to the button's column, not the page */
+  .railwrap::details-content{
+    grid-column:2;
+    grid-row:3;
+    position:relative;
+    display:block
+  }
+
+  /* content first on a phone, navigation after it */
+  main{
+    grid-column:1 / -1;
+    grid-row:3;
+    order:4
+  }
+
+  .foot{
+    grid-column:1 / -1;
+    grid-row:4
+  }
+
+  /* the panel floats over the content rather than taking a row. In flow it
+     opened inside column two and stretched the wordmark's cell beside it. */
+  .rail{
+    position:absolute;
+    left:1.25rem;
+    right:1.25rem;
+    z-index:30;
+    top:calc(-1 * var(--menugap) - 2px);
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-top:none;
+    border-radius:0 0 8px 8px;
+    box-shadow:0 22px 46px -22px rgb(13 22 32 / 55%);
+    max-height:min(74vh,40rem);
+    overflow-y:auto;
+  }
+
+  /* the bar and the panel read as one piece while it is open */
+  .railwrap[open]>summary{border-radius:7px 7px 0 0}
+
+  .brand{padding:.75rem 1rem .35rem}
+
+  .est{
+    padding-bottom:.7rem;
+    letter-spacing:.2em
+  }
+
+  /* navigation comes before the content, but folded away until asked for */
+  .railwrap:not([open])::details-content{content-visibility:hidden}
+
   .railwrap>summary:hover{background:var(--body)}
+
   /* the bar is a whole line, so it says what is behind it */
   .railwrap>summary .what{
-    margin-left:auto;text-transform:none;letter-spacing:.06em;
-    font-size:.85rem;opacity:.65;
+    margin-left:auto;
+    text-transform:none;
+    letter-spacing:.06em;
+    font-size:.85rem;
+    opacity:.65;
   }
   .railwrap>summary .what.open{display:none}
   .railwrap[open]>summary .what.shut{display:none}
   .railwrap[open]>summary .what.open{display:inline}
   .railwrap>summary::-webkit-details-marker{display:none}
+
   .railwrap>summary .chev{
-    margin-left:.7rem;width:.42rem;height:.42rem;border-right:1.5px solid currentColor;
-    border-bottom:1.5px solid currentColor;transform:rotate(45deg);
-    margin-top:-.2rem;transition:transform .3s ease;
+    margin-left:.7rem;
+    width:.42rem;
+    height:.42rem;
+    border-right:1.5px solid currentcolor;
+    border-bottom:1.5px solid currentcolor;
+    transform:rotate(45deg);
+    margin-top:-.2rem;
+    transition:transform .3s ease;
   }
-  .railwrap[open]>summary .chev{transform:rotate(-135deg);margin-top:.1rem}
-  .strip{flex-direction:column;align-items:flex-start;gap:.45rem}
-    /* content first on a phone, navigation after it */
-  main{order:4}
-  .rows,.cols{grid-template-columns:100%;columns:1}
+
+  .railwrap[open]>summary .chev{
+    transform:rotate(-135deg);
+    margin-top:.1rem
+  }
+
+
+  .rows,.cols{
+    grid-template-columns:100%;
+    columns:1
+  }
   .cols{column-rule:none}
 }
-@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+@media (prefers-reduced-motion:reduce){*{
+  transition:none!important;
+  animation:none!important
+}}
 
 
 @media (max-width:34rem){
@@ -134,19 +272,70 @@ main{grid-column:2;grid-row:2;min-width:0}
      bar defaulted to order 0 and jumped above the wordmark, and the panel
      kept grid-column 2 from the wider layout, which is an implicit column
      outside a single-column grid, so it opened off screen. */
-  :root{--menugap:.7rem}
-  body{grid-template-columns:100%;
-    grid-template-rows:auto auto auto auto 1fr auto}
-  .brandcell{grid-column:1;grid-row:1;border-right:none;border-bottom:none}
-  .strip{grid-column:1;grid-row:2;align-items:center;border-left:none}
-  body::before{grid-column:1;grid-row:3}
-  .railwrap>summary{grid-column:1;grid-row:3;margin:var(--menugap) 1.25rem}
-  .railwrap::details-content{grid-column:1;grid-row:4;position:relative}
-  main{grid-column:1;grid-row:5}
-  .foot{grid-column:1;grid-row:6}
-  .rail{grid-column:1;grid-row:auto}
+  :root{
+    --menugap:.7rem;
+
+    /* One column again: nothing spans two rows, so the band is exactly
+       its own height. */
+    --band-seen:var(--band);
+  }
+
+  body{
+    grid-template-columns:100%;
+    grid-template-rows:auto auto auto auto 1fr auto
+  }
+
+  .brandcell{
+    grid-column:1;
+    grid-row:1;
+    border-right:none;
+    border-bottom:none
+  }
+
+  .strip{
+    grid-column:1;
+    grid-row:2;
+    align-items:center;
+    border-left:none
+  }
+
+  body::before{
+    grid-column:1;
+    grid-row:3
+  }
+
+  .railwrap>summary{
+    grid-column:1;
+    grid-row:3;
+    margin:var(--menugap) 1.25rem
+  }
+
+  .railwrap::details-content{
+    grid-column:1;
+    grid-row:4;
+    position:relative
+  }
+
+  main{
+    grid-column:1;
+    grid-row:5
+  }
+
+  .foot{
+    grid-column:1;
+    grid-row:6
+  }
+
+  .rail{
+    grid-column:1;
+    grid-row:auto
+  }
   .strip p{text-align:center}
   .brand svg{max-width:14rem}
-  .brand,.est{margin-inline:auto;max-width:14rem}
+
+  .brand,.est{
+    margin-inline:auto;
+    max-width:14rem
+  }
 }
 

@@ -2,6 +2,9 @@
    says nothing else before it is read, so this is off by default. A
    site that revises its pages wants it on. */
 .last-modified{
-  display:inline-block;margin:.45rem .9rem 0 0;
-  font-family:var(--mono);font-size:.7rem;color:var(--muted);
+  display:inline-block;
+  margin:.45rem .9rem 0 0;
+  font-family:var(--mono);
+  font-size:.7rem;
+  color:var(--muted);
 }

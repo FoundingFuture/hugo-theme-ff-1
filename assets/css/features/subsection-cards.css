@@ -1,31 +1,75 @@
 /* Topic cards: the spine carries the topic's colour. */
-.subsections{border-top:1px solid var(--line)}
-.subsections>h2{
-  margin:0;padding:.6rem var(--pad);background:var(--sunk);
-  border-bottom:1px solid var(--line);
-  font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--ink);font-weight:400;
+.subsections{
+  /* The count sits in the rule beside the label, as it does on
+     every other band. */
+  position:relative;
+  border-top:1px solid var(--line)
 }
-[data-part="cards"]{display:grid;grid-template-columns:repeat(auto-fill,minmax(15.5rem,1fr))}
+
+.subsections>h2{
+  margin:0;
+  padding:.6rem var(--pad);
+  background:var(--sunk);
+  border-bottom:1px solid var(--line);
+  font-family:var(--mono);
+  font-size:.7rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink);
+  font-weight:400;
+  display:flex;
+  align-items:baseline;
+  gap:.75rem
+}
+
+[data-part="cards"]{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(15.5rem,1fr))
+}
+
 [data-part="cards"]>a{
   --tc:var(--teal);
-  display:block;text-decoration:none;padding:.9rem 1.1rem 1rem;
-  background:var(--surface);border-top:3px solid var(--tc);
-  border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+
+  display:block;
+  text-decoration:none;
+  padding:.9rem 1.1rem 1rem;
+  background:var(--surface);
+  border-top:3px solid var(--tc);
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
   transition:background .18s ease;
 }
 [data-part="cards"]>a[data-t="amber"]{--tc:var(--amber)}
 [data-part="cards"]>a[data-t="indigo"]{--tc:var(--indigo)}
 [data-part="cards"]>a[data-t="rose"]{--tc:var(--rose)}
 [data-part="cards"]>a:hover{background:color-mix(in oklab,var(--tc) 10%, var(--surface))}
+
 [data-part="cards"] h3{
-  margin:0 0 .3rem;font-family:var(--display);font-weight:600;
-  font-size:1.15rem;line-height:1.15;letter-spacing:-.015em;color:var(--ink);
+  margin:0 0 .3rem;
+  font-family:var(--display);
+  font-weight:600;
+  font-size:1.15rem;
+  line-height:1.15;
+  letter-spacing:-.015em;
+  color:var(--ink);
 }
-[data-part="cards"] p{margin:0 0 .6rem;font-size:.88rem;line-height:1.5;color:var(--body)}
-[data-part="cards"] span{font-family:var(--mono);font-size:.7rem;color:var(--muted)}
-/* The count sits in the rule beside the label, as it does on every
-   other band. */
-.subsections{position:relative}
-.subsections>h2{display:flex;align-items:baseline;gap:.75rem}
-.subsections .c{font-family:var(--mono);font-size:.7rem;color:var(--muted);font-weight:400}
+
+[data-part="cards"] p{
+  margin:0 0 .6rem;
+  font-size:.88rem;
+  line-height:1.5;
+  color:var(--body)
+}
+
+[data-part="cards"] span{
+  font-family:var(--mono);
+  font-size:.7rem;
+  color:var(--muted)
+}
+
+.subsections .c{
+  font-family:var(--mono);
+  font-size:.7rem;
+  color:var(--muted);
+  font-weight:400
+}

@@ -3,32 +3,72 @@
 /* ---- brand cell: the logo fills the rail column, no bar above it ---- */
 .brandcell{
   border-right:1px solid var(--line);
-  background:var(--ink);
+  background:var(--brand-bg);
+
+  /* Sized against the rail rather than the root, so the name fills the
+     cell at every width the frame collapses through. A long title wraps
+     and keeps filling; a short one grows to the ceiling and stops. */
+  container-type:inline-size;
 }
+
 /* the wordmark is currentColor, so the block inverts by colour alone */
-.brand{display:block;padding:1.05rem 1rem .5rem;color:var(--surface);text-decoration:none}
-.brand svg{display:block;width:100%;height:auto}
-.est{
-  margin:0;padding:0 1rem .95rem;font-family:var(--mono);font-size:.68rem;
-  letter-spacing:.26em;text-transform:uppercase;text-align:center;text-indent:.13em;
-  color:color-mix(in oklab,var(--surface) 62%, var(--ink));
+.brand{
+  display:block;
+  padding:1.05rem 1rem .5rem;
+  color:var(--brand-fg);
+  text-decoration:none
 }
+
+.brand svg{
+  display:block;
+  width:100%;
+  height:auto
+}
+
+.est{
+  margin:0;
+  padding:0 1rem .95rem;
+  font-family:var(--mono);
+  font-size:.68rem;
+  letter-spacing:.26em;
+  text-transform:uppercase;
+  text-align:center;
+  text-indent:.13em;
+  color:color-mix(in oklab,var(--brand-fg) 62%, var(--brand-bg));
+}
+
 .strip{
-  display:flex;align-items:center;justify-content:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
   /* The band's height is fixed at what it always was, and the line
      grows into it: as large as it can be without taking a second row,
      up to twice the size it used to be. The area was tall for the
      words in it, and a site may put a mark here instead. */
-  padding:.35rem var(--pad);min-height:3.6rem;min-width:0;
-  background:var(--surface);container-type:inline-size;
-  border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10;
+  padding:.35rem var(--pad);
+  min-height:var(--band);
+  min-width:0;
+  background:var(--surface);
+  container-type:inline-size;
+  border-bottom:1px solid var(--line);
+  position:sticky;
+  top:0;
+  z-index:10;
 }
+
 .strip p{
-  margin:0;min-width:0;text-align:center;color:var(--body);
-  font-family:'Asimovian',var(--display),sans-serif;
+  margin:0;
+  min-width:0;
+  text-align:center;
+  color:var(--body);
+  font-family:Asimovian,var(--display),sans-serif;
   font-size:min(2.4rem, calc(140cqw / var(--len,40)));
-  line-height:1.05;letter-spacing:.03em;white-space:nowrap;
-  overflow:hidden;text-overflow:ellipsis;
+  line-height:1.05;
+  letter-spacing:.03em;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
 
 /* The wordmark is whatever the site put there: the name this theme
@@ -36,17 +76,22 @@
    the home page's h1 in the header, and conform compares that against
    the scaffold, so the heading stays and is stripped of its own
    styling instead. */
-.brand h1,.brand .site-title{margin:0;font:inherit}
-.brand h1 svg,.brand .site-title svg{display:block;width:100%;height:auto}
+.brand h1,.brand .site-title{
+  margin:0;
+  font:inherit
+}
 
-/* Sized against the rail rather than the root, so the name fills the
-   cell at every width the frame collapses through. A long title wraps
-   and keeps filling; a short one grows to the ceiling and stops. */
-.brandcell{container-type:inline-size}
+.brand h1 svg,.brand .site-title svg{
+  display:block;
+  width:100%;
+  height:auto
+}
+
 .wordmark-text{
   display:block;
-  font-family:'DisplayCaps',var(--display),sans-serif;
+  font-family:DisplayCaps,var(--display),sans-serif;
   font-weight:700;
+
   /* The column's width over the longest word, or a fixed height over
      the number of words, whichever is stricter. The partial counts
      both. A ceiling stops a one-word site filling the screen, and a
@@ -54,12 +99,18 @@
   font-size:clamp(1.05rem,
     min(calc(160cqw / var(--em,6)), calc(8.5rem / var(--lines,1))),
     6.2rem);
-  line-height:.92;letter-spacing:-.02em;text-align:center;
+  line-height:.92;
+  letter-spacing:-.02em;
+  text-align:center;
+
   /* The cut's lowercase glyphs are its small capitals, so a name in
      lower case comes out shorter than the capitals beside it. The
      brand cell wants the full height. */
   text-transform:uppercase;
+
   /* A name breaks between words and never inside one. ff-1 split at
      its own hyphen into two lines otherwise. */
-  overflow-wrap:normal;word-break:keep-all;hyphens:manual;
+  overflow-wrap:normal;
+  word-break:keep-all;
+  hyphens:manual;
 }

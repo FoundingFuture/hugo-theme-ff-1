@@ -1,24 +1,32 @@
 /* The typefaces, the palette and the ground everything else sits on.
    The licences ship beside the files in static/fonts/. */
 
-@font-face{font-family:'Bricolage';src:url('../fonts/bricolage-grotesque.woff2') format('woff2');font-weight:400 800;font-display:swap}
+@font-face{font-family:Bricolage;src:url('../fonts/bricolage-grotesque.woff2') format('woff2');font-weight:400 800;font-display:swap}
+
 @font-face{font-family:'Instrument Sans';src:url('../fonts/instrument-sans-latin.woff2') format('woff2');font-weight:400 500;font-display:swap}
-@font-face{font-family:'Asimovian';src:url('../fonts/asimovian-latin.woff2') format('woff2');font-weight:400;font-display:swap}
+
+@font-face{font-family:Asimovian;src:url('../fonts/asimovian-latin.woff2') format('woff2');font-weight:400;font-display:swap}
+
 @font-face{font-family:'Plex Mono';src:url('../fonts/ibm-plex-mono-400.woff2') format('woff2');font-weight:400;font-display:swap}
 
 :root{
   --paper:#EBEFF3;      /* cool pale slate, the ground */
-  --surface:#FFFFFF;
+  --surface:#FFF;
   --sunk:#E1E7ED;       /* tinted band, groups without whitespace */
   --ink:#0D1620;
   --body:#44515E;
-  --muted:#78868F;
+
+  /* Secondary text: dates, counts, captions, the trail. Set at .7rem,
+     which is normal-size text, so WCAG AA asks 4.5:1. #78868F gave 3.75
+     on white and 3.01 on the sunk bands, and Lighthouse failed it while
+     axe called it "needs review" and pa11y said nothing. This clears the
+     bar on all three grounds: 5.73 white, 4.60 sunk, 4.96 paper. */
+  --muted:#5A6874;
   --line:#D3DBE3;
   --teal:#00706B;
   --amber:#B36A1E;
   --indigo:#3A49A6;
   --rose:#A93356;
-
   --display:'Bricolage',ui-sans-serif,system-ui,sans-serif;
   --text:'Instrument Sans',ui-sans-serif,system-ui,sans-serif;
   --mono:'Plex Mono',ui-monospace,monospace;
@@ -27,22 +35,53 @@
      written, so a screen reader never reads it out, and a site changes
      it here rather than by overriding a rule. */
   --crumb-separator:">>";
+
   /* Subordinate to the steps either side of it, and still legible. The
      rule line's colour reads at 1.1 to 1 on the band the trail sits
      in, which is no mark at all. */
   --crumb-separator-color:color-mix(in oklab, var(--muted) 75%, var(--line));
 
+  /* The sticky band. --band is the height it asks for, which header.css
+     sets as its min-height. --band-seen is the height it gets, which the
+     scroll offset needs: between 34 and 60rem the brand cell spans two
+     rows and the grid stretches the band past what it asked for.
+     frame.css restates --band-seen there. */
+
+  /* The logo slab. Its own two names rather than --ink and --surface,
+     because those two swap in dark mode and the slab must not: painted
+     with --ink it would flip to the brightest thing on a dark page. */
+  --brand-bg:#0D1620;
+  --brand-fg:#FFF;
+  --band:3.6rem;
+  --band-seen:var(--band);
   --rail:16rem;
   --pad:1.25rem;   /* content's inset from the edges of its column */
 }
 *,*::before,*::after{box-sizing:border-box}
+
 /* our own display would otherwise beat the UA sheet's rule for it */
 [hidden]{display:none !important}
-html{-webkit-text-size-adjust:100%}
+
+/* An anchor puts its target at the top of the viewport, and the band is
+   sitting there. Without this the heading scrolls to exactly where the
+   band covers it, which reads as the title vanishing. */
+html{
+  -webkit-text-size-adjust:100%;
+  scroll-padding-top:var(--band-seen);
+}
+
 body{
-  margin:0;background:var(--paper);color:var(--body);
-  font-family:var(--text);font-size:15.5px;line-height:1.55;
+  margin:0;
+  background:var(--paper);
+  color:var(--body);
+  font-family:var(--text);
+  font-size:15.5px;
+  line-height:1.55;
   -webkit-font-smoothing:antialiased;
 }
 a{color:inherit}
-:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+
+:focus-visible{
+  outline:2px solid var(--teal);
+  outline-offset:2px
+}

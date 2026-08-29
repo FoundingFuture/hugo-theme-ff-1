@@ -1,10 +1,20 @@
 /* The piece before and the piece after, for reading straight through. */
 .pager{
-  display:flex;gap:1px;border-top:1px solid var(--line);background:var(--line);
+  display:flex;
+  gap:1px;
+  border-top:1px solid var(--line);
+  background:var(--line);
 }
+
 .pager a{
-  flex:1 1 0;min-width:0;padding:.7rem var(--pad);background:var(--surface);
-  text-decoration:none;color:var(--ink);font-size:.92rem;line-height:1.35;
+  flex:1 1 0;
+  min-width:0;
+  padding:.7rem var(--pad);
+  background:var(--surface);
+  text-decoration:none;
+  color:var(--ink);
+  font-size:.92rem;
+  line-height:1.35;
 }
 .pager a:hover{background:var(--sunk)}
 .pager a+a{text-align:right}

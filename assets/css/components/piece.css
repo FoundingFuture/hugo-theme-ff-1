@@ -6,92 +6,201 @@
  */
 main{
   background:var(--surface);
-  display:flex;flex-direction:column;   /* so the tail below can be measured */
+  display:flex;
+  flex-direction:column;   /* so the tail below can be measured */
   min-width:0;
 }
+
 /* Whatever is left between the last content and the footer, faded from the
    page's white into the rule the footer sits under. It takes no height when
    the content reaches the bottom on its own. */
 main::after{
-  content:"";flex:1 1 auto;
+  content:"";
+  flex:1 1 auto;
   background:linear-gradient(to bottom,
     var(--surface),
     color-mix(in oklab,var(--muted) 45%, var(--line)));
 }
-[data-part="head"]{padding:1.3rem var(--pad) 1.15rem;border-bottom:1px solid var(--line)}
+
+[data-part="head"]{
+  padding:1.3rem var(--pad) 1.15rem;
+  border-bottom:1px solid var(--line)
+}
+
 [data-part="head"] h1{
-  margin:0 0 .6rem;color:var(--ink);max-width:22ch;
+  margin:0 0 .6rem;
+  color:var(--ink);
+  max-width:22ch;
+
   /* drawn small capitals, cut from the display face for this weight.
      No font-variant-caps: the lowercase glyphs are the small capitals. */
-  font-family:'DisplayCaps',var(--display),sans-serif;font-weight:700;
-  font-size:clamp(1.85rem,4.3vw,2.8rem);line-height:1.06;letter-spacing:-.005em;
+  font-family:DisplayCaps,var(--display),sans-serif;
+  font-weight:700;
+  font-size:clamp(1.85rem,4.3vw,2.8rem);
+  line-height:1.06;
+  letter-spacing:-.005em;
 }
+
 [data-part="deck"]{
-  margin:0;font-size:1rem;line-height:1.62;color:var(--body);max-width:70ch;
-  padding-left:1rem;border-left:2px solid var(--teal);
+  margin:0;
+  font-size:1rem;
+  line-height:1.62;
+  color:var(--body);
+  max-width:70ch;
+  padding-left:1rem;
+  border-left:2px solid var(--teal);
 }
-[data-part="deck"] b{color:var(--ink);font-weight:500}
-[data-part="body"]{padding:1.15rem var(--pad) 1.4rem;max-width:78ch}
+
+[data-part="deck"] b{
+  color:var(--ink);
+  font-weight:500
+}
+
+[data-part="body"]{
+  padding:1.15rem var(--pad) 1.4rem;
+  max-width:78ch
+}
+
 [data-part="body"] h2,[data-part="body"] h3{
-  font-family:var(--display);color:var(--ink);letter-spacing:-.01em;
-  margin:1.6rem 0 .5rem;line-height:1.2;
+  font-family:var(--display);
+  color:var(--ink);
+  letter-spacing:-.01em;
+  margin:1.6rem 0 .5rem;
+  line-height:1.2;
 }
-[data-part="body"] h2{font-size:1.45rem;font-weight:600}
-[data-part="body"] h3{font-size:1.15rem;font-weight:600}
+
+[data-part="body"] h2{
+  font-size:1.45rem;
+  font-weight:600
+}
+
+[data-part="body"] h3{
+  font-size:1.15rem;
+  font-weight:600
+}
 [data-part="body"] p{margin:0 0 .9rem}
 [data-part="body"] a{color:var(--teal)}
-[data-part="body"] code{font-family:var(--mono);font-size:.86em}
-[data-part="body"] pre{
-  padding:.85rem 1rem;overflow-x:auto;border:1px solid var(--line);
-  border-radius:3px;background:var(--paper);
+
+[data-part="body"] code{
+  font-family:var(--mono);
+  font-size:.86em
 }
+
+[data-part="body"] pre{
+  padding:.85rem 1rem;
+  overflow-x:auto;
+  border:1px solid var(--line);
+  border-radius:3px;
+  background:var(--paper);
+}
+
 [data-part="body"] blockquote{
-  margin:1.1rem 0;padding-left:1rem;border-left:2px solid var(--line);color:var(--body);
+  margin:1.1rem 0;
+  padding-left:1rem;
+  border-left:2px solid var(--line);
+  color:var(--body);
 }
 
 /* ---- the terms a piece is filed under ---- */
 [data-part="terms"]{
-  display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap;
-  padding:.6rem var(--pad);background:var(--sunk);
+  display:flex;
+  align-items:baseline;
+  gap:.6rem;
+  flex-wrap:wrap;
+  padding:.6rem var(--pad);
+  background:var(--sunk);
   border-top:1px solid var(--line);
 }
+
 [data-part="terms"]>div{
-  font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--muted);
+  font-family:var(--mono);
+  font-size:.7rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
 }
-[data-part="terms"] ul{display:flex;gap:.4rem;flex-wrap:wrap;margin:0;padding:0;list-style:none}
+
+[data-part="terms"] ul{
+  display:flex;
+  gap:.4rem;
+  flex-wrap:wrap;
+  margin:0;
+  padding:0;
+  list-style:none
+}
+
 [data-part="terms"] a{
-  display:inline-block;padding:.1rem .45rem;text-decoration:none;
-  border:1px solid var(--line);border-radius:2px;background:var(--surface);
-  font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;color:var(--body);
+  display:inline-block;
+  padding:.1rem .45rem;
+  text-decoration:none;
+  border:1px solid var(--line);
+  border-radius:2px;
+  background:var(--surface);
+  font-family:var(--mono);
+  font-size:.68rem;
+  letter-spacing:.06em;
+  color:var(--body);
 }
-[data-part="terms"] a:hover{border-color:var(--teal);color:var(--teal)}
+
+[data-part="terms"] a:hover{
+  border-color:var(--teal);
+  color:var(--teal)
+}
 
 /* ---- a picture inside a piece ---- */
+
 /* Take the measure the column gives and keep the source ratio. The
    render hook writes width and height for a page resource. Height stays
    auto so the attributes set the ratio without fixing the size. */
-[data-part="body"] img{display:block;max-width:100%;height:auto}
+[data-part="body"] img{
+  display:block;
+  max-width:100%;
+  height:auto
+}
 
 /* Set a definition list from Markdown. The term leads, the definition
    sits under it at the inset a nested row uses. */
 [data-part="body"] dl{margin:1.1rem 0}
-[data-part="body"] dt{margin-top:.75rem;font-weight:500;color:var(--ink)}
-[data-part="body"] dd{margin:.15rem 0 0 1.1rem;color:var(--body)}
+
+[data-part="body"] dt{
+  margin-top:.75rem;
+  font-weight:500;
+  color:var(--ink)
+}
+
+[data-part="body"] dd{
+  margin:.15rem 0 0 1.1rem;
+  color:var(--body)
+}
 
 /* A figure Markdown wrote itself, rather than one the caption feature
    made. Both want the same measure. */
 [data-part="body"] figure{margin:1.5rem 0}
-[data-part="body"] figure img{display:block;max-width:100%;height:auto}
+
+[data-part="body"] figure img{
+  display:block;
+  max-width:100%;
+  height:auto
+}
+
 [data-part="body"] figcaption{
-  margin-top:.5rem;font-family:var(--mono);font-size:.72rem;
-  letter-spacing:.05em;color:var(--muted);
+  margin-top:.5rem;
+  font-family:var(--mono);
+  font-size:.72rem;
+  letter-spacing:.05em;
+  color:var(--muted);
 }
 
 /* Mark a link that leaves the site. The render hook sets rel on one. */
 [data-part="body"] a[rel~="external"]::after{
-  content:"";display:inline-block;width:.42em;height:.42em;
-  margin-left:.28em;vertical-align:.06em;
-  border-top:1px solid currentColor;border-right:1px solid currentColor;
-  transform:rotate(45deg);opacity:.55;
+  content:"";
+  display:inline-block;
+  width:.42em;
+  height:.42em;
+  margin-left:.28em;
+  vertical-align:.06em;
+  border-top:1px solid currentcolor;
+  border-right:1px solid currentcolor;
+  transform:rotate(45deg);
+  opacity:.55;
 }
