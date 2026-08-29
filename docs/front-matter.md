@@ -33,6 +33,7 @@ template does with an empty value.
 | Key |
 |---|
 | `allTerms` |
+| `articleContents` |
 | `backToTop` |
 | `breadcrumbs` |
 | `clear` |

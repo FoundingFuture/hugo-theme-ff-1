@@ -32,6 +32,7 @@ shortcodes = [
 ]
 i18n = [
   "allTerms",
+  "articleContents",
   "backToTop",
   "breadcrumbs",
   "clear",
@@ -98,7 +99,9 @@ features = [
   "sources",
   "subsection-cards",
   "tag-narrowing",
+  "taxonomy-nav",
   "term-header",
   "toc",
+  "toc-rail",
   "word-count",
 ]
