@@ -81,14 +81,14 @@ jobs:
         run: |
           set -euo pipefail
           if [ "${{ matrix.hugo }}" = latest ]; then
-            version="$(curl -fsSL https://api.github.com/repos/gohugoio/hugo/releases/latest \
+            version="$(curl -fsSL --retry 5 --retry-delay 3 --retry-all-errors --connect-timeout 20 https://api.github.com/repos/gohugoio/hugo/releases/latest \
               | sed -n 's/.*"tag_name": *"v\([^"]*\)".*/\1/p' | head -1)"
           else
             version="${{ steps.pin.outputs.version }}"
           fi
           mkdir -p "$HOME/.local/bin"
           get() {
-            curl -fsSL -o "$RUNNER_TEMP/hugo-$1.tar.gz" \
+            curl -fsSL --retry 5 --retry-delay 3 --retry-all-errors --connect-timeout 20 -o "$RUNNER_TEMP/hugo-$1.tar.gz" \
               "https://github.com/gohugoio/hugo/releases/download/v$1/hugo_extended_$1_linux-amd64.tar.gz"
             tar -xzf "$RUNNER_TEMP/hugo-$1.tar.gz" -C "$RUNNER_TEMP" hugo
             mv "$RUNNER_TEMP/hugo" "$HOME/.local/bin/$2"
@@ -96,7 +96,7 @@ jobs:
           get "${version}" hugo
           # versions.sh builds under both, and skipped in CI because the
           # second binary was never installed.
-          newest="$(curl -fsSL https://api.github.com/repos/gohugoio/hugo/releases/latest \
+          newest="$(curl -fsSL --retry 5 --retry-delay 3 --retry-all-errors --connect-timeout 20 https://api.github.com/repos/gohugoio/hugo/releases/latest \
             | sed -n 's/.*"tag_name": *"v\([^"]*\)".*/\1/p' | head -1)"
           if [ "$newest" != "${version}" ]; then
             get "$newest" hugo-latest

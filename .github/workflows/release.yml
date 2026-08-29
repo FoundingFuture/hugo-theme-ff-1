@@ -30,10 +30,14 @@ jobs:
         id: pages
 
       - name: Install Hugo
+        # Every download retries. GitHub's release endpoint answered 504
+        # in the middle of a tag push and took the release with it, on a
+        # commit whose gates were green. A tag is the one run that cannot
+        # simply be pushed again.
         run: |
           set -euo pipefail
           version="$(cat .hugo-version)"
-          curl -fsSL -o "$RUNNER_TEMP/hugo.tar.gz" \
+          curl -fsSL --retry 5 --retry-delay 3 --retry-all-errors --connect-timeout 20 -o "$RUNNER_TEMP/hugo.tar.gz" \
             "https://github.com/gohugoio/hugo/releases/download/v${version}/hugo_extended_${version}_linux-amd64.tar.gz"
           mkdir -p "$HOME/.local/bin"
           tar -xzf "$RUNNER_TEMP/hugo.tar.gz" -C "$HOME/.local/bin" hugo
@@ -41,10 +45,10 @@ jobs:
           # Hugo and against the newest one, so a release says whether the
           # theme still works on the Hugo a reader is about to install.
           # Without this it skipped, and a skipped check is a failure here.
-          newest="$(curl -fsSL https://api.github.com/repos/gohugoio/hugo/releases/latest \
+          newest="$(curl -fsSL --retry 5 --retry-delay 3 --retry-all-errors --connect-timeout 20 https://api.github.com/repos/gohugoio/hugo/releases/latest \
             | sed -n 's/.*"tag_name": *"v\([^"]*\)".*/\1/p' | head -1)"
           if [ -n "$newest" ] && [ "$newest" != "$version" ]; then
-            curl -fsSL -o "$RUNNER_TEMP/hugo-latest.tar.gz" \
+            curl -fsSL --retry 5 --retry-delay 3 --retry-all-errors --connect-timeout 20 -o "$RUNNER_TEMP/hugo-latest.tar.gz" \
               "https://github.com/gohugoio/hugo/releases/download/v${newest}/hugo_extended_${newest}_linux-amd64.tar.gz"
             tar -xzf "$RUNNER_TEMP/hugo-latest.tar.gz" -C "$RUNNER_TEMP" hugo
             mv "$RUNNER_TEMP/hugo" "$HOME/.local/bin/hugo-latest"
