@@ -1,23 +1,22 @@
-{{- /* The trail walks up through .Parent, so it follows the section tree
-       rather than the URL. A page reached by an alias still reports
-       where it actually lives.
+{{- /* Where this page sits, named the whole way down.
 
-       Each ancestor is put in front of the ones already found, which
-       leaves the trail in reading order without a sort. */ -}}
-{{- $trail := slice }}
-{{- $node := . }}
-{{- range seq 10 }}
-  {{- if and $node (not $node.IsHome) }}
-    {{- $trail = (slice $node) | append $trail }}
-    {{- $node = $node.Parent }}
-  {{- end }}
-{{- end }}
-{{- if $trail }}
+       Hugo has no breadcrumb of its own. What it gives is the
+       relationship: .Ancestors is the home page and every parent
+       section, closest first, and .Reverse puts them in the order a
+       trail reads. The markup is the theme's own, which is why the
+       mark between the steps is drawn by the stylesheet rather than
+       written here. A screen reader would otherwise read it out
+       between every step.
+
+       This walked .Parent in a loop of ten before, which stopped at
+       ten levels and reversed the list by hand. .Ancestors is the
+       method Hugo documents for it and has no depth to run out of. */ -}}
+{{- with .Ancestors.Reverse }}
 <ol class="breadcrumbs" aria-label="{{ i18n "breadcrumbs" }}">
-  <li><a href="{{ site.Home.RelPermalink }}">{{ site.Home.LinkTitle }}</a></li>
-  {{- range $trail }}
+  {{- range . }}
   <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
   {{- end }}
+  <li><a aria-current="page" href="{{ $.RelPermalink }}">{{ $.LinkTitle }}</a></li>
   {{- /* A line a site can carry at the end of the trail. It sits under
          the theme's namespace, so nothing of the site's own collides
          with it. */ -}}
