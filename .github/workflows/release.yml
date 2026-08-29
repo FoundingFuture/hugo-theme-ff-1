@@ -29,6 +29,20 @@ jobs:
             "https://github.com/gohugoio/hugo/releases/download/v${version}/hugo_extended_${version}_linux-amd64.tar.gz"
           mkdir -p "$HOME/.local/bin"
           tar -xzf "$RUNNER_TEMP/hugo.tar.gz" -C "$HOME/.local/bin" hugo
+          # build/versions builds the fixture twice, against the pinned
+          # Hugo and against the newest one, so a release says whether the
+          # theme still works on the Hugo a reader is about to install.
+          # Without this it skipped, and a skipped check is a failure here.
+          newest="$(curl -fsSL https://api.github.com/repos/gohugoio/hugo/releases/latest \
+            | sed -n 's/.*"tag_name": *"v\([^"]*\)".*/\1/p' | head -1)"
+          if [ -n "$newest" ] && [ "$newest" != "$version" ]; then
+            curl -fsSL -o "$RUNNER_TEMP/hugo-latest.tar.gz" \
+              "https://github.com/gohugoio/hugo/releases/download/v${newest}/hugo_extended_${newest}_linux-amd64.tar.gz"
+            tar -xzf "$RUNNER_TEMP/hugo-latest.tar.gz" -C "$RUNNER_TEMP" hugo
+            mv "$RUNNER_TEMP/hugo" "$HOME/.local/bin/hugo-latest"
+          else
+            cp "$HOME/.local/bin/hugo" "$HOME/.local/bin/hugo-latest"
+          fi
           echo "$HOME/.local/bin" >> "$GITHUB_PATH"
 
       - uses: actions/setup-python@v5
@@ -44,6 +58,10 @@ jobs:
           set -euo pipefail
           pip install --quiet html5validator
           npm install --global --silent pa11y-ci @lhci/cli stylelint stylelint-config-standard eslint
+          # output/visual needs these three, and the release is the run
+          # that writes the baseline every later run compares against.
+          npm install --global --silent playwright pixelmatch pngjs
+          npx --yes playwright install --with-deps chromium
           # Fetched by the same script a workstation uses, so the pin
           # in tools.sh binds here too.
           tools/scripts/tools.sh shellcheck fetch
