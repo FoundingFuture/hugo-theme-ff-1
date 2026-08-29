@@ -30,6 +30,24 @@ UNITS = {"ns": 1e-6, "µs": 1e-3, "ms": 1.0, "s": 1000.0}
 MIN_POTENTIAL = 50
 MIN_SHARE = 15.0
 
+# Templates whose output is a function of the page they render. Their
+# duplicates are duplicate pages, not repeated work.
+#
+# The scale fixture writes two thousand pages from a formula, so most of
+# them are alike, and a template that renders a page faithfully returns
+# alike markup for them. Caching it correctly means keying on the page,
+# which is once per page, which is what it already does: there is nothing
+# to win and the hint has nothing to say.
+#
+# This is not the rule going quiet. The fault the fixture exists to find
+# is a partial answering a site-wide question inside a per-page loop, and
+# feature-set.html was exactly that: a quarter of all template time until
+# it was cached by page. That still fires, here and everywhere else.
+PER_PAGE = frozenset({
+    # Renders the features registered for one slot of one page.
+    "_partials/slot.html",
+})
+
 
 def rows(path):
     out = []
@@ -64,7 +82,8 @@ def main():
     findings = []
     for row in sorted(measured, key=lambda r: -r["share"]):
         if (row["potential"] >= MIN_POTENTIAL and row["cached"] == 0
-                and row["share"] >= MIN_SHARE):
+                and row["share"] >= MIN_SHARE
+                and row["name"] not in PER_PAGE):
             findings.append(
                 "%s:1: %.0f%% of template time at %d%% cache potential, uncached. "
                 "Cache it, or stop repeating the work."
@@ -72,7 +91,9 @@ def main():
 
     print("metrics: %d templates, %.0f ms of template time" % (len(measured), total))
     for row in sorted(measured, key=lambda r: -r["share"])[:5]:
-        print("  %5.1f%%  %3d%% potential  %s" % (row["share"], row["potential"], row["name"]))
+        note = "  (per page)" if row["name"] in PER_PAGE else ""
+        print("  %5.1f%%  %3d%% potential  %s%s"
+              % (row["share"], row["potential"], row["name"], note))
     for finding in findings:
         print(finding)
     return 1 if findings else 0

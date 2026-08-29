@@ -42,15 +42,18 @@ jobs:
       - name: Install the tools the gates name
         run: |
           set -euo pipefail
-          # fonttools too: static/glyphs reads the faces to check that every
-          # mark the theme draws is in one that can draw it, and a skipped
-          # check is a failure here.
-          pip install --quiet html5validator fonttools
+          pip install --quiet html5validator
           npm install --global --silent pa11y-ci @lhci/cli stylelint stylelint-config-standard eslint
           # Fetched by the same script a workstation uses, so the pin
           # in tools.sh binds here too.
           tools/scripts/tools.sh shellcheck fetch
           tools/scripts/tools.sh htmltest fetch
+          # fontTools goes the same way. static/glyphs reads the faces to
+          # check that every mark the theme draws is in one that can draw
+          # it, and it looks for fontTools and brotli in the tree's own
+          # venv rather than on PATH, so pip installing it globally does
+          # not answer. A skipped check is a failure here.
+          tools/scripts/tools.sh fonttools fetch
 
 
       - name: Every gate, then the release gate
