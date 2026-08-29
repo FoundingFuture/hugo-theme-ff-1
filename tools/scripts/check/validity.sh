@@ -30,8 +30,26 @@ status=0
 ran=0
 if command -v html5validator >/dev/null 2>&1; then
   ran=1
+  # One message ignored, and only that one.
+  #
+  # name on details is the exclusive accordion: siblings sharing a name
+  # close one another, which is how the topic tree and the taxonomies
+  # behave. It entered the HTML standard in 2023. The validator bundled
+  # with html5validator 0.4.2, its newest release, is vnu 20.6.30 --
+  # June 2020 -- so it predates the attribute by three years and calls
+  # valid markup an error.
+  #
+  # Checked rather than assumed: the jar rejects a four-line document
+  # containing nothing else. Every other message still fails the gate.
+  #
+  # --ignore takes a list, so it must come last: given it before the
+  # files, argparse reads every path as another pattern to ignore, the
+  # validator is left with nothing to check, and it falls back to walking
+  # the working directory. It then reported errors from a stale built
+  # demo that is not part of this gate at all.
   # shellcheck disable=SC2046
-  html5validator --also-check-css $(cat "$list") || status=1
+  html5validator --also-check-css $(cat "$list") \
+    --ignore 'Attribute “name” not allowed on element “details”' || status=1
 fi
 if command -v htmltest >/dev/null 2>&1; then
   ran=1
