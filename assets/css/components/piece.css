@@ -4,6 +4,7 @@
  * inside main may carry a class that no feature declared, so the
  * theme's own bands are marked this way instead.
  */
+
 main{
   background:var(--surface);
   display:flex;
@@ -17,9 +18,7 @@ main{
 main::after{
   content:"";
   flex:1 1 auto;
-  background:linear-gradient(to bottom,
-    var(--surface),
-    color-mix(in oklab,var(--muted) 45%, var(--line)));
+  background:linear-gradient(to bottom,var(--surface),var(--tail-end));
 }
 
 [data-part="head"]{
@@ -56,10 +55,29 @@ main::after{
   font-weight:500
 }
 
+/* The text runs out rather than stopping.
+ *
+ * The last 300px of the article fade toward the colour the tail below
+ * uses, so a piece of any length ends the same way. It is on the text
+ * block and not on main, so the bands a page may carry after it --
+ * related, tags, the pager -- keep their own ground and stay out of it.
+ * They are opaque, so a fade behind them would have shown through the
+ * prose and then stopped dead at the first band. */
 [data-part="body"]{
   padding:1.15rem var(--pad) 1.4rem;
-  max-width:78ch
+  background:linear-gradient(to bottom,transparent,var(--tail-end)) no-repeat bottom / 100% 300px;
 }
+
+/* The measure is on the lines, not on the block that holds them. It was
+   on the block, which is the same thing to read and not the same thing
+   to paint: the fade above stopped where the block did, with the page's
+   white beside it, which reads as a panel rather than as an ending.
+
+   The block's inset comes out of the figure, so the line is the width it
+   always was. 78ch on the block meant 78ch of border box and this much
+   of text; the same number on a child would have widened the measure by
+   the padding. */
+[data-part="body"]>*{max-width:calc(78ch - 2 * var(--pad))}
 
 [data-part="body"] h2,[data-part="body"] h3{
   font-family:var(--display);

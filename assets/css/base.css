@@ -52,6 +52,14 @@
      with --ink it would flip to the brightest thing on a dark page. */
   --brand-bg:#0D1620;
   --brand-fg:#FFF;
+
+  /* Where the tail below a short page fades to. It is a name rather
+     than a mix written into the gradient, because light and dark want
+     different weights of it. It also runs behind the last half screen of
+     text rather than only under it, so both values are held to what the
+     body colour still reads against at full strength: 5.05 to 1 here,
+     5.25 in dark. The 45% this started at was 3.33. */
+  --tail-end:color-mix(in oklab,var(--muted) 12%, var(--line));
   --band:3.6rem;
   --band-seen:var(--band);
   --rail:16rem;

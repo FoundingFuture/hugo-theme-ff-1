@@ -26,6 +26,15 @@
   --brand-bg:#080D14;
   --brand-fg:#EAEFF4;
 
+  /* The fade lifts off the ground rather than sinking into it, which is
+     what separates the end of a dark page from its footer. Held to 20%:
+     the gradient runs behind the last half screen of text, and at the
+     45% this had while it only covered empty space the body colour read
+     3.53 to 1 against it. At 10% it is 6.14, and the end of the fade
+     still sits 1.7 times off the ground it rises from, which is what
+     makes it read as an ending rather than as a smudge. */
+  --tail-end:color-mix(in oklab,var(--muted) 10%, var(--line));
+
   /* Lifted off the ground the way the light palette's are pushed onto
      it. Each clears 4.5:1 on all three dark grounds. */
   --teal:#3FBFB5;
@@ -51,6 +60,15 @@
      one. */
   --brand-bg:#080D14;
   --brand-fg:#EAEFF4;
+
+  /* The fade lifts off the ground rather than sinking into it, which is
+     what separates the end of a dark page from its footer. Held to 20%:
+     the gradient runs behind the last half screen of text, and at the
+     45% this had while it only covered empty space the body colour read
+     3.53 to 1 against it. At 10% it is 6.14, and the end of the fade
+     still sits 1.7 times off the ground it rises from, which is what
+     makes it read as an ending rather than as a smudge. */
+  --tail-end:color-mix(in oklab,var(--muted) 10%, var(--line));
 
   /* Lifted off the ground the way the light palette's are pushed onto
      it. Each clears 4.5:1 on all three dark grounds. */
