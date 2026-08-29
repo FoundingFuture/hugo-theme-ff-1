@@ -1,0 +1,15 @@
+/* Mathematics, set larger than the text around it.
+ *
+ * KaTeX has no scale of its own. transform.ToMath hands the formula to
+ * it and the size is CSS in both output modes, so one rule covers both:
+ * .katex wraps the MathML the default produces and the KaTeX markup a
+ * site can ask for instead.
+ *
+ * Two selectors deep on purpose. With KaTeX markup the site also links
+ * katex.min.css, which sets font:normal 1.21em on .katex and is linked
+ * after this bundle. A rule of the same weight would lose to it; this
+ * one outranks it, and the shorthand's family survives because only the
+ * size is set here.
+ */
+[data-part="body"] .katex,
+[data-part="body"] .katex-display{font-size:calc(1em * var(--math-scale))}

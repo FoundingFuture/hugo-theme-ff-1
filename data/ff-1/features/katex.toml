@@ -13,7 +13,7 @@ default = true
 level = "toggle"
 kinds = ["page", "section", "home", "term", "taxonomy"]
 partial = "features/katex.html"
-css = ""
+css = "css/features/katex.css"
 
 [skeleton]
   # With the default output, MathML, a formula is a math element. It has
