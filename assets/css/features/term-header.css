@@ -13,6 +13,7 @@
   margin-left:auto;color:var(--teal);text-decoration:none;
   font-size:.7rem;letter-spacing:.1em;
 }
-/* The same arrow, from the same cut, for the same reason. */
-.term-head .more::after{content:" \2192";font-family:'DisplayCaps',var(--mono)}
+/* The mono has no arrow, so the browser takes it from the cut
+   that has one. */
+.term-head .more::after{content:" \2192";font-family:var(--mono),'DisplayCaps'}
 .term-head .more:hover{border-bottom:1px solid currentColor}

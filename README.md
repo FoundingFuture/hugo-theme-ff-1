@@ -190,7 +190,7 @@ properties on `:root`:
   --teal:#00706B;  --indigo:#3A49A6;  --rose:#A93356;  --amber:#B36A1E;
   --rail:16rem;              /* the menu's column */
   --pad:1.25rem;             /* the inset content takes from its edges */
-  --crumb-separator:"\2192";  /* the mark between steps of the trail */
+  --crumb-separator:">>";    /* the mark between steps of the trail */
   --crumb-separator-color:#8b979f;
 }
 ```
@@ -314,6 +314,7 @@ Only Hugo is needed to build. Each gate names its own tool.
 | [Python 3](https://www.python.org/downloads/) | most checks |
 | [Go](https://go.dev/dl/) | `release/module` |
 | [Node.js](https://nodejs.org/) | the five tools below |
+| [fontTools](https://github.com/fonttools/fonttools) | `static/glyphs` |
 | [ShellCheck](https://www.shellcheck.net/) | `static/shellcheck` |
 | [Stylelint](https://stylelint.io/) | `static/css`, installed in the repository |
 | [ESLint](https://eslint.org/) | `static/js` |

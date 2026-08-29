@@ -6,14 +6,13 @@
   font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
 }
 .breadcrumbs li{display:flex;align-items:baseline;gap:.5rem}
-/* The arrow is drawn by the display cut, which is the only face this
-   theme ships that carries one. The mono the trail is set in has no
-   U+2192, so naming it here would fall back to whatever the reader's
-   system offers: a different arrow, from a different typeface, on
-   every platform. */
+/* The mono first, and the display cut behind it. A browser falls back
+   one glyph at a time, so the mark comes from the mono when the mono
+   has it, and from the cut that does when it does not. A site setting
+   the separator to an arrow gets one without having to name a face. */
 .breadcrumbs li+li::before{
-  content:var(--crumb-separator, "\2192");
-  font-family:'DisplayCaps',var(--mono);font-weight:400;
+  content:var(--crumb-separator, ">>");
+  font-family:var(--mono),'DisplayCaps';font-weight:400;
   color:var(--crumb-separator-color, currentColor);
 }
 .breadcrumbs a{color:var(--muted);text-decoration:none}
