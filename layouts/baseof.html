@@ -37,7 +37,11 @@
 </aside>
 
 {{- with index site.Params "ff-1" "tagline" }}
-<header class="strip"><p>{{ . }}</p></header>
+{{- /* The band keeps its height, so the line has to fit across it on
+       one row. CSS cannot measure text, so its length is counted here
+       and the stylesheet divides the width by it, capped at twice the
+       size the line used to be. */ -}}
+<header class="strip"><p style="--len:{{ len . }}">{{ . }}</p></header>
 {{- end }}
 
 <main>

@@ -63,7 +63,7 @@ main{grid-column:2;grid-row:2;min-width:0}
      tagline's height share two rows and spill onto the bar. */
   body::before{content:'';grid-column:2;grid-row:2;background:var(--surface);
     border-bottom:1px solid var(--line)}
-  .strip p{text-align:left;font-size:1.05rem}
+  .strip p{text-align:left}
   .brand svg{max-width:11rem}
   /* display:contents lets the button sit in the masthead while the panel it
      opens spans the full width on its own row */
@@ -145,7 +145,7 @@ main{grid-column:2;grid-row:2;min-width:0}
   main{grid-column:1;grid-row:5}
   .foot{grid-column:1;grid-row:6}
   .rail{grid-column:1;grid-row:auto}
-  .strip p{text-align:center;font-size:1rem}
+  .strip p{text-align:center}
   .brand svg{max-width:14rem}
   .brand,.est{margin-inline:auto;max-width:14rem}
 }

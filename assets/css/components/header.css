@@ -15,14 +15,20 @@
 }
 .strip{
   display:flex;align-items:center;justify-content:center;
-  padding:.85rem var(--pad);min-width:0;background:var(--surface);
+  /* The band's height is fixed at what it always was, and the line
+     grows into it: as large as it can be without taking a second row,
+     up to twice the size it used to be. The area was tall for the
+     words in it, and a site may put a mark here instead. */
+  padding:.35rem var(--pad);min-height:3.6rem;min-width:0;
+  background:var(--surface);container-type:inline-size;
   border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10;
 }
 .strip p{
   margin:0;min-width:0;text-align:center;color:var(--body);
   font-family:'Asimovian',var(--display),sans-serif;
-  font-size:1.2rem;letter-spacing:.03em;
-  text-wrap:balance;   /* even the two lines when it wraps */
+  font-size:min(2.4rem, calc(140cqw / var(--len,40)));
+  line-height:1.05;letter-spacing:.03em;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis;
 }
 
 /* The wordmark is whatever the site put there: the name this theme
