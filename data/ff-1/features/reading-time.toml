@@ -1,7 +1,7 @@
 name = "reading-time"
 slot = "page.meta"
 weight = 20
-default = false
+default = true
 level = "toggle"
 kinds = ["page"]
 partial = "features/reading-time.html"

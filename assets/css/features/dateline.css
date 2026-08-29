@@ -1,7 +1,12 @@
-/* Set to match the dates in a row of pieces. */
+/* Set to match the dates in a row of pieces.
+ *
+ * Inline, because reading-time and word-count sit beside it and both
+ * their stylesheets say so. It was block, so the date took a line of its
+ * own and the other two shared the next. Alone it still reads as a line
+ * of its own, which is what it was before either of them was on. */
 .dateline{
-  display:block;
-  margin:.5rem 0 0;
+  display:inline-block;
+  margin:.5rem .9rem 0 0;
   font-family:var(--mono);
   font-size:.7rem;
   color:var(--muted);

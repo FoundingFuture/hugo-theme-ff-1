@@ -19,9 +19,12 @@ path. That is what makes the breaking choices free.
 
 ## What ff-1 believes
 
-Fourteen features on, nine off. It shows a date and says nothing else
-about a piece before it is read, so `reading-time`, `word-count` and
-`last-modified` are off.
+Sixteen features on, seven off. It showed a date and said nothing else
+about a piece before it was read, so `reading-time` and `word-count`
+were off. Eddie asked for both on (2026-08-29): a reader deciding
+whether to start a long piece is owed its length. `last-modified` stays
+off, because when a page was edited is the author's business and not
+the reader's.
 
 **Navigation.** A site that defines `menus.main` gets that menu, walked
 with Hugo's semantics. A site that defines none gets its own folders,
