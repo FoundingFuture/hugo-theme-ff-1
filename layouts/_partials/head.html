@@ -30,5 +30,9 @@
        a slot holding one feature is a partial call on every page. This
        one must be in the head anyway, before anything is painted. */ -}}
 {{- if partial "feature-on.html" (dict "name" "dark-mode" "page" .) }}
-  {{- partial "features/dark-mode.html" . }}
+  {{- /* Cached with no variant: the script is the same eleven lines on
+         every page of the site, and building it per page was a tenth of
+         all template time on the scale fixture at 100% cache potential,
+         which is the fault that fixture exists to find. */ -}}
+  {{- partialCached "features/dark-mode.html" . }}
 {{- end }}

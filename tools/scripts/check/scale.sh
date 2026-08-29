@@ -19,8 +19,16 @@ tools/scripts/configs.sh >/dev/null || { echo "scale: the configs could not be w
 mkdir -p tools/conformance/config/scale
 tools/scripts/scale-config.sh > tools/conformance/config/scale/hugo.toml
 
+# Measured on one core, because the hint is not otherwise reproducible.
+# Hugo counts an execution as repeating an earlier one only if it had
+# already seen that output, and pages render in parallel, so two
+# executions that produce the same markup at the same moment are counted
+# as neither. slot.html read 54% on a single-core runner and 7% on this
+# machine, from the same content and the same Hugo. The gate then passed
+# or failed by how many cores it ran on. One core reports the duplicates
+# that are really there.
 start="$(date +%s)"
-out="$( cd tools/conformance && hugo --config hugo.toml,config/scale/hugo.toml -d public/scale \
+out="$( cd tools/conformance && GOMAXPROCS=1 hugo --config hugo.toml,config/scale/hugo.toml -d public/scale \
   --templateMetrics --templateMetricsHints --logLevel warn --gc 2>&1 )" || {
     printf '%s\n' "conformance:1: the scale build failed."
     printf '%s\n' "$out" | tail -10

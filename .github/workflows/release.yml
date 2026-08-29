@@ -42,7 +42,10 @@ jobs:
       - name: Install the tools the gates name
         run: |
           set -euo pipefail
-          pip install --quiet html5validator
+          # fonttools too: static/glyphs reads the faces to check that every
+          # mark the theme draws is in one that can draw it, and a skipped
+          # check is a failure here.
+          pip install --quiet html5validator fonttools
           npm install --global --silent pa11y-ci @lhci/cli stylelint stylelint-config-standard eslint
           # Fetched by the same script a workstation uses, so the pin
           # in tools.sh binds here too.

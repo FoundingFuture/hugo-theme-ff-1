@@ -24,7 +24,12 @@
        than a placement one. */ -}}
 <aside class="side">
   <header class="brandcell">
-    {{ partial "header.html" . }}
+    {{- /* The brand cell is the same on every page but the home one,
+           where the wordmark is the h1 rather than a paragraph. Keyed on
+           that and cached: it carries the wordmark, the established line
+           and the theme switch, and rendering all three per page was a
+           tenth of template time on the scale fixture. */ -}}
+    {{ partialCached "header.html" . .IsHome }}
   </header>
 
   {{- /* Plumbing on a wide screen and a dropdown on a narrow one. Its
