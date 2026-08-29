@@ -17,6 +17,9 @@ const path = require('path');
 const { pathToFileURL } = require('url');
 const http = require('http');
 
+// How much of a page a baseline keeps. See the screenshot call below.
+const MAX_HEIGHT = 3000;
+
 const PAGES = [
   ['home', 'index.html'],
   ['section', 'kitchen-sink/index.html'],
@@ -91,7 +94,15 @@ async function main() {
       const shot = WRITE
         ? path.join(SNAPSHOTS, `${name}-${width}.png`)
         : path.join(OUT, `${name}-${width}.png`);
-      await tab.screenshot({ path: shot, fullPage: true });
+      // A baseline is something to compare against, not an archive of the
+      // page. The long fixture is 9194px tall at 430 wide, which is a
+      // 1.5MB PNG, and static/metadata refuses a tracked megabyte. The
+      // first 3000px hold the frame, the head and enough of the text for
+      // a difference to show.
+      const tall = await tab.evaluate(() => document.documentElement.scrollHeight);
+      await tab.screenshot(tall > MAX_HEIGHT
+        ? { path: shot, clip: { x: 0, y: 0, width, height: MAX_HEIGHT } }
+        : { path: shot, fullPage: true });
       await context.close();
 
       if (WRITE) continue;

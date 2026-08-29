@@ -15,16 +15,22 @@ case "$version" in v*) tag="$version" ;; *) tag="v$version" ;; esac
 git rev-parse "$tag" >/dev/null 2>&1 && { echo "$tag already exists." >&2; exit 1; }
 
 RELEASE_TAG="$tag" export RELEASE_TAG
-tools/scripts/check/run.sh static || exit 1
-tools/scripts/check/run.sh build  || exit 1
-tools/scripts/check/run.sh output || exit 1
-tools/scripts/check/run.sh release || exit 1
 
+# The snapshot comes first. It writes files into the tree and commits
+# them, and running it after the gates meant the gates never saw what it
+# wrote: v0.1.0 shipped three screenshots over the megabyte
+# static/metadata refuses, and CI failed on a commit whose own release
+# had passed every check.
 ./c snapshot
 git add tools/conformance/snapshots
 if ! git diff --cached --quiet; then
   git commit -q -m "Refresh the conformance snapshots for $tag"
 fi
+
+tools/scripts/check/run.sh static || exit 1
+tools/scripts/check/run.sh build  || exit 1
+tools/scripts/check/run.sh output || exit 1
+tools/scripts/check/run.sh release || exit 1
 
 body="$(awk -v want="## $tag," '
   index($0, want) == 1 { found = 1; next }
