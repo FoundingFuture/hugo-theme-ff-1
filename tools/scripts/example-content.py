@@ -92,7 +92,7 @@ def paragraphs(rng, count):
     return out
 
 
-def fill(path, rng, tags, intro=False):
+def fill(path, rng, tags, intro=False, weight=0):
     """Undraft the page Hugo wrote, tag it, and give it a body.
 
     A section gets an introduction rather than an article. What sits
@@ -107,6 +107,11 @@ def fill(path, rng, tags, intro=False):
         text = handle.read()
 
     text = re.sub(r"^draft = true$", "draft = false", text, flags=re.MULTILINE)
+    # Hugo's default order is weight, then date descending. Without a
+    # weight the dates decide, and a menu ordered by when a topic was
+    # written reads as no order at all.
+    if weight:
+        text = text.replace("draft = false", "draft = false\nweight = %d" % weight, 1)
     # Hugo stamps the day the file was written. A demo regenerated in a
     # month would then carry a month's newer dates and read as a
     # different site, so the day is pinned and only spread.
@@ -147,12 +152,13 @@ def fill(path, rng, tags, intro=False):
 
 
 def build(node, prefix, rng):
-    for name, spec in node.items():
+    for index, (name, spec) in enumerate(node.items(), start=1):
         here = "%s/%s" % (prefix, name) if prefix else name
 
         if spec.get("body", True):
             hugo_new("%s/_index.md" % here)
-            fill(os.path.join(SITE, "content", here, "_index.md"), rng, [], intro=True)
+            fill(os.path.join(SITE, "content", here, "_index.md"), rng, [],
+                 intro=True, weight=index * 10)
         else:
             # A section Hugo knows about, with nothing of its own to say.
             folder = os.path.join(SITE, "content", here)
@@ -235,6 +241,15 @@ def main():
     rng = random.Random(20260828)
     build(TREE, "", rng)
     extras(rng)
+
+    # Hugo's own sample section sorts among the generated ones, so it
+    # carries a weight as well and lands after them.
+    posts = os.path.join(SITE, "content", "posts", "_index.md")
+    if os.path.exists(posts):
+        text = open(posts, encoding="utf-8").read()
+        if "weight" not in text:
+            text = text.replace("draft = false", "draft = false\nweight = 90", 1)
+            open(posts, "w", encoding="utf-8").write(text)
     made = sum(len(files) for _, _, files in os.walk(os.path.join(SITE, "content")))
     print("example-content: the example site holds %d content files" % made)
     return 0

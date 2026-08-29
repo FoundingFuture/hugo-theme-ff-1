@@ -1,6 +1,7 @@
 +++
 date = '2026-02-26T09:00:00Z'
 draft = false
+weight = 10
 title = 'Deeper One'
 +++
 
