@@ -92,8 +92,26 @@ painted with `--ink` it would become the brightest thing on a dark page.
 **`--muted` is `#5A6874`.** The old `#78868F` failed WCAG AA on all three
 grounds. See `linters-and-browser-support.md`.
 
+**The tail gradient is ruled.** It was heavy, and it only ever appeared
+where a piece left space above the footer. It is now a cue that an
+article is ending: the last 300px of the text block fade to
+`--tail-end`, on any page length. `main::after` keeps the older job of
+filling leftover space, in the same colour.
+
+It sits on the text block rather than on `main` because the bands after
+an article -- related, tags, the pager -- carry their own grounds, and a
+fade behind them showed through the prose then stopped dead at the first
+band. The measure moved from the block to its children (less the block's
+inset, so the line is unchanged at 765.2px) because a background on a
+capped block ends where the cap does and reads as a panel.
+
+Both weights are held to what body text reads against at full strength,
+since the fade now runs behind text: 5.38 to 1 in light, 6.72 in dark.
+The 45% it began with measured 3.33 under that test. Dark stops much
+earlier than light — it lifts off the ground rather than sinking into
+it, and only 1.7 times as far as the surface it rises from.
+
 ## Still undecided
 
-The **tail gradient**: `main::after` fills the space between the last
-content and the footer, fading white into grey. Faithful to the
-original, and heavy on a short page. Eddie has seen it and not ruled.
+Nothing outstanding on the look. `output/visual` still has no baseline
+until a release writes one.
