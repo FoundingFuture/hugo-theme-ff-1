@@ -1,0 +1,21 @@
+name = "dark-mode"
+# The switch lives in the brand cell, which sits inside the aside. Chrome
+# is excluded from the page-shape comparison, so this declares no
+# skeleton: nothing it renders is part of a page's shape.
+#
+# slot "none" because the mark has to be in the brand cell, and there is
+# no slot there. header.html asks feature-on for it, the way the rail
+# asks before drawing the search box.
+slot = "none"
+weight = 20
+default = true
+level = "toggle"
+kinds = ["page", "section", "home", "term", "taxonomy"]
+partial = "features/dark-mode.html"
+css = "css/features/dark-mode.css"
+i18n = ["themeLight", "themeDark"]
+
+[skeleton]
+  # Nothing. Both buttons sit inside the brand cell, and a header is
+  # chrome.
+  text = []

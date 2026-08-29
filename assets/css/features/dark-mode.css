@@ -1,0 +1,281 @@
+/* Dark mode.
+ *
+ * The theme is built on custom properties, so the dark palette is those
+ * properties again with different values and nothing else re-styled. Two
+ * selectors carry it: an explicit choice on the document element, and
+ * the reader's system setting when they have not chosen. The system rule
+ * is written so an explicit light choice still wins over a dark system.
+ *
+ * Every colour here was checked against the three grounds it can land
+ * on. The lowest is --muted at 5.65 to 1, where AA asks 4.5.
+ */
+[data-theme="dark"]{
+  --paper:#0F1720;
+  --surface:#161F2A;
+  --sunk:#1E2833;
+  --ink:#EAEFF4;
+  --body:#C3CEDA;
+  --muted:#93A1AE;
+  --line:#2E3B49;
+
+  /* The logo slab stays a slab. --ink is the page's darkest colour in
+     light mode and its lightest in dark, so a brand cell painted with it
+     would flip to the brightest thing on the page. It keeps its own two
+     names, set here a shade below the page so the block still reads as
+     one. */
+  --brand-bg:#080D14;
+  --brand-fg:#EAEFF4;
+
+  /* Lifted off the ground the way the light palette's are pushed onto
+     it. Each clears 4.5:1 on all three dark grounds. */
+  --teal:#3FBFB5;
+  --indigo:#8B9BF0;
+  --rose:#E8879F;
+  --amber:#E0A356;
+}
+
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+  --paper:#0F1720;
+  --surface:#161F2A;
+  --sunk:#1E2833;
+  --ink:#EAEFF4;
+  --body:#C3CEDA;
+  --muted:#93A1AE;
+  --line:#2E3B49;
+
+  /* The logo slab stays a slab. --ink is the page's darkest colour in
+     light mode and its lightest in dark, so a brand cell painted with it
+     would flip to the brightest thing on the page. It keeps its own two
+     names, set here a shade below the page so the block still reads as
+     one. */
+  --brand-bg:#080D14;
+  --brand-fg:#EAEFF4;
+
+  /* Lifted off the ground the way the light palette's are pushed onto
+     it. Each clears 4.5:1 on all three dark grounds. */
+  --teal:#3FBFB5;
+  --indigo:#8B9BF0;
+  --rose:#E8879F;
+  --amber:#E0A356;
+  }
+}
+
+/* ---- the switch, in the corner of the brand cell ---- */
+
+/* The cell is the positioning context. It already establishes a
+   container for the wordmark's sizing, which does not position anything,
+   so this is the one that does. */
+
+/* The switch is laid over the cell, so the cell has to keep room under
+   its last line for it. A site that sets no established line has nothing
+   there, and the two faces landed on the wordmark itself. The reserve is
+   here rather than in header.css because it is only owed when this
+   feature is on, and this stylesheet is only served then.
+
+   2.1rem: the switch is 24px tall and sits .4rem off the bottom, so the
+   reserve has to clear 30.4px before it stops overlapping the line
+   above. */
+.brandcell{
+  position:relative;
+  padding-block-end:2.1rem;
+}
+
+.est{padding-bottom:0}
+
+.themeset{
+  position:absolute;
+  right:.5rem;
+  bottom:.4rem;
+  display:flex;
+  gap:.1rem;
+}
+
+/* A button with a face and no word. The name a screen reader announces
+   is on the element, from i18n, so nothing here has to be readable. */
+.themebtn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  /* WCAG 2.2 asks 24 by 24 for a target, and a11y.css asks it of every
+     link in main. A control in the chrome is held to the same size. */
+  inline-size:24px;
+  block-size:24px;
+  padding:0;
+  border:0;
+  border-radius:5px;
+  background:transparent;
+  color:var(--brand-fg);
+  cursor:pointer;
+  opacity:.45;
+  transition:opacity .18s ease,background .18s ease;
+}
+
+.themebtn:hover{
+  opacity:1;
+  background:color-mix(in oklab,var(--brand-fg) 16%, transparent);
+}
+
+.themebtn:focus-visible{
+  opacity:1;
+  outline:2px solid var(--brand-fg);
+  outline-offset:1px;
+}
+
+/* The half in force is the lit one, so the pair reads as a state rather
+   than as two things to press. Light is the default, so it is lit
+   whenever dark has not been chosen. */
+:root:not([data-theme="dark"]) .themebtn[data-set-theme="light"]{opacity:1}
+[data-theme="dark"] .themebtn[data-set-theme="dark"]{opacity:1}
+
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme]) .themebtn[data-set-theme="light"]{opacity:.45}
+  :root:not([data-theme]) .themebtn[data-set-theme="dark"]{opacity:1}
+}
+
+.themebtn svg{
+  display:block;
+  inline-size:14px;
+  block-size:14px;
+}
+
+/* ---- code, which is generated for a white page ---- */
+
+/* chroma.css is generated from a named Chroma style and read by the
+   contrast gate, so it is not edited. Dark mode remaps its colours
+   instead: the same hues, lifted off a dark ground. Every one clears
+   4.5:1 on --sunk. */
+[data-theme="dark"] .chroma,
+[data-theme="dark"] .bg{
+  background-color:var(--sunk);
+  color:var(--body);
+}
+
+[data-theme="dark"] .chroma .hl{background-color:#2A3745}
+
+  /* plain identifiers and operators */
+  .chroma .err,.chroma .fm,.chroma .n,.chroma .nd,.chroma .ne,.chroma .nf,.chroma .ni,.chroma .nl,.chroma .nn,.chroma .no,.chroma .nt,.chroma .nv,.chroma .nx,.chroma .o,.chroma .or,.chroma .ow,.chroma .py,.chroma .vc,.chroma .vg,.chroma .vi,.chroma .vm{color:#C3CEDA}
+
+  /* strings */
+  .chroma .dl,.chroma .s,.chroma .s1,.chroma .s2,.chroma .sa,.chroma .sb,.chroma .sd,.chroma .se,.chroma .sh,.chroma .si,.chroma .sr,.chroma .ss,.chroma .sx{color:#F0938A}
+
+  /* numbers */
+  .chroma .il,.chroma .l,.chroma .ld,.chroma .m,.chroma .mb,.chroma .mf,.chroma .mh,.chroma .mi,.chroma .mo{color:#9DB4FF}
+
+  /* keywords */
+  .chroma .k,.chroma .kc,.chroma .kd,.chroma .kn,.chroma .kp,.chroma .kr,.chroma .kt,.chroma .nb{color:#EE9AD8}
+
+  /* comments */
+  .chroma .c,.chroma .c1,.chroma .ch,.chroma .cm,.chroma .cs{color:#86C97F}
+
+  /* line numbers */
+  .chroma .ln,.chroma .lnt{color:#93A1AE}
+
+  /* preprocessor */
+  .chroma .cp,.chroma .cpf{color:#D9AC85}
+
+  /* attributes */
+  .chroma .na{color:#DCC680}
+
+  /* class names */
+  .chroma .nc{color:#96C8D1}
+
+  /* builtins */
+  .chroma .bp{color:#C7A4F0}
+
+  /* character literals */
+  .chroma .sc{color:#A8BCFF}
+
+@media (prefers-color-scheme:dark){
+  /* chroma.css is generated from a named Chroma style and read by the
+     contrast gate, so it is not edited. Dark mode remaps its colours
+     instead: the same hues, lifted off a dark ground. Every one clears
+     4.5:1 on --sunk. */
+  :root:not([data-theme="light"]) .chroma,
+  :root:not([data-theme="light"]) .bg{
+    background-color:var(--sunk);
+    color:var(--body);
+  }
+
+  :root:not([data-theme="light"]) .chroma .hl{background-color:#2A3745}
+
+    /* plain identifiers and operators */
+    .chroma .err,.chroma .fm,.chroma .n,.chroma .nd,.chroma .ne,.chroma .nf,.chroma .ni,.chroma .nl,.chroma .nn,.chroma .no,.chroma .nt,.chroma .nv,.chroma .nx,.chroma .o,.chroma .or,.chroma .ow,.chroma .py,.chroma .vc,.chroma .vg,.chroma .vi,.chroma .vm{color:#C3CEDA}
+
+    /* strings */
+    .chroma .dl,.chroma .s,.chroma .s1,.chroma .s2,.chroma .sa,.chroma .sb,.chroma .sd,.chroma .se,.chroma .sh,.chroma .si,.chroma .sr,.chroma .ss,.chroma .sx{color:#F0938A}
+
+    /* numbers */
+    .chroma .il,.chroma .l,.chroma .ld,.chroma .m,.chroma .mb,.chroma .mf,.chroma .mh,.chroma .mi,.chroma .mo{color:#9DB4FF}
+
+    /* keywords */
+    .chroma .k,.chroma .kc,.chroma .kd,.chroma .kn,.chroma .kp,.chroma .kr,.chroma .kt,.chroma .nb{color:#EE9AD8}
+
+    /* comments */
+    .chroma .c,.chroma .c1,.chroma .ch,.chroma .cm,.chroma .cs{color:#86C97F}
+
+    /* line numbers */
+    .chroma .ln,.chroma .lnt{color:#93A1AE}
+
+    /* preprocessor */
+    .chroma .cp,.chroma .cpf{color:#D9AC85}
+
+    /* attributes */
+    .chroma .na{color:#DCC680}
+
+    /* class names */
+    .chroma .nc{color:#96C8D1}
+
+    /* builtins */
+    .chroma .bp{color:#C7A4F0}
+
+    /* character literals */
+    .chroma .sc{color:#A8BCFF}
+}
+
+/* ---- the menu, hovered ---- */
+
+/* Every hover in the rail mixes a colour into the ground beneath it, and
+   in dark mode that ground is dark: the same percentage that reads as a
+   lift on white barely shows. These are the same rules with more of the
+   colour in them. */
+[data-theme="dark"] .topics>li>a:hover{
+  background:color-mix(in oklab,var(--ink) 18%, transparent);
+  color:var(--ink);
+}
+
+[data-theme="dark"] .topics summary:hover{
+  background:color-mix(in oklab,var(--tc) 30%, transparent);
+  color:var(--ink);
+}
+
+[data-theme="dark"] .topics details.sub>summary:hover,
+[data-theme="dark"] .topics details ul a:hover{
+  background:color-mix(in oklab,var(--tc) calc(36% + var(--p) * 12%), var(--surface));
+  color:var(--ink);
+}
+
+@media (prefers-color-scheme:dark){
+  /* ---- the menu, hovered ---- */
+
+  /* Every hover in the rail mixes a colour into the ground beneath it, and
+     in dark mode that ground is dark: the same percentage that reads as a
+     lift on white barely shows. These are the same rules with more of the
+     colour in them. */
+  :root:not([data-theme="light"]) .topics>li>a:hover{
+    background:color-mix(in oklab,var(--ink) 18%, transparent);
+    color:var(--ink);
+  }
+
+  :root:not([data-theme="light"]) .topics summary:hover{
+    background:color-mix(in oklab,var(--tc) 30%, transparent);
+    color:var(--ink);
+  }
+
+  :root:not([data-theme="light"]) .topics details.sub>summary:hover,
+  :root:not([data-theme="light"]) .topics details ul a:hover{
+    background:color-mix(in oklab,var(--tc) calc(36% + var(--p) * 12%), var(--surface));
+    color:var(--ink);
+  }
+}

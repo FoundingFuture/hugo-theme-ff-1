@@ -25,3 +25,10 @@
 {{- if partial "feature-on.html" (dict "name" "katex" "page" .) }}
   {{- partial "features/katex.html" . }}
 {{- end }}
+
+{{- /* The theme switch, for the same reason: it belongs in the head, and
+       a slot holding one feature is a partial call on every page. This
+       one must be in the head anyway, before anything is painted. */ -}}
+{{- if partial "feature-on.html" (dict "name" "dark-mode" "page" .) }}
+  {{- partial "features/dark-mode.html" . }}
+{{- end }}

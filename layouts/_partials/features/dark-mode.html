@@ -1,0 +1,15 @@
+{{- /* The theme switch, inlined into the head.
+
+       Inline and not deferred, because it sets the attribute the
+       stylesheet reads. A reader who chose dark and got the script a
+       moment later would see the light page first and then watch it turn
+       over, which is worse than not offering the choice.
+
+       Inline also means no second request for eleven lines, and nothing
+       to fingerprint. The script is still an asset, so eslint reads it
+       like every other one. */ -}}
+{{- with resources.Get "js/theme.js" }}
+  {{- with . | js.Build (dict "minify" true) }}
+<script>{{ .Content | safeJS }}</script>
+  {{- end }}
+{{- end }}
