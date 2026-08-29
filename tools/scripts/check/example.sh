@@ -6,9 +6,9 @@
 # opens it before anything else. A theme whose own example site does not
 # build is a theme nobody sees working.
 #
-# The artefact is unzipped into themes/<slug>. That is the one path a
-# downloader takes. Mounting the sources tests an arrangement no
-# reader of the theme has.
+# The artefact is unzipped into themes/<slug>, which is the one path a
+# downloader takes. Mounting the sources instead would test a layout
+# arrangement no user has.
 #
 # reads: dist exampleSite theme.toml
 set -uo pipefail
@@ -23,8 +23,8 @@ artefact="dist/$slug"
 status=0
 
 # The theme key names the directory the theme installs into. That name
-# comes from slug.sh, in one place. A config disagreeing with it builds
-# here and fails for everybody else.
+# comes from slug.sh, in one place, and a config that disagrees with it
+# builds here and fails for everybody else.
 declared="$(sed -n "s/^ *theme *= *['\"]\\([^'\"]*\\)['\"].*/\\1/p" exampleSite/hugo.toml | head -1)"
 if [ -z "$declared" ]; then
   echo "exampleSite/hugo.toml:1: no theme key, so the example site does not name the theme."
@@ -41,8 +41,7 @@ cp -R exampleSite/. "$work/"
 rm -rf "$work/themes/$slug"
 cp -R "$artefact" "$work/themes/$slug"
 
-out="$( ( cd "$work" && hugo --renderToMemory --panicOnWarning --logLevel warn --gc ) 2>&1 )"
-if [ $? -ne 0 ]; then
+if ! out="$( ( cd "$work" && hugo --renderToMemory --panicOnWarning --logLevel warn --gc ) 2>&1 )"; then
   echo "exampleSite/hugo.toml:1: the example site does not build against the artefact."
   printf '%s\n' "$out" | grep -iE 'ERROR|WARN|found no layout' | head -5
   status=1

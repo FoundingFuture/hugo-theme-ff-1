@@ -9,7 +9,8 @@ css = "css/features/toc.css"
 i18n = ["contents"]
 
 [skeleton]
-  # It folds, so the summary's parts are marked as well. The list it
-  # holds sits inside the nav Fragments.ToHTML writes, and chrome is
-  # not part of a page's shape.
-  text = ["details.toc", "span.nm", "span.n", "span.chev"]
+  # It folds, so the summary's parts are marked as well. The chevron is
+  # aria-hidden and the list sits inside the nav Fragments.ToHTML
+  # writes, and neither presentation nor chrome is part of a page's
+  # shape.
+  text = ["details.toc", "span.nm", "span.n"]
