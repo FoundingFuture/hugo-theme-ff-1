@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 # Lighthouse over four representative pages. Chrome is needed, so this
 # gate runs in CI and nowhere else.
+#
+# Three runs, asserted on the median. Performance is a wall-clock score
+# and a runner under load reads low: the same commit scored above the
+# bar on one push and 0.92 against a 0.95 minimum on the next, where the
+# tag had fired two workflows at once. One sample of a timing measure is
+# a coin toss, and a gate that fails by how busy the machine was teaches
+# a reader to ignore it.
 # reads: tools/conformance/public/ours tools/lighthouserc.json
 set -uo pipefail
 # lighthouse-ci writes .lighthouseci beside whatever directory it is run
