@@ -11,7 +11,18 @@
   {{- if ge (len $row) 2 }}
     {{- $url := "" }}{{ if ge (len $row) 4 }}{{ $url = trim (index $row 3) " " }}{{ end }}
     {{- $tag := index $.Page.Params "ff-1" "colour" | default "teal" }}
-    {{- if $url }}<a class="item" href="{{ $url }}">{{ else }}<div class="item">{{ end }}
+    {{- /* The row's fourth field is written by hand, and a site may not
+           be served from the root of its host. A path written /topic/ is
+           /prefix/topic/ there, and passed through raw it points at
+           nothing.
+
+           The leading slash comes off first. relURL takes a slash to
+           mean the path is already final and returns it untouched, so
+           relURL "/topic/" is "/topic/" and relURL "topic/" is
+           "/prefix/topic/". An address that names a host survives both
+           steps unchanged. */ -}}
+    {{- $href := $url | strings.TrimPrefix "/" | relURL }}
+    {{- if $url }}<a class="item" href="{{ $href }}">{{ else }}<div class="item">{{ end }}
       <span class="nm">{{ trim (index $row 0) " " }}</span>
       <span class="k" data-t="{{ $tag }}">{{ trim (index $row 1) " " }}</span>
       {{- if ge (len $row) 3 }}<span class="ds">{{ trim (index $row 2) " " }}</span>{{ end }}

@@ -21,6 +21,14 @@ jobs:
         with:
           fetch-depth: 0
 
+      # Where Pages will serve this. base_url is the address the deploy
+      # action publishes to, so taking the demo's baseURL from anywhere
+      # else is two sources of truth that can disagree -- and they did:
+      # v0.1.0 was built for .../hugo-theme-ff-1/demo/ and served from
+      # .../hugo-theme-ff-1/, so every asset 404'd.
+      - uses: actions/configure-pages@v5
+        id: pages
+
       - name: Install Hugo
         run: |
           set -euo pipefail
@@ -78,17 +86,10 @@ jobs:
         env:
           CI: "true"
           RELEASE_TAG: ${{ github.ref_name }}
-          # No /demo/ segment. upload-pages-artifact takes the contents of
-          # public/demo and serves them AT the site root, so a baseURL
-          # naming the directory stamps every asset with a path that is
-          # not there. The release deployed a page whose stylesheet and
-          # script both 404'd, which looks like the theme failing and is
-          # the workflow lying to Hugo about where the site lives.
-          #
-          # Lowercased: Pages serves from the lowercase host, and the
-          # owner is spelled with capitals, which the canonical tag and
-          # every absolute URL would otherwise carry.
-          DEMO_URL: https://foundingfuture.github.io/${{ github.event.repository.name }}/
+          # Straight from the deploy target. upload-pages-artifact serves
+          # the contents of public/demo at that address, so this is the
+          # only value that cannot be wrong.
+          DEMO_URL: ${{ steps.pages.outputs.base_url }}/
         run: |
           ./c check
           ./c check gate=release

@@ -11,7 +11,7 @@ of them, and the skeleton records what changes.
 
 ## Figure
 
-{{< figure src="/kitchen-sink/bundle/a.png" alt="A grey square shown through the figure shortcode" caption="A caption" >}}
+{{< figure src="../bundle/a.png" alt="A grey square shown through the figure shortcode" caption="A caption" >}}
 
 ## Parameter
 
