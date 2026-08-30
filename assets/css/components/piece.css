@@ -379,7 +379,14 @@ main::after{
    auto so the attributes set the ratio without fixing the size. */
 [data-part="body"] img{
   display:block;
-  max-width:100%;
+
+  /* The line the text keeps, or the box it sits in, whichever is
+     narrower. 100% alone means the body's content box, which is wider
+     than the measure: an uncaptioned picture stood 964px beside a 765px
+     paragraph, and did from v0.1.0, because every Markdown image took
+     this path. This rule names img, so it outranks the measure set on
+     the body's children and has to carry it rather than inherit it. */
+  max-inline-size:min(100%, var(--measure));
   height:auto
 }
 

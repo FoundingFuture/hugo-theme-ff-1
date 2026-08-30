@@ -1,5 +1,46 @@
 # Changelog
 
+## v0.2.7, 2026-08-30
+
+v0.2.5 broke the build for any page with an SVG in it. This fixes that,
+and a second fault from the same rewrite.
+
+- An SVG no longer ends the build. responsive-images meant to skip a
+  picture the pipeline cannot open, and its guard compared the media
+  subtype against `svg+xml`. That is the spelling inside
+  `image/svg+xml`. Hugo reports the subtype as `svg`, so the guard
+  never matched, every SVG took the raster path, and the first call to
+  `.Width` stopped the build. Repro is one line:
+  `![alt](file.svg "caption")`.
+  The guard is now `reflect.IsImageResourceProcessable`, which Hugo's
+  own error names. It answers the question that matters rather than the
+  one about file types. A GIF is processable and still passed through,
+  because it may be an animation.
+- A captioned picture no longer repeats its caption as a tooltip.
+  v0.2.5 built one `img` for both branches. So a caption arrived as a
+  `figcaption` and as a `title` on the image inside it. The same words
+  landed in the accessible name and in a tooltip. v0.2.4 wrote the two
+  branches separately and did not have this.
+- The fixture carries an SVG, captioned and not. None ever did. The
+  theme draws SVG in its own templates for icons and never met one in a
+  piece of content. So nothing here could fail on it. The demo shows one
+  too, on the page that already said an SVG is passed through.
+- A title wraps when it will not fit, and not before. It was held to
+  22ch, which is 648px in this face and no relation to anything else on
+  the page. A title needing 689px broke after one word and left the
+  last alone on a second line. `ch` is the width of a zero, 29.4px
+  here, while those letters average 36.7px, so the number never meant
+  22 characters either.
+  A title now takes the measure, the line the paragraphs keep. It ends
+  where the text ends. `text-wrap:balance` evens the lines when it does
+  wrap. The measure moved to `main`: the head is the body part's
+  sibling, and could not reach a value declared below it.
+- The example site's processed images are no longer tracked. Nothing
+  needed them. Every gate builds in a work directory or renders to
+  memory. None writes there, and none reads what is there. They came
+  from a development server, and the two other sites here already have
+  their `_gen` ignored.
+
 ## v0.2.6, 2026-08-30
 
 The demo is the site people look at before they install anything. It

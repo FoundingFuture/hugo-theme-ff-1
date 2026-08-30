@@ -50,4 +50,12 @@ picture on a page loads eagerly and the rest wait.
 
 An SVG has no pixels to resize. A GIF may be an animation, and resizing
 would flatten it to its first frame. Both are passed through as they
-are.
+are:
+
+![A square beside a larger square](/pictures/squaring.svg "An SVG, passed through untouched")
+
+That picture is the same Markdown as the one above it. It reaches the
+page as a plain `img` pointing at the file, with no variants and no
+width asked of it, because Hugo says it is an image that cannot be
+processed and the theme asks Hugo rather than guessing from the file
+name.

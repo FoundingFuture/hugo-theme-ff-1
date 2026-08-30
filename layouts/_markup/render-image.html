@@ -23,15 +23,21 @@
   {{- end -}}
 {{- end -}}
 
-{{- /* Only a raster the pipeline can open. An SVG carries no pixels to
-       resize, and a GIF may be an animation that resizing would flatten
-       to its first frame. */ -}}
+{{- /* Only a picture the pipeline can open.
+
+       Hugo is asked rather than told. This read the media type and
+       compared its subtype against svg+xml, which is the spelling in
+       image/svg+xml and not the spelling Hugo reports: it says svg. So
+       the guard never matched, every SVG took the raster path, and the
+       first call to .Width ended the build. Hugo's own error named the
+       function to use, and this is it.
+
+       A GIF is processable and still passed through, because it may be
+       an animation that resizing would flatten to its first frame. */ -}}
 {{- $raster := false -}}
 {{- with $resource -}}
-  {{- if eq .MediaType.MainType "image" -}}
-    {{- if not (in (slice "svg+xml" "gif") .MediaType.SubType) -}}
-      {{- $raster = true -}}
-    {{- end -}}
+  {{- if and (reflect.IsImageResourceProcessable .) (ne .MediaType.SubType "gif") -}}
+    {{- $raster = true -}}
   {{- end -}}
 {{- end -}}
 
@@ -84,12 +90,19 @@
   {{- end -}}
 {{- end -}}
 
+{{- /* A caption, where there is one and the feature is on. Decided
+       before the plain img is written, because that one carries the
+       title as a tooltip and a figure must not: the words are already
+       under the picture as its caption, and repeating them puts the
+       same sentence in the accessible name and in a tooltip. v0.2.4
+       wrote the two branches separately and did not have this. */ -}}
+{{- $captioned := and $captions (ne (string .Title) "") -}}
 {{- if not $tag -}}
   {{- $tag = printf "<img src=%q alt=%q%s>" $src .PlainText
-        (cond (ne (string .Title) "") (printf " title=%q" .Title) "") -}}
+        (cond (and (ne (string .Title) "") (not $captioned)) (printf " title=%q" .Title) "") -}}
 {{- end -}}
 
-{{- if and $captions .Title -}}
+{{- if $captioned -}}
 <figure class="captioned">
   {{ $tag | safeHTML }}
   <figcaption>{{ .Title }}</figcaption>
