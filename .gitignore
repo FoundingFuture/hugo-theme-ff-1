@@ -3,6 +3,7 @@ tools/conformance/public/
 tools/conformance/scale-content/
 tools/.deps/
 tools/conformance/resources/_gen/
+exampleSite/resources/_gen/
 tools/conformance/.hugo_build.lock
 resources/_gen/
 .hugo_build.lock
