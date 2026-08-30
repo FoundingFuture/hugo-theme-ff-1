@@ -1,0 +1,21 @@
+name = "lang-switch"
+# The languages a site publishes, in the band across the top.
+#
+# It renders nothing on a site with one language, which is most sites,
+# so the switch is on by default and costs them nothing.
+#
+# slot "none" because the band has no slot: baseof asks feature-on for
+# it, the way the rail asks before drawing the search box.
+slot = "none"
+weight = 25
+default = true
+level = "toggle"
+kinds = ["page", "section", "home", "term", "taxonomy"]
+partial = "features/lang-switch.html"
+css = "css/features/lang-switch.css"
+i18n = ["availableLanguages", "languageNoTranslation"]
+
+[skeleton]
+  # Nothing. The band stands before main and is a header, which the
+  # page-shape comparison does not read.
+  text = []

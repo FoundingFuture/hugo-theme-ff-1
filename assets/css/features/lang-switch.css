@@ -1,0 +1,98 @@
+/* The languages a site publishes, under the line across the top.
+ *
+ * The band becomes two rows: the site's line, then the languages. The
+ * line moves to the top of the band rather than sitting in the middle of
+ * it, and the languages sit under it at the inset the trail below uses,
+ * so the two read down the same edge.
+ */
+
+/* Only a band that carries languages is restyled.
+ *
+ * Restyling .strip itself was wrong twice over. It made every
+ * single-language site's band taller for a row it never renders, and
+ * the anchor offset that reads the band's height then covered less than
+ * the band, which is the bug that offset exists to prevent. Setting
+ * flex-wrap instead fought the narrow layout, which already lays the
+ * band out as a column.
+ *
+ * :has is the only thing that says "a band with languages in it".
+ * Without it the row sits inline in the band, which is not what it
+ * should look like and is not broken either. */
+.strip:has(.langs){
+  flex-direction:column;
+  align-items:stretch;
+  justify-content:center;
+  gap:.15rem;
+}
+
+.strip:has(.langs)>p{text-align:center}
+
+/* A comma between the codes, drawn rather than written: a visible string
+   in the markup fails static/i18n, which is why the trail's separator
+   comes from CSS too. */
+.langs a+a::before{
+  content:",";
+
+  /* Pulled back by the whole column gap, or the comma stands off the
+     code before it and reads as its own word. */
+  margin-left:-.45rem;
+  margin-right:.28rem;
+  color:var(--muted);
+}
+
+/* Same reasoning for the offset: only a site that renders the row needs
+   the room for it. */
+:root:has(.langs){--band-seen:5.4rem}
+
+@media (max-width:60rem){
+  :root:has(.langs){--band-seen:6.4rem}
+}
+
+/* One column again, so the brand cell spans nothing and the band is its
+   own two rows. Without this the wider value carried down here and left
+   45px of nothing above a heading whose anchor was followed. */
+@media (max-width:34rem){
+  :root:has(.langs){--band-seen:5.4rem}
+}
+
+.langs{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  gap:.1rem .45rem;
+  margin:0;
+
+  /* The same inset the trail's first word takes, so the band and the
+     trail line up down the left. */
+  padding-left:0;
+  font-family:var(--mono);
+  font-size:.66rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+.langs-label::after{content:":"}
+
+.langs a{
+  padding:0 .1rem;
+  text-decoration:none;
+  font-family:Menu,var(--text);
+  font-size:.86rem;
+  letter-spacing:.06em;
+  color:var(--body);
+}
+
+.langs a:hover{color:var(--teal)}
+
+/* The language being read. */
+.langs a[aria-current]{
+  color:var(--teal);
+  font-weight:500;
+}
+
+/* A language this page has no version in. Pressing it goes to that
+   language's home, so it is drawn a shade back from the ones that go
+   straight to the same words. */
+.langs a.elsewhere{color:var(--muted)}
+.langs a.elsewhere:hover{color:var(--teal)}

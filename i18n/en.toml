@@ -141,3 +141,12 @@ other = "Dark theme"
 # piece, in the register the other bands use.
 [articleContents]
 other = "Article contents"
+
+# The languages a site publishes, named in the band across the top.
+[availableLanguages]
+other = "Available languages"
+
+# What a language link announces when this page has no version in it.
+# Pressing it goes to that language's home, which lists what it has.
+[languageNoTranslation]
+other = "{{ .Label }}, which has no version of this page"

@@ -41,12 +41,27 @@
   </details>
 </aside>
 
-{{- with index site.Params "ff-1" "tagline" }}
-{{- /* The band keeps its height, so the line has to fit across it on
-       one row. CSS cannot measure text, so its length is counted here
-       and the stylesheet divides the width by it, capped at twice the
-       size the line used to be. */ -}}
-<header class="strip"><p style="--len:{{ len . }}">{{ . }}</p></header>
+{{- /* The band across the top: the site's line, and the languages it
+       publishes under it.
+
+       Rendered when either has something to say. A site with no tagline
+       and two languages still gets a band, and a site with neither gets
+       none, which is what it had before the languages arrived.
+
+       The line keeps its height, so it has to fit across the band on one
+       row. CSS cannot measure text, so its length is counted here and
+       the stylesheet divides the width by it, capped at twice the size
+       the line used to be. */ -}}
+{{- $tagline := index site.Params "ff-1" "tagline" }}
+{{- $langs := "" }}
+{{- if partial "feature-on.html" (dict "name" "lang-switch" "page" .) }}
+  {{- $langs = partial "features/lang-switch.html" . }}
+{{- end }}
+{{- if or $tagline (trim $langs " \n") }}
+<header class="strip">
+  {{- with $tagline }}<p style="--len:{{ len . }}">{{ . }}</p>{{ end }}
+  {{- $langs }}
+</header>
 {{- end }}
 
 <main>

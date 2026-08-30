@@ -1,0 +1,34 @@
+{{- /* The languages a site publishes.
+
+       Nothing at all on a site with one language: hugo.Sites has one
+       entry and there is no choice to offer.
+
+       A language links to this page in that language when there is one.
+       When there is not, it links to that language's home, because Hugo
+       builds each language as its own site and that home lists what the
+       language has. The alternative is a switch that only works on pages
+       already translated, which is a switch you cannot use to go and
+       look.
+
+       AllTranslations carries the current page as well, so the language
+       being read resolves to itself and needs no special case. */ -}}
+{{- $page := . }}
+{{- if gt (len hugo.Sites) 1 }}
+<nav class="langs" aria-labelledby="langs-label">
+  <span class="langs-label" id="langs-label">{{ i18n "availableLanguages" }}</span>
+  {{- range $s := hugo.Sites }}
+    {{- $target := $s.Home }}
+    {{- $exact := false }}
+    {{- range $page.AllTranslations }}
+      {{- if eq .Language.Lang $s.Language.Lang }}
+        {{- $target = . }}{{ $exact = true }}
+      {{- end }}
+    {{- end }}
+  <a href="{{ $target.RelPermalink }}" hreflang="{{ $s.Language.Lang }}"
+    {{- if not $exact }} class="elsewhere"{{ end }}
+    {{- if eq $s.Language.Lang $page.Language.Lang }} aria-current="true"{{ end }}
+     aria-label="{{ if $exact }}{{ $s.Language.Label }}{{ else }}{{ i18n "languageNoTranslation" (dict "Label" $s.Language.Label) }}{{ end }}"
+  >{{ $s.Language.Lang | upper }}</a>
+  {{- end }}
+</nav>
+{{- end }}
