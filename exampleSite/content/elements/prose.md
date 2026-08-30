@@ -1,5 +1,5 @@
 +++
-title = 'What a page can hold'
+title = 'prose'
 date = 2026-08-30T09:00:00Z
 description = 'Every element Markdown can put in a piece, drawn the way this theme draws it.'
 tags = ['reference']
