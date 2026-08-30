@@ -323,8 +323,33 @@
 }
 
 /* ---- a container only groups. No page of its own, so no count ---- */
-.topics details.container>summary .nm{color:var(--muted)}
-.topics details.container>summary .chev{margin-left:auto}
+
+/* Set back from a topic you can open and read, and not far back.
+ *
+ * It was --muted, the colour a date or a caption takes. That reads as
+ * one quiet row among ordinary ones, which is what it is on a site where
+ * some sections carry an introduction and some do not. On a site where
+ * none of them do, every row in the menu is this row, and a menu drawn
+ * entirely in the caption colour reads as a menu that has been switched
+ * off. foundingfuture.com is such a site, and that is what it looked
+ * like.
+ *
+ * Two thirds of the way from the caption colour to the body's. Enough
+ * that the distinction survives beside a topic with words of its own,
+ * and not so much that a menu made only of these looks disabled. */
+.topics details.container>summary .nm{
+  color:color-mix(in oklab,var(--body) 66%, var(--muted));
+}
+
+/* The chevron takes the free space only when nothing else is claiming
+   it. A container was assumed to carry no count, on the reading that a
+   topic with no words of its own has nothing to count. It has: container
+   means the section's own page is empty, not that the section is. Notes
+   holds two pieces and shows a 2.
+   Two margin-left:auto on one flex line share the free space between
+   them rather than one taking it, so the count stopped 70px short of
+   where every other row puts it. */
+.topics details.container>summary:not(:has(.n)) .chev{margin-left:auto}
 
 .topics details.container[open]>summary{
   background:transparent;
