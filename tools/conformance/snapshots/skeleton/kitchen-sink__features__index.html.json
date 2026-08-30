@@ -116,6 +116,12 @@
     [
       2,
       "",
+      "not-found",
+      ""
+    ],
+    [
+      2,
+      "",
       "pager",
       ""
     ],
@@ -298,6 +304,11 @@
     [
       "/kitchen-sink/features/last-modified/",
       "last-modified",
+      ""
+    ],
+    [
+      "/kitchen-sink/features/not-found/",
+      "not-found",
       ""
     ],
     [

@@ -170,7 +170,7 @@
     [
       2,
       "",
-      "Further down32",
+      "Further down33",
       "section.further-down"
     ],
     [
@@ -273,6 +273,12 @@
       3,
       "",
       "last-modifiedFeatures",
+      "section.further-down"
+    ],
+    [
+      3,
+      "",
+      "not-foundFeatures",
       "section.further-down"
     ],
     [
@@ -500,7 +506,7 @@
     ],
     [
       "/kitchen-sink/features/",
-      "FeaturesOne page per shipped feature, each turning its own feature on so that what the manifest declares can be seen. 31 pieces",
+      "FeaturesOne page per shipped feature, each turning its own feature on so that what the manifest declares can be seen. 32 pieces",
       "section.subsections"
     ],
     [
@@ -586,6 +592,11 @@
     [
       "/kitchen-sink/features/last-modified/",
       "last-modifiedFeatures",
+      "section.further-down"
+    ],
+    [
+      "/kitchen-sink/features/not-found/",
+      "not-foundFeatures",
       "section.further-down"
     ],
     [
@@ -675,15 +686,15 @@
     ],
     [
       "section.subsections",
-      "Subtopics2 Nested sectionA section one level below the kitchen sink, carrying a weight so that ordering by weight can be observed. 1 piece FeaturesOne page per shipped feature, each turning its own feature on so that what the manifest declares can be seen. 31 pieces"
+      "Subtopics2 Nested sectionA section one level below the kitchen sink, carrying a weight so that ordering by weight can be observed. 1 piece FeaturesOne page per shipped feature, each turning its own feature on so that what the manifest declares can be seen. 32 pieces"
     ],
     [
       "span.c",
-      "32"
+      "33"
     ],
     [
       "section.further-down",
-      "Further down32 02.01 lang-switchFeatures 01.31 toc-railFeatures 01.30 taxonomy-navFeatures 01.29 dark-modeFeatures 01.27 proseFeatures 01.25 back-to-topFeatures 01.25 breadcrumbsFeatures 01.25 code-copyFeatures 01.25 datelineFeatures 01.25 edit-linkFeatures 01.25 external-new-tabFeatures 01.25 figure-captionsFeatures 01.25 further-downFeatures 01.25 heading-anchorsFeatures 01.25 katexFeatures 01.25 kind-labelFeatures 01.25 last-modifiedFeatures 01.25 pagerFeatures 01.25 privacy-embedsFeatures 01.25 rail-pagesFeatures 01.25 reading-timeFeatures 01.25 relatedFeatures 01.25 responsive-imagesFeatures 01.25 searchFeatures 01.25 shareFeatures 01.25 sourcesFeatures 01.25 subsection-cardsFeatures 01.25 tag-narrowingFeatures 01.25 term-headerFeatures 01.25 tocFeatures 01.25 word-countFeatures 01.05 Leaf three levels downThird level section"
+      "Further down33 02.01 lang-switchFeatures 01.31 toc-railFeatures 01.30 taxonomy-navFeatures 01.29 dark-modeFeatures 01.27 proseFeatures 01.25 back-to-topFeatures 01.25 breadcrumbsFeatures 01.25 code-copyFeatures 01.25 datelineFeatures 01.25 edit-linkFeatures 01.25 external-new-tabFeatures 01.25 figure-captionsFeatures 01.25 further-downFeatures 01.25 heading-anchorsFeatures 01.25 katexFeatures 01.25 kind-labelFeatures 01.25 last-modifiedFeatures 01.25 not-foundFeatures 01.25 pagerFeatures 01.25 privacy-embedsFeatures 01.25 rail-pagesFeatures 01.25 reading-timeFeatures 01.25 relatedFeatures 01.25 responsive-imagesFeatures 01.25 searchFeatures 01.25 shareFeatures 01.25 sourcesFeatures 01.25 subsection-cardsFeatures 01.25 tag-narrowingFeatures 01.25 term-headerFeatures 01.25 tocFeatures 01.25 word-countFeatures 01.05 Leaf three levels downThird level section"
     ]
   ]
 }

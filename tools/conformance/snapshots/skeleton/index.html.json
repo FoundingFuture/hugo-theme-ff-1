@@ -194,6 +194,12 @@
     [
       2,
       "",
+      "not-found",
+      ""
+    ],
+    [
+      2,
+      "",
       "pager",
       ""
     ],
@@ -540,6 +546,11 @@
     [
       "/kitchen-sink/math-output/",
       "Math output, set by the page",
+      ""
+    ],
+    [
+      "/kitchen-sink/features/not-found/",
+      "not-found",
       ""
     ],
     [
