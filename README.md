@@ -76,6 +76,7 @@ That is the loop: edit, look, check, commit.
 | `assets/css/features/` | One file per feature |
 | `assets/css/chroma.css` | Code highlighting, generated, AA contrast |
 | `assets/css/a11y.css` | Underlined links, and targets big enough to hit |
+| `assets/fonts/` | Six self-hosted faces, all SIL Open Font License 1.1. `OFL.txt` and `README.txt` name the terms and each face's copyright, and a built site publishes both at `/fonts/` beside the faces it serves |
 | `i18n/en.toml` | Every string the templates show |
 | `data/ff-1/features/` | One manifest per feature: slot, weight, default, what it adds. Namespaced, because a site's own `data/` wins any collision |
 | `features/` | Components: `search` and `privacy-embeds`, each with its own layouts and assets |
@@ -247,10 +248,12 @@ generated from.
 
 ## Changing what it looks like
 
-A site's own stylesheet is loaded after the theme's, so anything the
-theme sets can be changed by setting it again. The palette, the faces,
-the rail's width and the inset a column takes are all custom
-properties on `:root`:
+Write `assets/css/custom.css` in your own site. The theme ships no such
+file, so it is yours alone. It is bundled last, so anything the theme
+sets can be changed by setting it again. Nothing needs enabling.
+
+The palette, the faces, the rail's width and the inset a column takes
+are all custom properties on `:root`:
 
 ```css
 :root{

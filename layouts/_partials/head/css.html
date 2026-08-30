@@ -34,6 +34,30 @@
     {{- $sheets = $sheets | append . }}
   {{- end }}
 {{- end }}
+{{- /* The site's own, last of all, so setting a property again changes
+       it. The theme ships no css/custom.css: resources.Get reads the
+       union of the theme's assets and the site's, so this finds a file
+       only where a site has written one.
+
+       Last is the whole point. A site that cannot put a rule after the
+       theme's cannot override anything, and every custom property this
+       theme documents is unreachable. */ -}}
+{{- with resources.Get "css/custom.css" }}
+  {{- $sheets = $sheets | append . }}
+{{- end }}
+{{- /* The font licences, published beside the site rather than left in
+       assets where nothing copies them.
+
+       The faces are served, so the terms they travel under have to be
+       served too. The OFL allows the notice to ride inside the binary,
+       and every face here does carry its copyright in its own name
+       table, but a name table is not a thing a reader can open. These
+       two are: the licence, and the notice for each face with what was
+       done to it. Published from here because this is where the faces
+       enter the build. */ -}}
+{{- range slice "fonts/OFL.txt" "fonts/README.txt" }}
+  {{- with resources.Get . }}{{ .Publish }}{{ end }}
+{{- end }}
 {{- with $sheets }}
   {{- $opts := dict
     "minify" (cond hugo.IsDevelopment false true)
