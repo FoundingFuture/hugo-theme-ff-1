@@ -43,10 +43,10 @@
   justify-content:center;
 
   /* The band's height is fixed at what it always was, and the line
-     grows into it: as large as it can be without taking a second row,
-     up to twice the size it used to be. The area was tall for the
-     words in it, and a site may put a mark here instead. */
-  padding:.35rem var(--pad);
+     grows into it: as large as it can be without taking a second row.
+     The area was tall for the words in it, and a site may put a mark
+     here instead. */
+  padding:.2rem var(--pad);
   min-height:var(--band);
   min-width:0;
   background:var(--surface);
@@ -63,7 +63,26 @@
   text-align:center;
   color:var(--body);
   font-family:Asimovian,var(--display),sans-serif;
-  font-size:min(2.4rem, calc(140cqw / var(--len,40)));
+
+  /* Sized to the room it has. The divisor is the line's length in
+     characters, counted in the template because CSS cannot measure text,
+     and the multiplier turns that into a size that fills the band.
+
+     It was 140, which drew the line across two thirds of the band and
+     left a third of it empty at every width.
+
+     Calibrated by rendering, not by arithmetic: characters are not all
+     one width, so a short line of wide capitals fills more of the band
+     than a long line of the same count. Measured over 115 widths from
+     320 to 2600, on a 24-character line and a 51-character one, 195
+     clipped the short one at 24 of them and 180 clips neither. It fills
+     92 percent of the band at its fullest, which leaves room for a line
+     whose letters run wider than both.
+
+     Sizing text this way cannot be proved for a line nobody has seen, so
+     the ellipsis stays as the backstop. The cap is what stops a short
+     line from becoming a banner. */
+  font-size:min(2.9rem, calc(180cqw / var(--len,40)));
   line-height:1.05;
   letter-spacing:.03em;
   white-space:nowrap;

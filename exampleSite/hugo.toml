@@ -19,7 +19,7 @@ defaultContentLanguage = 'en'
 
 [params.ff-1]
   # A line across the top. Without one there is no band.
-  tagline = 'A dense publishing theme for a site with a lot in it'
+  tagline = 'A dense publishing theme'
   # The line under the mark in the brand cell.
   established = 'a Hugo theme'
   # The colours the top-level topics take, in order.

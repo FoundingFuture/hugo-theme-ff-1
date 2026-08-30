@@ -47,6 +47,7 @@ i18n = [
   "galleryNext",
   "galleryPosition",
   "galleryPrevious",
+  "languageName",
   "languageNoTranslation",
   "lastModified",
   "linkToSection",

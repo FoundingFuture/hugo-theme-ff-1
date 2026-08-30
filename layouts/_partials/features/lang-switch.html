@@ -11,7 +11,13 @@
        look.
 
        AllTranslations carries the current page as well, so the language
-       being read resolves to itself and needs no special case. */ -}}
+       being read resolves to itself and needs no special case.
+
+       The name each link announces opens with the code the link shows.
+       WCAG 2.5.3 asks that the accessible name contain the visible text,
+       and naming the link "Nederlands" over a link reading NL does not:
+       the two share no letters. Speech control then has nothing to say.
+       The code carries the label rather than being replaced by it. */ -}}
 {{- $page := . }}
 {{- if gt (len hugo.Sites) 1 }}
 <nav class="langs" aria-labelledby="langs-label">
@@ -27,7 +33,7 @@
   <a href="{{ $target.RelPermalink }}" hreflang="{{ $s.Language.Lang }}"
     {{- if not $exact }} class="elsewhere"{{ end }}
     {{- if eq $s.Language.Lang $page.Language.Lang }} aria-current="true"{{ end }}
-     aria-label="{{ if $exact }}{{ $s.Language.Label }}{{ else }}{{ i18n "languageNoTranslation" (dict "Label" $s.Language.Label) }}{{ end }}"
+     aria-label="{{ if $exact }}{{ i18n "languageName" (dict "Code" (upper $s.Language.Lang) "Label" $s.Language.Label) }}{{ else }}{{ i18n "languageNoTranslation" (dict "Code" (upper $s.Language.Lang) "Label" $s.Language.Label) }}{{ end }}"
   >{{ $s.Language.Lang | upper }}</a>
   {{- end }}
 </nav>

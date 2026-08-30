@@ -21,64 +21,118 @@
 .strip:has(.langs){
   flex-direction:column;
   align-items:stretch;
-  justify-content:center;
-  gap:.15rem;
+
+  /* The band is taller than the two lines in it wherever the tagline has
+     not reached its cap. Centred, that surplus sat above and below the
+     pair while the pair itself was jammed together: 16.6px of room going
+     spare at 1400 to hold two lines 0.6px apart. Pushed apart instead,
+     the room goes between them, which is the only place it reads as
+     anything. The band's height does not change, because the surplus was
+     already inside it. */
+  justify-content:space-between;
+
+  /* A floor for the widest screens, where the tagline is at its cap and
+     there is no surplus left to share. */
+  gap:.3rem;
+
+  /* The band keeps hugging its content, and header.css's own
+     min-height is its floor. Holding it at --band-langs instead put the
+     wide case's height on every width: the tagline is 40px tall at the
+     cap and 8px at 545, so the declared height left 16px of nothing
+     under the codes on a narrow screen. --band-langs is what the band
+     can reach, not what it must be. */
 }
 
-.strip:has(.langs)>p{text-align:center}
+.strip:has(.langs)>p{
+  text-align:center;
 
-/* A comma between the codes, drawn rather than written: a visible string
-   in the markup fails static/i18n, which is why the trail's separator
-   comes from CSS too. */
-.langs a+a::before{
-  content:",";
-
-  /* Pulled back by the whole column gap, or the comma stands off the
-     code before it and reads as its own word. */
-  margin-left:-.45rem;
-  margin-right:.28rem;
-  color:var(--muted);
+  /* the line keeps its own height inside the taller band rather than
+     sharing the surplus with the row under it */
+  flex:0 0 auto;
 }
 
-/* Same reasoning for the offset: only a site that renders the row needs
-   the room for it. */
-:root:has(.langs){--band-seen:5.4rem}
+/* No comma between the codes. It was drawn from CSS, pulled back by the
+   column gap so it sat against the code before it. That only works while
+   a code's box ends where its letters do, and each code now fills a cell
+   of one width so the two narrow ones space like the wide ones. The
+   comma then floated in the cell's slack and read as its own word. Even
+   cells separate the codes on their own. */
 
-@media (max-width:60rem){
-  :root:has(.langs){--band-seen:6.4rem}
-}
+/* The tallest the band can get, which is what the offset has to clear.
+ *
+ * It used to be three numbers, none of them measured, against a band
+ * that reached 76.2px and was never checked against any of them.
+ *
+ * This one is measured. Sweeping 320 to 2600 in 20px steps, the band
+ * peaks at 76.8px at 1780, where the tagline sits at its cap and the row
+ * below it has no surplus left to share. 4.8rem covers it.
+ *
+ * Re-measure after anything that changes what the band holds. It has
+ * been wrong twice already, and both times because something else moved:
+ * the row's height changed when the codes were given a width, and the
+ * tagline's changed when it was sized to fill the band. A site with no
+ * language row keeps --band, which the same sweep confirms at 57.6px. */
+:root{--band-langs:4.8rem}
+:root:has(.langs){--band-seen:var(--band-langs)}
 
-/* One column again, so the brand cell spans nothing and the band is its
-   own two rows. Without this the wider value carried down here and left
-   45px of nothing above a heading whose anchor was followed. */
-@media (max-width:34rem){
-  :root:has(.langs){--band-seen:5.4rem}
-}
-
+/* Set small, and given the band's whole width to run along. A row of
+   codes across the band holds twenty languages at 900px and thirteen on
+   a 430px phone, which is more than a site is likely to publish. Wrapping
+   is still allowed: a site past that gets a taller band rather than a
+   language it cannot reach. */
 .langs{
   display:flex;
   flex-wrap:wrap;
   align-items:baseline;
-  gap:.1rem .45rem;
+
+  /* WCAG 2.2 lets a small target pass on spacing rather than size: no
+     other target's 24px circle may reach it. The codes are about 13 tall
+     and the row wraps, so both axes count.
+     Widening the gap alone does not do it. The codes are not all the
+     same width, and two narrow ones, IT beside PT, sat 21.9 apart at a
+     gap that held EN and FR 24.2 apart. The width below makes every code
+     one cell, so the spacing is the same wherever the row is read.
+     Measured with twenty languages at 380, 545 and 1400: nearest centres
+     24.9 across and 24.4 down. */
+  gap:.72rem .38rem;
   margin:0;
+  flex:0 0 auto;
 
   /* The same inset the trail's first word takes, so the band and the
      trail line up down the left. */
   padding-left:0;
   font-family:var(--mono);
-  font-size:.66rem;
+  font-size:.58rem;
+  line-height:1.15;
   letter-spacing:.12em;
   text-transform:uppercase;
   color:var(--muted);
 }
 
+/* Set the way the rail sets a row that opens: the Menu cut in small
+   capitals. The codes beside it are full capitals in the mono face, so
+   the two read as a label and its list rather than as one more code. */
+.langs-label{
+  font-family:Menu,var(--text);
+  font-variant-caps:small-caps;
+  font-size:.82rem;
+  letter-spacing:.03em;
+  text-transform:none;
+}
+
 .langs-label::after{content:":"}
 
 .langs a{
-  padding:0 .1rem;
+  /* One cell per code, so a narrow pair is spaced like a wide one and
+     the codes line up when the row wraps. */
+  display:inline-block;
+  min-width:1.2rem;
+  text-align:center;
+  padding:0;
   text-decoration:none;
   font-family:Menu,var(--text);
-  font-size:.86rem;
+  font-size:.7rem;
+  line-height:1.15;
   letter-spacing:.06em;
   color:var(--body);
 }

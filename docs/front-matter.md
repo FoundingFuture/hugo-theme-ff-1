@@ -48,6 +48,7 @@ template does with an empty value.
 | `galleryNext` |
 | `galleryPosition` |
 | `galleryPrevious` |
+| `languageName` |
 | `languageNoTranslation` |
 | `lastModified` |
 | `linkToSection` |

@@ -95,34 +95,51 @@
   }
 }
 
-/* ---- the switch, in the corner of the brand cell ---- */
+/* ---- the switch, beside the established line ---- */
 
-/* The cell is the positioning context. It already establishes a
-   container for the wordmark's sizing, which does not position anything,
-   so this is the one that does. */
+/* Laid out rather than laid over. The cell becomes two columns: the
+   wordmark spans both, and the line and the switch share the row under
+   it. The switch is 24px tall and the line's row is taller than that
+   already, so the pair costs the cell width and no height at all.
 
-/* The switch is laid over the cell, so the cell has to keep room under
-   its last line for it. A site that sets no established line has nothing
-   there, and the two faces landed on the wordmark itself. The reserve is
-   here rather than in header.css because it is only owed when this
-   feature is on, and this stylesheet is only served then.
+   It was absolute before, in the corner, which meant the cell had to
+   carry a 2.1rem reserve under its last line to keep the two faces off
+   the words. That reserve was the tallest link in the chain that sets
+   the band's height: it made the cell taller, the taller cell stretched
+   the band, and the anchor offset written against the old band was then
+   nine pixels short. Nothing measured any of it. Taking the reserve out
+   removes the link rather than correcting the number.
 
-   2.1rem: the switch is 24px tall and sits .4rem off the bottom, so the
-   reserve has to clear 30.4px before it stops overlapping the line
-   above. */
+   The grid is here rather than in header.css because both columns are
+   only owed when this feature is on, and this stylesheet is only served
+   then. */
 .brandcell{
-  position:relative;
-  padding-block-end:2.1rem;
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:end;
 }
 
-.est{padding-bottom:0}
+.brand{grid-column:1 / -1}
 
+.est{
+  grid-column:1;
+
+  /* the switch holds the right edge now, so the line stops giving it
+     room and centres across what is left */
+  padding-right:0;
+}
+
+/* A site that sets no established line leaves this row to the switch
+   alone, which is a row under the wordmark rather than a pair of faces
+   landing on it. */
 .themeset{
-  position:absolute;
-  right:.5rem;
-  bottom:.4rem;
+  grid-column:2;
   display:flex;
   gap:.1rem;
+
+  /* the same .5rem off the cell's edge the corner placement took, and
+     enough under it to sit on the line's baseline rather than its box */
+  margin:0 .5rem .62rem 0;
 }
 
 /* A button with a face and no word. The name a screen reader announces

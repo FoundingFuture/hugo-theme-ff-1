@@ -7,7 +7,11 @@ description = 'The fixture page for the lang-switch feature, which names the lan
   # so the gate that can hold this feature to anything is this one. The
   # label is real text, unlike the marks the theme draws from CSS, and
   # the codes are Hugo's own language keys.
-  expect = ['Available languages', 'EN', 'NL']
+  #
+  # The label reads Languages rather than naming itself in full: it is
+  # set in small capitals beside codes that are not, and the lettering
+  # says the rest.
+  expect = ['Languages', 'EN', 'NL']
 [params.features]
   lang-switch = true
 +++

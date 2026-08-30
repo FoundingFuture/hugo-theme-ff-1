@@ -142,11 +142,18 @@ other = "Dark theme"
 [articleContents]
 other = "Article contents"
 
-# The languages a site publishes, named in the band across the top.
+# The languages a site publishes, named in the band across the top. One
+# word, because the lettering says the rest: it is set in small capitals
+# beside the codes, which are not.
 [availableLanguages]
-other = "Available languages"
+other = "Languages"
 
-# What a language link announces when this page has no version in it.
-# Pressing it goes to that language's home, which lists what it has.
+# What a language link announces. It opens with the code the link shows,
+# because WCAG 2.5.3 asks the spoken name to contain the written one.
+[languageName]
+other = "{{ .Code }}, {{ .Label }}"
+
+# The same, when this page has no version in that language. Pressing it
+# goes to that language's home, which lists what it has.
 [languageNoTranslation]
-other = "{{ .Label }}, which has no version of this page"
+other = "{{ .Code }}, {{ .Label }}, which has no version of this page"

@@ -139,7 +139,10 @@ other = "Thème sombre"
 other = "Sommaire de l'article"
 
 [availableLanguages]
-other = "Langues disponibles"
+other = "Langues"
+
+[languageName]
+other = "{{ .Code }}, {{ .Label }}"
 
 [languageNoTranslation]
-other = "{{ .Label }}, qui n'a pas de version de cette page"
+other = "{{ .Code }}, {{ .Label }}, qui n'a pas de version de cette page"
