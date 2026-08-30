@@ -28,13 +28,14 @@ defaultContentLanguage = 'en'
   [params.ff-1.features]
     code-copy = true
 
-  # Which markup KaTeX writes. The default, mathml, needs no stylesheet
-  # and is what a site gets without saying anything, so the downstream
-  # gate covers it. The demo takes the other path, where the head links
-  # KaTeX's own stylesheet on the pages that carry a formula, so between
-  # the two both are exercised.
-  [params.ff-1.katex]
-    output = 'htmlAndMathml'
+  # Which markup KaTeX writes is not set here, so the demo takes the
+  # default: mathml, which needs no stylesheet and no script, and is
+  # what a site gets without saying anything.
+  #
+  # features/katex-markup asks for htmlAndMathml in its own front
+  # matter, so both paths are exercised by the demo itself and each
+  # page shows what it says it shows. Before the mode could be set per
+  # page, the site had to choose one for every page it had.
   # The line under the mark in the brand cell.
   established = 'a Hugo theme'
   # The colours the top-level topics take, in order.

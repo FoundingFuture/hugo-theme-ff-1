@@ -19,12 +19,18 @@ comparing one build against another needs its input to hold still.
 """
 
 import datetime
+import glob
 import os
 import shutil
 import random
 import re
 import subprocess
 import sys
+
+try:
+    import tomllib
+except ModuleNotFoundError:  # 3.10 and older
+    tomllib = None
 
 SITE = "exampleSite"
 
@@ -279,6 +285,117 @@ def extras(rng):
         "{{< /gallery >}}\n")
 
 
+MANIFESTS = "data/ff-1/features"
+
+
+def feature_pages():
+    """A page per feature, written from the feature's own manifest.
+
+    The demo used generic topics and nothing else. A reader wanting to
+    know what a feature looks like had to guess which page carried one,
+    and a feature nobody thought to demonstrate was demonstrated
+    nowhere. Four shipped that way.
+
+    Generated from the manifests rather than a list kept here, so a
+    feature cannot arrive without its page. The manifest already says
+    what the feature is called, whether it is on, which stylesheet
+    draws it and which words it shows. summary says what it is for,
+    and features.py requires it for this reason.
+    """
+    if tomllib is None:
+        print("example-content: no toml reader, so no feature pages")
+        return
+    folder = os.path.join(SITE, "content", "features")
+    if os.path.isdir(folder):
+        print("example-content: the example site already has its feature pages")
+        return
+
+    manifests = []
+    for path in sorted(glob.glob(os.path.join(MANIFESTS, "*.toml"))):
+        with open(path, "rb") as handle:
+            manifests.append(tomllib.load(handle))
+
+    hugo_new("features/_index.md")
+    index = os.path.join(folder, "_index.md")
+    body = [
+        "One page per feature, named for it. Each shows the feature "
+        "working, says how to switch it off, and names the stylesheet "
+        "that draws it.",
+        "",
+        "These pages are generated from the theme's own feature "
+        "manifests, so a feature cannot ship without one.",
+    ]
+    undraft(index, "Features", 40, "\n".join(body))
+
+    for manifest in manifests:
+        name = manifest["name"]
+        hugo_new("features/%s.md" % name)
+        page = os.path.join(folder, "%s.md" % name)
+        lines = [manifest["summary"], "", "<!--more-->", ""]
+
+        state = "on" if manifest.get("default") else "off"
+        lines += [
+            "## Whether it is on",
+            "",
+            "It ships **%s**. A site changes that in its configuration:" % state,
+            "",
+            "```toml",
+            "[params.ff-1.features]",
+            "  %s = %s" % (name, "false" if manifest.get("default") else "true"),
+            "```",
+            "",
+            "A page may set the same key in its own front matter, and what "
+            "the page says wins.",
+            "",
+        ]
+
+        sheet = manifest.get("css")
+        lines += ["## Changing how it looks", ""]
+        if sheet:
+            lines += [
+                "Its rules are in `assets/%s` in the theme. To change them, "
+                "write your own in `assets/css/custom.css` in your site: that "
+                "file is bundled after the theme's, so setting a property "
+                "again changes it." % sheet,
+                "",
+            ]
+        else:
+            lines += [
+                "It has no stylesheet of its own. What it adds is drawn by "
+                "the rules the rest of a piece uses.",
+                "",
+            ]
+
+        words = manifest.get("i18n") or []
+        if words:
+            lines += [
+                "## The words it shows",
+                "",
+                "It says %s. Every string the theme shows is in `i18n/en.toml`, "
+                "and a site translating the theme copies the keys it wants."
+                % ", ".join("`%s`" % w for w in words),
+                "",
+            ]
+
+        undraft(page, name, 0, "\n".join(lines))
+
+
+def undraft(path, title, weight, body):
+    """Publish the page Hugo wrote, title it, and give it this body."""
+    with open(path, encoding="utf-8") as handle:
+        text = handle.read()
+    text = re.sub(r"^draft = true$", "draft = false", text, flags=re.MULTILINE)
+    text = re.sub(r"^title = '[^']*'$", "title = '%s'" % title, text, flags=re.MULTILINE)
+    text = re.sub(r"^date = '[^']*'$", "date = '2026-08-30T09:00:00Z'", text,
+                  flags=re.MULTILINE)
+    if weight:
+        text = text.replace("draft = false", "draft = false\nweight = %d" % weight, 1)
+    head, _, _ = text.partition("+++\n")
+    front = text.split("+++")[1]
+    with open(path, "w", encoding="utf-8") as handle:
+        handle.write("+++%s+++\n\n%s\n" % (front, body))
+
+
 def main():
     root = os.path.dirname(os.path.abspath(__file__))
     os.chdir(os.path.join(root, "..", ".."))
@@ -287,15 +404,18 @@ def main():
         print("example-content: no %s, so there is nothing to deepen" % SITE)
         return 0
 
+    rng = random.Random(20260828)
+
     # Already deepened. Running twice asks Hugo to overwrite pages it
-    # has written, and it refuses.
+    # has written, and it refuses. The feature pages are guarded
+    # separately, so a theme that grows a feature can write its page
+    # into a site that already has its sections.
     if os.path.isdir(os.path.join(SITE, "content", "topic-one")):
         print("example-content: the example site already has its sections")
-        return 0
-
-    rng = random.Random(20260828)
-    build(TREE, "", rng)
-    extras(rng)
+    else:
+        build(TREE, "", rng)
+        extras(rng)
+    feature_pages()
 
     # Hugo's own sample section sorts among the generated ones, so it
     # carries a weight as well and lands after them.
