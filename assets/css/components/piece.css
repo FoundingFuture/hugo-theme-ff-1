@@ -55,6 +55,12 @@ main::after{
   font-weight:500
 }
 
+@property --measure{
+  syntax:"<length>";
+  inherits:true;
+  initial-value:0;
+}
+
 /* The text runs out rather than stopping.
  *
  * The last 300px of the article fade toward the colour the tail below
@@ -65,8 +71,37 @@ main::after{
  * prose and then stopped dead at the first band. */
 [data-part="body"]{
   padding:1.15rem var(--pad) 1.4rem;
-  background:linear-gradient(to bottom,transparent,var(--tail-end)) no-repeat bottom / 100% 300px;
+
+  /* The measure, resolved once here and inherited as a length.
+   *
+   * ch is relative to the font size of the element it is written on, so
+   * 78ch is a different width on every child not set at the body size. A
+   * display formula is set at --math-scale, and took a 926px measure
+   * where the paragraphs above it took 765. It then centred itself in
+   * the wider box and drifted right of the text as the window grew,
+   * which is not a formula that is centred. It is a formula that is
+   * somewhere else.
+   *
+   * Registering the property makes it a length: it computes here, where
+   * the font is the body's, and every child inherits the number rather
+   * than the expression. */
+  --measure:calc(78ch - 2 * var(--pad));
 }
+
+/* Nothing is painted behind the words.
+ *
+ * The last 300px of the text block used to fade toward the colour the
+ * tail below uses, so a piece of any length ended the same way. It was
+ * first put on every block that holds content, which meant a section's
+ * opening paragraph was grey from its first line: 300px of fade over
+ * 151px of text. Scoping it to a piece fixed that and left the same
+ * thing happening at the end of every article, a wash behind the closing
+ * paragraphs.
+ *
+ * So it is gone. main::after still fades below the content, which is
+ * where the fade was wanted: under the page rather than through it. The
+ * cost is that a piece long enough to leave no room below it now ends
+ * without a cue, which is the state this began in. */
 
 /* The measure is on the lines, not on the block that holds them. It was
    on the block, which is the same thing to read and not the same thing
@@ -77,7 +112,7 @@ main::after{
    always was. 78ch on the block meant 78ch of border box and this much
    of text; the same number on a child would have widened the measure by
    the padding. */
-[data-part="body"]>*{max-width:calc(78ch - 2 * var(--pad))}
+[data-part="body"]>*{max-width:var(--measure)}
 
 [data-part="body"] h2,[data-part="body"] h3{
   font-family:var(--display);

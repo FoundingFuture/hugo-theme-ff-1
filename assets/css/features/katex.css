@@ -13,3 +13,29 @@
  */
 [data-part="body"] .katex,
 [data-part="body"] .katex-display{font-size:calc(1em * var(--math-scale))}
+
+/* Once, not twice. KaTeX wraps a display formula in .katex-display and
+   puts a .katex inside it, so a rule naming both multiplied the scale by
+   itself: 1.4 set a block formula at 1.96 times the text around it while
+   an inline one got the 1.4 it asked for. The inner box takes the size
+   it is given. */
+[data-part="body"] .katex-display .katex{font-size:1em}
+
+/* A formula wider than the measure scrolls inside its own box.
+ *
+ * KaTeX lays a display formula out at whatever width it needs and says
+ * nothing about what happens when that is more than it has. The default
+ * is to overflow visibly: a long derivation ran 124px past the column on
+ * the demo's own page and sat over what was beside it, and because the
+ * page itself does not scroll there was nothing to reveal it.
+ *
+ * The block scrolls, not the page. It is the rule tables and code blocks
+ * already follow here.
+ *
+ * padding-block rather than none: an overflowing box clips its own
+ * descenders at the scroll edge, and a fraction's rule sits low enough
+ * to lose one. */
+[data-part="body"] .katex-display{
+  overflow:auto hidden;
+  padding-block:.35rem;
+}
