@@ -21,8 +21,7 @@
 {{- if not (partial "feature-on.html" (dict "name" "katex" "page" .Page)) }}
   {{- .Inner }}
 {{- else }}
-{{- $output := "mathml" }}
-{{- with index site.Params "ff-1" "katex" }}{{ with .output }}{{ $output = . }}{{ end }}{{ end }}
+{{- $output := partial "math-output.html" .Page }}
 {{- $opts := dict "output" $output "displayMode" (eq .Type "block") "throwOnError" true }}
 {{- with try (transform.ToMath .Inner $opts) }}
   {{- with .Err }}

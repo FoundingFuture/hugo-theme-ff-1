@@ -3,13 +3,13 @@
        MathML output needs no stylesheet, so with the default setting
        this renders nothing. With html or htmlAndMathml the page needs
        the KaTeX rules and fonts, and only a page that carries a formula
-       gets the link.
+       gets the link. The mode is the site's, and a page may set its own:
+       math-output.html resolves the two.
 
        The render hook sets hasMath while the content renders, and the
        head renders first. Reading .Content here forces the content
        through before the flag is read. */ -}}
-{{- $output := "mathml" }}
-{{- with index site.Params "ff-1" "katex" }}{{ with .output }}{{ $output = . }}{{ end }}{{ end }}
+{{- $output := partial "math-output.html" . }}
 {{- if ne $output "mathml" }}
   {{- $noop := .Content }}
   {{- if .Store.Get "hasMath" }}

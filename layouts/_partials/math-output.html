@@ -1,0 +1,28 @@
+{{- /*
+Which markup a formula is rendered to, for one page.
+
+@context {page} . The page being rendered.
+
+mathml is Hugo's own default, and needs no stylesheet and no script. html
+and htmlAndMathml are KaTeX markup, which needs the KaTeX stylesheet and
+twenty faces, so the head partial links it only where a formula appears.
+
+The site says which, and a page may say otherwise. Every other switch in
+this theme resolves that way, and this one did not: it was read from
+site.Params in two templates and nowhere else, so a site was one mode or
+the other from end to end. A demo showing both could not be built, and
+neither could a single page that needed the other mode.
+
+Resolved here rather than in each caller, because two callers reading the
+same setting is a setting that drifts.
+
+@example: {{ partial "math-output.html" .Page }}
+*/ -}}
+{{- $output := "mathml" }}
+{{- with index site.Params "ff-1" "katex" }}
+  {{- with .output }}{{ $output = . }}{{ end }}
+{{- end }}
+{{- with index .Params "ff-1" "katex" }}
+  {{- with .output }}{{ $output = . }}{{ end }}
+{{- end }}
+{{- return $output }}
