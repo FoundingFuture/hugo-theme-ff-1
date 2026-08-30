@@ -1,5 +1,49 @@
 # Changelog
 
+## v0.2.3, 2026-08-30
+
+Code was unreadable in light mode through three releases. Two gates
+read those pages on every run and both passed them. This release is
+mostly about what a gate that asks a tool cannot see.
+
+- The code colours are scoped to dark mode. Every token colour in
+  `dark-mode.css` was written without its `[data-theme="dark"]` prefix,
+  so the dark palette painted code in light mode as well. Identifiers
+  sat at 1.38 to 1 on a pale ground, where AA asks 4.5.
+- New gate, `output/contrast`. It walks every run of text on every page
+  in both themes, resolves the colours through a canvas, and divides.
+  6248 readings over 84 pages, in three seconds. The canvas is the
+  point: `getComputedStyle` hands back `oklab()` and `color-mix()`
+  untouched, and only a paint resolves them.
+  `output/a11y` and `output/perf` both run axe, and axe returns
+  `incomplete` rather than `violation` for a contrast check it cannot
+  fully resolve. With the fault above put back, pa11y-ci reports 0
+  errors on the page carrying it.
+- The open topic in the menu carries dark ink in dark mode. The four
+  topic colours are lifted off the page there. That is what lets them
+  read as text, and what stops them carrying white: 2.20 to 2.61 across
+  the four, against AA's 4.5. On `--paper` the same four read 6.91 to
+  8.20. The new gate found this on its first run.
+- Mathematics is set at 1.2 times the text rather than 1.4, and a
+  display formula no longer compounds that to 1.96. A formula wider
+  than the reading measure now scrolls inside it. It was centring on
+  the page and running past the line the text keeps to.
+- There is no fade behind the words of a piece. The fade at the end of
+  one stays, because that one is the ending. The other was a grey wash
+  under everything, most visible on a short section.
+- A section that only groups shows its count where every other row
+  shows it. Two `margin-left:auto` on one flex line share the free
+  space between them rather than one taking it. The number stopped 70px
+  short. Such a section is also set two thirds of the way from the
+  caption colour to the body's. It was set at the caption colour. Where
+  no section carries an introduction, that drew the whole menu in it.
+  A menu drawn in the quiet colour reads as a menu switched off.
+- exampleSite carries a page of formulas and code, and a section whose
+  own page has no prose. The theme draws such a section differently,
+  and no fixture had ever had one.
+- Lighthouse reads the code page and the formula page. A page that
+  renders mathematics is given twice the budget of one that does not.
+
 ## v0.2.2, 2026-08-30
 
 Two things the theme needs a site to declare. It never told anyone to
