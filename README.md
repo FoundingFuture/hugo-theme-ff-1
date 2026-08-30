@@ -389,7 +389,7 @@ Only Hugo is needed to build. Each gate names its own tool.
 | [htmltest](https://github.com/wjdp/htmltest) | `output/validity`, `output/nojs` |
 | [pa11y-ci](https://pa11y.org/) | `output/a11y` |
 | [Lighthouse CI](https://github.com/GoogleChrome/lighthouse-ci) | `output/perf` |
-| [Playwright](https://playwright.dev/) | `output/visual`, with `pixelmatch` and `pngjs` |
+| [Playwright](https://playwright.dev/) | `output/visual`, `output/band`, `output/contrast`. `output/visual` also needs `pixelmatch` and `pngjs` |
 | [libxml2](https://gitlab.gnome.org/GNOME/libxml2), for `xmllint` | `output/feeds` |
 
 `./c help` lists every command. `./c help check` lists every gate and its

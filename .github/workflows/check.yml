@@ -123,6 +123,7 @@ jobs:
           pip install --quiet html5validator
           npm install --global --silent pa11y-ci @lhci/cli stylelint stylelint-config-standard eslint
           # visual.sh needs these three, and skipped without them.
+          # band.sh and contrast.sh drive the same browser.
           npm install --global --silent playwright pixelmatch pngjs
           npx --yes playwright install --with-deps chromium
           # Fetched by the same script a workstation uses, so the pin
