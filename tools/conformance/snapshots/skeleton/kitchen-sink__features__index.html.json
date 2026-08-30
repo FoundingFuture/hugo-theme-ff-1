@@ -14,6 +14,24 @@
     [
       2,
       "",
+      "lang-switch",
+      ""
+    ],
+    [
+      2,
+      "",
+      "toc-rail",
+      ""
+    ],
+    [
+      2,
+      "",
+      "taxonomy-nav",
+      ""
+    ],
+    [
+      2,
+      "",
       "dark-mode",
       ""
     ],
@@ -184,6 +202,21 @@
       "/kitchen-sink/features/",
       "Features",
       "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/features/lang-switch/",
+      "lang-switch",
+      ""
+    ],
+    [
+      "/kitchen-sink/features/toc-rail/",
+      "toc-rail",
+      ""
+    ],
+    [
+      "/kitchen-sink/features/taxonomy-nav/",
+      "taxonomy-nav",
+      ""
     ],
     [
       "/kitchen-sink/features/dark-mode/",

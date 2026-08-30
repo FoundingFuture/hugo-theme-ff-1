@@ -45,6 +45,14 @@
     [
       "ol.breadcrumbs",
       "Conformance Kitchen sink Page without a date"
+    ],
+    [
+      "p.reading-time",
+      "1 minute read"
+    ],
+    [
+      "p.word-count",
+      "36 words"
     ]
   ]
 }

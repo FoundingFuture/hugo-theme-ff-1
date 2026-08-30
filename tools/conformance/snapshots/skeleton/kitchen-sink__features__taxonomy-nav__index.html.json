@@ -8,13 +8,19 @@
     "table": 0,
     "ul": 0
   },
-  "h1": "dateline",
+  "h1": "taxonomy-nav",
   "h1_count": 1,
   "headings": [
     [
       2,
-      "off-state",
-      "Off state",
+      "what-it-adds",
+      "What it adds",
+      ""
+    ],
+    [
+      2,
+      "what-it-does-not-add",
+      "What it does not add",
       ""
     ]
   ],
@@ -36,12 +42,17 @@
       "ol.breadcrumbs"
     ],
     [
-      "/kitchen-sink/features/dateline/",
-      "dateline",
+      "/kitchen-sink/features/taxonomy-nav/",
+      "taxonomy-nav",
       "ol.breadcrumbs"
     ],
     [
-      "#off-state",
+      "#what-it-adds",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "#what-it-does-not-add",
       "",
       "h2.anchored"
     ]
@@ -49,11 +60,11 @@
   "marked": [
     [
       "ol.breadcrumbs",
-      "Conformance Kitchen sink Features dateline"
+      "Conformance Kitchen sink Features taxonomy-nav"
     ],
     [
       "time.dateline",
-      "January 25, 2026"
+      "January 30, 2026"
     ],
     [
       "p.reading-time",
@@ -61,7 +72,7 @@
     ],
     [
       "p.word-count",
-      "51 words"
+      "92 words"
     ]
   ]
 }

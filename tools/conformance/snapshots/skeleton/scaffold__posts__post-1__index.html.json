@@ -47,6 +47,14 @@
     [
       "time.dateline",
       "January 15, 2023"
+    ],
+    [
+      "p.reading-time",
+      "1 minute read"
+    ],
+    [
+      "p.word-count",
+      "111 words"
     ]
   ]
 }

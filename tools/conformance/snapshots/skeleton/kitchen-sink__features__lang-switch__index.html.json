@@ -8,9 +8,21 @@
     "table": 0,
     "ul": 0
   },
-  "h1": "dateline",
+  "h1": "lang-switch",
   "h1_count": 1,
   "headings": [
+    [
+      2,
+      "what-it-adds",
+      "What it adds",
+      ""
+    ],
+    [
+      2,
+      "where-a-language-goes",
+      "Where a language goes",
+      ""
+    ],
     [
       2,
       "off-state",
@@ -36,9 +48,19 @@
       "ol.breadcrumbs"
     ],
     [
-      "/kitchen-sink/features/dateline/",
-      "dateline",
+      "/kitchen-sink/features/lang-switch/",
+      "lang-switch",
       "ol.breadcrumbs"
+    ],
+    [
+      "#what-it-adds",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "#where-a-language-goes",
+      "",
+      "h2.anchored"
     ],
     [
       "#off-state",
@@ -49,11 +71,11 @@
   "marked": [
     [
       "ol.breadcrumbs",
-      "Conformance Kitchen sink Features dateline"
+      "Conformance Kitchen sink Features lang-switch"
     ],
     [
       "time.dateline",
-      "January 25, 2026"
+      "February 1, 2026"
     ],
     [
       "p.reading-time",
@@ -61,7 +83,19 @@
     ],
     [
       "p.word-count",
-      "51 words"
+      "110 words"
+    ],
+    [
+      "span.nm",
+      "Contents"
+    ],
+    [
+      "span.n",
+      "3"
+    ],
+    [
+      "details.toc",
+      "Contents3 What it adds Where a language goes Off state"
     ]
   ]
 }

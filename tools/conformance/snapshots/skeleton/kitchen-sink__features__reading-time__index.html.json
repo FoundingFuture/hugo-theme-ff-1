@@ -58,6 +58,10 @@
     [
       "p.reading-time",
       "1 minute read"
+    ],
+    [
+      "p.word-count",
+      "51 words"
     ]
   ]
 }

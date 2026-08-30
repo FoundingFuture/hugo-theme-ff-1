@@ -60,6 +60,14 @@
     [
       "time.dateline",
       "January 18, 2026"
+    ],
+    [
+      "p.reading-time",
+      "1 minute read"
+    ],
+    [
+      "p.word-count",
+      "36 words"
     ]
   ]
 }

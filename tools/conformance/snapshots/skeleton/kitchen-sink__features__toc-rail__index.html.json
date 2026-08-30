@@ -8,7 +8,7 @@
     "table": 0,
     "ul": 0
   },
-  "h1": "dark-mode",
+  "h1": "toc-rail",
   "h1_count": 1,
   "headings": [
     [
@@ -19,8 +19,14 @@
     ],
     [
       2,
-      "what-it-does-not-add",
-      "What it does not add",
+      "where-it-appears",
+      "Where it appears",
+      ""
+    ],
+    [
+      2,
+      "what-follows-the-reading",
+      "What follows the reading",
       ""
     ],
     [
@@ -48,8 +54,8 @@
       "ol.breadcrumbs"
     ],
     [
-      "/kitchen-sink/features/dark-mode/",
-      "dark-mode",
+      "/kitchen-sink/features/toc-rail/",
+      "toc-rail",
       "ol.breadcrumbs"
     ],
     [
@@ -58,7 +64,12 @@
       "h2.anchored"
     ],
     [
-      "#what-it-does-not-add",
+      "#where-it-appears",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "#what-follows-the-reading",
       "",
       "h2.anchored"
     ],
@@ -71,11 +82,11 @@
   "marked": [
     [
       "ol.breadcrumbs",
-      "Conformance Kitchen sink Features dark-mode"
+      "Conformance Kitchen sink Features toc-rail"
     ],
     [
       "time.dateline",
-      "January 29, 2026"
+      "January 31, 2026"
     ],
     [
       "p.reading-time",
@@ -83,7 +94,7 @@
     ],
     [
       "p.word-count",
-      "141 words"
+      "148 words"
     ],
     [
       "span.nm",
@@ -91,11 +102,11 @@
     ],
     [
       "span.n",
-      "3"
+      "4"
     ],
     [
       "details.toc",
-      "Contents3 What it adds What it does not add Off state"
+      "Contents4 What it adds Where it appears What follows the reading Off state"
     ]
   ]
 }
