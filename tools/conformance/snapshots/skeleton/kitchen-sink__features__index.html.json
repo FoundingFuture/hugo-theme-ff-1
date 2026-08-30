@@ -74,6 +74,12 @@
     [
       2,
       "",
+      "external-new-tab",
+      ""
+    ],
+    [
+      2,
+      "",
       "figure-captions",
       ""
     ],
@@ -135,6 +141,12 @@
       2,
       "",
       "related",
+      ""
+    ],
+    [
+      2,
+      "",
+      "responsive-images",
       ""
     ],
     [
@@ -254,6 +266,11 @@
       ""
     ],
     [
+      "/kitchen-sink/features/external-new-tab/",
+      "external-new-tab",
+      ""
+    ],
+    [
       "/kitchen-sink/features/figure-captions/",
       "figure-captions",
       ""
@@ -306,6 +323,11 @@
     [
       "/kitchen-sink/features/related/",
       "related",
+      ""
+    ],
+    [
+      "/kitchen-sink/features/responsive-images/",
+      "responsive-images",
       ""
     ],
     [

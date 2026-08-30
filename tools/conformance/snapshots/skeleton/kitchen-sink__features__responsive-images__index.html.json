@@ -1,0 +1,83 @@
+{
+  "counts": {
+    "blockquote": 0,
+    "dl": 0,
+    "figure": 0,
+    "ol": 1,
+    "pre": 0,
+    "table": 0,
+    "ul": 0
+  },
+  "h1": "responsive-images",
+  "h1_count": 1,
+  "headings": [
+    [
+      2,
+      "a-picture-the-pipeline-can-open",
+      "A picture the pipeline can open",
+      ""
+    ],
+    [
+      2,
+      "off-state",
+      "Off state",
+      ""
+    ]
+  ],
+  "images": [
+    [
+      "/pictures/wide_hu_a24a72f3781f91e0.webp",
+      "A generated picture, 1600 by 1000"
+    ]
+  ],
+  "links": [
+    [
+      "/",
+      "Conformance",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/",
+      "Kitchen sink",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/features/",
+      "Features",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/features/responsive-images/",
+      "responsive-images",
+      "ol.breadcrumbs"
+    ],
+    [
+      "#a-picture-the-pipeline-can-open",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "#off-state",
+      "",
+      "h2.anchored"
+    ]
+  ],
+  "marked": [
+    [
+      "ol.breadcrumbs",
+      "Conformance Kitchen sink Features responsive-images"
+    ],
+    [
+      "time.dateline",
+      "January 25, 2026"
+    ],
+    [
+      "p.reading-time",
+      "1 minute read"
+    ],
+    [
+      "p.word-count",
+      "106 words"
+    ]
+  ]
+}

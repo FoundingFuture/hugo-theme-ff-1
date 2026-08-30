@@ -1,0 +1,115 @@
+{
+  "counts": {
+    "blockquote": 0,
+    "dl": 0,
+    "figure": 0,
+    "ol": 1,
+    "pre": 0,
+    "table": 0,
+    "ul": 0
+  },
+  "h1": "external-new-tab",
+  "h1_count": 1,
+  "headings": [
+    [
+      2,
+      "a-link-that-leaves",
+      "A link that leaves",
+      ""
+    ],
+    [
+      2,
+      "a-link-that-stays",
+      "A link that stays",
+      ""
+    ],
+    [
+      2,
+      "off-state",
+      "Off state",
+      ""
+    ]
+  ],
+  "images": [],
+  "links": [
+    [
+      "/",
+      "Conformance",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/",
+      "Kitchen sink",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/features/",
+      "Features",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/features/external-new-tab/",
+      "external-new-tab",
+      "ol.breadcrumbs"
+    ],
+    [
+      "#a-link-that-leaves",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "https://gohugo.io/",
+      "The Hugo documentation",
+      ""
+    ],
+    [
+      "#a-link-that-stays",
+      "",
+      "h2.anchored"
+    ],
+    [
+      "/kitchen-sink/blockquote/",
+      "The blockquote page",
+      ""
+    ],
+    [
+      "#off-state",
+      "",
+      "h2.anchored"
+    ]
+  ],
+  "marked": [
+    [
+      "ol.breadcrumbs",
+      "Conformance Kitchen sink Features external-new-tab"
+    ],
+    [
+      "time.dateline",
+      "January 25, 2026"
+    ],
+    [
+      "p.reading-time",
+      "1 minute read"
+    ],
+    [
+      "p.word-count",
+      "119 words"
+    ],
+    [
+      "span.nm",
+      "Contents"
+    ],
+    [
+      "span.n",
+      "3"
+    ],
+    [
+      "details.toc",
+      "Contents3 A link that leaves A link that stays Off state"
+    ],
+    [
+      "span.newtab",
+      "(opens in a new tab)"
+    ]
+  ]
+}

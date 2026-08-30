@@ -86,7 +86,11 @@
     ],
     [
       "p.word-count",
-      "46 words"
+      "51 words"
+    ],
+    [
+      "span.newtab",
+      "(opens in a new tab)"
     ]
   ]
 }
