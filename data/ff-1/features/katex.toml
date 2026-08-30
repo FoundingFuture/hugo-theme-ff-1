@@ -1,4 +1,9 @@
 name = "katex"
+# Needs [markup.goldmark.extensions.passthrough] in the site's config,
+# with delimiters. Hugo does not merge markup from a theme, so this
+# feature cannot switch itself on: with the extension off, Goldmark eats
+# the delimiters and the render hook never fires. The README says what
+# to write. exampleSite/hugo.toml has it.
 # Part of the theme rather than a component a site mounts. Its render
 # hook fires wherever the content carries a formula, and its partial in
 # the head links the stylesheet only when the site asks for KaTeX

@@ -191,9 +191,16 @@ of its grounds, and the generated code colours are remapped to match.
 Turn the feature off and neither the switch nor the stylesheet is
 served, and the system setting is not answered either.
 
+Three features ask your site for a line of configuration. Hugo merges
+maps from a theme, but `markup` is not among them, so only the site can
+say these. It is the same wall that stops a theme adding an `[outputs]`
+format or a `menus` entry.
+
+`exampleSite/hugo.toml` sets all three, so a site started from the demo
+already has them.
+
 `figure-captions` turns a Markdown image that carries a title into a
-`<figure>` with a `<figcaption>`. It is the one feature that asks your
-site for a line of configuration:
+`<figure>` with a `<figcaption>`:
 
 ```toml
 [markup.goldmark.parser]
@@ -202,13 +209,41 @@ site for a line of configuration:
 
 Goldmark wraps an image standing alone in a paragraph in a `<p>`, and a
 `<figure>` inside a paragraph closes it, so the page ends up carrying a
-stray `</p>` and stops being valid HTML. The theme cannot set this for
-you: Hugo merges maps from a theme, but `markup` is not among them, so
-only the site can say it. It is the same wall that stops a theme adding
-an `[outputs]` format or a `menus` entry.
+stray `</p>` and stops being valid HTML. A site that turns
+`figure-captions` off does not need this.
 
-`exampleSite/hugo.toml` sets it, so a site started from the demo already
-has it. A site that turns `figure-captions` off does not need it.
+`katex` renders mathematics, and needs the delimiters passed through
+Goldmark untouched:
+
+```toml
+[markup.goldmark.extensions.passthrough]
+  enable = true
+  [markup.goldmark.extensions.passthrough.delimiters]
+    block = [['\[', '\]'], ['$$', '$$']]
+    inline = [['\(', '\)']]
+```
+
+Without it, Goldmark reads the backslash before a bracket as an escape
+and eats it. `\(E = mc^2\)` reaches the page as `(E = mc^2)`, and
+`$$...$$` arrives as literal text. The theme's render hook never fires,
+because a hook for an extension that is off has nothing to render. The
+build succeeds and says nothing. The formula is not missing, it is
+quietly wrong, which is the worst of the three failures here.
+
+`code-copy` and the code colours need Chroma to write classes rather
+than inline styles:
+
+```toml
+[markup.highlight]
+  noClasses = false
+  style = "xcode"
+```
+
+With the default, Chroma writes its palette into the markup as inline
+styles. The theme's own code colours then have nothing to colour. One of
+Chroma's defaults fails AA contrast, and dark mode cannot remap any of
+it. Any style name works. `xcode` is the one the theme's stylesheet is
+generated from.
 
 ## Changing what it looks like
 
