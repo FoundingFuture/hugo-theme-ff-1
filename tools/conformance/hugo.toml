@@ -80,4 +80,8 @@ enableGitInfo = false
   # length is what decides where the size stops growing and the height
   # settles. A short line reaches its cap early and holds one height
   # across most of the sweep.
-  tagline = 'A fixture line long enough to make the band grow'
+  #
+  # It also has to read as a line somebody meant, because this build is
+  # what the repository publishes to Pages. The first one here said what
+  # it was for, and went up on the demo site saying it.
+  tagline = 'A dense publishing theme for a site with a lot in it'
