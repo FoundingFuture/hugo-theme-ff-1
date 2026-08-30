@@ -39,3 +39,26 @@
   overflow:auto hidden;
   padding-block:.35rem;
 }
+
+/* MathML, which is what a site gets unless it asks for KaTeX markup.
+ *
+ * The measure is set on the children of the body, and the wrapper a
+ * formula arrives in is a span: an inline box, and max-width does not
+ * apply to one. So the cap was inert and the formula filled the body's
+ * content box instead, 964px against a 765px paragraph. A short formula
+ * then centred itself in the wider box and sat out to the right of the
+ * text, which is the fault a reader sees.
+ *
+ * Capping the math itself works because display block math is a block
+ * box. The overflow is the same answer the KaTeX path already uses: a
+ * formula too wide for the line scrolls inside it rather than widening
+ * the page. */
+[data-part="body"] math[display="block"]{
+  max-inline-size:var(--measure);
+  overflow:auto hidden;
+  padding-block:.35rem;
+}
+
+/* The wrapper carries the measure too, for the case where it is the
+   thing being laid out rather than the math inside it. */
+[data-part="body"]>.katex{display:block}
