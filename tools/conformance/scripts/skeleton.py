@@ -186,7 +186,24 @@ class Skeleton(HTMLParser):
             return
         # Every open frame collects the text. A heading holding a link
         # records its own words, and so does the link.
-        for frame in self.frames:
+        #
+        # A classed element inside a link is the exception. Its text is
+        # already recorded under marked, against the class that put it
+        # there, so letting the link collect it too records the same
+        # words twice. The link then reads as a different link whenever
+        # a feature annotates one, and a feature that annotates without
+        # adding looks like a feature adding links it never declared.
+        # external-new-tab appends "(opens in a new tab)" inside the
+        # anchor, and every external link on the site was reported as
+        # undeclared.
+        #
+        # The link keeps the words the page wrote. What a feature put
+        # inside it stays where it was already being counted.
+        for index, frame in enumerate(self.frames):
+            if frame["kind"] == "link" and any(
+                    later["kind"] == "marked"
+                    for later in self.frames[index + 1:]):
+                continue
             frame["buffer"].append(data)
 
     def emit(self, frame):
