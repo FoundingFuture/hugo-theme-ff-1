@@ -1,0 +1,18 @@
+{{- /* The page a wrong address lands on.
+
+       Hugo writes 404.html only where a template exists. The scaffold
+       ships none, so a site built on this theme published none either
+       and a reader who mistyped got whatever the host had lying about.
+
+       It takes the whole frame: the menu is what a reader needs here
+       more than anywhere else, since the address they wanted is
+       probably one row of it. */ -}}
+{{ define "main" }}
+<div data-part="head">
+  <h1>{{ i18n "notFoundTitle" }}</h1>
+</div>
+<div data-part="body">
+  <p>{{ i18n "notFoundSays" }}</p>
+  <p><a href="{{ site.Home.RelPermalink }}">{{ i18n "notFoundHome" }}</a></p>
+</div>
+{{ end }}

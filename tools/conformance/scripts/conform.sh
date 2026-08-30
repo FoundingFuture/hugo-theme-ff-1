@@ -53,9 +53,18 @@ build hugo.toml,config/off/hugo.toml ours-off
 # 4. File list. A difference means the theme publishes a different set of
 #    pages, feeds, aliases or sitemap entries than the scaffold does.
 listing() {
+  # 404.html is left out. Hugo writes it wherever a template exists, and
+  # the reference scaffold ships none, so a theme that gives a site the
+  # page a wrong address lands on publishes one file the scaffold does
+  # not, once per language. No switch can change that: the template
+  # existing is what makes Hugo write the file.
+  #
+  # Named rather than a pattern. Any other file the theme grows still
+  # fails here, which is what this comparison is for.
   find "$1" -type f \
     | sed "s|^$1/||" \
     | grep -Ev '^(css|js|fonts)/|^resources/_gen' \
+    | grep -Ev '^(.*/)?404\.html$' \
     | LC_ALL=C sort
 }
 # The build compared here has every feature off, for the same reason

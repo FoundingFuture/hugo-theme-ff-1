@@ -288,6 +288,12 @@ def pages(root):
     for folder, dirs, files in os.walk(root):
         dirs[:] = sorted(d for d in dirs if d not in ("css", "js", "fonts"))
         for name in sorted(files):
+            # 404.html is left out for the reason conform.sh gives at
+            # its listing: Hugo writes it wherever a template exists and
+            # the reference scaffold ships none, so a theme that gives a
+            # site one has a page the scaffold cannot have.
+            if name == "404.html":
+                continue
             if name.endswith(".html"):
                 full = os.path.join(folder, name)
                 yield os.path.relpath(full, root).replace(os.sep, "/"), full

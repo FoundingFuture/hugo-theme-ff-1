@@ -1,0 +1,15 @@
+name = "not-found"
+summary = "The page a reader lands on when the address is wrong."
+# A whole template rather than a slot, so nothing calls it through
+# slot.html and it needs no partial.
+slot = "none"
+weight = 10
+default = true
+level = "toggle"
+kinds = ["page"]
+
+[skeleton]
+  # Hugo writes 404.html only where a template exists, and the
+  # reference scaffold ships none. So this feature publishes a file the
+  # comparison build does not, which is exactly what files is for.
+  files = ["404.html"]
