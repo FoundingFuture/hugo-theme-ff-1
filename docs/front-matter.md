@@ -59,6 +59,7 @@ template does with an empty value.
 | `narrowing` |
 | `nextPage` |
 | `noMatch` |
+| `opensInNewTab` |
 | `pieceCount` |
 | `piecesTitle` |
 | `playOnSoundcloud` |
