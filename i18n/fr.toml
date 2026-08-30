@@ -1,0 +1,145 @@
+# Every string the templates show, in French.
+#
+# Hugo falls back to the default language for a key a translation does
+# not carry, so a missing key is silently English. All of them are here.
+#
+# French counts zero and one alike, so the one form covers both.
+
+[copyright]
+other = "Copyright {{ .Year }}. Tous droits réservés."
+
+[readingTime]
+one = "{{ .Count }} minute de lecture"
+other = "{{ .Count }} minutes de lecture"
+
+[lastModified]
+other = "Révisé le {{ .Date }}"
+
+[breadcrumbs]
+other = "Fil d'Ariane"
+
+[contents]
+other = "Sommaire"
+
+[related]
+other = "Pages liées"
+
+[previousPage]
+other = "Précédent"
+
+[nextPage]
+other = "Suivant"
+
+[wordCount]
+one = "{{ .Count }} mot"
+other = "{{ .Count }} mots"
+
+[share]
+other = "Partager"
+
+[editThisPage]
+other = "Modifier cette page"
+
+[backToTop]
+other = "Haut de page"
+
+[copy]
+other = "Copier"
+
+[menu]
+other = "Menu"
+
+[menuOpen]
+other = "ouvrir"
+
+[menuClose]
+other = "fermer"
+
+[mainPage]
+other = "Page principale"
+
+[linkToSection]
+other = "Lien vers cette section"
+
+[subsections]
+other = "Sous-thèmes"
+
+[furtherDown]
+other = "Plus bas"
+
+[pieceCount]
+one = "{{ .Count }} article"
+other = "{{ .Count }} articles"
+
+[narrowing]
+other = "Articles"
+
+[noMatch]
+other = "Rien ne porte tout cela à la fois. Retirez-en un."
+
+[clear]
+other = "Effacer la sélection"
+
+[searchLabel]
+other = "Rechercher"
+
+[searchSubmit]
+other = "Rechercher"
+
+[searchPlaceholder]
+other = "Un mot d'un titre, du texte ou d'une étiquette"
+
+[searchTerm]
+other = "Terme recherché"
+
+[searchNothing]
+other = "Rien ne correspond."
+
+[searchCount]
+one = "{{ .Count }} article"
+other = "{{ .Count }} articles"
+
+[playOnYoutube]
+other = "Lire sur YouTube"
+
+[playOnVimeo]
+other = "Lire sur Vimeo"
+
+[playOnSoundcloud]
+other = "Lire sur SoundCloud"
+
+[embedElsewhere]
+other = "Se lit depuis {{ .Service }} une fois que vous appuyez"
+
+[galleryClose]
+other = "Fermer"
+
+[galleryPrevious]
+other = "Image précédente"
+
+[galleryNext]
+other = "Image suivante"
+
+[piecesTitle]
+other = "Articles"
+
+[allTerms]
+other = "Tous les {{ .Taxonomy }}"
+
+[galleryPosition]
+other = "{{ .Index }} sur {{ .Total }}"
+
+[themeLight]
+other = "Thème clair"
+
+[themeDark]
+other = "Thème sombre"
+
+[articleContents]
+other = "Sommaire de l'article"
+
+[availableLanguages]
+other = "Langues disponibles"
+
+[languageNoTranslation]
+other = "{{ .Label }}, qui n'a pas de version de cette page"
