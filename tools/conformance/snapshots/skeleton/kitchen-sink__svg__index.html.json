@@ -1,0 +1,63 @@
+{
+  "counts": {
+    "blockquote": 0,
+    "dl": 0,
+    "figure": 1,
+    "ol": 1,
+    "pre": 0,
+    "table": 0,
+    "ul": 0
+  },
+  "h1": "An SVG in Markdown",
+  "h1_count": 1,
+  "headings": [],
+  "images": [
+    [
+      "/pictures/squaring.svg",
+      "A square beside a larger square"
+    ],
+    [
+      "/pictures/squaring.svg",
+      "A square beside a larger square"
+    ]
+  ],
+  "links": [
+    [
+      "/",
+      "Conformance",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/",
+      "Kitchen sink",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/svg/",
+      "An SVG in Markdown",
+      "ol.breadcrumbs"
+    ]
+  ],
+  "marked": [
+    [
+      "ol.breadcrumbs",
+      "Conformance Kitchen sink An SVG in Markdown"
+    ],
+    [
+      "time.dateline",
+      "January 25, 2026"
+    ],
+    [
+      "p.reading-time",
+      "1 minute read"
+    ],
+    [
+      "p.word-count",
+      "45 words"
+    ],
+    [
+      "figure.captioned",
+      "Squaring"
+    ]
+  ]
+}

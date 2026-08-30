@@ -110,6 +110,12 @@
     [
       2,
       "",
+      "An SVG in Markdown",
+      ""
+    ],
+    [
+      2,
+      "",
       "back-to-top",
       ""
     ],
@@ -464,6 +470,11 @@
     [
       "/search/",
       "Search",
+      ""
+    ],
+    [
+      "/kitchen-sink/svg/",
+      "An SVG in Markdown",
       ""
     ],
     [

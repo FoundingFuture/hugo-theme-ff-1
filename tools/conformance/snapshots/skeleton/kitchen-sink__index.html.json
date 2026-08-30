@@ -44,6 +44,12 @@
     [
       2,
       "",
+      "An SVG in Markdown",
+      ""
+    ],
+    [
+      2,
+      "",
       "Math output, set by the page",
       ""
     ],
@@ -395,6 +401,11 @@
     [
       "/kitchen-sink/embeds/",
       "Embeds",
+      ""
+    ],
+    [
+      "/kitchen-sink/svg/",
+      "An SVG in Markdown",
       ""
     ],
     [
