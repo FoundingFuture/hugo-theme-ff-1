@@ -1,0 +1,101 @@
+{{- /* The rail at its narrowest, as marks.
+
+       When the window stops having room for the menu beside the words,
+       the column becomes an edge. An edge carrying the word MENU says
+       what is behind it and nothing about what is in it, so it carries
+       the menu's own parts instead, in the menu's own order: the theme
+       switch where the slab is, the glass where the box is, the rows
+       where the tree is, and one mark for each taxonomy under them. The
+       shape is the shape of the thing it stands for.
+
+       Drawn rather than set in type, for the reason the theme switch is:
+       a mark from a font has to be in a face that can draw it, which
+       static/glyphs checks, and a path has no such question. The one
+       exception is the taxonomies' #, which the menu itself draws from
+       CSS, so the two cannot drift apart.
+
+       The slab is among them, and it is drawn rather than borrowed. The
+       real one slides away with the menu, because the slab and the menu
+       are one thing and one thing moves one way: leaving the slab behind
+       meant animating it by uncovering while the menu travelled, two
+       kinds of motion that cannot be made to agree however their timings
+       are matched.
+
+       Its height is not guessed. It shares a grid row with the real
+       slab, and a translated grid item still sizes the row it sits in,
+       so the row is as tall as the real slab whatever the wordmark does
+       and this fills it.
+
+       aria-hidden, and nothing here is focusable. It stands in for the
+       rail rather than duplicating it: every control it pictures is the
+       real one behind it, and reaching for any of them, by pointer or by
+       tab, brings the rail itself out. A screen reader is given the rail
+       and never this.
+
+       Each part appears on the same condition the real one does, so a
+       site without search or without taxonomies gets an edge that still
+       matches its own menu. */ -}}
+<div class="railmini" aria-hidden="true">
+  {{- /* The slab's row. It carries no height of its own: it shares a
+         grid row with the real slab, which sizes that row even while it
+         is translated off the screen, so this is exactly as tall as the
+         thing it stands in for however tall that happens to be. */ -}}
+  <div class="mini-slab">
+    {{- if partial "feature-on.html" (dict "name" "dark-mode" "page" .) }}
+    <span class="mini mini-theme">
+      <svg viewBox="0 0 16 16" focusable="false">
+        <circle cx="8" cy="8" r="3.1" fill="currentColor"></circle>
+        <g stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <path d="M8 .9v2.0M8 13.1v2.0M.9 8h2.0M13.1 8h2.0"></path>
+          <path d="M2.98 2.98l1.42 1.42M11.6 11.6l1.42 1.42M13.02 2.98L11.6 4.4M4.4 11.6l-1.42 1.42"></path>
+        </g>
+      </svg>
+      <svg viewBox="0 0 16 16" focusable="false">
+        <path fill="currentColor"
+              d="M13.4 10.6A5.9 5.9 0 0 1 5.4 2.6a6.3 6.3 0 1 0 8 8z"></path>
+      </svg>
+    </span>
+    {{- end }}
+  </div>
+
+  <div class="mini-marks">
+    {{- if partial "feature-on.html" (dict "name" "search" "page" .) }}
+      {{- with partialCached "find-page.html" . site.Language.Lang }}
+    <span class="mini mini-search">
+      <svg viewBox="0 0 16 16" focusable="false" fill="none"
+           stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+        <circle cx="6.9" cy="6.9" r="4.3"></circle>
+        <path d="M10.2 10.2 14 14"></path>
+      </svg>
+    </span>
+      {{- end }}
+    {{- end }}
+
+    <span class="mini mini-menu">
+      <svg viewBox="0 0 16 16" focusable="false" fill="none"
+           stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
+        <path d="M2 4h12M2 8h12M2 12h8"></path>
+      </svg>
+    </span>
+
+    {{- if partial "feature-on.html" (dict "name" "taxonomy-nav" "page" .) }}
+      {{- range $name, $terms := site.Taxonomies }}
+        {{- with site.GetPage (printf "/%s" $name) }}
+          {{- if .Pages }}
+            {{- if eq .Section "tags" }}
+    <span class="mini mini-tag" data-taxo="{{ .Section }}">
+      <svg viewBox="0 0 16 16" focusable="false" fill="none"
+           stroke="currentColor" stroke-width="1.5" stroke-linejoin="round">
+        <path d="M8.3 1.9H13a1.1 1.1 0 0 1 1.1 1.1v4.7a1.1 1.1 0 0 1-.33.78l-5.9 5.9a1.1 1.1 0 0 1-1.56 0L1.62 9.6a1.1 1.1 0 0 1 0-1.56l5.9-5.9a1.1 1.1 0 0 1 .78-.33z"></path>
+        <circle cx="10.9" cy="5.1" r="1.05"></circle>
+      </svg>
+    </span>
+            {{- else }}
+    <span class="mini mini-taxo" data-taxo="{{ .Section }}"></span>
+            {{- end }}
+          {{- end }}
+        {{- end }}
+      {{- end }}
+    {{- end }}
+  </div>
+</div>

@@ -53,7 +53,7 @@ body{
 /* Placed with the same weight the narrow blocks use. body>main reads
    as one selector more specific than the main they say, so the wide
    placement won at every width and the content sat in a column that
-   collapses to nothing below 60rem. */
+   collapses to nothing below 48rem. */
 .strip{
   grid-column:2;
   grid-row:1
@@ -94,26 +94,324 @@ main{
   min-height:0;
 }
 
-@media (max-width:60rem){
+/* A length that can be animated. An unregistered custom property is a
+   string as far as the engine is concerned, so it jumps from one value
+   to the next; registering it as a length is what lets the cut above
+   travel. Where @property is not understood the menu still opens and
+   closes, without the motion. */
+@property --open{
+  syntax:"<length>";
+  inherits:false;
+  initial-value:0;
+}
+
+/* The menu is covered, and then it is gone.
+ *
+ * Two states, and a hard line between them.
+ *
+ * While a useful amount of the menu is still showing, the page simply
+ * covers the rest of it. The menu keeps its own width, the column gives
+ * up room, and what has no room is cut away; bring the pointer to what
+ * is left and the whole menu comes back over the page, then goes again.
+ * The reading column takes 46rem and keeps it, so everything the window
+ * loses comes out of what the menu shows.
+ *
+ * A fifth of a menu stops being a menu. At 3.2rem the strip is too thin
+ * to read a row in and too wide to be an ornament, so rather than
+ * shaving it further the column snaps to the edge of marks: one width,
+ * always, with the menu off screen entirely and hover bringing it in.
+ * The edge does not narrow with the window the way the cut does. It is
+ * the same edge at 780px as at 400px.
+ *
+ * The line falls at 49.2rem because that is where the cut would reach a
+ * fifth: the page holds 46rem and the menu shows 100vw minus that, so
+ * 46 + 3.2 is the width at which a fifth is all that is left.
+ *
+ * Cut rather than covered: the page could paint over the menu instead,
+ * and did, but then everything in the aside sits under the page and the
+ * edge cannot be drawn on top of it. A clip leaves the aside above the
+ * page and hides the part with no room, which is the same picture and
+ * one the edge can be added to.
+ *
+ * Hover and fine pointer only. A touch screen has no hover to bring the
+ * menu back with, so it keeps the dropdown, on width alone.
+ */
+@media (hover:hover) and (pointer:fine) and (min-width:49.25rem) and (max-width:62rem){
+  :root{
+    /* what the column shows of the menu, never less than the fifth the
+       edge takes over at */
+    --rail:clamp(3.2rem, calc(100vw - 46rem), var(--rail-full));
+  }
+
+  .side{
+    /* the menu keeps its own width whatever the column shows */
+    inline-size:var(--rail-full);
+    z-index:20;
+
+    /* Where the cut falls: what the column cannot show, less however
+       much of it the pointer has asked back. */
+    clip-path:inset(0 calc(var(--rail-full) - var(--rail) - var(--open)) 0 0);
+
+    /* The cut travels rather than jumping, so what happens is legible:
+       the menu was there all along and the page was over it.
+       What travels is --open, and only --open. Transitioning the cut
+       itself animated every change to it, and the cut is a function of
+       the window: dragging the edge of the browser set the menu chasing
+       the pointer a quarter second behind, shrinking after the words had
+       already moved. --open is nought at every width and only leaves
+       nought when the pointer arrives, so a resize redraws at once and a
+       hover is the only thing that animates. */
+    transition:--open .26s ease;
+  }
+
+  /* The part still showing is the menu, at full strength. Dimming it
+     was tried and was wrong: what is visible is not a preview of the
+     menu, it is the menu, with the page over the rest of it. */
+
+  /* the menu carries its own ground past the column's edge, and a rule
+     so the two read apart while it is over the page */
+  .rail{
+    background:var(--surface);
+    border-inline-end:1px solid var(--line);
+  }
+
+  /* Whole, for as long as it is wanted, and 3rem more so the shadow it
+     casts has somewhere to fall rather than being cut off at its own
+     edge. Focus as well as hover: a keyboard reaches the menu too. */
+  .side:hover,
+  .side:focus-within{
+    --open:calc(var(--rail-full) - var(--rail) + 3rem);
+  }
+
+  .side:hover .rail,
+  .side:focus-within .rail{
+    box-shadow:0 22px 46px -22px rgb(13 22 32 / 55%);
+  }
+}
+
+/* Out of the way at every other width, and out of the way of a screen
+   reader at all of them. */
+.railmini{display:none}
+
+/* The two halves of the edge, which pair with the two halves of the
+   rail. Each shares its row with the real thing it stands for. */
+.mini-slab,
+.mini-marks{display:none}
+
+.mini{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  inline-size:1.2rem;
+  block-size:1.2rem;
+}
+
+.mini svg{
+  display:block;
+  inline-size:100%;
+  block-size:100%;
+}
+
+/* Both faces, the way the slab carries them, in the width one mark
+   takes. They stand for the pair rather than for either of them. */
+.mini-theme{
+  gap:.22rem;
+  inline-size:auto;
+}
+
+.mini-theme svg{
+  inline-size:.86rem;
+  block-size:.86rem;
+}
+
+/* The slab the rail opens with, at the edge's width. Its own two
+   colours rather than the page's, because those two swap in dark mode
+   and the slab must not. */
+.mini-slab{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  inline-size:100%;
+  padding-block:.62rem;
+  min-block-size:2.3rem;
+  background:var(--brand-bg);
+  color:var(--brand-fg);
+}
+
+/* The same mark the menu draws for a taxonomy, in the same colour, from
+   the same rule shape. A site that defines its own taxonomy is named
+   here by the attribute rather than by the stylesheet knowing it. */
+.mini-taxo,
+.mini-tag{--tc:var(--teal)}
+
+.mini-taxo[data-taxo="categories"]{--tc:var(--taxo-categories)}
+
+/* Both marks carry the taxonomy's name, so one selector colours them
+   without naming either. */
+.mini[data-taxo]{color:var(--tc)}
+
+.mini-taxo::before{
+  content:"#";
+  font-family:var(--mono);
+  font-size:1rem;
+  line-height:1;
+}
+
+/* Past the point where a sliver of menu says anything, the column
+ * becomes an edge carrying the menu's own parts.
+ *
+ * The word MENU was there first. It named what was behind the edge and
+ * said nothing about what was in it, and it read as a tab on a drawer
+ * rather than as the menu itself. The marks are the menu's own, in the
+ * menu's own order, so the edge is a small picture of the thing it
+ * stands for and the eye already knows where each part will be when it
+ * opens.
+ *
+ * The marks stand in and never act. Every control they picture is the
+ * real one behind them, and reaching for any of it brings the rail out.
+ */
+@media (hover:hover) and (pointer:fine) and (max-width:49.2rem){
+  :root{
+    /* an edge, at one width, not a column that has been squeezed */
+    --rail:2.4rem;
+  }
+
+  /* The page needs a ground of its own to be covered by. */
+  main{
+    position:relative;
+    z-index:1;
+    background:var(--paper);
+  }
+
+  .side{
+    /* the menu keeps its own width whatever the column shows */
+    inline-size:var(--rail-full);
+    z-index:20;
+    pointer-events:none;
+
+    /* Two rows, and four items in them: the slab and the menu, which
+       travel, and the edge's two halves, which do not. Each half shares
+       its row with the real thing it stands for, so the black at the top
+       of the edge is exactly as tall as the slab. A transform moves what
+       is painted and not what is laid out, so the slab goes on sizing
+       row one from off the screen. */
+    display:grid;
+    grid-template-columns:var(--rail-full);
+    grid-template-rows:auto 1fr;
+    block-size:100vh;
+    block-size:100dvh;
+  }
+
+  .railmini{display:contents}
+
+  .railmini,
+  .mini-slab,
+  .mini-marks,
+  .brandcell,
+  .railwrap{pointer-events:auto}
+
+  /* ---- what travels ---- */
+
+  /* The slab and the menu are one thing, so they move one way, over one
+     span, and arrive together.
+     They used to move differently: the slab was uncovered where it stood
+     while the menu slid in from the left. Two kinds of motion cannot be
+     made to agree by matching their timings, because one of them has a
+     left edge that never moves. The opacity was .22s against a .28s
+     slide as well, so the menu finished fading before it landed. */
+  .brandcell,
+  .railwrap{
+    grid-column:1;
+    position:relative;
+    z-index:4;
+    transform:translateX(-100%);
+    transition:transform .28s ease;
+  }
+
+  .brandcell{grid-row:1}
+
+  .railwrap{
+    grid-row:2;
+
+    /* its own height, not the row's, or a short menu is stretched down
+       the screen */
+    align-self:start;
+  }
+
+  .side:hover .brandcell,
+  .side:hover .railwrap,
+  .side:focus-within .brandcell,
+  .side:focus-within .railwrap{transform:none}
+
+  /* the menu carries its own ground once it is over the page, and a rule
+     so the two read apart */
+  .rail{
+    background:var(--surface);
+    border-inline-end:1px solid var(--line);
+  }
+
+  .side:hover .rail,
+  .side:focus-within .rail{
+    box-shadow:0 22px 46px -22px rgb(13 22 32 / 55%);
+  }
+
+  /* ---- what stays ---- */
+
+  .mini-slab,
+  .mini-marks{
+    grid-column:1;
+    inline-size:var(--rail);
+    position:relative;
+    z-index:1;
+  }
+
+  .mini-slab{
+    display:flex;
+    grid-row:1;
+    align-items:flex-end;
+    justify-content:center;
+    padding-block-end:.6rem;
+    background:var(--brand-bg);
+    color:var(--brand-fg);
+  }
+
+  .mini-marks{
+    display:flex;
+    grid-row:2;
+    flex-direction:column;
+    align-items:center;
+    gap:1.15rem;
+    padding-block-start:1.15rem;
+    background:var(--surface);
+    border-inline-end:1px solid var(--line);
+    color:var(--muted);
+  }
+}
+
+/* The dropdown is the touch layout, not the narrow one.
+ *
+ * A desktop window has a floor it cannot be dragged below, and that
+ * floor is well above what the edge needs, so the edge is where the
+ * desktop story ends: there is no width a person can reach with a mouse
+ * where the menu has to go into the top bar. A finger has no hover to
+ * open an edge with, so a touch screen keeps the dropdown at every width
+ * this block covers.
+ *
+ * Written as two queries rather than one negation: this is the exact
+ * complement of the edge's condition, and it says so in features every
+ * browser has had for a decade.
+ *
+ * 60rem, which is where it always was. The desktop breakpoint walked
+ * down from 60 to 48 to 40 while the edge was being worked out, and it
+ * took the touch one with it, which would have handed a tablet at 700px
+ * a 16rem menu and a 36-character line without anyone asking for it.
+ * The two are separate queries now, so the touch one is chosen for
+ * touch. */
+@media (max-width:60rem) and (hover:none),
+       (max-width:60rem) and (pointer:coarse){
   :root{
     --rail:100%;
     --menugap:.8rem;
-
-    /* What the band actually occupies here. The brand cell spans both
-       rows, so the grid stretches the band past its own min-height.
-       Raising --band instead would feed straight back into the row and
-       grow it again, which is why the declared height and the rendered
-       one are two numbers with two names.
-
-       5rem, measured across this range. It was 4.4rem, set before the
-       theme switch was added: reserving room for the switch made the
-       brand cell taller, the taller cell stretched the band to 79.6px,
-       and the offset kept covering 70.4. A heading whose anchor was
-       followed sat nine pixels under the band from v0.1.1 until now.
-
-       The number tracks the brand cell, so a site with a taller wordmark
-       can still outgrow it. See docs/memory/working-notes.md. */
-    --band-seen:5rem;
   }
 
   /* the masthead keeps two columns even here, or the logo sits alone beside
@@ -147,17 +445,28 @@ main{
     justify-content:flex-start;
     align-items:flex-start;
     border-bottom:none;
+
+    /* The brand cell beside it spans both rows, and a grid hands the
+       surplus height of a spanning item to every row it covers. The band
+       was taking that surplus and rendering taller than it asked for, so
+       its height was a function of the logo's. Starting rather than
+       stretching cuts that: the band is its own content, and nothing
+       about the wordmark can move it. */
+    align-self:start;
     order:2;
     flex-direction:column;
     gap:.45rem
   }
 
-  /* an empty cell behind the bar's row. Spanning the strip over it made the
-     tagline's height share two rows and spill onto the bar. */
+  /* An empty cell behind the band and the bar. Spanning the strip over
+     both made the tagline's height share two rows and spill onto the
+     bar, so the pseudo-element does the spanning instead: it paints the
+     row the band no longer fills, in the same colour, and carries the
+     rule under the pair. */
   body::before{
     content:'';
     grid-column:2;
-    grid-row:2;
+    grid-row:1 / 3;
     background:var(--surface);
     border-bottom:1px solid var(--line)
   }
@@ -288,7 +597,8 @@ main{
 }}
 
 
-@media (max-width:34rem){
+@media (max-width:34rem) and (hover:none),
+       (max-width:34rem) and (pointer:coarse){
   /* one column, so every part is placed in the order it should read. The
      bar defaulted to order 0 and jumped above the wordmark, and the panel
      kept grid-column 2 from the wider layout, which is an implicit column

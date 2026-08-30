@@ -35,6 +35,14 @@
   {{- /* Plumbing on a wide screen and a dropdown on a narrow one. Its
          content is forced visible above 60rem, so being closed costs
          nothing there. */ -}}
+  {{- /* What the column shows of the menu once it has been narrowed past
+         the point of showing any of it. It stands between the slab and
+         the menu rather than over them, so it begins exactly where the
+         slab ends whatever height the slab happens to be, and the menu
+         takes its place in the flow the moment it is wanted. CSS decides
+         when; the marks are in the markup at every width. */ -}}
+  {{ partial "rail-mini.html" . }}
+
   <details class="railwrap">
     <summary class="menubtn"><span>{{ i18n "menu" }}</span><span class="what shut">{{ i18n "menuOpen" }}</span><span class="what open">{{ i18n "menuClose" }}</span><span class="chev" aria-hidden="true"></span></summary>
     {{ partial "rail.html" . }}
