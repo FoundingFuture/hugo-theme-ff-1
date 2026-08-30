@@ -1,5 +1,44 @@
 # Changelog
 
+## v0.2.8, 2026-08-31
+
+Five things every theme of this kind ships and this one did not. Found
+by reading Hugo's documentation and three themes that do ship them.
+Not by waiting for somebody to trip over the absence.
+
+- A site has a page for a wrong address. Hugo writes `404.html` only
+  where a template exists, and none did. A reader who mistyped got
+  whatever the host had lying about.
+- A feed can be found. The theme published `index.xml` and pointed at
+  it from nowhere, so no browser and no reader could discover it. The
+  line is `.AlternativeOutputFormats`, which Congo, PaperMod and
+  hugo-book all write.
+- A translation is declared to a search engine. The switcher marked its
+  own links with `hreflang`, which tells a reader's browser what it is
+  about to open. Nothing said that two pages are one page in two
+  languages.
+- A reader on a keyboard can get past the menu. Every page opens with
+  the whole topic tree. WCAG 2.4.1 asks for a way past a block that
+  repeats. A landmark satisfies an automated check, which is why no gate
+  here ever said so.
+- An SVG says how tall it is beside how wide. It carries its size in
+  its own markup, in `width` and `height` or in the `viewBox`. A page
+  that reads neither moves under the reader when the file lands.
+- A source image is no longer published beside the variants made from
+  it. Its address was read before the theme knew whether it could
+  process the file. Reading an address is what publishes a file, so
+  every original shipped unread. The address is now read on the one
+  path that serves it, which is the fallback an SVG takes.
+- `removes` is honoured for files. A manifest could already say which
+  elements a feature takes off a page. The file comparison never
+  consulted it, so a feature replacing a file could not say so.
+  responsive-images replaces a source with its variants, and now
+  declares that.
+- `404.html` is left out of the two comparisons against Hugo's
+  scaffold. The scaffold ships no such template and a theme that gives
+  a site the page cannot match it. No switch can change that, because
+  the template existing is what makes Hugo write the file.
+
 ## v0.2.7, 2026-08-30
 
 v0.2.5 broke the build for any page with an SVG in it. This fixes that,
