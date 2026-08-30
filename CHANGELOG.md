@@ -1,5 +1,42 @@
 # Changelog
 
+## v0.2.6, 2026-08-30
+
+The demo is the site people look at before they install anything. It
+had generic topics and nothing else. Whether a feature appeared at all
+depended on whether some page happened to use one.
+
+- The demo has a page per feature, named for it. Each says what the
+  feature is for and whether it ships on. Each says how a site or a
+  page turns it off. Each names the stylesheet that draws it.
+  The pages are generated from the theme's own manifests rather than a
+  list kept beside them. So a feature cannot arrive without its page.
+  The features gate already applies that rule to a manifest, a partial,
+  a stylesheet, its words and a fixture page.
+- Every manifest carries a `summary`, and `features.py` requires it. A
+  feature with nothing to say about itself gets an empty page. Nobody
+  notices that until a reader arrives.
+- Which markup a formula is rendered to can be set by a page. It was
+  read from `site.Params` in two templates and nowhere else. So a site
+  was MathML or KaTeX markup from end to end. A demo showing both could
+  not be built. Neither could one page that needed the other mode.
+  Every other switch here resolves site first and page second. This one
+  now does too, through `math-output.html`. Two templates reading one
+  setting is a setting that drifts.
+- The demo takes Hugo's default, MathML, which needs no stylesheet and
+  no script. One page asks for KaTeX markup in its own front matter. So
+  both paths are exercised by the demo, and each page shows what it
+  says it shows.
+- New section, `elements`. A table, a heading, a list and a rule are
+  not features. They are what a page is made of. They have pages of
+  their own now, showing what the theme draws and how to change it.
+- New gate, `release/showcase`. A feature declares the elements it puts
+  on a page. So the question has a checkable answer: does the built
+  demo contain one. It found two features on by default and drawn
+  nowhere.
+  Six cannot be drawn by a site sitting still. Each is exempt with its
+  reason written beside it.
+
 ## v0.2.5, 2026-08-30
 
 What a browser draws by default is valid, structured and legible. It is
