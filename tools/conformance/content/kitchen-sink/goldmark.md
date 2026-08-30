@@ -16,6 +16,17 @@ own configuration, and a theme needs styling for each one.
 | one | the first |
 | two | the second |
 
+A table wider than the reading measure, which has to scroll inside it
+rather than push the page sideways. The alignment markers below are
+what a column declares for itself.
+
+| Face | Bytes | Codepoints | Licence | Cut by | Weight | Style |
+|:---|---:|---:|:---:|:---|---:|:---|
+| bricolage-grotesque | 76901 | 226 | OFL 1.1 | `1173a0f1c53bad80fc5ef94fac23613d21f4f6c4bcf5d4a0594f33f74f2b5ab3` | 800 | normal |
+| bricolage-smallcaps-700 | 37236 | 527 | OFL 1.1 | scripts/build-smallcaps.py | 700 | small caps |
+| instrument-sans-latin | 30092 | 208 | OFL 1.1 | subset to Latin | 400 | normal |
+| roboto-condensed-caps | 25660 | 328 | OFL 1.1 | scripts/build-menucaps.py | 400 | small caps |
+
 ## Definition list
 
 Term

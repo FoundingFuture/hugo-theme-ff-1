@@ -103,3 +103,18 @@ The button in the corner of each block is the `code-copy` feature, off
 by default and switched on here. It shares the requirement above: with
 Chroma writing inline styles there is nothing for the theme to colour,
 and nothing for dark mode to remap.
+
+## A table
+
+Markdown writes one, and the theme draws it. A column says how it wants
+to be set, and the header row keeps its own weight.
+
+| Symbol | Reads as | Units | Typical value |
+|:---|:---|:---:|---:|
+| `c` | the speed of light in vacuum | m/s | 299792458 |
+| `h` | the Planck constant | J s | 0.000000000000000000000000000000000662607 |
+| `k` | the Boltzmann constant | J/K | 0.0000000000000000000000138 |
+| `N` | the Avogadro constant | 1/mol | 602214076000000000000000 |
+
+A table wider than the line the text keeps scrolls inside it. It does
+not widen the page, for the same reason a long formula does not.

@@ -131,6 +131,109 @@ main::after{
   font-size:1.15rem;
   font-weight:600
 }
+
+/* Four, five and six were never written, so they fell to the browser:
+   the body face at 15.5px, 12.9px and 10.4px. Five and six came out
+   smaller than the paragraphs they head, which reads as a heading
+   demoted rather than a heading. They take the display face like the
+   two above them, and none of them goes under the body size. */
+[data-part="body"] h4,
+[data-part="body"] h5,
+[data-part="body"] h6{
+  margin:1.5rem 0 .45rem;
+  color:var(--ink);
+  font-family:var(--display);
+  line-height:1.25;
+  letter-spacing:-.005em;
+}
+
+[data-part="body"] h4{
+  font-size:1.04rem;
+  font-weight:600
+}
+
+[data-part="body"] h5{
+  font-size:1rem;
+  font-weight:600
+}
+
+/* The sixth has no room left below the fifth without going under the
+   body, so it separates itself by its case instead of its size. */
+[data-part="body"] h6{
+  font-size:1rem;
+  font-weight:600;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+}
+
+/* Lists were the browser's too. The indent is the marker's, not a
+   quotation's, so it is smaller than a blockquote's and the text lines
+   up with the paragraphs when the marker hangs. */
+[data-part="body"] ul,
+[data-part="body"] ol{
+  margin:1.1rem 0;
+  padding-left:1.35rem;
+}
+
+[data-part="body"] li{margin-bottom:.3rem}
+
+/* The marker is furniture, so it takes the colour furniture takes. */
+[data-part="body"] li::marker{color:var(--muted)}
+
+[data-part="body"] li>ul,
+[data-part="body"] li>ol{margin:.4rem 0 .2rem}
+
+/* A task list carries its own marker. */
+[data-part="body"] li:has(>input[type="checkbox"]){list-style:none}
+
+[data-part="body"] input[type="checkbox"]{
+  margin-right:.45rem;
+  accent-color:var(--teal);
+}
+
+/* A rule between passages, drawn in the line colour everything else
+   here is divided by. The browser's own is an inset 3D border, which
+   is a colour the theme never chose and cannot restyle in dark mode. */
+[data-part="body"] hr{
+  margin:1.9rem 0;
+  border:0;
+  border-top:1px solid var(--line);
+}
+
+/* A footnote reference, and the notes themselves.
+ *
+ * Hugo writes the notes into a div carrying its own hr, so the rule
+ * above draws that separator too. The block is set smaller than the
+ * piece, which is what says the reading is over. */
+[data-part="body"] sup{
+  font-size:.72em;
+  line-height:0;
+}
+
+[data-part="body"] .footnotes{
+  margin-top:2rem;
+  font-size:.93em;
+}
+
+[data-part="body"] .footnotes ol{margin:.8rem 0 0}
+
+[data-part="body"] .footnotes li{margin-bottom:.45rem}
+
+/* A block the reader opens. The summary is the thing to press, so it
+   says so with the cursor and takes the ink colour. */
+[data-part="body"] details{
+  margin:1.1rem 0;
+  padding:.65rem .85rem;
+  border:1px solid var(--line);
+  border-radius:3px;
+  background:var(--paper);
+}
+
+[data-part="body"] summary{
+  cursor:pointer;
+  color:var(--ink);
+  font-weight:500;
+}
 [data-part="body"] p{margin:0 0 .9rem}
 [data-part="body"] a{color:var(--teal)}
 
@@ -153,6 +256,54 @@ main::after{
   border-left:2px solid var(--line);
   color:var(--body);
 }
+
+/* A table Markdown wrote.
+ *
+ * The theme styled pre, blockquote and dl and never this, so a table
+ * arrived with the browser's own defaults: no rules, no padding, cells
+ * touching. It reads as a page nobody finished.
+ *
+ * display:block is what lets a wide one scroll inside the measure
+ * rather than pushing the page sideways, the same answer pre and a
+ * display formula already use. border-collapse is inherited, so it
+ * still reaches the anonymous table box underneath.
+ *
+ * A column that declares its alignment in Markdown arrives with an
+ * inline style, which wins over the left set here. */
+[data-part="body"] table{
+  display:block;
+  overflow-x:auto;
+  margin:1.1rem 0;
+  border-collapse:collapse;
+  font-size:.95em;
+
+  /* Figures in a column line up under each other. */
+  font-variant-numeric:tabular-nums;
+}
+
+[data-part="body"] th,
+[data-part="body"] td{
+  padding:.4rem .8rem;
+  border-bottom:1px solid var(--line);
+  text-align:left;
+  vertical-align:baseline;
+}
+
+/* The first column sits on the text's own left edge, so a table lines
+   up with the paragraphs around it instead of starting indented. */
+[data-part="body"] th:first-child,
+[data-part="body"] td:first-child{padding-left:0}
+
+[data-part="body"] thead th{
+  border-bottom:2px solid var(--line);
+  color:var(--ink);
+  font-weight:500;
+  white-space:nowrap;
+}
+
+/* The last rule would otherwise draw a line under the table with
+   nothing beneath it. */
+[data-part="body"] tbody tr:last-child td{border-bottom:0}
 
 /* ---- the terms a piece is filed under ---- */
 [data-part="terms"]{
