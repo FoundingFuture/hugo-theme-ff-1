@@ -69,3 +69,15 @@ enableGitInfo = false
   # Fetching a poster needs the network at build time. The conformance
   # build stays offline and deterministic, so it is off here.
   fetchPosters = false
+
+  # The band needs a line in it, or the band is at its floor and never
+  # moves. The band gate measures the height of the band against the
+  # offset that clears it, and a band that cannot grow is a measurement
+  # that proves nothing: the fault it exists to catch is the band growing
+  # past what the offset covers.
+  #
+  # Long on purpose. The line is sized to fill the band's width, so its
+  # length is what decides where the size stops growing and the height
+  # settles. A short line reaches its cap early and holds one height
+  # across most of the sweep.
+  tagline = 'A fixture line long enough to make the band grow'
