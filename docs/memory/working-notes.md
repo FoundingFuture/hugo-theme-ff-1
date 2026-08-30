@@ -151,6 +151,37 @@ does. Nothing needs a wrapper, a measured height, or a trip out of flow.
 The rule to keep. When a second symptom of the same shape appears, ask
 what structure would make all of them impossible. Do not fix the third.
 
+**Every site the gates read is set up the way the theme wants.** One
+blind spot. It hid two bugs through four releases.
+
+The theme needs a site to declare things Hugo will not let a theme
+declare for itself. Hugo merges a theme's params but not its markup.
+So passthrough, the Chroma class switch and the standalone-image parser
+setting all have to come from the site. The fixture declared all three.
+exampleSite declared one. The README named that one.
+
+So a formula written by anyone else came out with its delimiters eaten.
+A code block arrived in Chroma's inline palette, with the theme's own
+code colours applying to nothing. Both builds succeeded. Both pages were
+wrong. Thirty-one checks passed, because every one of them read a site
+that already had what the theme needed. A requirement that is always met
+cannot fail.
+
+The same shape explains the container topic. A section whose _index.md
+has no prose is drawn muted, on purpose. No fixture has ever had such a
+section. Nobody had seen a whole menu greyed out until a real site did
+it.
+
+**The check that closes it does not read a site in the repository. It
+writes one**: the config blocks the README publishes, content that
+exercises them, the artefact from dist, nothing else. See
+tools/conformance/scripts/downstream.js. If the documentation is silent
+or wrong, the build it describes fails there.
+
+The rule to keep. A fixture proves the theme works on the fixture. To
+learn whether it works for anyone else, build something that knows only
+what the README says.
+
 ## Verifying visually
 
 Nothing in the pipeline looks at the rail, the frame or the footer:
