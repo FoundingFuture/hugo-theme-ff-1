@@ -39,6 +39,19 @@ def hello(name):
 \`\`\`
 `;
 
+// A site's own stylesheet. The README says one is loaded after the
+// theme's, so this writes one and checks that it is. The probe is a
+// custom property no theme file defines: finding it in the published
+// bundle proves the sheet was picked up, and finding it after a theme
+// token proves it was picked up last, which is the half that decides
+// whether a site can override anything.
+const SITE_CSS = `/* the site's own stylesheet */
+:root{
+  --pad:3.5rem;
+  --ff-downstream-probe:on;
+}
+`;
+
 // Every toml block the README publishes, in order. A block that belongs
 // in a site's config is one a reader will paste, so this pastes them.
 function configFromReadme(text) {
@@ -77,6 +90,8 @@ function main() {
     fs.mkdirSync(path.join(work, 'themes'));
     fs.cpSync(artefact, path.join(work, 'themes', slug), { recursive: true });
     fs.writeFileSync(path.join(work, 'content', 'downstream.md'), CONTENT);
+    fs.mkdirSync(path.join(work, 'assets', 'css'), { recursive: true });
+    fs.writeFileSync(path.join(work, 'assets', 'css', 'custom.css'), SITE_CSS);
     fs.writeFileSync(
       path.join(work, 'hugo.toml'),
       `baseURL = 'https://example.org/'\ntitle = 'Downstream'\ntheme = '${slug}'\n\n`
@@ -114,9 +129,35 @@ function main() {
       console.log('  cannot remap them. Check noClasses in the README\'s highlight block.');
       status = 1;
     }
+    // The stylesheet the site wrote, in the bundle the site serves.
+    const href = (html.match(/<link[^>]+rel="stylesheet"[^>]+href="([^"]+)"/) || [])[1];
+    if (!href) {
+      console.log('README.md:1: the page links no stylesheet.');
+      status = 1;
+    } else {
+      const bundle = path.join(work, 'public', href.replace(/^\//, ''));
+      const css = fs.existsSync(bundle) ? fs.readFileSync(bundle, 'utf8') : '';
+      const mine = css.indexOf('--ff-downstream-probe');
+      const theirs = css.indexOf('--rail-full');
+      if (mine === -1) {
+        console.log("README.md:1: a site's own stylesheet is not loaded.");
+        console.log('  The README says one is, and that anything the theme sets can be');
+        console.log('  changed by setting it again. assets/css/custom.css was written and');
+        console.log('  nothing in the published bundle came from it, so a site cannot');
+        console.log('  restyle this theme at all by the route the README describes.');
+        status = 1;
+      } else if (theirs !== -1 && mine < theirs) {
+        console.log("README.md:1: a site's own stylesheet is loaded before the theme's.");
+        console.log('  It is in the bundle, and the theme overrides it, so setting a');
+        console.log('  property again does not change it.');
+        status = 1;
+      }
+    }
+
     if (!status) {
       console.log(`downstream: a site built from the README renders ${maths} formulas`);
-      console.log('downstream: and code blocks the theme can colour');
+      console.log('downstream: code blocks the theme can colour, and a site stylesheet');
+      console.log('downstream: that loads after the theme and overrides it');
     }
     process.exit(status);
   } finally {
