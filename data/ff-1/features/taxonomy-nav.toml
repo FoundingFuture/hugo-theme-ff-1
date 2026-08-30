@@ -1,4 +1,5 @@
 name = "taxonomy-nav"
+summary = "The tags and categories a site uses, in the menu."
 # The taxonomies a site defines, listed in the menu beneath its topics.
 # Hugo names them and counts them, so a site that defines none, or whose
 # terms are empty, gets nothing without configuring anything.

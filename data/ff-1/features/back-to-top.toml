@@ -1,4 +1,5 @@
 name = "back-to-top"
+summary = "A control that returns the reader to the head of a long piece."
 slot = "body.end"
 weight = 10
 default = false

@@ -1,4 +1,5 @@
 name = "sources"
+summary = "The sources a piece names, listed at its foot."
 slot = "page.footer"
 weight = 40
 default = true

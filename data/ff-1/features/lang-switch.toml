@@ -1,4 +1,5 @@
 name = "lang-switch"
+summary = "The languages a site publishes in, named across the top."
 # The languages a site publishes, in the band across the top.
 #
 # It renders nothing on a site with one language, which is most sites,

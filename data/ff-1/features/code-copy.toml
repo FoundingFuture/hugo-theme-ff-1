@@ -1,4 +1,5 @@
 name = "code-copy"
+summary = "A button on a code block that puts its text on the clipboard."
 slot = "body.end"
 weight = 20
 default = false

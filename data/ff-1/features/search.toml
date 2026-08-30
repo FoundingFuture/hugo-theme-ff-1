@@ -1,4 +1,5 @@
 name = "search"
+summary = "A search whose index is the page, ranked by where a word appears."
 # Part of the theme rather than a component a site mounts. The index is
 # the page, so nothing has to be added to a site's outputs, and there is
 # nothing left to mount.

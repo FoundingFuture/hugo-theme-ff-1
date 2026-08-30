@@ -1,4 +1,5 @@
 name = "word-count"
+summary = "How many words a piece holds."
 slot = "page.meta"
 weight = 40
 default = true

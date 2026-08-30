@@ -1,4 +1,5 @@
 name = "external-new-tab"
+summary = "A link that leaves the site opens beside the page, and says so to a screen reader."
 # A markup render hook rather than a slot. Nothing calls it through
 # slot.html, so it registers for none and has no partial.
 slot = "none"

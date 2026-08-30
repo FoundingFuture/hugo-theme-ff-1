@@ -1,4 +1,5 @@
 name = "prose"
+summary = "Five shortcodes a piece can use: a lead, a pull quote, columns, a list of items and a gallery."
 # Five shortcodes a piece reaches for. They render through Markdown
 # rather than through a slot, so nothing calls a partial for them.
 slot = "none"

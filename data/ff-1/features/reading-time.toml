@@ -1,4 +1,5 @@
 name = "reading-time"
+summary = "How long a piece takes to read."
 slot = "page.meta"
 weight = 20
 default = true

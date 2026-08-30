@@ -1,4 +1,5 @@
 name = "dateline"
+summary = "The date a piece carries, set under its title."
 slot = "page.meta"
 weight = 10
 default = true

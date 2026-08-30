@@ -1,4 +1,5 @@
 name = "figure-captions"
+summary = "A Markdown image whose title becomes the caption under it."
 # A markup render hook rather than a slot.
 slot = "none"
 weight = 20

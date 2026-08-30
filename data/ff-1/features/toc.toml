@@ -1,4 +1,5 @@
 name = "toc"
+summary = "The headings of a piece, as a table of contents that folds."
 slot = "page.before-body"
 weight = 10
 default = true

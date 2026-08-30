@@ -1,4 +1,5 @@
 name = "rail-pages"
+summary = "The pieces of the topic being read, listed in the menu under it."
 # The rail is chrome, which the page-shape comparison excludes, so this
 # adds nothing a manifest has to declare. It is a feature because it is
 # the one thing in the menu whose cost grows with the site.

@@ -1,4 +1,5 @@
 name = "pager"
+summary = "The piece before and the piece after, at the foot of this one."
 slot = "page.footer"
 weight = 10
 default = true

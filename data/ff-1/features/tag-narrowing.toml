@@ -1,4 +1,5 @@
 name = "tag-narrowing"
+summary = "Narrowing a list to the pieces carrying one tag."
 slot = "list.after"
 weight = 10
 default = true

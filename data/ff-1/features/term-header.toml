@@ -1,4 +1,5 @@
 name = "term-header"
+summary = "The head of a page listing everything under one term."
 slot = "page.before-body"
 weight = 5
 default = true

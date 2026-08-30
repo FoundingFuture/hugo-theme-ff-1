@@ -1,4 +1,5 @@
 name = "katex"
+summary = "Mathematics rendered while the site builds, to MathML or to KaTeX markup."
 # Needs [markup.goldmark.extensions.passthrough] in the site's config,
 # with delimiters. Hugo does not merge markup from a theme, so this
 # feature cannot switch itself on: with the extension off, Goldmark eats

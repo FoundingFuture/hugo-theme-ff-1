@@ -27,7 +27,10 @@ SLOTS = {
     "page.before-body", "page.after-body", "page.footer",
     "list.item", "list.after", "body.end",
 }
-REQUIRED = ("name", "slot", "weight", "default")
+# summary is required because the demo is generated from these
+# manifests. A feature with nothing to say about itself gets a page
+# with nothing on it, and nobody notices until a reader arrives.
+REQUIRED = ("name", "summary", "slot", "weight", "default")
 # A component works through its shortcodes or its output formats, so it
 # renders through no slot and needs no partial.
 NO_SLOT = "none"

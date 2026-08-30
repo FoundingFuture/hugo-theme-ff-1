@@ -1,4 +1,5 @@
 name = "further-down"
+summary = "What lies further down the section, listed at the foot of a piece."
 slot = "list.after"
 weight = 20
 default = true

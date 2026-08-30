@@ -1,4 +1,5 @@
 name = "subsection-cards"
+summary = "The sections under this one, as cards on a section's own page."
 slot = "list.after"
 weight = 5
 default = true

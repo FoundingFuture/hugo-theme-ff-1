@@ -1,4 +1,5 @@
 name = "share"
+summary = "Links that hand the piece to somewhere else."
 slot = "page.footer"
 weight = 20
 default = false

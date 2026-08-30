@@ -1,4 +1,5 @@
 name = "dark-mode"
+summary = "A sun and a moon that choose the palette, remembered in the browser and applied before the first paint."
 # The switch lives in the brand cell, which sits inside the aside. Chrome
 # is excluded from the page-shape comparison, so this declares no
 # skeleton: nothing it renders is part of a page's shape.

@@ -1,4 +1,5 @@
 name = "breadcrumbs"
+summary = "The trail from the site's root down to the piece being read."
 slot = "page.before-title"
 weight = 10
 default = true

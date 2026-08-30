@@ -1,4 +1,5 @@
 name = "related"
+summary = "Pieces near this one, chosen by what they share."
 slot = "page.after-body"
 weight = 10
 default = true

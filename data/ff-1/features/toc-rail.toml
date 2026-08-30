@@ -1,4 +1,5 @@
 name = "toc-rail"
+summary = "The contents of a piece, set beside it in the margin rather than above it."
 # The contents of a piece, in a column of their own beside it, on a
 # screen wide enough to have the room spare.
 #

@@ -1,4 +1,5 @@
 name = "kind-label"
+summary = "A label for a page whose title cannot say what it is."
 slot = "list.item"
 weight = 10
 default = true

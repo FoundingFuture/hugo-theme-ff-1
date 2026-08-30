@@ -1,4 +1,5 @@
 name = "edit-link"
+summary = "A link from a piece to its source, for a site kept in a repository."
 slot = "page.footer"
 weight = 30
 default = false
