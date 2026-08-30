@@ -1,5 +1,31 @@
 # Changelog
 
+## v0.2.4, 2026-08-30
+
+A site could not restyle this theme. The README said it could, and had
+said so since the theme shipped.
+
+- A site's own stylesheet is loaded. Write `assets/css/custom.css` and
+  it is bundled last, after the theme's sheets and every feature's, so
+  setting a property again changes it. Nothing needs enabling and the
+  theme ships no such file.
+  The README had described this since v0.1.0. Nothing implemented it,
+  and the section under `Changing what it looks like` documented a
+  route that did not exist. The README also never named the file, so
+  even the idea was unreachable.
+- `release/downstream` writes a site stylesheet and reads the bundle
+  the site publishes. It checks that the sheet is there. It checks that
+  the sheet comes after the theme's, because one loaded first can
+  override nothing. The gate built a site from the README and never
+  restyled it. So the claim a reader acts on first was the one claim it
+  did not exercise.
+- The font terms are published with the site. Six faces are served and
+  `assets/fonts/OFL.txt` stayed in `assets/`, where nothing copies it.
+  A built site now publishes the licence and the per-face notice at
+  `/fonts/`. Every face carries its copyright inside its own name
+  table, which the licence allows. A name table is not a thing a reader
+  can open.
+
 ## v0.2.3, 2026-08-30
 
 Code was unreadable in light mode through three releases. Two gates
