@@ -1,0 +1,26 @@
+/* Said, never drawn.
+ *
+ * A link that opens a new tab moves the reader somewhere they did not
+ * ask to go. WCAG 3.2.5 asks that a change of context be requested, and
+ * where a theme decides to open one anyway the remedy is to say so.
+ *
+ * The words go in the accessible name rather than in an aria-label,
+ * because a label replaces the name and the link's own words would be
+ * gone with it. SC 2.5.3 asks that what a reader sees be part of what
+ * speech control hears, and v0.1.1 shipped a language switcher that
+ * failed exactly that. Appending keeps the visible text and adds to it.
+ *
+ * Taken out of the flow rather than hidden: display:none and
+ * visibility:hidden both take it out of the accessible tree as well,
+ * which would leave nothing to say. */
+.newtab{
+  position:absolute;
+  clip-path:inset(50%);
+  overflow:hidden;
+  inline-size:1px;
+  block-size:1px;
+  margin:-1px;
+  padding:0;
+  border:0;
+  white-space:nowrap;
+}

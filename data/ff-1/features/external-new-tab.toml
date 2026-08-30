@@ -1,0 +1,17 @@
+name = "external-new-tab"
+# A markup render hook rather than a slot. Nothing calls it through
+# slot.html, so it registers for none and has no partial.
+slot = "none"
+weight = 20
+default = true
+level = "toggle"
+kinds = ["page", "section", "home", "term", "taxonomy"]
+css = "css/features/external-new-tab.css"
+i18n = ["opensInNewTab"]
+
+[skeleton]
+  # The link keeps its own text and gains a span that is never drawn.
+  # A reader sees exactly what they saw. A screen reader hears where
+  # the link is about to take them, which is the whole reason the
+  # feature is not just an attribute.
+  text = ["span.newtab"]

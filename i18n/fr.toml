@@ -58,6 +58,9 @@ other = "fermer"
 [mainPage]
 other = "Page principale"
 
+[opensInNewTab]
+other = "(nouvel onglet)"
+
 [linkToSection]
 other = "Lien vers cette section"
 

@@ -22,6 +22,22 @@
     {{- end }}
   {{- end }}
 {{- end }}
+{{- /* A link that leaves the site opens beside the page rather than
+       over it. The switch is the site's: a theme opening tabs for
+       every link on every site that installs it is a strong opinion,
+       and this one is contested.
+
+       The words say so. target alone moves a reader who cannot see it
+       happen, which is what WCAG 3.2.5 asks a page not to do. They are
+       appended rather than set as an aria-label, because a label
+       replaces the accessible name and the link's own words go with
+       it. */ -}}
+{{- $newtab := false }}
+{{- if $external }}
+  {{- $newtab = partial "feature-on.html" (dict "name" "external-new-tab" "page" .Page) }}
+{{- end }}
 <a href="{{ $href | safeURL }}"
   {{- with .Title }} title="{{ . }}"{{ end }}
-  {{- if $external }} rel="external noopener"{{ end }}>{{ .Text }}</a>
+  {{- if $external }} rel="external noopener"{{ end }}
+  {{- if $newtab }} target="_blank"{{ end }}>{{ .Text }}
+  {{- if $newtab }}<span class="newtab"> {{ i18n "opensInNewTab" }}</span>{{ end }}</a>

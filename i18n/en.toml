@@ -55,6 +55,9 @@ other = "close"
 [mainPage]
 other = "Main page"
 
+[opensInNewTab]
+other = "(opens in a new tab)"
+
 [linkToSection]
 other = "Link to this section"
 
