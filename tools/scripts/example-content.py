@@ -306,17 +306,16 @@ def feature_pages():
         print("example-content: no toml reader, so no feature pages")
         return
     folder = os.path.join(SITE, "content", "features")
-    if os.path.isdir(folder):
-        print("example-content: the example site already has its feature pages")
-        return
 
     manifests = []
     for path in sorted(glob.glob(os.path.join(MANIFESTS, "*.toml"))):
         with open(path, "rb") as handle:
             manifests.append(tomllib.load(handle))
 
-    hugo_new("features/_index.md")
     index = os.path.join(folder, "_index.md")
+    fresh = not os.path.exists(index)
+    if fresh:
+        hugo_new("features/_index.md")
     body = [
         "One page per feature, named for it. Each shows the feature "
         "working, says how to switch it off, and names the stylesheet "
@@ -325,10 +324,19 @@ def feature_pages():
         "These pages are generated from the theme's own feature "
         "manifests, so a feature cannot ship without one.",
     ]
-    undraft(index, "Features", 40, "\n".join(body))
+    # Only for a section this run created. undraft inserts the weight
+    # each time it is called, and calling it twice on one file wrote the
+    # key twice, which is a TOML error and stopped the demo building.
+    if fresh:
+        undraft(index, "Features", 40, "\n".join(body))
 
+    # Per page, not per directory. Guarding on the section meant a
+    # feature added after the demo was written got no page at all, which
+    # is the thing this is here to make impossible.
     for manifest in manifests:
         name = manifest["name"]
+        if os.path.exists(os.path.join(folder, "%s.md" % name)):
+            continue
         hugo_new("features/%s.md" % name)
         page = os.path.join(folder, "%s.md" % name)
         lines = [manifest["summary"], "", "<!--more-->", ""]

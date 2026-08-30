@@ -59,6 +59,9 @@ template does with an empty value.
 | `narrowing` |
 | `nextPage` |
 | `noMatch` |
+| `notFoundHome` |
+| `notFoundSays` |
+| `notFoundTitle` |
 | `opensInNewTab` |
 | `pieceCount` |
 | `piecesTitle` |
@@ -75,6 +78,7 @@ template does with an empty value.
 | `searchSubmit` |
 | `searchTerm` |
 | `share` |
+| `skipToContent` |
 | `subsections` |
 | `themeDark` |
 | `themeLight` |
