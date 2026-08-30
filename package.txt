@@ -21,6 +21,14 @@ ship hugo.toml
 ship i18n
 ship images
 ship layouts
+
+# static holds one file, the favicon.ico that hugo new theme writes.
+# No template references it, and Hugo merges a theme's static/ into
+# the site's on file level, so it is published at the root of every
+# site that installs this theme. It is shipped on purpose. The
+# reference scaffold publishes it, and output/conform requires the two
+# file lists to agree. A site wanting its own puts one at the same
+# path, which wins on the same file-level merge.
 ship static
 ship theme.toml
 
