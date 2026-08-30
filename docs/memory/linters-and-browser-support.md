@@ -91,10 +91,16 @@ Two things it has to do that are not obvious:
 
 ## Two elements no template can reach
 
-`tools/scripts/check/pa11yci.json` hides exactly two selectors, never a
-rule: Goldmark's unlabelled disabled checkbox for a task list, and the
-stretchy operator KaTeX renders for an integral, whose scaled glyph axe
-cannot measure. Anything else unlabelled or genuinely faint still fails.
+`tools/scripts/check/pa11yci.json` hides exactly three selectors, never
+a rule. Goldmark's unlabelled disabled checkbox for a task list is one.
+The stretchy operator KaTeX renders in a formula is the other two: it
+arrives as `mo` in MathML and as `span.op-symbol` in KaTeX markup, and
+v0.2.6 let one site carry both. Anything else unlabelled or genuinely
+faint still fails.
+
+The glyph itself is fine. `output/contrast` reads it at the body colour
+and it clears AA. axe fails on a mark 10px wide and 41px tall, which is
+a measuring problem rather than a colour.
 
 ## What a theme cannot set
 
