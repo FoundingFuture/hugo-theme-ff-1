@@ -1,5 +1,68 @@
 # Changelog
 
+## v0.2.5, 2026-08-30
+
+What a browser draws by default is valid, structured and legible. It is
+not this theme. Four things had been left to it, and one of them since
+v0.1.0.
+
+- A table is drawn. The theme styled `pre`, `blockquote` and `dl` and
+  never `table`, so a table arrived with the browser's defaults: no
+  rules, no padding, cells touching. A header row over a heavier rule,
+  a line between rows, figures set in tabular numerals, and the first
+  column on the text's own left edge. A table wider than the line the
+  text keeps scrolls inside it. That is the answer `pre` and a display
+  formula already use. A column that declares its alignment in Markdown
+  keeps it.
+- Headings four, five and six are drawn. They fell to the browser at
+  15.5px, 12.9px and 10.4px against a 15.5px body. Five and six came out
+  smaller than the paragraphs they head. They take the display face now,
+  and none goes under the body size.
+- Lists, rules, footnotes and a `details` block are drawn. So are the
+  markers of a task list.
+- A formula is held to the line the text keeps, in MathML as well.
+  A formula arrives wrapped in a span. `max-width` does not apply to an
+  inline box, so the measure on it was inert. The formula filled the
+  body's content box instead, 964px against a 765px paragraph. A short
+  one then centred itself out to the right of the words. v0.2.3 fixed
+  this for KaTeX markup and MathML kept the fault, which is what makes
+  it look like a regression. MathML is what a site gets unless it asks
+  for KaTeX, so this was the common case.
+- New gate, `output/prose`. It asks two questions of every page. Did a
+  rule the theme wrote match this element, named for it. Does anything
+  reach past the line the text keeps. Neither question is taste. Both
+  are facts. Every gate before this one passed a bare table in silence.
+  It found two faults in itself before it found any in the theme. It
+  also found one in a feature written the same hour. A `picture` is an
+  inline element, so its cap was inert. It reached 99px past the text,
+  which is the same trap as the formula, in new code.
+- New feature, `responsive-images`, on by default. A picture is resized
+  to the widths the reading measure asks for. Each width is encoded as
+  AVIF and WebP, with the source as the fallback. The `img` carries the
+  source's width and height, so the page stops moving as pictures land.
+  Only the first picture on a page loads eagerly. An SVG carries no
+  pixels to resize and a GIF may be an animation, so both are passed
+  through.
+  The bare hook still renders what Hugo's own image hook renders, which
+  is what `output/conform` compares against. The feature is what
+  declares the difference.
+- A link that leaves the site opens beside the page rather than over it,
+  and says so. `external-new-tab` is on by default. A site turns it off
+  with `params.ff-1.features.external-new-tab = false`, and a page can
+  override it in its own front matter.
+  The words are appended inside the anchor rather than set as an
+  `aria-label`. A label replaces the accessible name, and the link's own
+  words would go with it. v0.1.1 shipped that fault in the language
+  switcher, where `Nederlands` announced over a link reading `NL` left
+  speech control nothing to say.
+- The page skeleton counts a classed element's text once. It was
+  recorded twice. Once under `marked`, against the class that put it
+  there, and again inside the text of any link holding it. A link
+  carrying an annotation therefore read as a different link. So a
+  feature annotating a link without adding one looked like a feature
+  adding links it never declared. The gate still fails on a link that is
+  genuinely added, which is what it is for.
+
 ## v0.2.4, 2026-08-30
 
 A site could not restyle this theme. The README said it could, and had
