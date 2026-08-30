@@ -20,6 +20,21 @@ defaultContentLanguage = 'en'
 [params.ff-1]
   # A line across the top. Without one there is no band.
   tagline = 'A dense publishing theme'
+
+  # code-copy is off by default, because a button on every block is a
+  # choice rather than a given. The demo switches it on: it shares the
+  # noClasses requirement below, and a demo that never shows it leaves
+  # the pairing unproven.
+  [params.ff-1.features]
+    code-copy = true
+
+  # Which markup KaTeX writes. The default, mathml, needs no stylesheet
+  # and is what a site gets without saying anything, so the downstream
+  # gate covers it. The demo takes the other path, where the head links
+  # KaTeX's own stylesheet on the pages that carry a formula, so between
+  # the two both are exercised.
+  [params.ff-1.katex]
+    output = 'htmlAndMathml'
   # The line under the mark in the brand cell.
   established = 'a Hugo theme'
   # The colours the top-level topics take, in order.
