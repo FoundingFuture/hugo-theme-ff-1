@@ -36,3 +36,24 @@
          which is the fault that fixture exists to find. */ -}}
   {{- partialCached "features/dark-mode.html" . }}
 {{- end }}
+
+{{- /* The feeds this page has, named so a reader can find them.
+       Hugo writes index.xml and nothing pointed at it, so a site
+       published a feed that no browser and no reader could discover.
+       AlternativeOutputFormats is every format but the one being
+       rendered, which is the same line Congo, PaperMod and hugo-book
+       all write. */ -}}
+{{- range .AlternativeOutputFormats -}}
+  {{ printf `<link rel=%q type=%q href=%q title=%q>` .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
+{{- end }}
+
+{{- /* The same page in the other languages a site publishes. The
+       switcher already marks its links with hreflang, which tells a
+       reader's browser what it is about to open. This tells a search
+       engine that the two pages are one page in two languages, and
+       nothing said that. Only where a translation exists. */ -}}
+{{- if .IsTranslated }}
+  {{- range .AllTranslations }}
+  <link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}">
+  {{- end }}
+{{- end }}

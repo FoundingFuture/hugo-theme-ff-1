@@ -22,3 +22,33 @@ main li > a {
 main nav li + li {
   margin-block-start: 4px;
 }
+
+/* Past the menu, in one key.
+ *
+ * Off screen until it has focus, so it is there for a reader using a
+ * keyboard and absent for everyone else. Not display:none and not
+ * visibility:hidden: both take it out of the tab order, which is the
+ * one thing it exists to be in.
+ *
+ * It lands on main, which carries tabindex="-1" so that focus moves
+ * there rather than staying behind on the link. */
+.skip{
+  position:absolute;
+  z-index:10;
+  inset-inline-start:-9999px;
+  padding:.5rem .9rem;
+  border-radius:0 0 4px;
+  background:var(--paper);
+  color:var(--ink);
+  font-size:.95rem;
+  text-decoration:underline;
+}
+
+.skip:focus-visible{
+  inset-inline-start:0;
+  outline:2px solid var(--teal);
+  outline-offset:2px;
+}
+
+[data-part="body"],
+main:focus-visible{outline:none}

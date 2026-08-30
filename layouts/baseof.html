@@ -23,6 +23,19 @@
        one the wordmark sits in. It looks like a styling fault rather
        than a placement one. */ -}}
 <aside class="side">
+  {{- /* Past the menu, in one key.
+
+         Every page opens with the whole topic tree, and a reader using
+         a keyboard had to walk it again on each one. WCAG 2.4.1 asks
+         for a way past a block that repeats, and a landmark satisfies
+         an automated check, which is why no gate here ever said so.
+         A link says it out loud.
+
+         Inside the aside because it must come first, and because a
+         wrapper of the theme's own standing before main is a difference
+         from Hugo's scaffold that conform will not have. Chrome is
+         excluded from that comparison; this is chrome. */ -}}
+  <a class="skip" href="#top-of-page">{{ i18n "skipToContent" }}</a>
   <header class="brandcell">
     {{- /* The brand cell is the same on every page but the home one,
            where the wordmark is the h1 rather than a paragraph. Keyed on
@@ -72,7 +85,7 @@
 </header>
 {{- end }}
 
-<main>
+<main id="top-of-page" tabindex="-1">
   {{ block "main" . }}{{ end }}
 </main>
 

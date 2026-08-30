@@ -58,6 +58,18 @@ other = "Main page"
 [opensInNewTab]
 other = "(opens in a new tab)"
 
+[notFoundTitle]
+other = "Not found"
+
+[notFoundSays]
+other = "There is no page at this address. It may have moved, or it may never have been here."
+
+[notFoundHome]
+other = "Back to the front page"
+
+[skipToContent]
+other = "Skip to the text"
+
 [linkToSection]
 other = "Link to this section"
 

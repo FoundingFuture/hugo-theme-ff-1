@@ -61,6 +61,18 @@ other = "Page principale"
 [opensInNewTab]
 other = "(nouvel onglet)"
 
+[notFoundTitle]
+other = "Introuvable"
+
+[notFoundSays]
+other = "Aucune page à cette adresse. Elle a pu être déplacée, ou n'avoir jamais existé."
+
+[notFoundHome]
+other = "Retour à l'accueil"
+
+[skipToContent]
+other = "Aller au texte"
+
 [linkToSection]
 other = "Lien vers cette section"
 
