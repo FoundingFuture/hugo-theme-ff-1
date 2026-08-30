@@ -33,6 +33,7 @@ shortcodes = [
 i18n = [
   "allTerms",
   "articleContents",
+  "availableLanguages",
   "backToTop",
   "breadcrumbs",
   "clear",
@@ -46,6 +47,7 @@ i18n = [
   "galleryNext",
   "galleryPosition",
   "galleryPrevious",
+  "languageNoTranslation",
   "lastModified",
   "linkToSection",
   "mainPage",
@@ -87,6 +89,7 @@ features = [
   "heading-anchors",
   "katex",
   "kind-label",
+  "lang-switch",
   "last-modified",
   "pager",
   "privacy-embeds",

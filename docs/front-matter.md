@@ -34,6 +34,7 @@ template does with an empty value.
 |---|
 | `allTerms` |
 | `articleContents` |
+| `availableLanguages` |
 | `backToTop` |
 | `breadcrumbs` |
 | `clear` |
@@ -47,6 +48,7 @@ template does with an empty value.
 | `galleryNext` |
 | `galleryPosition` |
 | `galleryPrevious` |
+| `languageNoTranslation` |
 | `lastModified` |
 | `linkToSection` |
 | `mainPage` |
