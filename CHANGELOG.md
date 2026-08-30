@@ -1,5 +1,48 @@
 # Changelog
 
+## v0.2.0, 2026-08-30
+
+The menu holds its width and the page is laid over it. The line across
+the top is set to the room it has. The geometry both of those depend on
+is measured by a gate rather than remembered.
+
+- The menu keeps its 16rem at every width. Where the window has no room
+  for both it and the words, the column shows less of it. The page
+  covers the rest. Bring the pointer to what is left and the whole menu
+  comes back over the page. Past the point where a fifth of it is all
+  that shows, the column becomes an edge. The edge carries the menu's
+  own marks.
+  The menu then slides in from the left. The reading line stays inside
+  its measure at every width, either way.
+- The edge is the desktop's last state. A window has a floor it cannot
+  be dragged below, and that floor is above what the edge needs. So the
+  top bar dropdown is now the touch layout rather than the narrow one.
+  The two are separate rules, each chosen for what it serves.
+- The line across the top is set to the width it has. It was drawn at
+  two thirds of that at every size, which rendered it at 8px on a 545px
+  screen. Calibrated by rendering rather than by arithmetic, over 115
+  widths and two lengths of line.
+- The languages read `Languages` in small capitals rather than naming
+  themselves in full. The row is set small and tucked under the line.
+  The band's tallest is 4.8rem, and the offset that clears it is that
+  same number.
+- The theme switch sits beside the established line instead of over the
+  corner of the slab. The reserve it needed under the last line is gone.
+  With it goes the tallest link in the chain that set the band's height.
+- A language link announces the code it shows. Naming it `Nederlands`
+  over a link reading `NL` left speech control nothing to say. The two
+  share no letters. This shipped in v0.1.1. The audit that catches it
+  carries no weight in the score the gate reads, so the gate never saw
+  it.
+- New gate, `output/band`. It measures the band at 115 widths. It fails
+  when the anchor offset does not clear the band, or clears it by more
+  than 40px. That number has been wrong three times, each time found by
+  hand and late. The gate runs in three seconds.
+- `./c release` runs the gates before refreshing the snapshots. It then
+  runs the static gate again, over what the refresh wrote. Refreshing
+  first meant `output/visual` compared a build against a baseline made
+  from that same build. That was the run where it matters most.
+
 ## v0.1.1, 2026-08-29
 
 - `items` resolves the address in a row's fourth field instead of

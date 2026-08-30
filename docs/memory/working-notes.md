@@ -62,26 +62,94 @@ runs gets the markup but not the CSS: `head/css.html` assembles the
 bundle through `partialCached`, and the resource cache holds the version
 built before the file existed. The feature looks broken and is not.
 
-**--band-seen tracks the brand cell, and nothing checks it.** The band
-is stretched by the grid between 34 and 60rem, because the brand cell
-spans both rows there. So the band's rendered height depends on how tall
-the brand cell is, and `--band-seen` is a number written by hand to match
-it. Reserving room for the theme switch made the cell taller, the band
-went from 70.4px to 79.6, and the offset kept covering 70.4. Every
-heading whose anchor was followed sat nine pixels under the band, from
-v0.1.1 until it was measured again.
+**--band-seen is a ceiling, and it has been wrong every time something
+moved.** It is read by `html{scroll-padding-top}` and by the contents
+column's `top`, and it has to cover the band's tallest rendering.
 
-Anything that changes the brand cell's height changes the band's. Measure
-it rather than assume, at 545px and 900px, and remember a site with a
-taller wordmark can outgrow whatever number is written here. Stopping the
-band from stretching would end the coupling and is a visual decision
-nobody has taken.
+It has been wrong three times, each for a different reason. Reserving
+room for the theme switch made the brand cell taller, which stretched the
+band from 70.4px to 79.6 while the offset still covered 70.4. The
+language row was added and three new values were written without
+measuring any of them, over-covering by 15 to 31px. Then giving the
+language codes a fixed width made the row taller and the number was 6.8px
+short again.
+
+The band no longer takes height from the brand cell: `.strip` is
+`align-self:start` between 34 and 60rem, and `body::before` spans both
+rows to paint what the band stops painting. What remains is the band's
+own content, which still grows with the window because the tagline is
+sized to fill it.
+
+**So measure, do not reason.** Sweep 320 to 2600 in 20px steps, take the
+tallest band, round up. Anything that changes what the band holds needs
+the sweep run again: the tagline's size, the language row's size, the
+band's padding. A site with no language row keeps `--band`.
+
+**The tagline was drawing across two thirds of the band.** Its size is
+`min(cap, Ncqw / var(--len))`, where `--len` is the character count from
+the template, because CSS cannot measure text. N was 140, which left a
+third of the band's width empty at every width and rendered the line at
+8px on a 545px screen. Measured across 545 to 2400, 195 fills 91 percent
+and clips nowhere. If the face or the cap changes, re-measure N the same
+way: draw the line, compare its width against the band's inner width.
 
 **A feature that restyles shared chrome restyles it for everyone.** The
 language switch first set flex-direction on .strip itself. A site with
 one language renders no language row, and its band grew anyway, and the
 anchor offset then covered less than the band. Scope such a rule to the
 thing it adds, with :has, rather than to the container it adds it to.
+
+**A zero-weight Lighthouse audit cannot fail the gate.** `output/perf`
+asserts `categories.accessibility >= 1`, and Lighthouse scores a category
+as a weighted mean. `label-content-name-mismatch` carries weight 0, so
+the theme shipped a real WCAG 2.5.3 failure at a category score of
+1.0000: the language links read NL and announced "Nederlands", which
+share no letters, leaving speech control nothing to say. It surfaced only
+because a second audit with real weight failed beside it. Reading the
+category score does not tell you the audits passed. Open
+`tools/.lighthouseci/lhr-*.json` and list every audit under
+`categories.accessibility.auditRefs` scoring below 1.
+
+**WCAG 2.2 target size is a spacing rule as much as a size one.** A small
+target passes when no other target's 24px circle reaches it. The language
+codes are about 14 by 13, and widening the gap alone did not fix them:
+the codes are not all the same width, so IT beside PT sat 21.9 apart at a
+gap holding EN and FR 24.2 apart. Giving every code one cell width makes
+the spacing the same wherever the row is read. Check the worst pair by
+centre distance across both axes, with the row wrapped, not the size of
+one target.
+
+**Two boxes cannot be made to move as one from outside.** transform,
+clip-path and opacity are per-element and compose per-element. There is
+no way to say "animate these together". You get one box, or a set of
+boxes running the same declaration.
+
+The rail was built without a box for the thing that moves. The aside
+held the slab, the edge and the menu as three siblings. Nothing said the
+slab and the menu are one thing. So they were animated apart. The slab
+was uncovered by a travelling clip, the menu slid by a transform. Those
+are two kinds of motion rather than two timings. Matching their
+durations never made them arrive together. One of them has a left edge
+that never moves.
+
+Four symptoms came out of that one gap, over four rounds. The marks
+flickered, because hiding them on hover took away the thing being
+hovered. The menu began a third of the way down, because the marks were
+holding flow space it needed. The marks' ground stopped short, because
+the menu still claimed free space it could not use. The menu vanished
+rather than leaving. Its height snapped to nothing, and that is not a
+change any browser can animate. Each was fixed where it appeared. Each
+fix made the next one worse.
+
+**A transform moves what is painted, not what is laid out.** That fact
+dissolves all of it. A translated grid item still occupies its grid
+area, and still sizes it. So the slab slides off the screen and goes on
+setting the height of its row. The edge's black top sits in that same
+row. It is therefore exactly as tall as the slab, whatever the wordmark
+does. Nothing needs a wrapper, a measured height, or a trip out of flow.
+
+The rule to keep. When a second symptom of the same shape appears, ask
+what structure would make all of them impossible. Do not fix the third.
 
 ## Verifying visually
 
