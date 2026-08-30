@@ -205,38 +205,91 @@
 
 [data-theme="dark"] .chroma .hl{background-color:#2A3745}
 
-  /* plain identifiers and operators */
-  .chroma .err,.chroma .fm,.chroma .n,.chroma .nd,.chroma .ne,.chroma .nf,.chroma .ni,.chroma .nl,.chroma .nn,.chroma .no,.chroma .nt,.chroma .nv,.chroma .nx,.chroma .o,.chroma .or,.chroma .ow,.chroma .py,.chroma .vc,.chroma .vg,.chroma .vi,.chroma .vm{color:#C3CEDA}
+/* plain identifiers and operators */
+[data-theme="dark"] .chroma .err,
+[data-theme="dark"] .chroma .fm,
+[data-theme="dark"] .chroma .n,
+[data-theme="dark"] .chroma .nd,
+[data-theme="dark"] .chroma .ne,
+[data-theme="dark"] .chroma .nf,
+[data-theme="dark"] .chroma .ni,
+[data-theme="dark"] .chroma .nl,
+[data-theme="dark"] .chroma .nn,
+[data-theme="dark"] .chroma .no,
+[data-theme="dark"] .chroma .nt,
+[data-theme="dark"] .chroma .nv,
+[data-theme="dark"] .chroma .nx,
+[data-theme="dark"] .chroma .o,
+[data-theme="dark"] .chroma .or,
+[data-theme="dark"] .chroma .ow,
+[data-theme="dark"] .chroma .py,
+[data-theme="dark"] .chroma .vc,
+[data-theme="dark"] .chroma .vg,
+[data-theme="dark"] .chroma .vi,
+[data-theme="dark"] .chroma .vm{color:#C3CEDA}
 
-  /* strings */
-  .chroma .dl,.chroma .s,.chroma .s1,.chroma .s2,.chroma .sa,.chroma .sb,.chroma .sd,.chroma .se,.chroma .sh,.chroma .si,.chroma .sr,.chroma .ss,.chroma .sx{color:#F0938A}
+/* strings */
+[data-theme="dark"] .chroma .dl,
+[data-theme="dark"] .chroma .s,
+[data-theme="dark"] .chroma .s1,
+[data-theme="dark"] .chroma .s2,
+[data-theme="dark"] .chroma .sa,
+[data-theme="dark"] .chroma .sb,
+[data-theme="dark"] .chroma .sd,
+[data-theme="dark"] .chroma .se,
+[data-theme="dark"] .chroma .sh,
+[data-theme="dark"] .chroma .si,
+[data-theme="dark"] .chroma .sr,
+[data-theme="dark"] .chroma .ss,
+[data-theme="dark"] .chroma .sx{color:#F0938A}
 
-  /* numbers */
-  .chroma .il,.chroma .l,.chroma .ld,.chroma .m,.chroma .mb,.chroma .mf,.chroma .mh,.chroma .mi,.chroma .mo{color:#9DB4FF}
+/* numbers */
+[data-theme="dark"] .chroma .il,
+[data-theme="dark"] .chroma .l,
+[data-theme="dark"] .chroma .ld,
+[data-theme="dark"] .chroma .m,
+[data-theme="dark"] .chroma .mb,
+[data-theme="dark"] .chroma .mf,
+[data-theme="dark"] .chroma .mh,
+[data-theme="dark"] .chroma .mi,
+[data-theme="dark"] .chroma .mo{color:#9DB4FF}
 
-  /* keywords */
-  .chroma .k,.chroma .kc,.chroma .kd,.chroma .kn,.chroma .kp,.chroma .kr,.chroma .kt,.chroma .nb{color:#EE9AD8}
+/* keywords */
+[data-theme="dark"] .chroma .k,
+[data-theme="dark"] .chroma .kc,
+[data-theme="dark"] .chroma .kd,
+[data-theme="dark"] .chroma .kn,
+[data-theme="dark"] .chroma .kp,
+[data-theme="dark"] .chroma .kr,
+[data-theme="dark"] .chroma .kt,
+[data-theme="dark"] .chroma .nb{color:#EE9AD8}
 
-  /* comments */
-  .chroma .c,.chroma .c1,.chroma .ch,.chroma .cm,.chroma .cs{color:#86C97F}
+/* comments */
+[data-theme="dark"] .chroma .c,
+[data-theme="dark"] .chroma .c1,
+[data-theme="dark"] .chroma .ch,
+[data-theme="dark"] .chroma .cm,
+[data-theme="dark"] .chroma .cs{color:#86C97F}
 
-  /* line numbers */
-  .chroma .ln,.chroma .lnt{color:#93A1AE}
+/* line numbers */
+[data-theme="dark"] .chroma .ln,
+[data-theme="dark"] .chroma .lnt{color:#93A1AE}
 
-  /* preprocessor */
-  .chroma .cp,.chroma .cpf{color:#D9AC85}
+/* preprocessor */
+[data-theme="dark"] .chroma .cp,
+[data-theme="dark"] .chroma .cpf{color:#D9AC85}
 
-  /* attributes */
-  .chroma .na{color:#DCC680}
+/* attributes */
+[data-theme="dark"] .chroma .na{color:#DCC680}
 
-  /* class names */
-  .chroma .nc{color:#96C8D1}
+/* class names */
+[data-theme="dark"] .chroma .nc{color:#96C8D1}
 
-  /* builtins */
-  .chroma .bp{color:#C7A4F0}
+/* builtins */
+[data-theme="dark"] .chroma .bp{color:#C7A4F0}
 
-  /* character literals */
-  .chroma .sc{color:#A8BCFF}
+/* character literals */
+[data-theme="dark"] .chroma .sc{color:#A8BCFF}
 
 @media (prefers-color-scheme:dark){
   /* chroma.css is generated from a named Chroma style and read by the
@@ -251,38 +304,122 @@
 
   :root:not([data-theme="light"]) .chroma .hl{background-color:#2A3745}
 
-    /* plain identifiers and operators */
-    .chroma .err,.chroma .fm,.chroma .n,.chroma .nd,.chroma .ne,.chroma .nf,.chroma .ni,.chroma .nl,.chroma .nn,.chroma .no,.chroma .nt,.chroma .nv,.chroma .nx,.chroma .o,.chroma .or,.chroma .ow,.chroma .py,.chroma .vc,.chroma .vg,.chroma .vi,.chroma .vm{color:#C3CEDA}
+  /* plain identifiers and operators */
+  :root:not([data-theme="light"]) .chroma .err,
+  :root:not([data-theme="light"]) .chroma .fm,
+  :root:not([data-theme="light"]) .chroma .n,
+  :root:not([data-theme="light"]) .chroma .nd,
+  :root:not([data-theme="light"]) .chroma .ne,
+  :root:not([data-theme="light"]) .chroma .nf,
+  :root:not([data-theme="light"]) .chroma .ni,
+  :root:not([data-theme="light"]) .chroma .nl,
+  :root:not([data-theme="light"]) .chroma .nn,
+  :root:not([data-theme="light"]) .chroma .no,
+  :root:not([data-theme="light"]) .chroma .nt,
+  :root:not([data-theme="light"]) .chroma .nv,
+  :root:not([data-theme="light"]) .chroma .nx,
+  :root:not([data-theme="light"]) .chroma .o,
+  :root:not([data-theme="light"]) .chroma .or,
+  :root:not([data-theme="light"]) .chroma .ow,
+  :root:not([data-theme="light"]) .chroma .py,
+  :root:not([data-theme="light"]) .chroma .vc,
+  :root:not([data-theme="light"]) .chroma .vg,
+  :root:not([data-theme="light"]) .chroma .vi,
+  :root:not([data-theme="light"]) .chroma .vm{color:#C3CEDA}
 
-    /* strings */
-    .chroma .dl,.chroma .s,.chroma .s1,.chroma .s2,.chroma .sa,.chroma .sb,.chroma .sd,.chroma .se,.chroma .sh,.chroma .si,.chroma .sr,.chroma .ss,.chroma .sx{color:#F0938A}
+  /* strings */
+  :root:not([data-theme="light"]) .chroma .dl,
+  :root:not([data-theme="light"]) .chroma .s,
+  :root:not([data-theme="light"]) .chroma .s1,
+  :root:not([data-theme="light"]) .chroma .s2,
+  :root:not([data-theme="light"]) .chroma .sa,
+  :root:not([data-theme="light"]) .chroma .sb,
+  :root:not([data-theme="light"]) .chroma .sd,
+  :root:not([data-theme="light"]) .chroma .se,
+  :root:not([data-theme="light"]) .chroma .sh,
+  :root:not([data-theme="light"]) .chroma .si,
+  :root:not([data-theme="light"]) .chroma .sr,
+  :root:not([data-theme="light"]) .chroma .ss,
+  :root:not([data-theme="light"]) .chroma .sx{color:#F0938A}
 
-    /* numbers */
-    .chroma .il,.chroma .l,.chroma .ld,.chroma .m,.chroma .mb,.chroma .mf,.chroma .mh,.chroma .mi,.chroma .mo{color:#9DB4FF}
+  /* numbers */
+  :root:not([data-theme="light"]) .chroma .il,
+  :root:not([data-theme="light"]) .chroma .l,
+  :root:not([data-theme="light"]) .chroma .ld,
+  :root:not([data-theme="light"]) .chroma .m,
+  :root:not([data-theme="light"]) .chroma .mb,
+  :root:not([data-theme="light"]) .chroma .mf,
+  :root:not([data-theme="light"]) .chroma .mh,
+  :root:not([data-theme="light"]) .chroma .mi,
+  :root:not([data-theme="light"]) .chroma .mo{color:#9DB4FF}
 
-    /* keywords */
-    .chroma .k,.chroma .kc,.chroma .kd,.chroma .kn,.chroma .kp,.chroma .kr,.chroma .kt,.chroma .nb{color:#EE9AD8}
+  /* keywords */
+  :root:not([data-theme="light"]) .chroma .k,
+  :root:not([data-theme="light"]) .chroma .kc,
+  :root:not([data-theme="light"]) .chroma .kd,
+  :root:not([data-theme="light"]) .chroma .kn,
+  :root:not([data-theme="light"]) .chroma .kp,
+  :root:not([data-theme="light"]) .chroma .kr,
+  :root:not([data-theme="light"]) .chroma .kt,
+  :root:not([data-theme="light"]) .chroma .nb{color:#EE9AD8}
 
-    /* comments */
-    .chroma .c,.chroma .c1,.chroma .ch,.chroma .cm,.chroma .cs{color:#86C97F}
+  /* comments */
+  :root:not([data-theme="light"]) .chroma .c,
+  :root:not([data-theme="light"]) .chroma .c1,
+  :root:not([data-theme="light"]) .chroma .ch,
+  :root:not([data-theme="light"]) .chroma .cm,
+  :root:not([data-theme="light"]) .chroma .cs{color:#86C97F}
 
-    /* line numbers */
-    .chroma .ln,.chroma .lnt{color:#93A1AE}
+  /* line numbers */
+  :root:not([data-theme="light"]) .chroma .ln,
+  :root:not([data-theme="light"]) .chroma .lnt{color:#93A1AE}
 
-    /* preprocessor */
-    .chroma .cp,.chroma .cpf{color:#D9AC85}
+  /* preprocessor */
+  :root:not([data-theme="light"]) .chroma .cp,
+  :root:not([data-theme="light"]) .chroma .cpf{color:#D9AC85}
 
-    /* attributes */
-    .chroma .na{color:#DCC680}
+  /* attributes */
+  :root:not([data-theme="light"]) .chroma .na{color:#DCC680}
 
-    /* class names */
-    .chroma .nc{color:#96C8D1}
+  /* class names */
+  :root:not([data-theme="light"]) .chroma .nc{color:#96C8D1}
 
-    /* builtins */
-    .chroma .bp{color:#C7A4F0}
+  /* builtins */
+  :root:not([data-theme="light"]) .chroma .bp{color:#C7A4F0}
 
-    /* character literals */
-    .chroma .sc{color:#A8BCFF}
+  /* character literals */
+  :root:not([data-theme="light"]) .chroma .sc{color:#A8BCFF}
+}
+
+/* The open topic is a pill filled with the topic's own colour. In light
+   mode those four colours are pushed onto the page and carry white. Here
+   they are lifted off it, which is what makes them read as text on a dark
+   ground, and it is also what stops them carrying white: 2.25 to 1 on the
+   teal, and 2.20 to 2.61 across the four. The fill is the thing worth
+   keeping, so the ink turns over instead. Against --paper the same four
+   read 6.91 to 8.20.
+
+   The count keeps its recessive weight through opacity rather than a
+   second colour. At the .75 it has in light mode the indigo lands at
+   4.44, under the 4.5 by less than the eye can see and by more than the
+   gate allows. .8 is 4.93 at worst.
+
+   Not a container, whose open row has no fill to sit on, and not a
+   subtopic, whose fill is mostly --surface. Both keep --ink.
+
+   Not hovered, because the fill is not there when it is. The hover rule
+   below carries [data-theme="dark"], which the light one does not, and
+   that one attribute outranks details[open] on the background: light
+   mode keeps the bright fill under the pointer, dark mode drops to the
+   30 percent mix. The ink has to follow the fill it was chosen for. Tied
+   to [open] alone it stayed black on the pale ground the hover leaves. */
+[data-theme="dark"] .topics details[open]:not(.sub,.container)>summary:not(:hover){
+  color:var(--paper);
+}
+
+[data-theme="dark"] .topics details[open]:not(.sub,.container)>summary:not(:hover) .n{
+  color:var(--paper);
+  opacity:.8;
 }
 
 /* ---- the menu, hovered ---- */
@@ -308,6 +445,37 @@
 }
 
 @media (prefers-color-scheme:dark){
+  /* The open topic is a pill filled with the topic's own colour. In light
+     mode those four colours are pushed onto the page and carry white. Here
+     they are lifted off it, which is what makes them read as text on a dark
+     ground, and it is also what stops them carrying white: 2.25 to 1 on the
+     teal, and 2.20 to 2.61 across the four. The fill is the thing worth
+     keeping, so the ink turns over instead. Against --paper the same four
+     read 6.91 to 8.20.
+
+     The count keeps its recessive weight through opacity rather than a
+     second colour. At the .75 it has in light mode the indigo lands at
+     4.44, under the 4.5 by less than the eye can see and by more than the
+     gate allows. .8 is 4.93 at worst.
+
+     Not a container, whose open row has no fill to sit on, and not a
+     subtopic, whose fill is mostly --surface. Both keep --ink.
+
+     Not hovered, because the fill is not there when it is. The hover rule
+     below carries [data-theme="dark"], which the light one does not, and
+     that one attribute outranks details[open] on the background: light
+     mode keeps the bright fill under the pointer, dark mode drops to the
+     30 percent mix. The ink has to follow the fill it was chosen for. Tied
+     to [open] alone it stayed black on the pale ground the hover leaves. */
+  :root:not([data-theme="light"]) .topics details[open]:not(.sub,.container)>summary:not(:hover){
+    color:var(--paper);
+  }
+
+  :root:not([data-theme="light"]) .topics details[open]:not(.sub,.container)>summary:not(:hover) .n{
+    color:var(--paper);
+    opacity:.8;
+  }
+
   /* ---- the menu, hovered ---- */
 
   /* Every hover in the rail mixes a colour into the ground beneath it, and
