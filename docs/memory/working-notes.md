@@ -62,6 +62,27 @@ runs gets the markup but not the CSS: `head/css.html` assembles the
 bundle through `partialCached`, and the resource cache holds the version
 built before the file existed. The feature looks broken and is not.
 
+**--band-seen tracks the brand cell, and nothing checks it.** The band
+is stretched by the grid between 34 and 60rem, because the brand cell
+spans both rows there. So the band's rendered height depends on how tall
+the brand cell is, and `--band-seen` is a number written by hand to match
+it. Reserving room for the theme switch made the cell taller, the band
+went from 70.4px to 79.6, and the offset kept covering 70.4. Every
+heading whose anchor was followed sat nine pixels under the band, from
+v0.1.1 until it was measured again.
+
+Anything that changes the brand cell's height changes the band's. Measure
+it rather than assume, at 545px and 900px, and remember a site with a
+taller wordmark can outgrow whatever number is written here. Stopping the
+band from stretching would end the coupling and is a visual decision
+nobody has taken.
+
+**A feature that restyles shared chrome restyles it for everyone.** The
+language switch first set flex-direction on .strip itself. A site with
+one language renders no language row, and its band grew anyway, and the
+anchor offset then covered less than the band. Scope such a rule to the
+thing it adds, with :has, rather than to the container it adds it to.
+
 ## Verifying visually
 
 Nothing in the pipeline looks at the rail, the frame or the footer:

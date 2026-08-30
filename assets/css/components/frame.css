@@ -100,11 +100,20 @@ main{
     --menugap:.8rem;
 
     /* What the band actually occupies here. The brand cell spans both
-       rows, so the grid stretches the band past its own min-height to
-       4.4rem. Raising --band instead would feed straight back into the
-       row and grow it again, so the declared height and the rendered one
-       are two different numbers and carry two different names. */
-    --band-seen:4.4rem;
+       rows, so the grid stretches the band past its own min-height.
+       Raising --band instead would feed straight back into the row and
+       grow it again, which is why the declared height and the rendered
+       one are two numbers with two names.
+
+       5rem, measured across this range. It was 4.4rem, set before the
+       theme switch was added: reserving room for the switch made the
+       brand cell taller, the taller cell stretched the band to 79.6px,
+       and the offset kept covering 70.4. A heading whose anchor was
+       followed sat nine pixels under the band from v0.1.1 until now.
+
+       The number tracks the brand cell, so a site with a taller wordmark
+       can still outgrow it. See docs/memory/working-notes.md. */
+    --band-seen:5rem;
   }
 
   /* the masthead keeps two columns even here, or the logo sits alone beside
