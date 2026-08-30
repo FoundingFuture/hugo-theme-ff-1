@@ -1,0 +1,22 @@
+name = "responsive-images"
+# A markup render hook rather than a slot. Nothing calls it through
+# slot.html, so it registers for none and has no partial.
+slot = "none"
+weight = 20
+default = true
+level = "toggle"
+kinds = ["page", "section", "home", "term", "taxonomy"]
+css = "css/features/responsive-images.css"
+
+[skeleton]
+  # The picture element wraps the img the page already had. The img is
+  # still there, still carrying the same alt, and it is what a browser
+  # without picture support draws.
+  text = ["picture"]
+  images = ["picture"]
+
+  # Hugo names a processed image <source>_hu_<hash>.<format>, so every
+  # file this feature publishes carries that mark. With the feature off
+  # none of them is written and the img points at the source, which is
+  # what the reference scaffold does.
+  files = ["*_hu_*.avif", "*_hu_*.webp"]

@@ -1,0 +1,20 @@
+/* A picture is an inline element.
+ *
+ * The reading measure is set on the children of the body, and max-width
+ * does not apply to a non-replaced inline box. So wrapping the img in a
+ * picture put it outside the measure: the img sized itself from its own
+ * sizes attribute and reached 99px past the line the text keeps, which
+ * is the same fault a formula had for four releases.
+ *
+ * Making it a block is what lets the cap bite. The img inside is already
+ * held to the width of what contains it. */
+[data-part="body"] picture{
+  display:block;
+  max-inline-size:var(--measure);
+}
+
+[data-part="body"] picture img{
+  inline-size:auto;
+  max-inline-size:100%;
+  block-size:auto;
+}

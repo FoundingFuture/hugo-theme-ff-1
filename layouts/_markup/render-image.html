@@ -1,29 +1,99 @@
-{{- /* A Markdown image whose title becomes a caption.
+{{- /* A Markdown image, sized for the screen that asks for it.
 
-       Without the feature this renders exactly what Hugo's own image
-       hook renders: the destination resolved against the page's
+       Without responsive-images this renders exactly what Hugo's own
+       image hook renders: the destination resolved against the page's
        resources, then the site's, and passed through untouched when it
        is neither. conform compares the result against that rendering,
        so anything else here would be a difference on every page
-       carrying a picture.
+       carrying a picture. The feature is what declares the difference.
 
        Resolution goes through PageInner, which is what Hugo's own hooks
        use. The two differ when a hook fires while an included page is
        being rendered: Page is the page included, PageInner the one
        including it. PageInner falls back to Page and always answers. */ -}}
 {{- $captions := partial "feature-on.html" (dict "name" "figure-captions" "page" .Page) -}}
+{{- $responsive := partial "feature-on.html" (dict "name" "responsive-images" "page" .Page) -}}
 {{- $u := urls.Parse .Destination -}}
 {{- $src := .Destination -}}
+{{- $resource := false -}}
 {{- if not $u.IsAbs -}}
   {{- with or (.PageInner.Resources.Get $u.Path) (resources.Get $u.Path) -}}
     {{- $src = .RelPermalink -}}
+    {{- $resource = . -}}
   {{- end -}}
 {{- end -}}
+
+{{- /* Only a raster the pipeline can open. An SVG carries no pixels to
+       resize, and a GIF may be an animation that resizing would flatten
+       to its first frame. */ -}}
+{{- $raster := false -}}
+{{- with $resource -}}
+  {{- if eq .MediaType.MainType "image" -}}
+    {{- if not (in (slice "svg+xml" "gif") .MediaType.SubType) -}}
+      {{- $raster = true -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $tag := "" -}}
+{{- if and $responsive $raster -}}
+  {{- /* The reading measure is 78ch, about 765px, and the widest a
+         picture is ever drawn here. Twice that covers a dense screen.
+         A width above the source is skipped rather than upscaled, so a
+         small picture gets one entry and no invented detail. */ -}}
+  {{- $widths := slice 480 768 1530 -}}
+  {{- $sizes := "(max-width: 62rem) 100vw, 765px" -}}
+  {{- /* A source narrower than every width asked for would otherwise
+         get no variant at all, and a small picture would keep the
+         format it arrived in. It gets one entry at its own width. */ -}}
+  {{- $targets := slice -}}
+  {{- range $widths -}}
+    {{- if le . $resource.Width -}}{{- $targets = $targets | append . -}}{{- end -}}
+  {{- end -}}
+  {{- if not $targets -}}{{- $targets = slice $resource.Width -}}{{- end -}}
+  {{- $avif := slice -}}
+  {{- $webp := slice -}}
+  {{- $wide := $resource -}}
+  {{- range $targets -}}
+    {{- $w := . -}}
+    {{- if true -}}
+      {{- with $resource.Resize (printf "%dx avif q55" $w) -}}
+        {{- $avif = $avif | append (printf "%s %dw" .RelPermalink $w) -}}
+      {{- end -}}
+      {{- with $resource.Resize (printf "%dx webp q80" $w) -}}
+        {{- $webp = $webp | append (printf "%s %dw" .RelPermalink $w) -}}
+        {{- $wide = . -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- /* width and height are the source's, so the browser knows the
+         shape before a byte of it arrives and the page stops jumping
+         as pictures land. Ordinal is the picture's place on the page:
+         the first is likely the one a reader is waiting for, so it is
+         not deferred. */ -}}
+  {{- $loading := cond (eq .Ordinal 0) "eager" "lazy" -}}
+  {{- $img := printf "<img src=%q srcset=%q sizes=%q width=%q height=%q loading=%q decoding=\"async\" alt=%q>"
+        $wide.RelPermalink (delimit $webp ", ") $sizes
+        (string $resource.Width) (string $resource.Height) $loading .PlainText -}}
+  {{- if $webp -}}
+    {{- $tag = printf "<picture>%s%s%s</picture>"
+          (cond (gt (len $avif) 0) (printf "<source type=\"image/avif\" srcset=%q sizes=%q>" (delimit $avif ", ") $sizes) "")
+          (printf "<source type=\"image/webp\" srcset=%q sizes=%q>" (delimit $webp ", ") $sizes)
+          $img -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if not $tag -}}
+  {{- $tag = printf "<img src=%q alt=%q%s>" $src .PlainText
+        (cond (ne (string .Title) "") (printf " title=%q" .Title) "") -}}
+{{- end -}}
+
 {{- if and $captions .Title -}}
 <figure class="captioned">
-  <img src="{{ $src }}" alt="{{ .PlainText }}">
+  {{ $tag | safeHTML }}
   <figcaption>{{ .Title }}</figcaption>
 </figure>
 {{- else -}}
-<img src="{{ $src }}" alt="{{ .PlainText }}"{{ with .Title }} title="{{ . }}"{{ end }}>
+{{ $tag | safeHTML }}
 {{- end -}}
