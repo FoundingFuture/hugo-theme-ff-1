@@ -182,6 +182,12 @@
     [
       2,
       "",
+      "Math output, set by the page",
+      ""
+    ],
+    [
+      2,
+      "",
       "pager",
       ""
     ],
@@ -518,6 +524,11 @@
     [
       "/kitchen-sink/features/last-modified/",
       "last-modified",
+      ""
+    ],
+    [
+      "/kitchen-sink/math-output/",
+      "Math output, set by the page",
       ""
     ],
     [

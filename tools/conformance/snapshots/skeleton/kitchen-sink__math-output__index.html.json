@@ -1,0 +1,70 @@
+{
+  "counts": {
+    "blockquote": 0,
+    "dl": 0,
+    "figure": 0,
+    "ol": 1,
+    "pre": 0,
+    "table": 0,
+    "ul": 0
+  },
+  "h1": "Math output, set by the page",
+  "h1_count": 1,
+  "headings": [],
+  "images": [],
+  "links": [
+    [
+      "/",
+      "Conformance",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/",
+      "Kitchen sink",
+      "ol.breadcrumbs"
+    ],
+    [
+      "/kitchen-sink/math-output/",
+      "Math output, set by the page",
+      "ol.breadcrumbs"
+    ]
+  ],
+  "marked": [
+    [
+      "ol.breadcrumbs",
+      "Conformance Kitchen sink Math output, set by the page"
+    ],
+    [
+      "time.dateline",
+      "January 25, 2026"
+    ],
+    [
+      "p.reading-time",
+      "1 minute read"
+    ],
+    [
+      "p.word-count",
+      "49 words"
+    ],
+    [
+      "span.katex-mathml",
+      "E=mc2E = mc^2"
+    ],
+    [
+      "span.katex",
+      "E=mc2E = mc^2"
+    ],
+    [
+      "span.katex-mathml",
+      "\u222b01x2 dx=13 \\int_0^1 x^2 \\, dx = \\frac{1}{3}"
+    ],
+    [
+      "span.katex",
+      "\u222b01x2 dx=13 \\int_0^1 x^2 \\, dx = \\frac{1}{3}"
+    ],
+    [
+      "span.katex-display",
+      "\u222b01x2 dx=13 \\int_0^1 x^2 \\, dx = \\frac{1}{3}"
+    ]
+  ]
+}

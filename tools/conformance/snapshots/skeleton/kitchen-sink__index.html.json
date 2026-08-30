@@ -44,6 +44,12 @@
     [
       2,
       "",
+      "Math output, set by the page",
+      ""
+    ],
+    [
+      2,
+      "",
       "Features",
       ""
     ],
@@ -389,6 +395,11 @@
     [
       "/kitchen-sink/embeds/",
       "Embeds",
+      ""
+    ],
+    [
+      "/kitchen-sink/math-output/",
+      "Math output, set by the page",
       ""
     ],
     [
