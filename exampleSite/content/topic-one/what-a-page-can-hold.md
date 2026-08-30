@@ -70,7 +70,7 @@ Another term
 
 ## A picture
 
-![A generated picture, 1800 by 1125](/pictures/wide.png "The caption a title becomes")
+![A generated picture, 1800 by 1125](/pictures/wide.jpg "The caption a title becomes")
 
 The source is 1800px wide. It is resized to the widths the reading
 measure asks for, encoded as AVIF and WebP, and given the width and

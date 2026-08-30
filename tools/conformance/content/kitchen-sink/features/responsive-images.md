@@ -13,7 +13,7 @@ it on, so the element its manifest declares appears on the page.
 
 ## A picture the pipeline can open
 
-![A generated picture, 1600 by 1000](/pictures/wide.png)
+![A generated picture, 1600 by 1000](/pictures/wide.jpg)
 
 The source is 1600px wide, so it is resized once per width the theme asks for
 and encoded as both AVIF and WebP. The `img` keeps the original's width
