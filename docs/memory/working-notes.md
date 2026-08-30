@@ -182,6 +182,18 @@ The rule to keep. A fixture proves the theme works on the fixture. To
 learn whether it works for anyone else, build something that knows only
 what the README says.
 
+**A gate that asks a tool inherits what the tool declines to answer.**
+The same shape, one level down. `output/a11y` and
+`output/perf` both run axe. Axe returns *incomplete* rather than
+*violation* for a contrast check it cannot fully resolve. So a code
+palette at 1.38 to 1 passed both, through three releases.
+
+`output/contrast` does the arithmetic itself. Every text node, every
+page, both themes, colours resolved through a canvas because nothing
+else resolves `oklab()` and `color-mix()`. See
+tools/conformance/scripts/contrast.js, and the detail in
+[linters-and-browser-support.md](linters-and-browser-support.md).
+
 ## Verifying visually
 
 Nothing in the pipeline looks at the rail, the frame or the footer:

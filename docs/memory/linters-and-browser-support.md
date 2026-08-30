@@ -55,6 +55,40 @@ declarations. It is now `#5A6874` — 5.73 / 4.60 / 4.96.
 
 **When the two disagree, check the arithmetic rather than the tools.**
 
+## Both of them miss a contrast fault, and now one gate does not
+
+The rule above was written when the two tools disagreed. They can also
+agree, and both be wrong.
+
+Every token colour in `dark-mode.css` was written without its
+`[data-theme="dark"]` prefix, so the dark palette painted code in light
+mode as well. Identifiers sat at 1.38 to 1 on a pale ground, through
+three releases, with every gate green.
+
+Reinjecting the fault and running the gates over it gives the reason:
+
+- `pa11y-ci`, over the page carrying the fault: 0 errors. It runs axe,
+  which returns *incomplete* rather than *violation* for a contrast
+  check it cannot fully resolve, and `includeWarnings` is off.
+- Lighthouse reports the same way, because it runs the same axe.
+
+`output/contrast` does the arithmetic itself instead of asking. It walks
+every text node on every page in both themes, resolves the colours
+through a canvas, and divides. The canvas is the point: `getComputedStyle`
+hands back `oklab()` and `color-mix()` untouched, and only a paint
+resolves them to sRGB.
+
+Two things it has to do that are not obvious:
+
+- Kill transitions before measuring. The theme fades colour over .18s
+  when it changes. A reading taken the instant `data-theme` is set mixes
+  the two palettes. The first run reported three failures that were
+  nobody's colour.
+- Leave alias pages out. An alias is a `meta refresh`, which navigates
+  away mid-measurement and destroys the context it was running in.
+
+**A gate that asks a tool inherits what the tool declines to answer.**
+
 ## Two elements no template can reach
 
 `tools/scripts/check/pa11yci.json` hides exactly two selectors, never a
