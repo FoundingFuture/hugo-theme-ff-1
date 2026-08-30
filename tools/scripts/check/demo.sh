@@ -11,10 +11,24 @@
 # themes.gohugo.io reads. Publishing anything else means the demo and
 # the listing show two different themes.
 #
-# Built from dist/<slug>, not from the sources. That is the one path a
-# downloader takes, and it is the path example.sh already tests. A demo
-# built from the sources could pass while the artefact people download
-# is broken.
+# The site comes from exampleSite here, and the theme from dist/<slug>.
+#
+# package.txt keeps exampleSite out of the artefact on purpose: the zip
+# is what somebody unzips into themes/<slug>, and a theme directory has
+# no business carrying a second Hugo site inside it. hugoThemes reads
+# the repository rather than the zip, and asks for a self-contained site
+# in exampleSite, so the repository is where it belongs.
+#
+# That listing does not build this site, though. Its README says demo
+# content "is typically inherited from the hugoBasicExample repository",
+# and that a theme needing its own structure is reviewed case by case.
+# So the demo here and the demo there are two different sites, and this
+# gate says nothing about whether the theme survives content it has
+# never seen.
+#
+# The theme is taken from the artefact rather than from the sources
+# because that is the one path a downloader takes. A demo built from
+# the sources can pass while the zip people download is broken.
 #
 # reads: dist exampleSite theme.toml
 set -uo pipefail

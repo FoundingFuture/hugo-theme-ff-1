@@ -1,5 +1,35 @@
 # Changelog
 
+## v0.2.2, 2026-08-30
+
+Two things the theme needs a site to declare. It never told anyone to
+declare them. And a gate that reads the theme the way a stranger does.
+
+- `katex` needs `[markup.goldmark.extensions.passthrough]`. Without it,
+  Goldmark reads the backslash before a bracket as an escape and eats
+  it. A formula written as `\(E = mc^2\)` reached the page as
+  `(E = mc^2)`. A `$$...$$` block arrived as literal text. The build
+  succeeded and said nothing. The formula was not missing. It was
+  quietly wrong.
+- The code colours need `noClasses = false` under `[markup.highlight]`.
+  Without it, Chroma writes its own palette into the markup as inline
+  styles. The theme's code colours then have nothing to colour. One of
+  Chroma's defaults fails AA contrast, and dark mode cannot remap any
+  of it.
+- Both are now in the README, beside `figure-captions`. That feature
+  has the same requirement and was the only one documented. Both are
+  set in `exampleSite`, which also carries a page of formulas and code.
+  The demo shows them working rather than claiming it.
+- New gate, `release/downstream`. It does not read a site in this
+  repository. It writes one from the configuration blocks the README
+  publishes. Then it adds content that exercises them, builds against
+  the artefact, and reads the result.
+
+Every site the gates read was set up the way the theme wants. So
+anything the theme needed a site to declare was already declared, and
+could not fail. That is why none of this was caught here. It was caught
+by somebody building a site.
+
 ## v0.2.1, 2026-08-30
 
 - The demo is the example site, built against the packaged theme. It
