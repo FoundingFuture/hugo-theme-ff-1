@@ -41,3 +41,29 @@ defaultContentLanguage = 'en'
 # a theme adding an [outputs] format or a menus entry.
 [markup.goldmark.parser]
   wrapStandAloneImageWithinParagraph = false
+
+# The katex feature needs this, and needs it for the same reason.
+#
+# Goldmark reads a backslash before a bracket as an escape and eats it,
+# so \(E = mc^2\) reaches the page as (E = mc^2) and $$...$$ arrives as
+# literal text. The theme's render-passthrough hook never fires, because
+# a hook for an extension that is off has nothing to render. The build
+# succeeds and says nothing: the formula is not missing, it is quietly
+# wrong.
+#
+# The delimiters are the ones the theme's own fixture uses, and the ones
+# every LaTeX writer expects.
+[markup.goldmark.extensions.passthrough]
+  enable = true
+  [markup.goldmark.extensions.passthrough.delimiters]
+    block = [['\[', '\]'], ['$$', '$$']]
+    inline = [['\(', '\)']]
+
+# Chroma writes its colours into the markup as inline styles unless it is
+# told to use classes. With styles, the theme's own code colours never
+# apply: a code block arrives in Chroma's default palette on a dark
+# ground, one of whose colours fails AA contrast, and dark mode cannot
+# remap any of it because there is nothing to remap.
+[markup.highlight]
+  noClasses = false
+  style = "xcode"
