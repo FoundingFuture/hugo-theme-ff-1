@@ -18,10 +18,17 @@
 {{- $resource := false -}}
 {{- if not $u.IsAbs -}}
   {{- with or (.PageInner.Resources.Get $u.Path) (resources.Get $u.Path) -}}
-    {{- $src = .RelPermalink -}}
     {{- $resource = . -}}
   {{- end -}}
 {{- end -}}
+
+{{- /* The source's own address is read where it is used and nowhere
+       else. A resource is published the moment its permalink is read,
+       and reading it here published every original beside the variants
+       made from it: 1.4MB of PNG that no page ever asked for, because a
+       picture that went through the pipeline is served from the resized
+       copies. An SVG is served from this address, so it is read on that
+       path. */ -}}
 
 {{- /* Only a picture the pipeline can open.
 
@@ -90,6 +97,32 @@
   {{- end -}}
 {{- end -}}
 
+{{- /* An SVG carries its size in its own markup, so it can still say
+       how tall it is beside how wide. Without that a browser learns the
+       shape only when the file arrives, and the page moves under the
+       reader exactly as it does for a raster with no dimensions.
+
+       The width and height attributes first, and the viewBox where the
+       file gives none, which is the common case for a drawing exported
+       for the web. Congo reads them the same way. */ -}}
+{{- $svgW := "" -}}
+{{- $svgH := "" -}}
+{{- if and $resource (eq $resource.MediaType.SubType "svg") -}}
+  {{- $svg := $resource.Content -}}
+  {{- range findRESubmatch `<svg[^>]*[[:space:]]width="([0-9.]+)` $svg 1 -}}
+    {{- $svgW = index . 1 -}}
+  {{- end -}}
+  {{- range findRESubmatch `<svg[^>]*[[:space:]]height="([0-9.]+)` $svg 1 -}}
+    {{- $svgH = index . 1 -}}
+  {{- end -}}
+  {{- if or (eq $svgW "") (eq $svgH "") -}}
+    {{- range findRESubmatch `viewBox="[0-9.-]+[[:space:]]+[0-9.-]+[[:space:]]+([0-9.]+)[[:space:]]+([0-9.]+)` $svg 1 -}}
+      {{- $svgW = index . 1 -}}
+      {{- $svgH = index . 2 -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
 {{- /* A caption, where there is one and the feature is on. Decided
        before the plain img is written, because that one carries the
        title as a tooltip and a figure must not: the words are already
@@ -98,7 +131,11 @@
        wrote the two branches separately and did not have this. */ -}}
 {{- $captioned := and $captions (ne (string .Title) "") -}}
 {{- if not $tag -}}
-  {{- $tag = printf "<img src=%q alt=%q%s>" $src .PlainText
+  {{- /* Here is where the source is served from, so here is where its
+         address is read and the file published. */ -}}
+  {{- with $resource }}{{ $src = .RelPermalink }}{{ end -}}
+  {{- $tag = printf "<img src=%q alt=%q%s%s>" $src .PlainText
+        (cond (and (ne $svgW "") (ne $svgH "")) (printf " width=%q height=%q" $svgW $svgH) "")
         (cond (and (ne (string .Title) "") (not $captioned)) (printf " title=%q" .Title) "") -}}
 {{- end -}}
 

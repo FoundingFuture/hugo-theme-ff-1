@@ -144,7 +144,15 @@ def compare_files(off, on, allowed):
             findings.append(
                 "%s:1: published only with the features on, and no manifest declares it."
                 % path)
+    # A feature may stop a file being published, if its manifest says
+    # which. removes was already honoured for elements a feature takes
+    # off a page and never consulted here, so a feature that replaces a
+    # file could not say so. responsive-images replaces a source image
+    # with the variants made from it, and the source then goes unread
+    # and unpublished, which is the point of the feature.
     for path in sorted(off - on):
+        if any(fnmatch.fnmatch(path, pattern) for pattern in allowed["removes"]):
+            continue
         findings.append("%s:1: vanishes when the features are on." % path)
     return findings
 

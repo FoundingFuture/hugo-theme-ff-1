@@ -21,3 +21,10 @@ css = "css/features/responsive-images.css"
   # none of them is written and the img points at the source, which is
   # what the reference scaffold does.
   files = ["*_hu_*.avif", "*_hu_*.webp"]
+
+  # And the source stops being published, because nothing serves it any
+  # more: a page reaches the picture through the variants. Its address
+  # is read only on the path that falls back to it, and reading the
+  # address is what publishes the file. An SVG is served from its own
+  # address and so is not in this list.
+  removes = ["*.jpg", "*.jpeg", "*.png", "*.tiff", "*.bmp"]
