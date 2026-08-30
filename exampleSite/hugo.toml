@@ -4,6 +4,19 @@ locale = 'en-us'
 
 theme = 'ff-1'
 
+# Two languages, so the band names them and a reader can cross between.
+# English stays at the root and French sits under /fr/. A page with no
+# French version is simply absent from the French site.
+defaultContentLanguage = 'en'
+
+[languages.en]
+  label = 'English'
+  weight = 1
+
+[languages.fr]
+  label = 'Français'
+  weight = 2
+
 [params.ff-1]
   # A line across the top. Without one there is no band.
   tagline = 'A dense publishing theme for a site with a lot in it'

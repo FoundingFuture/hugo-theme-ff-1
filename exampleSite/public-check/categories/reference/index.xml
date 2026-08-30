@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Reference on ff-1</title>
+		<link>https://example.org/categories/reference/</link>
+		<description>Recent content in Reference on ff-1</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Tue, 09 Sep 2025 09:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://example.org/categories/reference/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Page One</title>
+				<link>https://example.org/topic-two/page-one/</link>
+				<pubDate>Tue, 09 Sep 2025 09:00:00 +0000</pubDate>
+				<guid>https://example.org/topic-two/page-one/</guid>
+				<description>&lt;p&gt;Deserunt amet culpa voluptate cillum dolor est fugiat reprehenderit occaecat lorem proident adipisicing duis. Proident anim in irure minim fugiat eiusmod qui duis. Sit ex incididunt duis labore lorem quis elit occaecat nulla mollit. Elit tempor culpa est qui velit exercitation sunt fugiat aliquip nulla tempor ullamco lorem ex. Qui quis laborum fugiat ea nulla culpa consectetur proident tempor veniam non dolore est voluptate ad.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Page Three</title>
+				<link>https://example.org/topic-two/page-three/</link>
+				<pubDate>Tue, 29 Jul 2025 09:00:00 +0000</pubDate>
+				<guid>https://example.org/topic-two/page-three/</guid>
+				<description>&lt;p&gt;Ut veniam mollit anim minim culpa pariatur cillum aute nisi deserunt reprehenderit occaecat in proident. Pariatur magna qui aliquip reprehenderit officia proident nulla adipisicing sint enim. Aute ad nulla exercitation esse ullamco adipisicing dolore sunt. Dolor fugiat officia velit id nisi minim qui aliquip.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Page Two</title>
+				<link>https://example.org/topic-two/page-two/</link>
+				<pubDate>Thu, 20 Jun 2024 09:00:00 +0000</pubDate>
+				<guid>https://example.org/topic-two/page-two/</guid>
+				<description>&lt;p&gt;Aliqua non proident in sit reprehenderit velit lorem. Fugiat est labore minim eiusmod quis duis culpa sint dolor excepteur aute veniam nulla exercitation. Excepteur ut reprehenderit magna cillum laborum sint id elit nulla sunt ipsum exercitation dolor.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

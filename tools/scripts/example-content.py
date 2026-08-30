@@ -54,6 +54,11 @@ TREE = {
         # and a demo whose every page fits on one screen only ever shows
         # that fade filling leftover space.
         "long": ["page-one"],
+        # One page in a second language, so the band across the top has
+        # both to name and a reader can cross between them. Every other
+        # page then shows the other case: a language with no version of
+        # this page, which goes to that language's home instead.
+        "french": ["page-one"],
         "sections": {
             "subtopic-one": {
                 "pages": ["page-one"],
@@ -172,6 +177,28 @@ def fill(path, rng, tags, intro=False, weight=0, long=False, category=""):
         handle.write(text)
 
 
+def french(path, rng):
+    """Write the French version of a page, from the same vocabulary."""
+    body = paragraphs(rng, 4)
+    parts = [body[0], "<!--more-->"]
+    for para in body[1:]:
+        parts.append("## " + " ".join(rng.sample(WORDS, 2)).capitalize())
+        parts.append(para)
+    front = ("+++\n"
+             "date = '2025-01-08T09:00:00Z'\n"
+             "draft = false\n"
+             "categories = ['reference']\n"
+             # A tag only this page carries, so a reader switching to
+             # English can watch it leave the menu. The taxonomies are
+             # built per language from that language's own content.
+             "tags = ['yellow', 'france']\n"
+             "title = 'Premiere page'\n"
+             "slug = 'premiere-page'\n"
+             "+++\n\n")
+    with open(path, "w", encoding="utf-8") as handle:
+        handle.write(front + "\n\n".join(parts) + "\n")
+
+
 def build(node, prefix, rng):
     for index, (name, spec) in enumerate(node.items(), start=1):
         here = "%s/%s" % (prefix, name) if prefix else name
@@ -194,6 +221,11 @@ def build(node, prefix, rng):
                  rng, rng.sample(TAGS, rng.randint(1, 2)),
                  long=page in spec.get("long", []),
                  category=CATEGORIES[(index - 1) % len(CATEGORIES)])
+
+            # The French version sits beside it, same basename, so Hugo
+            # pairs the two without a translationKey.
+            if page in spec.get("french", []):
+                french(os.path.join(SITE, "content", here, page + ".fr.md"), rng)
 
         build(spec.get("sections", {}), here, rng)
 

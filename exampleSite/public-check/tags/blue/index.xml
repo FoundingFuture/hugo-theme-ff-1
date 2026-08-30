@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Blue on ff-1</title>
+		<link>https://example.org/tags/blue/</link>
+		<description>Recent content in Blue on ff-1</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 12 Feb 2026 09:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://example.org/tags/blue/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Page One</title>
+				<link>https://example.org/topic-one/subtopic-one/page-one/</link>
+				<pubDate>Thu, 12 Feb 2026 09:00:00 +0000</pubDate>
+				<guid>https://example.org/topic-one/subtopic-one/page-one/</guid>
+				<description>&lt;p&gt;Officia deserunt incididunt exercitation enim amet sit occaecat velit aliquip esse reprehenderit minim. Nostrud velit id labore ea pariatur minim dolor culpa anim. Velit nulla duis cillum irure amet sint exercitation enim minim nisi ex incididunt.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Page One</title>
+				<link>https://example.org/topic-one/subtopic-two/page-one/</link>
+				<pubDate>Mon, 02 Feb 2026 09:00:00 +0000</pubDate>
+				<guid>https://example.org/topic-one/subtopic-two/page-one/</guid>
+				<description>&lt;p&gt;Est ex ipsum sint magna mollit laborum dolor irure ad tempor deserunt proident enim. Ullamco tempor magna exercitation proident irure reprehenderit adipisicing. Nisi anim ullamco lorem pariatur mollit consectetur aliqua velit id non occaecat ex enim adipisicing. Do tempor ea eiusmod ex ad esse nostrud enim cillum est aute ullamco.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Page One</title>
+				<link>https://example.org/topic-two/page-one/</link>
+				<pubDate>Tue, 09 Sep 2025 09:00:00 +0000</pubDate>
+				<guid>https://example.org/topic-two/page-one/</guid>
+				<description>&lt;p&gt;Deserunt amet culpa voluptate cillum dolor est fugiat reprehenderit occaecat lorem proident adipisicing duis. Proident anim in irure minim fugiat eiusmod qui duis. Sit ex incididunt duis labore lorem quis elit occaecat nulla mollit. Elit tempor culpa est qui velit exercitation sunt fugiat aliquip nulla tempor ullamco lorem ex. Qui quis laborum fugiat ea nulla culpa consectetur proident tempor veniam non dolore est voluptate ad.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Page One</title>
+				<link>https://example.org/topic-three/subtopic-one/page-one/</link>
+				<pubDate>Tue, 02 Jan 2024 09:00:00 +0000</pubDate>
+				<guid>https://example.org/topic-three/subtopic-one/page-one/</guid>
+				<description>&lt;p&gt;Do aliqua incididunt pariatur esse sint magna reprehenderit irure. Magna fugiat deserunt elit minim consectetur id sit pariatur ex voluptate. Officia anim aliqua nisi voluptate fugiat esse est veniam in minim amet consequat lorem dolore tempor. Labore ad ea qui proident do cillum adipisicing nisi tempor exercitation fugiat ex consequat sunt duis. Laborum tempor esse excepteur tempor deserunt incididunt aliquip cillum ipsum.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Post 3</title>
+				<link>https://example.org/posts/post-3/</link>
+				<pubDate>Wed, 15 Mar 2023 11:00:00 -0700</pubDate>
+				<guid>https://example.org/posts/post-3/</guid>
+				<description>&lt;p&gt;Occaecat aliqua consequat laborum ut ex aute aliqua culpa quis irure esse magna dolore quis. Proident fugiat labore eu laboris officia Lorem enim. Ipsum occaecat cillum ut tempor id sint aliqua incididunt nisi incididunt reprehenderit. Voluptate ad minim sint est aute aliquip esse occaecat tempor officia qui sunt. Aute ex ipsum id ut in est velit est laborum incididunt. Aliqua qui id do esse sunt eiusmod id deserunt eu nostrud aute sit ipsum. Deserunt esse cillum Lorem non magna adipisicing mollit amet consequat.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

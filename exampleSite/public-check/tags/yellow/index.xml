@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Yellow on ff-1</title>
+		<link>https://example.org/tags/yellow/</link>
+		<description>Recent content in Yellow on ff-1</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 26 Mar 2026 09:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://example.org/tags/yellow/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Page One</title>
+				<link>https://example.org/topic-one/subtopic-one/deeper-one/page-one/</link>
+				<pubDate>Thu, 26 Mar 2026 09:00:00 +0000</pubDate>
+				<guid>https://example.org/topic-one/subtopic-one/deeper-one/page-one/</guid>
+				<description>&lt;p&gt;Ullamco occaecat consequat in minim amet anim consectetur enim non ad. Incididunt ex lorem reprehenderit velit cillum voluptate eiusmod adipisicing. Adipisicing do dolor ea reprehenderit sint culpa in occaecat lorem ipsum labore voluptate. Aute eiusmod consequat ea cillum id magna in lorem voluptate ut irure exercitation fugiat proident.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Page One</title>
+				<link>https://example.org/topic-one/subtopic-one/page-one/</link>
+				<pubDate>Thu, 12 Feb 2026 09:00:00 +0000</pubDate>
+				<guid>https://example.org/topic-one/subtopic-one/page-one/</guid>
+				<description>&lt;p&gt;Officia deserunt incididunt exercitation enim amet sit occaecat velit aliquip esse reprehenderit minim. Nostrud velit id labore ea pariatur minim dolor culpa anim. Velit nulla duis cillum irure amet sint exercitation enim minim nisi ex incididunt.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Page One</title>
+				<link>https://example.org/topic-one/subtopic-two/page-one/</link>
+				<pubDate>Mon, 02 Feb 2026 09:00:00 +0000</pubDate>
+				<guid>https://example.org/topic-one/subtopic-two/page-one/</guid>
+				<description>&lt;p&gt;Est ex ipsum sint magna mollit laborum dolor irure ad tempor deserunt proident enim. Ullamco tempor magna exercitation proident irure reprehenderit adipisicing. Nisi anim ullamco lorem pariatur mollit consectetur aliqua velit id non occaecat ex enim adipisicing. Do tempor ea eiusmod ex ad esse nostrud enim cillum est aute ullamco.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Page One</title>
+				<link>https://example.org/topic-one/page-one/</link>
+				<pubDate>Wed, 08 Jan 2025 09:00:00 +0000</pubDate>
+				<guid>https://example.org/topic-one/page-one/</guid>
+				<description>&lt;p&gt;Velit ea sit ut ex reprehenderit esse aliqua nostrud nulla consequat elit. Excepteur ex aliqua fugiat incididunt anim non sit labore aute pariatur tempor adipisicing veniam. Occaecat dolore elit labore anim consequat ea velit minim.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Page Two</title>
+				<link>https://example.org/topic-one/page-two/</link>
+				<pubDate>Thu, 26 Sep 2024 09:00:00 +0000</pubDate>
+				<guid>https://example.org/topic-one/page-two/</guid>
+				<description>&lt;p&gt;Aliqua labore ullamco mollit quis ea fugiat adipisicing pariatur nostrud est ipsum tempor incididunt velit eiusmod. Officia mollit nisi voluptate est veniam exercitation ipsum tempor sit duis pariatur. Proident ut voluptate duis consectetur in culpa ipsum magna aliquip sit laborum minim anim quis.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Page Two</title>
+				<link>https://example.org/topic-two/page-two/</link>
+				<pubDate>Thu, 20 Jun 2024 09:00:00 +0000</pubDate>
+				<guid>https://example.org/topic-two/page-two/</guid>
+				<description>&lt;p&gt;Aliqua non proident in sit reprehenderit velit lorem. Fugiat est labore minim eiusmod quis duis culpa sint dolor excepteur aute veniam nulla exercitation. Excepteur ut reprehenderit magna cillum laborum sint id elit nulla sunt ipsum exercitation dolor.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Page One</title>
+				<link>https://example.org/topic-three/subtopic-one/page-one/</link>
+				<pubDate>Tue, 02 Jan 2024 09:00:00 +0000</pubDate>
+				<guid>https://example.org/topic-three/subtopic-one/page-one/</guid>
+				<description>&lt;p&gt;Do aliqua incididunt pariatur esse sint magna reprehenderit irure. Magna fugiat deserunt elit minim consectetur id sit pariatur ex voluptate. Officia anim aliqua nisi voluptate fugiat esse est veniam in minim amet consequat lorem dolore tempor. Labore ad ea qui proident do cillum adipisicing nisi tempor exercitation fugiat ex consequat sunt duis. Laborum tempor esse excepteur tempor deserunt incididunt aliquip cillum ipsum.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

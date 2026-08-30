@@ -160,6 +160,20 @@ title = '$NAME'
 locale = 'en-us'
 
 theme = '$(tools/scripts/slug.sh)'
+
+# Two languages, so the demo shows what the theme does with them. The
+# band names both, a page translated into French links straight across,
+# and one that is not sends a reader to the French home, which lists what
+# French has. example-content.py writes the French page.
+defaultContentLanguage = 'en'
+
+[languages.en]
+  label = 'English'
+  weight = 1
+
+[languages.fr]
+  label = 'Français'
+  weight = 2
 CONFIG
 fi
 

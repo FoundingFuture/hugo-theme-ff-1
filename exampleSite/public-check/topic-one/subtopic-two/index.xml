@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Subtopic Two on ff-1</title>
+		<link>https://example.org/topic-one/subtopic-two/</link>
+		<description>Recent content in Subtopic Two on ff-1</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Mon, 02 Feb 2026 09:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://example.org/topic-one/subtopic-two/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Page One</title>
+				<link>https://example.org/topic-one/subtopic-two/page-one/</link>
+				<pubDate>Mon, 02 Feb 2026 09:00:00 +0000</pubDate>
+				<guid>https://example.org/topic-one/subtopic-two/page-one/</guid>
+				<description>&lt;p&gt;Est ex ipsum sint magna mollit laborum dolor irure ad tempor deserunt proident enim. Ullamco tempor magna exercitation proident irure reprehenderit adipisicing. Nisi anim ullamco lorem pariatur mollit consectetur aliqua velit id non occaecat ex enim adipisicing. Do tempor ea eiusmod ex ad esse nostrud enim cillum est aute ullamco.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

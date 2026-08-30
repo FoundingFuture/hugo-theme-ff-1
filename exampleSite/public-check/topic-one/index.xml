@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Topic One on ff-1</title>
+		<link>https://example.org/topic-one/</link>
+		<description>Recent content in Topic One on ff-1</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Wed, 08 Jan 2025 09:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://example.org/topic-one/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Page One</title>
+				<link>https://example.org/topic-one/page-one/</link>
+				<pubDate>Wed, 08 Jan 2025 09:00:00 +0000</pubDate>
+				<guid>https://example.org/topic-one/page-one/</guid>
+				<description>&lt;p&gt;Velit ea sit ut ex reprehenderit esse aliqua nostrud nulla consequat elit. Excepteur ex aliqua fugiat incididunt anim non sit labore aute pariatur tempor adipisicing veniam. Occaecat dolore elit labore anim consequat ea velit minim.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Page Two</title>
+				<link>https://example.org/topic-one/page-two/</link>
+				<pubDate>Thu, 26 Sep 2024 09:00:00 +0000</pubDate>
+				<guid>https://example.org/topic-one/page-two/</guid>
+				<description>&lt;p&gt;Aliqua labore ullamco mollit quis ea fugiat adipisicing pariatur nostrud est ipsum tempor incididunt velit eiusmod. Officia mollit nisi voluptate est veniam exercitation ipsum tempor sit duis pariatur. Proident ut voluptate duis consectetur in culpa ipsum magna aliquip sit laborum minim anim quis.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

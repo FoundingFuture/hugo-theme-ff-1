@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Jaune on ff-1</title>
+		<link>https://example.org/fr/tags/yellow/</link>
+		<description>Recent content in Jaune on ff-1</description>
+		<generator>Hugo</generator>
+		<language>fr</language>
+		
+		
+		
+		
+			<lastBuildDate>Wed, 08 Jan 2025 09:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://example.org/fr/tags/yellow/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Première page</title>
+				<link>https://example.org/fr/topic-one/premiere-page/</link>
+				<pubDate>Wed, 08 Jan 2025 09:00:00 +0000</pubDate>
+				<guid>https://example.org/fr/topic-one/premiere-page/</guid>
+				<description>&lt;p&gt;Ea nostrud labore ut pariatur esse minim consectetur anim sunt qui. Enim nulla sint velit labore dolore qui consectetur. Dolore ut deserunt minim dolor esse excepteur fugiat labore amet do consectetur in elit anim tempor.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

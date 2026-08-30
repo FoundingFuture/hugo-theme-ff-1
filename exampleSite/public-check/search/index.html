@@ -1,0 +1,356 @@
+
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Search | ff-1</title>
+
+        <link rel="stylesheet" href="/css/bundle.f8ef99bc5c7bef5281ef643a898efd2c761937a7ef00143b952f957210c02cb0.css" integrity="sha256-&#43;O&#43;ZvFx771KB72Q6iY79LHYZN6fvABQ7lS&#43;VchDALLA=" crossorigin="anonymous">
+
+
+        <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
+<meta name="description" content="Type a word. The list below is the index, so it narrows as you type and nothing is fetched.">
+<link rel="canonical" href="https://example.org/search/">
+<meta property="og:title" content="Search">
+<meta property="og:description" content="Type a word. The list below is the index, so it narrows as you type and nothing is fetched.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://example.org/search/">
+
+<script>(()=>{(function(){var a="ff-1-theme",n=document.documentElement;function o(){try{return localStorage.getItem(a)}catch{return null}}function u(t){try{localStorage.setItem(a,t)}catch{}}var r=o();(r==="dark"||r==="light")&&(n.dataset.theme=r),document.addEventListener("click",function(t){var c=t.target.closest&&t.target.closest("[data-set-theme]");if(c){var e=c.getAttribute("data-set-theme");e!=="dark"&&e!=="light"||(n.dataset.theme=e,u(e))}})})();})();
+</script>
+
+
+
+</head>
+<body id="top"><aside class="side">
+  <header class="brandcell"><a class="brand" href="/" aria-label="ff-1">
+  <p class="site-title">
+<span class="wordmark-text" style="--em:4;--lines:1">ff-1</span>
+</p>
+</a><p class="est">a Hugo theme</p>
+<div class="themeset">
+  <button type="button" class="themebtn" data-set-theme="light" aria-label="Light theme">
+    <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+      <circle cx="8" cy="8" r="3.1" fill="currentColor"></circle>
+      <g stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+        <path d="M8 .9v2.0M8 13.1v2.0M.9 8h2.0M13.1 8h2.0"></path>
+        <path d="M2.98 2.98l1.42 1.42M11.6 11.6l1.42 1.42M13.02 2.98L11.6 4.4M4.4 11.6l-1.42 1.42"></path>
+      </g>
+    </svg>
+  </button>
+  <button type="button" class="themebtn" data-set-theme="dark" aria-label="Dark theme">
+    <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+      <path fill="currentColor"
+            d="M13.4 10.6A5.9 5.9 0 0 1 5.4 2.6a6.3 6.3 0 1 0 8 8z"></path>
+    </svg>
+  </button>
+</div>
+
+  </header><details class="railwrap">
+    <summary class="menubtn"><span>Menu</span><span class="what shut">open</span><span class="what open">close</span><span class="chev" aria-hidden="true"></span></summary>
+    
+<nav class="rail">
+  <form class="findbox" role="search" action="/search/" method="get"><input type="search" id="rail-q" name="q" autocomplete="off"
+           aria-label="Search"
+           placeholder="Search term">
+    <button type="submit">Search</button>
+  </form>
+  
+
+<ul class="topics">
+  <li><details data-t="teal">
+    <summary><span class="nm">Topic One</span><span class="n">6</span><span class="chev" aria-hidden="true"></span></summary>
+    
+
+<ul>
+  <li class="all"><a href="/topic-one/">Main page</a></li>
+  <li><details name="/topic-one/" class="sub">
+    <summary><span class="nm">Subtopic One</span><span class="n">3</span><span class="chev" aria-hidden="true"></span></summary>
+    
+
+<ul>
+  <li class="all"><a href="/topic-one/subtopic-one/">Main page</a></li>
+  <li><details name="/topic-one/subtopic-one/" class="sub">
+    <summary><span class="nm">Deeper One</span><span class="n">2</span><span class="chev" aria-hidden="true"></span></summary>
+    
+
+<ul>
+  <li class="all"><a href="/topic-one/subtopic-one/deeper-one/">Main page</a></li>
+  <li class="piece"><a href="/topic-one/subtopic-one/deeper-one/page-one/">Page One</a></li>
+  <li class="piece"><a href="/topic-one/subtopic-one/deeper-one/page-two/">Page Two</a></li>
+</ul>
+
+  </details></li>
+  <li class="piece"><a href="/topic-one/subtopic-one/page-one/">Page One</a></li>
+</ul>
+
+  </details></li>
+  <li><details name="/topic-one/" class="sub">
+    <summary><span class="nm">Subtopic Two</span><span class="n">1</span><span class="chev" aria-hidden="true"></span></summary>
+    
+
+<ul>
+  <li class="all"><a href="/topic-one/subtopic-two/">Main page</a></li>
+  <li class="piece"><a href="/topic-one/subtopic-two/page-one/">Page One</a></li>
+</ul>
+
+  </details></li>
+  <li class="piece"><a href="/topic-one/page-one/">Page One</a></li>
+  <li class="piece"><a href="/topic-one/page-two/">Page Two</a></li>
+</ul>
+
+  </details></li>
+  <li><details data-t="indigo">
+    <summary><span class="nm">Topic Two</span><span class="n">3</span><span class="chev" aria-hidden="true"></span></summary>
+    
+
+<ul>
+  <li class="all"><a href="/topic-two/">Main page</a></li>
+  <li class="piece"><a href="/topic-two/page-one/">Page One</a></li>
+  <li class="piece"><a href="/topic-two/page-three/">Page Three</a></li>
+  <li class="piece"><a href="/topic-two/page-two/">Page Two</a></li>
+</ul>
+
+  </details></li>
+  <li><details data-t="rose">
+    <summary><span class="nm">Topic Three</span><span class="n">1</span><span class="chev" aria-hidden="true"></span></summary>
+    
+
+<ul>
+  <li class="all"><a href="/topic-three/">Main page</a></li>
+  <li><details name="/topic-three/" class="sub">
+    <summary><span class="nm">Subtopic One</span><span class="n">1</span><span class="chev" aria-hidden="true"></span></summary>
+    
+
+<ul>
+  <li class="all"><a href="/topic-three/subtopic-one/">Main page</a></li>
+  <li class="piece"><a href="/topic-three/subtopic-one/page-one/">Page One</a></li>
+</ul>
+
+  </details></li>
+</ul>
+
+  </details></li>
+  <li><details data-t="amber">
+    <summary><span class="nm">Posts</span><span class="n">3</span><span class="chev" aria-hidden="true"></span></summary>
+    
+
+<ul>
+  <li class="all"><a href="/posts/">Main page</a></li>
+  <li class="piece"><a href="/posts/post-3/">Post 3</a></li>
+  <li class="piece"><a href="/posts/post-2/">Post 2</a></li>
+  <li class="piece"><a href="/posts/post-1/">Post 1</a></li>
+</ul>
+
+  </details></li>
+</ul>
+
+  
+<div class="taxo"><div class="taxo-group" data-taxo="categories">
+    <a class="taxo-name" href="/categories/">Categories</a>
+    <ul class="taxo-terms">
+      <li><a href="/categories/guide/">Guide</a></li>
+      <li><a href="/categories/reference/">Reference</a></li>
+      <li><a href="/categories/note/">Note</a></li>
+    </ul>
+  </div><div class="taxo-group" data-taxo="tags">
+    <a class="taxo-name" href="/tags/">Tags</a>
+    <ul class="taxo-terms">
+      <li><a href="/tags/red/">Red</a></li>
+      <li><a href="/tags/yellow/">Yellow</a></li>
+      <li><a href="/tags/blue/">Blue</a></li>
+      <li><a href="/tags/green/">Green</a></li>
+    </ul>
+  </div>
+</div>
+
+</nav>
+
+  </details>
+</aside>
+<header class="strip"><p style="--len:52">A dense publishing theme for a site with a lot in it</p>
+<nav class="langs" aria-labelledby="langs-label">
+  <span class="langs-label" id="langs-label">Available languages</span>
+  <a href="/search/" hreflang="en" aria-current="true"
+     aria-label="English"
+  >EN</a>
+  <a href="/fr/" hreflang="fr" class="elsewhere"
+     aria-label="Français, which has no version of this page"
+  >FR</a>
+</nav>
+
+</header>
+
+<main>
+  <div data-part="head">
+    <h1>Search</h1>
+    
+  </div>
+  <div data-part="body"><p>Type a word. The list below is the index, so it narrows as you
+type and nothing is fetched.</p>
+</div>
+  <form class="search-form" role="search" action="/search/" method="get">
+    <label for="search-query">Search</label>
+    <input type="search" id="search-query" name="q" autocomplete="off"
+           placeholder="A word from a title, the text or a tag">
+    <button type="submit">Search</button>
+  </form>
+  <p class="search-count" role="status"
+     data-one="&#34;1 piece&#34;"
+     data-many="999 pieces"
+     data-none="Nothing matches that.">16 pieces</p>
+
+  <ul class="search-results">
+    <li class="search-result"
+        data-s="Home"
+        data-g=""
+        data-d=""
+        data-b="A video, as a picture and a play button, both served from this domain. The player arrives when you press it. A video Plays from Youtube once you press it ">
+      <a href="/a-video/">A Video</a>
+      <p class="search-summary">A video, as a picture and a play button, both served from this domain. The player arrives when you press it.
+A video Plays from Youtube once you press it </p>
+    </li>
+    <li class="search-result"
+        data-s="Home"
+        data-g=""
+        data-d=""
+        data-b="Thumbnails that open full size when clicked. No script: a thumbnail is a link to a fragment, and back closes the picture. A grey square Another grey square A grey square1 of 2 &amp;#8249; &amp;#8250; &amp;#215; Another grey square2 of 2 &amp;#8249; &amp;#8250; &amp;#215; ">
+      <a href="/pictures/">Pictures</a>
+      <p class="search-summary">Thumbnails that open full size when clicked. No script: a thumbnail is a link to a fragment, and back closes the picture.
+A grey square Another grey square A …</p>
+    </li>
+    <li class="search-result"
+        data-s="Home"
+        data-g=""
+        data-d=""
+        data-b="Type a word. The list below is the index, so it narrows as you type and nothing is fetched. ">
+      <a href="/search/">Search</a>
+      <p class="search-summary">Type a word. The list below is the index, so it narrows as you type and nothing is fetched.</p>
+    </li>
+    <li class="search-result"
+        data-s="Deeper One"
+        data-g="Yellow Red"
+        data-d=""
+        data-b="Ullamco occaecat consequat in minim amet anim consectetur enim non ad. Incididunt ex lorem reprehenderit velit cillum voluptate eiusmod adipisicing. Adipisicing do dolor ea reprehenderit sint culpa in occaecat lorem ipsum labore voluptate. Aute eiusmod consequat ea cillum id magna in lorem voluptate ut irure exercitation fugiat proident. Tempor dolore Pariatur minim reprehenderit esse occaecat eiusmod duis excepteur ipsum cillum dolore ullamco proident sit sunt. Deserunt consectetur labore culpa velit est ea reprehenderit veniam amet. Qui do occaecat tempor aliquip fugiat duis est cillum. Tempor ad eiusmod duis ullamco aliquip labore aliqua reprehenderit consectetur proident anim nulla esse laborum. Excepteur irure Incididunt veniam ullamco magna eiusmod ut in nisi duis fugiat occaecat irure pariatur. Ea tempor sit eiusmod qui veniam in nulla nisi consequat proident. Voluptate tempor consectetur esse fugiat veniam amet adipisicing pariatur deserunt non duis quis ad in. Officia dolore ad adipisicing anim voluptate incididunt ut sit mollit amet enim. Aliquip esse duis lorem ad qui aute irure veniam ex. Reprehenderit incididunt Consequat excepteur proident in eiusmod minim nulla sit">
+      <a href="/topic-one/subtopic-one/deeper-one/page-one/">Page One</a>
+      <p class="search-summary">Ullamco occaecat consequat in minim amet anim consectetur enim non ad. Incididunt ex lorem reprehenderit velit cillum voluptate eiusmod adipisicing. Adipisicing …</p>
+    </li>
+    <li class="search-result"
+        data-s="Subtopic One"
+        data-g="Yellow Blue"
+        data-d=""
+        data-b="Officia deserunt incididunt exercitation enim amet sit occaecat velit aliquip esse reprehenderit minim. Nostrud velit id labore ea pariatur minim dolor culpa anim. Velit nulla duis cillum irure amet sint exercitation enim minim nisi ex incididunt. Ipsum ut Mollit minim non sit ut duis voluptate aliquip laborum consequat id enim ipsum ad. Id sunt amet voluptate consequat sit elit ut pariatur. Anim elit occaecat consequat lorem excepteur enim dolore officia culpa minim fugiat est sunt. Anim fugiat do elit exercitation ad veniam irure ex officia. Nostrud qui id adipisicing enim exercitation eiusmod aute. Aliqua anim Occaecat magna proident sunt officia ipsum duis elit. Irure dolor est enim veniam minim aliquip lorem qui nisi voluptate sint do exercitation incididunt tempor. Lorem ex nulla laborum eiusmod officia exercitation proident aliqua. Excepteur ad tempor laborum do deserunt consequat esse sit. Consectetur lorem Elit ea officia velit aliquip nostrud nulla veniam dolore enim proident. Labore eiusmod mollit do quis ea irure laborum magna voluptate ex lorem. Veniam laborum ullamco nisi reprehenderit tempor nulla lorem minim aliqua. Dolore reprehenderit Exercitation eiusmod qui">
+      <a href="/topic-one/subtopic-one/page-one/">Page One</a>
+      <p class="search-summary">Officia deserunt incididunt exercitation enim amet sit occaecat velit aliquip esse reprehenderit minim. Nostrud velit id labore ea pariatur minim dolor culpa …</p>
+    </li>
+    <li class="search-result"
+        data-s="Subtopic Two"
+        data-g="Blue Yellow"
+        data-d=""
+        data-b="Est ex ipsum sint magna mollit laborum dolor irure ad tempor deserunt proident enim. Ullamco tempor magna exercitation proident irure reprehenderit adipisicing. Nisi anim ullamco lorem pariatur mollit consectetur aliqua velit id non occaecat ex enim adipisicing. Do tempor ea eiusmod ex ad esse nostrud enim cillum est aute ullamco. Quis reprehenderit Quis reprehenderit eiusmod lorem pariatur duis cillum minim ex. Mollit laborum incididunt culpa veniam fugiat est ipsum enim pariatur irure duis proident sit. Est ut quis pariatur qui do magna veniam ea reprehenderit duis adipisicing incididunt ipsum ad aliquip. Nisi dolore Lorem consectetur incididunt tempor id consequat in ad sunt exercitation esse nisi. Non pariatur nostrud culpa deserunt elit sunt in laborum exercitation aliquip quis ullamco id irure. Sint ea minim est aute exercitation occaecat nostrud eiusmod. Anim duis laborum sint ea labore amet mollit dolor. Sint mollit ea est amet tempor consequat aute dolor veniam adipisicing. Do veniam Excepteur nulla deserunt magna incididunt reprehenderit mollit ad aute sit minim do qui anim occaecat ea. Qui anim mollit incididunt ad esse veniam id elit sint tempor sunt enim aliqua dolore">
+      <a href="/topic-one/subtopic-two/page-one/">Page One</a>
+      <p class="search-summary">Est ex ipsum sint magna mollit laborum dolor irure ad tempor deserunt proident enim. Ullamco tempor magna exercitation proident irure reprehenderit adipisicing. …</p>
+    </li>
+    <li class="search-result"
+        data-s="Topic Two"
+        data-g="Green Blue"
+        data-d=""
+        data-b="Deserunt amet culpa voluptate cillum dolor est fugiat reprehenderit occaecat lorem proident adipisicing duis. Proident anim in irure minim fugiat eiusmod qui duis. Sit ex incididunt duis labore lorem quis elit occaecat nulla mollit. Elit tempor culpa est qui velit exercitation sunt fugiat aliquip nulla tempor ullamco lorem ex. Qui quis laborum fugiat ea nulla culpa consectetur proident tempor veniam non dolore est voluptate ad. Irure labore Id dolor voluptate consectetur sit enim labore mollit. Anim quis aliqua consequat minim veniam nisi incididunt officia irure cillum mollit sunt nulla. Anim minim duis dolor do fugiat non aute in. Consequat dolor veniam dolore exercitation ut anim nostrud nisi tempor. Dolor officia Ipsum consectetur reprehenderit nulla lorem eiusmod occaecat cillum aliquip anim ea dolore nostrud tempor magna. Deserunt aliquip incididunt tempor magna do nostrud ut. Excepteur cillum veniam consequat voluptate elit occaecat esse id incididunt reprehenderit tempor. Deserunt aute Aliquip irure non fugiat proident ullamco in labore occaecat do pariatur enim. Sint reprehenderit aliquip est ipsum tempor enim non adipisicing tempor culpa velit. Consectetur nisi duis">
+      <a href="/topic-two/page-one/">Page One</a>
+      <p class="search-summary">Deserunt amet culpa voluptate cillum dolor est fugiat reprehenderit occaecat lorem proident adipisicing duis. Proident anim in irure minim fugiat eiusmod qui …</p>
+    </li>
+    <li class="search-result"
+        data-s="Topic Two"
+        data-g="Red"
+        data-d=""
+        data-b="Ut veniam mollit anim minim culpa pariatur cillum aute nisi deserunt reprehenderit occaecat in proident. Pariatur magna qui aliquip reprehenderit officia proident nulla adipisicing sint enim. Aute ad nulla exercitation esse ullamco adipisicing dolore sunt. Dolor fugiat officia velit id nisi minim qui aliquip. Do est Ea amet tempor proident nisi quis mollit in deserunt duis nostrud laborum. Nulla nisi consequat eiusmod laborum aliqua aute enim officia tempor ut occaecat. Magna esse ut ea nulla excepteur aliquip exercitation qui dolor labore nisi consequat in. Ad esse dolor minim nulla aliqua labore qui elit ea ipsum tempor. Est ut tempor deserunt sint consectetur dolor anim ipsum non nostrud fugiat ullamco sunt enim. Pariatur adipisicing Velit sint eiusmod proident consequat ut culpa tempor ea ipsum. Ullamco exercitation id aliquip nisi qui tempor do amet velit incididunt ea veniam voluptate anim pariatur. Minim adipisicing dolor labore aliquip nulla proident reprehenderit elit voluptate veniam excepteur irure ullamco. Occaecat culpa Cillum laborum magna consequat dolor non in deserunt fugiat tempor ea tempor. Ipsum consequat reprehenderit nostrud enim sit incididunt esse irure">
+      <a href="/topic-two/page-three/">Page Three</a>
+      <p class="search-summary">Ut veniam mollit anim minim culpa pariatur cillum aute nisi deserunt reprehenderit occaecat in proident. Pariatur magna qui aliquip reprehenderit officia …</p>
+    </li>
+    <li class="search-result"
+        data-s="Topic One"
+        data-g="Yellow"
+        data-d=""
+        data-b="Velit ea sit ut ex reprehenderit esse aliqua nostrud nulla consequat elit. Excepteur ex aliqua fugiat incididunt anim non sit labore aute pariatur tempor adipisicing veniam. Occaecat dolore elit labore anim consequat ea velit minim. Dolor sunt Incididunt ea enim do culpa qui ipsum amet. Cillum minim dolore adipisicing id fugiat duis voluptate occaecat aliquip. Officia veniam pariatur non lorem ut ea tempor elit deserunt esse. Minim incididunt Incididunt eiusmod sunt deserunt cillum consequat consectetur do ea culpa ex minim ullamco sint aliquip. Incididunt dolore non irure cillum ut amet esse velit consequat minim culpa tempor anim nostrud sint. Sit enim dolore culpa deserunt eiusmod adipisicing esse sint qui tempor laborum consectetur. Incididunt reprehenderit Laborum officia tempor aliqua esse nulla excepteur reprehenderit. In nisi ut reprehenderit nulla aute fugiat id adipisicing ipsum. Tempor labore magna irure reprehenderit nostrud aute sunt id mollit fugiat ut. Qui labore amet voluptate proident exercitation aute sint duis tempor lorem irure quis mollit. Amet tempor irure occaecat officia qui dolore nisi tempor quis enim cillum aute excepteur culpa. Fugiat exercitation Culpa">
+      <a href="/topic-one/page-one/">Page One</a>
+      <p class="search-summary">Velit ea sit ut ex reprehenderit esse aliqua nostrud nulla consequat elit. Excepteur ex aliqua fugiat incididunt anim non sit labore aute pariatur tempor …</p>
+    </li>
+    <li class="search-result"
+        data-s="Topic One"
+        data-g="Green Yellow"
+        data-d=""
+        data-b="Aliqua labore ullamco mollit quis ea fugiat adipisicing pariatur nostrud est ipsum tempor incididunt velit eiusmod. Officia mollit nisi voluptate est veniam exercitation ipsum tempor sit duis pariatur. Proident ut voluptate duis consectetur in culpa ipsum magna aliquip sit laborum minim anim quis. Qui labore Magna tempor est nisi dolor lorem laborum culpa. Quis velit ex fugiat cillum do ad officia esse consectetur amet exercitation. Aute lorem id nisi in labore consequat adipisicing pariatur fugiat do sunt laborum elit cillum. Veniam ipsum ea labore sint magna minim incididunt in sunt velit do dolor qui deserunt nisi. Cillum in Tempor elit in do minim irure excepteur ullamco. Elit pariatur exercitation voluptate adipisicing enim lorem occaecat esse. Velit cillum ex elit sunt do sit sint. Quis non Amet minim do reprehenderit ad consectetur deserunt duis occaecat sit dolor. Amet ea veniam ullamco ex deserunt tempor mollit nulla. Deserunt enim laborum esse voluptate anim incididunt id. Nulla sunt amet mollit minim voluptate reprehenderit sit qui aliqua nostrud dolore officia ullamco nisi aute. Occaecat incididunt velit magna ex sit excepteur enim sint. Enim deserunt Quis ullamco">
+      <a href="/topic-one/page-two/">Page Two</a>
+      <p class="search-summary">Aliqua labore ullamco mollit quis ea fugiat adipisicing pariatur nostrud est ipsum tempor incididunt velit eiusmod. Officia mollit nisi voluptate est veniam …</p>
+    </li>
+    <li class="search-result"
+        data-s="Topic Two"
+        data-g="Green Yellow"
+        data-d=""
+        data-b="Aliqua non proident in sit reprehenderit velit lorem. Fugiat est labore minim eiusmod quis duis culpa sint dolor excepteur aute veniam nulla exercitation. Excepteur ut reprehenderit magna cillum laborum sint id elit nulla sunt ipsum exercitation dolor. Anim mollit Ad duis dolore incididunt nulla nisi culpa ipsum cillum aute mollit sit. Labore laborum adipisicing enim voluptate dolor exercitation nostrud minim. Sunt adipisicing occaecat consequat reprehenderit voluptate tempor duis do irure. Pariatur ea amet exercitation duis veniam enim dolore laborum cillum proident elit minim tempor. Cillum quis ut ipsum enim aliqua aute esse sint est anim pariatur officia. Nulla ea Dolor exercitation veniam deserunt sit ad in quis duis non occaecat fugiat. Incididunt sit sint culpa consequat quis non cillum nulla. Tempor nulla adipisicing est ex cillum sit non id. Dolore magna enim consectetur culpa deserunt exercitation occaecat quis sint voluptate ut excepteur ex dolor amet. Culpa non Exercitation aliqua enim reprehenderit ea aute sit elit excepteur adipisicing aliquip dolor quis duis. Duis deserunt esse pariatur incididunt culpa voluptate aute. Ea lorem aliqua anim aute sit quis deserunt">
+      <a href="/topic-two/page-two/">Page Two</a>
+      <p class="search-summary">Aliqua non proident in sit reprehenderit velit lorem. Fugiat est labore minim eiusmod quis duis culpa sint dolor excepteur aute veniam nulla exercitation. …</p>
+    </li>
+    <li class="search-result"
+        data-s="Deeper One"
+        data-g="Red Green"
+        data-d=""
+        data-b="Elit quis veniam do aliquip ipsum aute est. Veniam magna aliquip nulla esse lorem aute sunt consequat mollit excepteur eiusmod amet ex. Nulla incididunt in exercitation magna culpa mollit minim do aliqua. Proident anim qui reprehenderit lorem exercitation sit quis ad nisi amet aute veniam irure tempor. Exercitation tempor proident sint quis eiusmod dolore duis ullamco fugiat elit velit incididunt ad laborum. Deserunt incididunt Ipsum enim velit dolor quis ea officia nulla aliqua. Non aliqua ex officia sunt labore nostrud esse sint. Voluptate officia irure do aliquip culpa dolore reprehenderit. Lorem excepteur eiusmod reprehenderit ea ut consequat qui. Lorem sunt sit cillum est velit adipisicing irure occaecat magna labore aliqua. Incididunt reprehenderit Ad officia nostrud sunt amet laborum reprehenderit eiusmod excepteur lorem id ea. Irure mollit ad in laborum amet cillum labore anim quis. Do sint cillum aliqua excepteur ex ea sit mollit exercitation anim ad. Dolore sint ut officia adipisicing magna tempor consequat ex cillum. Non irure laborum nostrud pariatur deserunt consequat ullamco nulla. Fugiat pariatur Officia aliqua sint lorem enim culpa ut proident pariatur quis amet.">
+      <a href="/topic-one/subtopic-one/deeper-one/page-two/">Page Two</a>
+      <p class="search-summary">Elit quis veniam do aliquip ipsum aute est. Veniam magna aliquip nulla esse lorem aute sunt consequat mollit excepteur eiusmod amet ex. Nulla incididunt in …</p>
+    </li>
+    <li class="search-result"
+        data-s="Subtopic One"
+        data-g="Yellow Blue"
+        data-d=""
+        data-b="Do aliqua incididunt pariatur esse sint magna reprehenderit irure. Magna fugiat deserunt elit minim consectetur id sit pariatur ex voluptate. Officia anim aliqua nisi voluptate fugiat esse est veniam in minim amet consequat lorem dolore tempor. Labore ad ea qui proident do cillum adipisicing nisi tempor exercitation fugiat ex consequat sunt duis. Laborum tempor esse excepteur tempor deserunt incididunt aliquip cillum ipsum. Aliquip adipisicing Adipisicing enim voluptate ullamco exercitation reprehenderit sint dolor cillum anim mollit pariatur. Proident tempor mollit ullamco officia magna consectetur labore esse ea id dolore ut minim. Est aliqua nisi culpa amet dolor id ullamco tempor ipsum ex laborum in quis. Dolore reprehenderit Ipsum quis enim in labore magna nulla minim ex veniam. Adipisicing magna non quis sint dolore ea nulla laborum. Duis enim do aliqua consectetur voluptate excepteur laborum veniam officia tempor sit esse dolor velit mollit. Voluptate magna lorem ut cillum sit consequat in pariatur ullamco tempor irure enim esse officia sunt. Consectetur excepteur Occaecat anim pariatur esse irure do ad lorem sint tempor. Nisi adipisicing qui elit tempor tempor proident">
+      <a href="/topic-three/subtopic-one/page-one/">Page One</a>
+      <p class="search-summary">Do aliqua incididunt pariatur esse sint magna reprehenderit irure. Magna fugiat deserunt elit minim consectetur id sit pariatur ex voluptate. Officia anim …</p>
+    </li>
+    <li class="search-result"
+        data-s="Posts"
+        data-g="Red Green Blue"
+        data-d=""
+        data-b="Occaecat aliqua consequat laborum ut ex aute aliqua culpa quis irure esse magna dolore quis. Proident fugiat labore eu laboris officia Lorem enim. Ipsum occaecat cillum ut tempor id sint aliqua incididunt nisi incididunt reprehenderit. Voluptate ad minim sint est aute aliquip esse occaecat tempor officia qui sunt. Aute ex ipsum id ut in est velit est laborum incididunt. Aliqua qui id do esse sunt eiusmod id deserunt eu nostrud aute sit ipsum. Deserunt esse cillum Lorem non magna adipisicing mollit amet consequat. Sit excepteur do velit veniam mollit in nostrud laboris incididunt ea. Amet eu cillum ut reprehenderit culpa aliquip labore laborum amet sit sit duis. Laborum id proident nostrud dolore laborum reprehenderit quis mollit nulla amet veniam officia id id. Aliquip in deserunt qui magna duis qui pariatur officia sunt deserunt. ">
+      <a href="/posts/post-3/">Post 3</a>
+      <p class="search-summary">Occaecat aliqua consequat laborum ut ex aute aliqua culpa quis irure esse magna dolore quis. Proident fugiat labore eu laboris officia Lorem enim. Ipsum …</p>
+    </li>
+    <li class="search-result"
+        data-s="Posts"
+        data-g="Red Green"
+        data-d=""
+        data-b="Anim eiusmod irure incididunt sint cupidatat. Incididunt irure irure irure nisi ipsum do ut quis fugiat consectetur proident cupidatat incididunt cillum. Dolore voluptate occaecat qui mollit laborum ullamco et. Ipsum laboris officia anim laboris culpa eiusmod ex magna ex cupidatat anim ipsum aute. Mollit aliquip occaecat qui sunt velit ut cupidatat reprehenderit enim sunt laborum. Velit veniam in officia nulla adipisicing ut duis officia. Exercitation voluptate irure in irure tempor mollit Lorem nostrud ad officia. Velit id fugiat occaecat do tempor. Sit officia Lorem aliquip eu deserunt consectetur. Aute proident deserunt in nulla aliquip dolore ipsum Lorem ut cupidatat consectetur sit sint laborum. Esse cupidatat sit sint sunt tempor exercitation deserunt. Labore dolor duis laborum est do nisi ut veniam dolor et nostrud nostrud. ">
+      <a href="/posts/post-2/">Post 2</a>
+      <p class="search-summary">Anim eiusmod irure incididunt sint cupidatat. Incididunt irure irure irure nisi ipsum do ut quis fugiat consectetur proident cupidatat incididunt cillum. Dolore …</p>
+    </li>
+    <li class="search-result"
+        data-s="Posts"
+        data-g="Red"
+        data-d=""
+        data-b="Tempor proident minim aliquip reprehenderit dolor et ad anim Lorem duis sint eiusmod. Labore ut ea duis dolor. Incididunt consectetur proident qui occaecat incididunt do nisi Lorem. Tempor do laborum elit laboris excepteur eiusmod do. Eiusmod nisi excepteur ut amet pariatur adipisicing Lorem. Occaecat nulla excepteur dolore excepteur duis eiusmod ullamco officia anim in voluptate ea occaecat officia. Cillum sint esse velit ea officia minim fugiat. Elit ea esse id aliquip pariatur cupidatat id duis minim incididunt ea ea. Anim ut duis sunt nisi. Culpa cillum sit voluptate voluptate eiusmod dolor. Enim nisi Lorem ipsum irure est excepteur voluptate eu in enim nisi. Nostrud ipsum Lorem anim sint labore consequat do. ">
+      <a href="/posts/post-1/">Post 1</a>
+      <p class="search-summary">Tempor proident minim aliquip reprehenderit dolor et ad anim Lorem duis sint eiusmod. Labore ut ea duis dolor. Incididunt consectetur proident qui occaecat …</p>
+    </li>
+  </ul>
+
+</main>
+  
+
+
+<footer class="foot">
+  
+<span class="who"><b>ff-1</b><i>a Hugo theme, MIT licensed</i></span>
+<span class="sp"><a href="https://foundingfuture.com/software/ff-1/">What it is</a></span>
+<span><a href="https://github.com/FoundingFuture/hugo-theme-ff-1">Source</a></span>
+<span><a href="https://gohugo.io/">Built with Hugo</a></span>
+
+</footer>
+
+<script src="/js/search.5884f05656a924c2dfb3b740d279551430b94daede89df5925f0c56d6932521d.js" integrity="sha256-WITwVlapJMLfs7dA0nlVFDC5Ta7eid9ZJfDFbWkyUh0=" defer></script>
+
+
+
+</body>
+</html>
