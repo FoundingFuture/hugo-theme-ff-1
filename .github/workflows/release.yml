@@ -119,8 +119,11 @@ jobs:
           generate_release_notes: false
           files: 'dist/*.zip'
 
+      # The example site, built against the artefact by the demo gate
+      # above. It was the conformance fixture, which is a test harness
+      # and read as one.
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: tools/conformance/public/demo
+          path: dist/demo
 
       - uses: actions/deploy-pages@v4

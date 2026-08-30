@@ -1,5 +1,20 @@
 # Changelog
 
+## v0.2.1, 2026-08-30
+
+- The demo is the example site, built against the packaged theme. It
+  was the conformance fixture. That fixture is a thing the gates
+  measure, not a site. It is titled Conformance. Its front page is a checklist
+  of one page per feature. Its tagline is there to make the band grow so
+  a gate can read it. All of that was the site the theme showed itself
+  with. The tagline went up on it reading `A fixture line long enough
+  to make the band grow`.
+- The demo is built from `dist/<slug>` rather than from the sources.
+  That is the one path a downloader takes. A demo built from the sources
+  can pass while the artefact people download is broken.
+- `demosite` points at the demo. It named the template repository this
+  one was made from, which is a different site about a different thing.
+
 ## v0.2.0, 2026-08-30
 
 The menu holds its width and the page is laid over it. The line across
