@@ -1,5 +1,18 @@
 # Changelog
 
+## Unreleased
+
+Documentation. Nothing in the theme changed.
+
+- The README says what a page bundle does to an image.
+  `responsive-images` serves a raster from the copies it makes, and
+  v0.2.8 stopped the theme publishing the source beside them. That only
+  reaches an image in `assets/`. Hugo publishes a page resource whether
+  or not a template reads it, and no theme can turn that off. An image
+  sitting next to the post that uses it still ships twice. The README
+  names the cascade a site writes to stop it, and says the feature
+  works without it.
+
 ## v0.2.9, 2026-08-31
 
 An external address works the same wherever a site puts one. Two things

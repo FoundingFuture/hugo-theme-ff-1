@@ -192,6 +192,28 @@ of its grounds, and the generated code colours are remapped to match.
 Turn the feature off and neither the switch nor the stylesheet is
 served, and the system setting is not answered either.
 
+`responsive-images` resizes a Markdown image to up to three widths and
+serves avif and webp. The tag carries the source's width and height, so
+the page does not move as pictures land. A raster is served from the
+copies made of it. The theme never reads the source's address, so Hugo
+never publishes it.
+
+An image inside a page bundle is the exception. Hugo publishes every
+page resource whether or not a template reads it. No theme can change
+that. The original ships beside the variants, and no page fetches it.
+Your site drops it with a cascade:
+
+```toml
+[[cascade]]
+  [cascade._build]
+    publishResources = false
+```
+
+The feature works without this. The line saves bytes, not correctness.
+An SVG still reaches the reader, because the theme serves one from its
+own address rather than from a copy. Reading that address publishes the
+file. The cascade drops only what nothing asks for.
+
 Three features ask your site for a line of configuration. Hugo merges
 maps from a theme, but `markup` is not among them, so only the site can
 say these. It is the same wall that stops a theme adding an `[outputs]`
