@@ -108,6 +108,18 @@
   --rail-full:16rem;
   --rail:var(--rail-full);
   --pad:1.25rem;   /* content's inset from the edges of its column */
+
+  /* The page's own width. Past it the window is ground, and the frame
+     sits in the middle of it.
+
+     Every comparable theme carries one. Congo caps its wrapper at 80rem,
+     hugo-book at 90rem. This theme capped the line of text at --measure
+     and left the column holding it unbounded, which is invisible until a
+     site writes the ordinary thing: a figure asking for 100% took 4464px
+     on a 5000px window, because 100% of an unbounded column is
+     unbounded. 90rem leaves the reading column near 1000px at its
+     widest, with the menu and the contents beside it. */
+  --frame:90rem;
 }
 *,*::before,*::after{box-sizing:border-box}
 
@@ -120,6 +132,12 @@
 html{
   -webkit-text-size-adjust:100%;
   scroll-padding-top:var(--band-seen);
+
+  /* A body with no background of its own hands its own to the canvas,
+     which paints the whole window. The frame is narrower than the window
+     past --frame, so without this the rail's gradient would stretch
+     across ground the frame does not cover. */
+  background:var(--paper);
 }
 
 body{

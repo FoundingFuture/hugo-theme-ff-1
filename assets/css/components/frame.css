@@ -16,6 +16,13 @@
 body{
   position:relative;
 
+  /* The page stops here and sits in the middle of what is left. Without
+     a cap the reading column is minmax(0,1fr) and grows with the window
+     for ever, so a site asking a figure for 100% gets a number nobody
+     chose. output/frame reads --frame and holds the frame to it. */
+  max-width:var(--frame);
+  margin-inline:auto;
+
   /* tall enough that a short page still puts its footer on the screen's
      last line, and no taller, so a long one just flows past */
   min-height:100vh;
