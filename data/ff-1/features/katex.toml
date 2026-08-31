@@ -26,4 +26,4 @@ css = "css/features/katex.css"
   # no class, so the page skeleton records nothing. With KaTeX markup the
   # formula is wrapped in these spans. The KaTeX rendering inside them
   # is aria-hidden, which the skeleton leaves out.
-  text = ["span.katex", "span.katex-display", "span.katex-mathml"]
+  text = ["div.mathblock", "span.katex", "span.katex-display", "span.katex-mathml"]

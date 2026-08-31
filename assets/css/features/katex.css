@@ -53,10 +53,22 @@
  * box. The overflow is the same answer the KaTeX path already uses: a
  * formula too wide for the line scrolls inside it rather than widening
  * the page. */
-[data-part="body"] math[display="block"]{
+
+/* The box a block formula scrolls inside.
+ *
+ * The cap was on the math element, which took it and then let its own
+ * contents paint outside it: overflow does not clip a math element, so
+ * a wide formula ran over the column beside it. A div is an ordinary
+ * block box and does both. */
+[data-part="body"] .mathblock{
   max-inline-size:var(--measure);
   overflow:auto hidden;
   padding-block:.35rem;
+}
+
+/* The formula itself takes whatever width it needs inside that box. */
+[data-part="body"] .mathblock math[display="block"]{
+  max-inline-size:none;
 }
 
 /* The wrapper carries the measure too, for the case where it is the

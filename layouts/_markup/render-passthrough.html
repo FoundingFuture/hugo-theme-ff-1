@@ -27,7 +27,21 @@
   {{- with .Err }}
     {{- errorf "%s: %s" $.Position . }}
   {{- else }}
-    {{- .Value }}
+    {{- if eq $.Type "block" }}
+    {{- /* A block formula sits in a box of its own.
+
+           overflow does not clip a math element: a formula wider than
+           the column painted straight through the cap on it and over
+           whatever stood to the right. The element was the right width
+           and its contents were not inside it.
+
+           A div is an ordinary block box, so it scrolls, and the cap
+           belongs on it. An inline formula is left alone, because it
+           belongs in the line it was written in. */ -}}
+    <div class="mathblock">{{ .Value }}</div>
+    {{- else }}
+      {{- .Value }}
+    {{- end }}
   {{- end }}
 {{- end }}
 {{- .Page.Store.Set "hasMath" true }}
