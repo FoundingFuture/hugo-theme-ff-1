@@ -26,7 +26,7 @@ gate_checks() {
     template) echo "coverage portable shellcheck" ;;
     static)  echo "coverage portable shellcheck templates links contract reserved namespace glyphs i18n css js metadata features" ;;
     build)   echo "package install example build versions scale" ;;
-    output)  echo "conform validity head a11y contrast prose perf external nojs feeds search expect band frame visual" ;;
+    output)  echo "conform validity head a11y contrast prose perf external nojs feeds search expect band frame brand visual" ;;
     release) echo "changelog version listing module demo showcase downstream" ;;
     *)       return 1 ;;
   esac

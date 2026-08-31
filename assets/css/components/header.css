@@ -132,9 +132,22 @@
   /* The column's width over the longest word, or a fixed height over
      the number of words, whichever is stricter. The partial counts
      both. A ceiling stops a one-word site filling the screen, and a
-     floor keeps a long one legible. */
+     floor keeps a long one legible.
+
+     The divisor is an average character, and 160 was a wider character
+     than this face draws. A capital in DisplayCaps runs .65em to .73em
+     for an ordinary name, and the cell gives the mark its width less
+     the 1rem of inset on each side. "Conformance" came out 280px
+     through a 223px box and painted onto the page beside the cell.
+
+     Measured over nine names in the face itself. The largest divisor
+     each could take: Owl 120, Conformance 124, Mandelbrot 129,
+     Wanderlust 130, Strange Delight 132, FoundingFuture 135, Illinois
+     176, ff-1 193. 115 clears the tightest of them with room, and a
+     name of nothing but capital M would still need 95, which is what
+     the overflow rule below is for. */
   font-size:clamp(1.05rem,
-    min(calc(160cqw / var(--em,6)), calc(8.5rem / var(--lines,1))),
+    min(calc(115cqw / var(--em,6)), calc(8.5rem / var(--lines,1))),
     6.2rem);
   line-height:.92;
   letter-spacing:-.02em;
@@ -150,4 +163,10 @@
   overflow-wrap:normal;
   word-break:keep-all;
   hyphens:manual;
+
+  /* The backstop. The size above is calibrated for a name drawn in
+     ordinary capitals, and no count can promise it for every one. A
+     name wider than the cell is held inside it rather than painted
+     across the page, the way the tagline's ellipsis holds that line. */
+  overflow:hidden;
 }
