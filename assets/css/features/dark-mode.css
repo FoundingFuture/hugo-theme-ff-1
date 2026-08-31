@@ -45,6 +45,11 @@
 
   /* Categories take the indigo here. */
   --taxo-categories:var(--indigo);
+
+  /* Amber on this ground is the warmest thing on the page and pulls
+     harder than the marker it sits beside. The indigo carries the same
+     distance from the teal without competing with it. */
+  --toc-hover:var(--indigo);
   --teal:#3FBFB5;
   --indigo:#8B9BF0;
   --rose:#E8879F;
@@ -88,6 +93,11 @@
 
   /* Categories take the indigo here. */
   --taxo-categories:var(--indigo);
+
+  /* Amber on this ground is the warmest thing on the page and pulls
+     harder than the marker it sits beside. The indigo carries the same
+     distance from the teal without competing with it. */
+  --toc-hover:var(--indigo);
   --teal:#3FBFB5;
   --indigo:#8B9BF0;
   --rose:#E8879F;

@@ -61,10 +61,13 @@ delimiters missing, which is worse than an error.
 ### Which markup KaTeX writes
 
 `params.ff-1.katex.output` picks it. The default is `mathml`, which
-every current browser draws with no stylesheet at all. This demo sets
-`htmlAndMathml`, so the pages carrying a formula also link KaTeX's own
-stylesheet and the theme's `--math-scale` applies to it. Set `html` for
-KaTeX markup alone.
+every current browser draws with no stylesheet at all. This page takes
+that default, so nothing here links a stylesheet for it.
+
+A page may ask for something else in its own front matter, and
+[katex-markup](/features/katex-markup/) does. With `html` or
+`htmlAndMathml` the page links KaTeX's own stylesheet, twenty faces
+come with it, and the theme's `--math-scale` applies to the result.
 
 ## Code
 

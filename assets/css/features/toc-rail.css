@@ -33,6 +33,10 @@
 
 .toc-rail h2{
   margin:0 0 .5rem;
+
+  /* The same inset the links take, so the label stands over them
+     rather than against the edge of the column. */
+  padding-inline:.5rem;
   font-family:var(--mono);
   font-size:.68rem;
   letter-spacing:.14em;
@@ -62,10 +66,21 @@
   font-size:.88rem;
   line-height:1.35;
   color:var(--muted);
-  transition:color .18s ease;
+  transition:color .18s ease,background .18s ease,box-shadow .18s ease;
 }
 
-.toc-rail a:hover{color:var(--ink)}
+/* Hovering says the same thing the marker says, quieter.
+ *
+ * It was a change of colour and nothing else, which reads as a link
+ * dimming rather than a row answering. The marker that follows the
+ * reading is a teal wash with an edge down its left, so a hover is that
+ * again at half strength: the same gesture, not a second one. */
+.toc-rail a:hover{
+  background:color-mix(in oklab,var(--toc-hover) 13%, transparent);
+  box-shadow:inset 2px 0 0 var(--toc-hover);
+  color:var(--ink);
+}
+
 .toc-rail a.on{color:var(--ink)}
 
 /* The rectangle that follows the reading. Drawn by the script, so a page

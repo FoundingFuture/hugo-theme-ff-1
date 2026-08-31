@@ -74,6 +74,13 @@
      Dark mode takes the indigo, which needs no such adjustment. */
   --taxo-categories:#8F5416;
 
+  /* The contents rail marks two different things, so it needs two
+     colours. The marker that follows the reading is the teal every
+     other "you are here" in this theme uses. A hover is a question, not
+     an answer, so it takes the amber instead: a reader can tell where
+     they are from where they are pointing. */
+  --toc-hover:var(--amber);
+
   /* The column the contents take beside a piece, where there is room. */
   --toc-rail-width:15rem;
 
