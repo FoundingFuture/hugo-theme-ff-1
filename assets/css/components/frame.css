@@ -23,7 +23,17 @@ body{
   display:grid;
   grid-template-columns:var(--rail) minmax(0,1fr);
   grid-template-rows:auto 1fr auto;
-  background:linear-gradient(to right,var(--surface) 0 var(--rail),var(--paper) var(--rail));
+
+  /* The menu's column, and the line that divides it from the words.
+   *
+   * Both are painted here rather than on the menu, because the menu is
+   * sticky and only as tall as a screen. A border on it ended where it
+   * ended, which on a long page was a line that gave up a third of the
+   * way down. The body is as tall as the page, so this is too. */
+  background:linear-gradient(to right,
+    var(--surface) 0 calc(var(--rail) - 1px),
+    var(--line) calc(var(--rail) - 1px) var(--rail),
+    var(--paper) var(--rail));
 }
 
 /* Wide enough for a third column. The reading column is capped at 78ch

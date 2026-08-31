@@ -6,7 +6,9 @@
    the shortest row here clears at 24.4. Padding is what was cut; the
    type is the size it was. */
 .rail{
-  border-right:1px solid var(--line);
+  /* No border. The line between this column and the words is painted
+     by the body, which is as tall as the page. This is sticky and at
+     most a screen tall, so a border here stopped where it stopped. */
   flex:1 1 auto;
   min-height:0;
   overflow-y:auto;
