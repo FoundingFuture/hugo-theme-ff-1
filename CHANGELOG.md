@@ -1,17 +1,47 @@
 # Changelog
 
-## Unreleased
+## v0.2.10, 2026-08-31
 
-Documentation. Nothing in the theme changed.
+A cap the theme never had, two things a reader sees, and a demo that
+contradicted the rule it demonstrates.
 
+- The page stops at 90rem. `--measure` capped the line of text. The
+  column holding it was `minmax(0,1fr)`, which has no ceiling. That is
+  invisible until a site writes the ordinary thing. A figure asking for
+  `max-width:100%` reached 4464px on a 5000px window. Congo caps its
+  wrapper at 80rem and hugo-book at 90rem. `--frame` names the number
+  once and `output/frame` reads it back. `html` carries the ground now,
+  because a body with no background there paints the whole canvas.
+- The tagline sits in the middle of the band. A flex box centres the em
+  box a face declares. A face does not draw its ink in the middle of
+  that box. The line therefore landed .0825em low. At the size the band
+  asks for that is a descender against the rule with a gap above the
+  capitals. It is painted rather than laid out, so the band's height is
+  what it was. Three layouts hold the line at the top of the band
+  instead, and each takes the nudge off again.
+- The name in the brand cell stays inside the cell. The size divides the
+  column by the longest word, and 160 was a wider character than
+  DisplayCaps draws. "Conformance" ran 280px through a 223px box and
+  painted onto the page beside it. Measured over nine names in the face.
+  115 clears the tightest of them with room, and `overflow` holds a name
+  no count can promise.
+- The demo says where its links go. `exampleSite` overrides the theme's
+  footer and wrote three addresses as anchors of its own. None reached
+  `link.html`, so none carried rel, target, or the words a screen reader
+  needs. The site the theme shows itself with contradicted the rule the
+  theme documents. `static/links` now refuses an anchor to another host
+  in any template.
 - The README says what a page bundle does to an image.
   `responsive-images` serves a raster from the copies it makes, and
   v0.2.8 stopped the theme publishing the source beside them. That only
   reaches an image in `assets/`. Hugo publishes a page resource whether
-  or not a template reads it, and no theme can turn that off. An image
-  sitting next to the post that uses it still ships twice. The README
-  names the cascade a site writes to stop it, and says the feature
-  works without it.
+  or not a template reads it, and no theme can turn that off. The README
+  names the cascade a site writes to stop it.
+- `docs/how-to-write-a-hugo-theme.md` writes down what building this one
+  taught. Two caps rather than one, and background propagation. What a
+  theme cannot configure, and when a resource is published. Why an SVG
+  inside an img cannot follow a theme. What a fixture never renders.
+  Congo, hugo-book and PaperMod were read for each.
 
 ## v0.2.9, 2026-08-31
 
