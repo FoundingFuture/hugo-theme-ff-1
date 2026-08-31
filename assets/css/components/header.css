@@ -84,6 +84,24 @@
      line from becoming a banner. */
   font-size:min(2.9rem, calc(180cqw / var(--len,40)));
   line-height:1.05;
+
+  /* Painted a little above where the box puts it. A flex box centres the
+     em box, and a face does not draw its ink in the middle of that box.
+     Asimovian declares 1em above the baseline and .3em below, so the
+     box's middle sits .35em over it. The middle of the ink sits .2675em
+     over it, measured at every width the band is drawn at. The line
+     therefore lands .0825em low.
+
+     At the size the band asks for that put a descender against the rule
+     with a gap above the capitals, which reads as a line resting on the
+     bottom edge rather than sitting in the middle.
+
+     Painted rather than laid out. The line's box does not move, so the
+     band's height is what it was and --band-seen still covers it.
+
+     A layout that does not centre the line takes this off again. */
+  position:relative;
+  top:-.0825em;
   letter-spacing:.03em;
   white-space:nowrap;
   overflow:hidden;

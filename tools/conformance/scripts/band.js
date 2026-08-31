@@ -48,6 +48,11 @@ const STEP = 20;
 // measured.
 const MAX_OVER = 40;
 
+// How far the tagline may sit from the middle of the band it is centred
+// in, measured on its ink rather than on its box. A line is centred or
+// it is not, so this is a rounding allowance and nothing more.
+const MAX_LEAN = 1;
+
 async function main() {
   let chromium;
   try {
@@ -139,6 +144,67 @@ async function main() {
     else if (slack > MAX_OVER) over.push({ width, by: slack });
   }
 
+  // The tagline, in the band that lays it out as a centred row.
+  //
+  // A flex box centres the font's em box, and a face does not declare
+  // that box around its ink. Asimovian gives 46 up and 14 down about the
+  // baseline where the ink of a line runs 37 up and 9 down, so a line
+  // centred by the box lands below the middle of the band. The reader
+  // sees a descender against the rule with a gap above the capitals.
+  //
+  // The fixture publishes two languages, and a band carrying languages
+  // is a column with the line held at its top, which is not this layout
+  // and is not meant to be centred. Taking the row out gives exactly the
+  // markup a one-language site renders, which is most sites, and is the
+  // only way this build reaches the centred row at all.
+  await page.evaluate(() => {
+    document.querySelectorAll('.strip .langs').forEach((row) => row.remove());
+  });
+
+  const lean = [];
+  let lines = 0;
+
+  for (let width = FROM; width <= TO; width += STEP) {
+    await page.setViewportSize({ width, height: 600 });
+    await page.waitForTimeout(14);
+
+    const seen = await page.evaluate(() => {
+      const band = document.querySelector('.strip');
+      const line = band && band.querySelector('p');
+      if (!line) return null;
+
+      // Only the centred row. The narrow layout stacks the band and
+      // starts it, where the line sits at the top by design.
+      const cb = getComputedStyle(band);
+      if (cb.flexDirection !== 'row' || cb.alignItems !== 'center') return null;
+
+      const cl = getComputedStyle(line);
+      const box = band.getBoundingClientRect();
+      const top = box.top + (parseFloat(cb.borderTopWidth) || 0);
+      const bottom = box.bottom - (parseFloat(cb.borderBottomWidth) || 0);
+
+      // Where the ink actually is. A canvas reports a face's own metrics
+      // and the ink of a string in it, which is what the eye reads and
+      // what no layout box carries.
+      const ink = document.createElement('canvas').getContext('2d');
+      ink.font = `${cl.fontStyle} ${cl.fontWeight} ${cl.fontSize} ${cl.fontFamily}`;
+      const m = ink.measureText(line.textContent.trim());
+      const leading = (parseFloat(cl.lineHeight) - (m.fontBoundingBoxAscent + m.fontBoundingBoxDescent)) / 2;
+      const baseline = line.getBoundingClientRect().top + leading + m.fontBoundingBoxAscent;
+
+      return {
+        above: (baseline - m.actualBoundingBoxAscent) - top,
+        below: bottom - (baseline + m.actualBoundingBoxDescent),
+      };
+    });
+
+    if (!seen) continue;
+    lines += 1;
+    if (Math.abs(seen.below - seen.above) > MAX_LEAN) {
+      lean.push({ width, above: seen.above, below: seen.below });
+    }
+  }
+
   await browser.close();
   server.close();
 
@@ -159,7 +225,19 @@ async function main() {
     console.log(`  A heading lands that far below the band. Lower --band-seen toward ${tallest.toFixed(1)}px.`);
     status = 1;
   }
-  if (!status) console.log(`band: the offset clears it at every width, and by no more than ${MAX_OVER}px.`);
+  if (lean.length) {
+    const worst = lean.reduce((a, b) =>
+      (Math.abs(b.below - b.above) > Math.abs(a.below - a.above) ? b : a));
+    console.log(`assets/css/components/header.css:1: the tagline sits off centre at ${lean.length} of ${lines} widths.`);
+    console.log(`  worst at ${worst.width}px wide: ${worst.above.toFixed(1)}px above the ink and`);
+    console.log(`  ${worst.below.toFixed(1)}px below it. A flex box centres the em box, and a face`);
+    console.log(`  does not declare that box around its ink.`);
+    status = 1;
+  }
+  if (!status) {
+    console.log(`band: the offset clears it at every width, and by no more than ${MAX_OVER}px.`);
+    console.log(`band: the tagline is centred on its ink at ${lines} widths.`);
+  }
   process.exit(status);
 }
 

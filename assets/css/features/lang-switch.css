@@ -49,6 +49,10 @@
   /* the line keeps its own height inside the taller band rather than
      sharing the surplus with the row under it */
   flex:0 0 auto;
+
+  /* This band holds the line at its top rather than centring it, so
+     header.css's nudge onto the ink's middle comes off. */
+  top:0;
 }
 
 /* No comma between the codes. It was drawn from CSS, pulled back by the
