@@ -118,3 +118,52 @@ it, and only 1.7 times as far as the surface it rises from.
 
 Nothing outstanding on the look. `output/visual` still has no baseline
 until a release writes one.
+
+## Decisions taken on 2026-08-30 and 31
+
+Each of these was put to the owner and answered. A later session that
+finds them odd should ask before changing them.
+
+**The theme ships static/favicon.ico.** It is the file `hugo new theme`
+writes, byte for byte, and no template references it. Hugo merges a
+theme's `static/` into the site's on file level. So it lands at the root
+of every site that installs this one. Kept on purpose. `output/conform`
+compares our published files against the reference scaffold, and the
+scaffold publishes it, so removing it breaks that comparison.
+
+**404.html is exempt from the scaffold comparison.** By name, in both
+`conform.sh` and `skeleton.py`. Hugo writes `404.html` wherever a
+template exists and the scaffold ships none. A theme that gives a site
+the page publishes one file the scaffold cannot. No switch changes
+that. Every other file is still compared.
+
+**A title takes the measure, not a character count.** It was `22ch`.
+That is 648px in the display face, and no relation to anything else. `ch` is
+the width of a zero, 29.4px, and the letters average 36.7px. The number
+never meant 22 characters. A title now ends where the paragraphs
+end, and `text-wrap:balance` evens the lines when it wraps.
+
+**The measure is declared on main.** Not on the body part. The head is
+that part's sibling, so a title could not reach a value declared below
+it. main carries the same font size and padding, so the number is
+unchanged.
+
+**The open topic carries dark ink in dark mode.** White on the four
+lifted palette colours is 2.20 to 2.61 against AA's 4.5. On `--paper`
+the same four read 6.91 to 8.20. The ink is tied to the fill with
+`:not(:hover)`. The dark hover rule outranks `details[open]` on the
+background, so the fill goes pale under the pointer.
+
+**The contents rail marks hover in its own colour.** Amber in light,
+indigo in dark, through `--toc-hover`. Amber on a dark ground is the
+warmest thing on the page. It would pull harder than the reading marker
+beside it.
+
+**Maths output resolves per page.** `math-output.html` reads the site
+first and the page second. Every other switch here resolves that way
+and this one did not. A site was MathML or KaTeX markup end to end.
+
+**One partial decides what leaving the site means.** `link.html`. The
+rule was written three times in an afternoon before that. A link in the
+text, a menu entry, a footer entry, an `items` row and the edit link all
+arrive there.
