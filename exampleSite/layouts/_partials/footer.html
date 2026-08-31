@@ -6,8 +6,27 @@
      get it.
 
      The theme's baseof writes the footer element, so this is only what
-     goes inside it. */}}
+     goes inside it.
+
+     Every address here names another host, and each one goes through
+     link.html rather than being written as an anchor. That partial is
+     where the theme decides what leaving the site means, so a link
+     written by hand here gets no rel, no target and none of the words
+     a screen reader needs. A demo that contradicts the rule it is
+     demonstrating teaches the wrong thing to whoever copies it. */}}
 <span class="who"><b>ff-1</b><i>a Hugo theme, MIT licensed</i></span>
-<span class="sp"><a href="https://foundingfuture.com/software/ff-1/">What it is</a></span>
-<span><a href="https://github.com/FoundingFuture/hugo-theme-ff-1">Source</a></span>
-<span><a href="https://gohugo.io/">Built with Hugo</a></span>
+<span class="sp">
+  {{- partial "link.html" (dict
+        "href" "https://foundingfuture.com/software/ff-1/"
+        "text" "What it is" "page" $) -}}
+</span>
+<span>
+  {{- partial "link.html" (dict
+        "href" "https://github.com/FoundingFuture/hugo-theme-ff-1"
+        "text" "Source" "page" $) -}}
+</span>
+<span>
+  {{- partial "link.html" (dict
+        "href" "https://gohugo.io/"
+        "text" "Built with Hugo" "page" $) -}}
+</span>
