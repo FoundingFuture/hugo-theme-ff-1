@@ -121,7 +121,15 @@
       "\u222b01x2 dx=13 \\int_0^1 x^2 \\, dx = \\frac{1}{3}"
     ],
     [
+      "div.mathblock",
+      "\u222b01x2 dx=13 \\int_0^1 x^2 \\, dx = \\frac{1}{3}"
+    ],
+    [
       "span.katex",
+      "ei\u03c0+1=0 e^{i\\pi} + 1 = 0"
+    ],
+    [
+      "div.mathblock",
       "ei\u03c0+1=0 e^{i\\pi} + 1 = 0"
     ]
   ]

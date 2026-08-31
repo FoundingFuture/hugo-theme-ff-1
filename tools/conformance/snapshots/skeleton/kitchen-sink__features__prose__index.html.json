@@ -52,6 +52,11 @@
       "div.list"
     ],
     [
+      "https://gohugo.io/",
+      "",
+      "div.list"
+    ],
+    [
       "#off-state",
       "",
       "h2.anchored"
@@ -72,7 +77,7 @@
     ],
     [
       "p.word-count",
-      "122 words"
+      "129 words"
     ],
     [
       "div.lead",
@@ -100,7 +105,7 @@
     ],
     [
       "div.item",
-      "First thing tagwhat it does"
+      "First thingtagwhat it does"
     ],
     [
       "span.nm",
@@ -115,8 +120,24 @@
       "what it does"
     ],
     [
+      "span.nm",
+      "Third thing"
+    ],
+    [
+      "span.k",
+      "tag"
+    ],
+    [
+      "span.ds",
+      "it names another host"
+    ],
+    [
+      "span.newtab",
+      "(opens in a new tab)"
+    ],
+    [
       "div.list",
-      "First thing tagwhat it does Second thing tagwhat it does"
+      "First thingtagwhat it doesSecond thingtagwhat it does Third thingtagit names another host (opens in a new tab)"
     ]
   ]
 }

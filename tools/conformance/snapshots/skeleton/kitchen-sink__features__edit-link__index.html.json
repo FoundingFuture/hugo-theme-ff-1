@@ -44,6 +44,11 @@
       "#off-state",
       "",
       "h2.anchored"
+    ],
+    [
+      "https://example.net/edit/kitchen-sink/features/edit-link.md",
+      "Edit this page",
+      "p.edit-link"
     ]
   ],
   "marked": [
@@ -62,6 +67,14 @@
     [
       "p.word-count",
       "51 words"
+    ],
+    [
+      "span.newtab",
+      "(opens in a new tab)"
+    ],
+    [
+      "p.edit-link",
+      "Edit this page (opens in a new tab)"
     ]
   ]
 }
