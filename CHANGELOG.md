@@ -1,5 +1,44 @@
 # Changelog
 
+## v0.2.9, 2026-08-31
+
+An external address works the same wherever a site puts one. Two things
+a reader sees were also wrong, and one of them since v0.1.0.
+
+- A block formula stays inside the column. `overflow` does not clip a
+  math element. A formula wider than the reading line painted straight
+  through the cap on it. It ran over whatever stood to the right. The
+  element was the right width and its contents were not inside it.
+  A block formula now sits in a div, which is an ordinary block box and
+  does both. MathML is what a site gets unless it asks for KaTeX, so
+  this was the common case.
+- The line between the menu and the words runs the length of the page.
+  It was a border on the menu. The menu is sticky and at most a screen
+  tall. On a long page the line gave up a third of the way down. It
+  is painted by the body now, which is as tall as the page.
+  The body already drew that column's background for the same reason.
+- One definition decides what leaving the site means. It was written
+  three times in one afternoon. Once for a link in a paragraph. Once for a
+  menu entry naming another host. Once for the link to a page's source. Three copies of one rule is one rule that drifts. A reader
+  cannot tell which copy wrote the link in front of them.
+  `link.html` decides it once. A link in the text, a menu entry, a
+  footer entry, an `items` row and the edit link all arrive there.
+- The foot of the page carries a menu. There was nowhere in the theme
+  to put a licence, a colophon or a link to the source. A site wanting
+  one overrode the footer and lost the theme's. `[[menus.footer]]`
+  is read the way every Hugo menu is.
+- `edit-link` renders. Its fixture page switched the feature on and no
+  `editBase` was ever set. The partial found nothing to link and drew
+  nothing. Every check passed: they ask whether the fixture page exists,
+  not whether the feature drew anything.
+- The contents rail marks a hover differently from the reading. Hovering
+  changed the colour of a word and nothing else. That reads as a link
+  dimming rather than a row answering. It takes the amber in light and the
+  indigo in dark. Where a reader is and where they are pointing are two
+  colours rather than two strengths of one.
+- The contents label takes the inset its links take, rather than
+  standing against the edge of the column.
+
 ## v0.2.8, 2026-08-31
 
 Five things every theme of this kind ships and this one did not. Found
