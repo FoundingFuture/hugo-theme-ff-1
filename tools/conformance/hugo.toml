@@ -55,6 +55,25 @@ enableGitInfo = false
     name = "Posts"
     pageRef = "/posts"
     weight = 20
+  # A menu entry naming another host. Every other row the menu writes is
+  # a page of this site, so this is the only link there that can leave
+  # it, and the only way to exercise what happens when one does.
+  # The foot of the page carries its own menu. One row naming another
+  # host and one naming a page here, so both paths through link.html are
+  # drawn by a build rather than described.
+  [[menus.footer]]
+    name = "Hugo's documentation"
+    url = "https://gohugo.io/documentation/"
+    weight = 10
+  [[menus.footer]]
+    name = "Kitchen sink"
+    pageRef = "/kitchen-sink"
+    weight = 20
+
+  [[menus.main]]
+    name = "Hugo"
+    url = "https://gohugo.io/"
+    weight = 25
   [[menus.main]]
     name = "Nested"
     pageRef = "/kitchen-sink/sections"
@@ -66,6 +85,13 @@ enableGitInfo = false
   section = ["html", "rss"]
 
 [params.ff-1]
+  # Where a page's source lives, which is what edit-link points at. The
+  # feature was switched on by its fixture page and this was never set,
+  # so the partial found nothing to link and rendered nothing. A feature
+  # that renders nothing passes every check that asks whether its page
+  # exists.
+  editBase = 'https://example.net/edit'
+
   # Fetching a poster needs the network at build time. The conformance
   # build stays offline and deterministic, so it is off here.
   fetchPosters = false

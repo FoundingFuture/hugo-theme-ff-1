@@ -27,6 +27,7 @@ A second paragraph, so the rule has something to sit between.
 {{< items >}}
 First thing | tag | what it does
 Second thing | tag | what it does | /kitchen-sink/
+Third thing | tag | it names another host | https://gohugo.io/
 {{< /items >}}
 
 ## Off state

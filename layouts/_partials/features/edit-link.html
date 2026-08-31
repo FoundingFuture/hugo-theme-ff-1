@@ -2,6 +2,8 @@
        Without it there is nowhere to send the reader. */ -}}
 {{- with index site.Params "ff-1" "editBase" }}
 <p class="edit-link">
-  <a rel="external noopener" href="{{ . }}/{{ $.File.Path }}">{{ i18n "editThisPage" }}</a>
+  {{- /* Always another host: it points at the repository the page is
+         kept in. link.html decides what leaving the site means. */ -}}
+  {{- partial "link.html" (dict "href" (printf "%s/%s" . $.File.Path) "text" (i18n "editThisPage") "page" $) }}
 </p>
 {{- end }}

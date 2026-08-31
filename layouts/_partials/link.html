@@ -1,0 +1,39 @@
+{{- /*
+One link, and one decision about where it opens.
+
+@context {string} href Where the link goes.
+@context {string} text What the link says. Already escaped by the caller.
+@context {page} page The page being rendered, for the feature switch.
+@context {string} attrs Anything else the caller needs on the tag, escaped.
+
+A link that names another host gets rel="external noopener". It also gets
+target="_blank" where external-new-tab is on, and words in its accessible
+name saying so.
+
+Written once because it was written three times. The Markdown render
+hook decided this for a link in a paragraph, the menu decided it again
+for an entry naming another host, and the edit link decided it a third
+way. Three copies of one rule is one rule that drifts, and the reader
+cannot tell which of the three wrote the link they are looking at.
+
+A site puts an external address anywhere it can put a link: in the text,
+in a menu, in the footer menu, in an items row. All of them arrive here.
+
+@example: {{ partial "link.html" (dict "href" $u "text" $name "page" $page) }}
+*/ -}}
+{{- $href := .href -}}
+{{- $away := false -}}
+{{- with (urls.Parse $href).Host -}}
+  {{- $away = ne . (urls.Parse site.BaseURL).Host -}}
+{{- end -}}
+{{- $newtab := false -}}
+{{- if $away -}}
+  {{- $newtab = partial "feature-on.html" (dict "name" "external-new-tab" "page" .page) -}}
+{{- end -}}
+<a href="{{ $href | safeURL }}"
+  {{- with .attrs }} {{ . | safeHTMLAttr }}{{ end }}
+  {{- if $away }} rel="external noopener"{{ end }}
+  {{- if $newtab }} target="_blank"{{ end -}}
+>{{ .text | safeHTML }}
+  {{- if $newtab }}<span class="newtab"> {{ i18n "opensInNewTab" }}</span>{{ end -}}
+</a>

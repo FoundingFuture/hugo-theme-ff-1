@@ -93,9 +93,15 @@
         "depth" (add $depth 1) "group" $url "palette" $palette) }}
   </details></li>
   {{- else if $url }}
-  <li><a href="{{ $url }}"
-    {{- if $active }} aria-current="page"{{ else if $ancestor }} aria-current="true"{{ end -}}
-  >{{ $name }}{{ if $count }} <span class="n">{{ $count }}</span>{{ end }}</a></li>
+  {{- /* A menu entry may name another host. Every other row here is a
+         page of this site and cannot, so this is the one link the menu
+         writes that can leave it. link.html decides what that means, so
+         it means the same here as in a paragraph. */ -}}
+  {{- $mark := "" }}
+  {{- if $active }}{{ $mark = "aria-current=\"page\"" }}{{ else if $ancestor }}{{ $mark = "aria-current=\"true\"" }}{{ end }}
+  {{- $label := $name }}
+  {{- if $count }}{{ $label = printf "%s <span class=\"n\">%d</span>" $name $count }}{{ end }}
+  <li>{{ partial "link.html" (dict "href" $url "text" $label "page" $page "attrs" $mark) }}</li>
   {{- end }}
 {{- end }}
 {{- range $pieces }}

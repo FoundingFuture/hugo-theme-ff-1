@@ -22,11 +22,19 @@
            "/prefix/topic/". An address that names a host survives both
            steps unchanged. */ -}}
     {{- $href := $url | strings.TrimPrefix "/" | relURL }}
-    {{- if $url }}<a class="item" href="{{ $href }}">{{ else }}<div class="item">{{ end }}
-      <span class="nm">{{ trim (index $row 0) " " }}</span>
-      <span class="k" data-t="{{ $tag }}">{{ trim (index $row 1) " " }}</span>
-      {{- if ge (len $row) 3 }}<span class="ds">{{ trim (index $row 2) " " }}</span>{{ end }}
-    {{- if $url }}</a>{{ else }}</div>{{ end }}
+    {{- /* The row's body, built once. A row with an address is a link
+           and a row without one is not, and the words are the same
+           either way. A row may name another host, which is what the
+           note above is about, so the link goes through link.html and
+           leaving the site means here what it means everywhere. */ -}}
+    {{- $body := printf "<span class=\"nm\">%s</span><span class=\"k\" data-t=\"%s\">%s</span>"
+          (trim (index $row 0) " ") $tag (trim (index $row 1) " ") }}
+    {{- if ge (len $row) 3 }}
+      {{- $body = printf "%s<span class=\"ds\">%s</span>" $body (trim (index $row 2) " ") }}
+    {{- end }}
+    {{- if $url }}
+      {{- partial "link.html" (dict "href" $href "text" $body "page" $.Page "attrs" "class=\"item\"") }}
+    {{- else }}<div class="item">{{ $body | safeHTML }}</div>{{ end }}
   {{- end }}
 {{- end }}
 </div>

@@ -11,3 +11,22 @@
 <span{{ if eq $i 0 }} class="sp"{{ end }}>{{ $d }}</span>
 {{- end }}
 <span class="sp">{{ i18n "copyright" (dict "Year" now.Year) }}</span>
+{{- /* A menu for the foot of the page, where a site puts the links that
+       are not part of the reading: a licence, a colophon, an imprint,
+       somewhere else it lives. Defined the way every Hugo menu is:
+
+         [[menus.footer]]
+           name = "Source"
+           url = "https://github.com/..."
+
+       An entry naming another host goes through link.html like every
+       other link the theme writes, so external-new-tab decides whether
+       it opens beside the page. A site that wants none of this defines
+       no footer menu and the row is not written. */ -}}
+{{- with index site.Menus "footer" }}
+<span class="sp foot-links">
+  {{- range . }}
+  {{- partial "link.html" (dict "href" (or .URL .PageRef) "text" .Name "page" $) }}
+  {{- end }}
+</span>
+{{- end }}

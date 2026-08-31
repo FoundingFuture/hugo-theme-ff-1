@@ -34,3 +34,19 @@ footer.foot a{
    rather than by a space character in the markup. */
 .foot .who b{margin-right:.5rem}
 .foot .who i{font-style:normal}
+
+/* The footer's own menu. The links sit on the same line as everything
+   else there, spaced rather than run together, and take the footer's
+   colour rather than the body's link colour: they are the small print,
+   not part of the reading. */
+.foot-links{
+  display:inline-flex;
+  gap:.9rem;
+  flex-wrap:wrap;
+}
+
+.foot-links a{
+  color:inherit;
+  text-underline-offset:2px;
+}
+.foot-links a:hover{color:var(--ink)}
