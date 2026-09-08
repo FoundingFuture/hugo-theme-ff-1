@@ -206,7 +206,7 @@ Your site drops it with a cascade:
 
 ```toml
 [[cascade]]
-  [cascade._build]
+  [cascade.build]
     publishResources = false
 ```
 

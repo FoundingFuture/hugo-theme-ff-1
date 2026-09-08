@@ -65,7 +65,7 @@ these, so only the site can write them:
 - `markup`, which decides Goldmark's parser and Chroma's output
 - `outputs`, which adds an output format
 - `menus`, which adds a menu entry
-- `cascade`, including `_build.publishResources`
+- `cascade`, including `build.publishResources`
 
 The cascade case is worth stating because it looks like it should work.
 A `[[cascade]]` block in a theme's own `hugo.toml` is ignored. Verified
@@ -108,7 +108,7 @@ Only the site can stop that:
 
 ```toml
 [[cascade]]
-  [cascade._build]
+  [cascade.build]
     publishResources = false
 ```
 
