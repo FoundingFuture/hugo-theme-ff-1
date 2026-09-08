@@ -101,14 +101,54 @@ main{
   flex:1 1 auto;
   min-height:0
 }
-.railwrap>summary{display:none}
 
-.railwrap::details-content{
-  content-visibility:visible;
+/* The toggle, and then the reason to hide it.
+ *
+ * ::details-content is what makes a closed details paint its contents.
+ * Safari gained it in 18.4. An engine without it drops the rule below,
+ * and this rule used to hide the summary anyway, so the reader was left
+ * with an empty column: no menu, and nothing to open one. Reported from
+ * an iPad too old to take the update.
+ *
+ * So the control is the default and hiding it is the enhancement. An
+ * engine that cannot read the guard, or reads it and says no, keeps a
+ * working disclosure widget. One that says yes paints the panel and has
+ * no use for a button. rail.css guards the same pseudo-element, and
+ * this is the file that forgot to. */
+.railwrap>summary{
   display:flex;
-  flex-direction:column;
-  flex:1 1 auto;
-  min-height:0;
+  align-items:center;
+  gap:.5rem;
+  margin:0 var(--pad) .7rem;
+  padding:.4rem .85rem;
+  border-radius:7px;
+  background:var(--ink);
+  color:var(--surface);
+  font-family:var(--mono);
+  font-size:.95rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  cursor:pointer;
+  list-style:none;
+}
+
+.railwrap>summary::-webkit-details-marker{display:none}
+
+/* One word at a time, so the control reads as one control. */
+.railwrap>summary .what.open{display:none}
+.railwrap[open]>summary .what.shut{display:none}
+.railwrap[open]>summary .what.open{display:inline}
+
+@supports selector(::details-content){
+  .railwrap>summary{display:none}
+
+  .railwrap::details-content{
+    content-visibility:visible;
+    display:flex;
+    flex-direction:column;
+    flex:1 1 auto;
+    min-height:0;
+  }
 }
 
 /* A length that can be animated. An unregistered custom property is a
@@ -526,11 +566,13 @@ main{
   }
 
   /* the panel is anchored to the button's column, not the page */
-  .railwrap::details-content{
-    grid-column:2;
-    grid-row:3;
-    position:relative;
-    display:block
+  @supports selector(::details-content){
+    .railwrap::details-content{
+      grid-column:2;
+      grid-row:3;
+      position:relative;
+      display:block
+    }
   }
 
   /* content first on a phone, navigation after it */
@@ -573,7 +615,9 @@ main{
   }
 
   /* navigation comes before the content, but folded away until asked for */
-  .railwrap:not([open])::details-content{content-visibility:hidden}
+  @supports selector(::details-content){
+    .railwrap:not([open])::details-content{content-visibility:hidden}
+  }
 
   .railwrap>summary:hover{background:var(--body)}
 
@@ -664,10 +708,12 @@ main{
     margin:var(--menugap) 1.25rem
   }
 
-  .railwrap::details-content{
-    grid-column:1;
-    grid-row:4;
-    position:relative
+  @supports selector(::details-content){
+    .railwrap::details-content{
+      grid-column:1;
+      grid-row:4;
+      position:relative
+    }
   }
 
   main{

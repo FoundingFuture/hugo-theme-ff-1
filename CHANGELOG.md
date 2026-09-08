@@ -12,6 +12,17 @@ contradicted the rule it demonstrates.
   wrapper at 80rem and hugo-book at 90rem. `--frame` names the number
   once and `output/frame` reads it back. `html` carries the ground now,
   because a body with no background there paints the whole canvas.
+- The menu survives an engine without `::details-content`. That pseudo
+  is what makes a closed `<details>` paint its contents, and Safari
+  gained it in 18.4. The theme hid the `<summary>` unconditionally and
+  forced the panel visible through the pseudo. An older engine dropped
+  that rule and kept the hiding, so the rail column was empty: no menu,
+  and nothing to open one. Reported from an iPad too old to update.
+  The control is the default now and hiding it is the enhancement, which
+  is how `rail.css` already guarded the same pseudo. `static/supports`
+  holds every use of it inside `@supports selector(::details-content)`.
+  Measured over 48 cases across two engines: modern rendering is
+  unchanged.
 - The tagline sits in the middle of the band. A flex box centres the em
   box a face declares. A face does not draw its ink in the middle of
   that box. The line therefore landed .0825em low. At the size the band
