@@ -49,9 +49,21 @@ const STEP = 20;
 const MAX_OVER = 40;
 
 // How far the tagline may sit from the middle of the band it is centred
-// in, measured on its ink rather than on its box. A line is centred or
-// it is not, so this is a rounding allowance and nothing more.
-const MAX_LEAN = 1;
+// in, measured on its ink rather than on its box.
+//
+// The nudge that centres it is a constant in em, and what is left over
+// is the browser rounding the face's ascent and descent to whole pixels
+// before reporting them. That rounding is the platform's, not the
+// theme's: the same page at the same width leans 0.96px at worst on
+// macOS and 1.4px at worst on Linux, deterministically, at 18 of 115
+// widths.
+//
+// 1 was measured on one machine and left four hundredths of headroom.
+// It passed there and failed every CI run from the commit that
+// introduced it, which is how a tolerance calibrated on one platform
+// announces itself. 2.5 clears both by a margin and still catches the
+// defect this was written for, which leaned 8.8px.
+const MAX_LEAN = 2.5;
 
 async function main() {
   let chromium;

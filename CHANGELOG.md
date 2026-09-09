@@ -1,5 +1,22 @@
 # Changelog
 
+## v0.2.11, 2026-09-10
+
+A tolerance measured on one machine, and the release it held up.
+
+- `output/band` holds the tagline to a tolerance that survives more than
+  one platform. The nudge that centres the line is a constant in em.
+  What is left over is the browser rounding the face's ascent and
+  descent to whole pixels. That rounding is the platform's. The same
+  page at the same width leans 0.96px at worst on macOS. On Linux it
+  leans 1.4px, at 18 of 115 widths, deterministically.
+  The tolerance was 1, measured on the machine that wrote it, with four
+  hundredths to spare. It passed there and failed every CI run from the
+  commit that introduced it. v0.2.10 was therefore tagged and never
+  published, because the workflow publishes only what the gates pass.
+  2.5 clears both platforms. It still catches the defect it was written
+  for, which leaned 8.8px.
+
 ## v0.2.10, 2026-08-31
 
 A cap the theme never had, two things a reader sees, and a demo that
